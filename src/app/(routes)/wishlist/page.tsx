@@ -34,7 +34,10 @@ const page = async() => {
           <div className="flex  flex-wrap pl-3">
             {/* <OrderDetailsComponent /> */}
             
-            <h1 className=" text-[4rem] pl-10 uppercase mt-20">{wishlist.length ==0 && "Please Wishlist the Product to see it here"}</h1>
+            {
+              wishlist.length ==0 && 
+            <h1 className=" text-[4rem] pl-10 uppercase mt-20">{"Please Wishlist the Product to see it here"}</h1>
+            }
             {wishlist?.map((product) => (
               <div className="py-4" key={product?.id}>
                 <WishlistedProductCard product={product?.product}   />

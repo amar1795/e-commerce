@@ -265,7 +265,6 @@ const Page = ({ params }: { params: { categories: string } }) => {
         window.history.replaceState(null, "", window.location.pathname);
       }
       setLoading(false); // End loading
-
     };
     fetchPaginatedData();
   }, [
@@ -278,7 +277,6 @@ const Page = ({ params }: { params: { categories: string } }) => {
     maxDiscountPercentage,
     sortBy,
   ]);
-  
 
   const fixedBrand = paginatedData.brands.map((brand) => ({
     label: brand,
@@ -332,15 +330,13 @@ const Page = ({ params }: { params: { categories: string } }) => {
             </h1>
           </div>
           <div>
-          <div className="  mb-2 ">
-          <h1 className=" text-[1.5rem] uppercase  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 font-bold">
-          {`SHOWING  ${start + 1} to ${
-                      end + 1
-                    } out of ${totalProducts} products`}{" "}
-          </h1>
-                  
-                    
-                  </div>
+            <div className="  mb-2 ">
+              <h1 className=" text-[1.5rem] uppercase  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 font-bold">
+                {`SHOWING  ${start + 1} to ${
+                  end + 1
+                } out of ${totalProducts} products`}{" "}
+              </h1>
+            </div>
           </div>
           <div className=" px-5 py-5 flex w-[19rem] justify-between ">
             <SelectDemo setSortBy={setSortBy} />
@@ -380,23 +376,23 @@ const Page = ({ params }: { params: { categories: string } }) => {
                 </div>
               ) : paginatedData.products?.length === 0 ? (
                 <div className=" h-screen  flex items-center justify-center">
-                    <LoadingAnimation />
-                    </div>
+                  <LoadingAnimation />
+                </div>
               ) : (
                 <div>
-                 
-                  {
-                    loading ? (<>
-                    <div className=" h-screen  flex items-center justify-center">
-                    <LoadingAnimation />
-                    </div>
-                    </>) :(<CategoriesRelatedProduct
+                  {loading ? (
+                    <>
+                      <div className=" h-screen  flex items-center justify-center">
+                        <LoadingAnimation />
+                      </div>
+                    </>
+                  ) : (
+                    <CategoriesRelatedProduct
                       categoryPageData={true}
                       relatedProduct={paginatedData.products}
                       callToast={callToast}
-                    />)
-                  }
-                  
+                    />
+                  )}
                 </div>
               )}
             </div>

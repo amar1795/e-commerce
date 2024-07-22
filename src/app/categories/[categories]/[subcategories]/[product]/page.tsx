@@ -383,7 +383,7 @@ console.log("this is the initial colour and size", initialColor, initialSize)
             <div className=" bg-orange-300 flex-1 h-auto">
               <PhotoViewer images={updatedProducts?.images} />
             </div>
-            <div className="flex-1 h-[100rem]">
+            <div className="flex-1 ">
               {/* right component */}
               {/* brand:string */}
 
@@ -402,7 +402,7 @@ console.log("this is the initial colour and size", initialColor, initialSize)
             </div>
           </div>
           <div>
-            
+
             <div className="bg-teal-600   pt-6">
               <h3 className=" ml-8 w-[20rem] text-[2rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
                 Related Products

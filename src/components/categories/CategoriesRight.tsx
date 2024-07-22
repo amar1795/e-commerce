@@ -988,7 +988,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
               )}
             </div>
 
-            <div className="reviews border-2 border-black mt-11 ">
+            <div className="reviews border-2 border-black mt-11  ">
               <div className=" cxphotos   px-4 pt-4 border-b-2 border-black">
                 <div>
                   <h1 className=" text-[1.2rem] font-semibold">

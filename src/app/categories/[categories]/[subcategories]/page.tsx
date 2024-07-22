@@ -20,6 +20,7 @@ import {
 
 import CategoriesRelatedProduct from "@/components/categories/CategoriesRelatedProduct";
 import { useToast } from "@/components/ui/use-toast";
+import LoadingAnimation from "@/components/Loading/LoadingAnimation";
 
 const Page = ({ params }: { params: { subcategories: string } }) => {
   const [currentPage, setCurrentPage] = useState(() => {
@@ -37,6 +38,9 @@ const Page = ({ params }: { params: { subcategories: string } }) => {
   const [parentCategoryName, setparentCategoryName] = useState(
     params.subcategories
   );
+
+  const [loading, setLoading] = useState(false); // Added loading state
+
   const [brandSelected, setBrandSelected] = useState(false);
 
   const [brandName, setBrandName] = useState([]);
@@ -64,6 +68,8 @@ const Page = ({ params }: { params: { subcategories: string } }) => {
   
   useEffect(() => {
     const fetchPaginatedData = async () => {
+      setLoading(true); // Start loading
+
         // alert("fetching data")
       console.log("this is the minimum discount price", minDiscountedPrice)
       const data = await getProductsByCategoryFiltered(
@@ -137,6 +143,7 @@ const Page = ({ params }: { params: { subcategories: string } }) => {
     // this is causing to re render the data with back to the same page when using the pagination
     // const newUrl = `${window.location.pathname}?${queryParams.toString()}`;
     // window.history.replaceState(null, '', newUrl);
+    setLoading(false); // End loading
 
     };
     console.log("hello")
@@ -198,8 +205,17 @@ const callToast = ({ variant, title, description }) => {
         <BreadcrumbWithCustomSeparator items={breadcrumbsData} />
         <div className="filter flex justify-between w-full px-5 mt-5  overflow-hidden relative">
           <div className=" self-center font-bold">FILTERS</div>
+          <div>
+            <div className="  mb-2 ">
+              <h1 className=" text-[1.5rem] uppercase  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 font-bold">
+                {`SHOWING  ${start + 1} to ${
+                  end + 1
+                } out of ${totalProducts} products`}{" "}
+              </h1>
+            </div>
+          </div>
           <div className=" px-5 py-5 flex w-[19rem] justify-between ">
-            <h1 className=" self-center font-bold">SORT BY :</h1>
+            {/* <h1 className=" self-center font-bold">SORT BY :</h1> */}
             <SelectDemo setSortBy={setSortBy} />
           </div>
         </div>
@@ -225,12 +241,19 @@ const callToast = ({ variant, title, description }) => {
 
           <div className=" flex-grow">
             <div className={`min-h-[90vh] `}>
-            <div>This is the categories page for {params.subcategories} and showing {`Displaying products ${start + 1} to ${end + 1} out of ${totalProducts} products`} </div>
-              <CategoriesRelatedProduct
+        
+            {
+               loading ? (<>
+                <div className=" h-screen  flex items-center justify-center">
+                <LoadingAnimation />
+                </div>
+                </>) : (<CategoriesRelatedProduct
               key={paginatedData.products.id}
                 relatedProduct={paginatedData.products}
                 callToast={callToast}
-              />
+              />)
+            }
+              
             </div>
 
             <div className=" h-[4rem] ">
