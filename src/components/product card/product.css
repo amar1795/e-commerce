@@ -74,9 +74,16 @@
       transform: translateY(0);
     }
   }
-  /* .ProductImageCard{
-    position: relative;
-  } */
+
+  .RelatedProductImageCard{
+    /* position: relative; */
+    height: 19rem;
+  }
+  .RelatedProductDetails{
+    height: 6.8rem;
+    overflow: hidden;
+  }
+
   /* .ProductImage{
     position: absolute;
     
@@ -129,10 +136,11 @@ display: none;
     /* position: relative; */
   }
 
-  .card_slider{
+  .Relatedcard_slider{
     /* display: flex; */
     /* position: absolute;
     bottom: 0; */
+    height: 6.8rem;
   }
   /* .embla__controls {
     

@@ -129,10 +129,11 @@ display: none;
     /* position: relative; */
   }
 
-  .card_slider{
+  .Wishlistedcard_slider{
     /* display: flex; */
     /* position: absolute;
     bottom: 0; */
+    height: 8rem;
   }
   /* .embla__controls {
     

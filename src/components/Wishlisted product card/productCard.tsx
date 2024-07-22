@@ -95,14 +95,14 @@ const WishlistedProductCard: React.FC<updatedDataResponse> = ({ product,setData 
           </div>
           {/* Bottom part */}
           <div className="ProductDetails  ">
-            <div className="card_slider px-2 pb-5 w-full text-[1.5rem]   flex justify-between bg-white bg-opacity-20 backdrop-blur-lg border border-white/30  ">
+            <div className="Wishlistedcard_slider px-2 pb-5 w-full text-[1.5rem]   flex justify-between bg-white bg-opacity-20 backdrop-blur-lg border border-white/30  ">
               <div className="left w-[9rem]  pt-1">
                 <h1 className=" text-[19px] font-bold">
                   {product?.brand?.name}
                 </h1>
                 <p className="font-extralight text-[0.9rem]">
                   {" "}
-                  {product?.name.length > 36
+                  {product?.name.length > 30
                     ? product?.name.slice(0, 25) + "..."
                     : product?.name}
                 </p>

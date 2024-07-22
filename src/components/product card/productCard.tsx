@@ -338,7 +338,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
         >
           {/* top part */}
           <button>
-            <div className="ProductImageCard min-h-[19rem] relative ">
+            <div className="RelatedProductImageCard  relative ">
               <button
                 className={`heartButton z-10 hover:text-red-500`}
                 onClick={() => handleWishlistToggle(user?.id, product.id)}
@@ -371,6 +371,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
               </div>
             </div>
           </button>
+          <div className=" ">
           {/* middle part */}
           <div className="  text-sm flex h-[2rem] justify-between bg-opacity-20 backdrop-blur-lg border border-white/30 ">
             <div className=" bg-gray-200 w-16  ">
@@ -408,8 +409,8 @@ const ProductCard: React.FC<updatedDataResponse> = ({
             </div>
           </div>
           {/* Bottom part */}
-          <div className="ProductDetails    ">
-            <div className="card_slider px-2 pb-5 w-full text-[1.5rem]   flex justify-between bg-white bg-opacity-20 backdrop-blur-lg border border-white/30  ">
+          <div className="RelatedProductDetails ">
+            <div className="Relatedcard_slider px-2 pb-5 w-full text-[1.5rem]   flex justify-between bg-white bg-opacity-20 backdrop-blur-lg border border-white/30 h-[6.8rem]  ">
               <div className="left w-[9rem]  pt-1">
                 <h1 className=" text-[19px] font-bold">
                   {product?.brand?.name}
@@ -495,6 +496,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
                 </>
               )}
             </div>
+          </div>
           </div>
         </div>
       </div>
