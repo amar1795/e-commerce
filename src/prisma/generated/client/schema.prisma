@@ -1,0 +1,425 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider     = "mongodb"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+//  authentication models
+enum UserRole {
+  ADMIN
+  USER
+}
+
+enum DeliveryStatus {
+  ORDER_PLACED
+  ORDER_PROCESSING
+  ORDER_SENT_TO_FULFILLMENT
+  ORDER_OUT_FOR_DELIVERY
+  ORDER_DELIVERED
+}
+
+enum PaymentMode {
+  CARD
+  WALLET
+  OTHER // Add other payment modes if needed
+}
+
+// @db.ObjectId is optional as the prisma client will automatically convert the id to ObjectId anyways 
+
+model User {
+  id                    String                 @id @default(auto()) @map("_id") @db.ObjectId
+  name                  String?
+  email                 String?                @unique
+  emailVerified         DateTime?
+  image                 String?
+  password              String?
+  role                  UserRole               @default(USER)
+  accounts              Account[]
+  orders                Order[]                @relation("UsertoOrder") // Relation to Order model
+  cart                  Cart[]                 @relation("UsertoCart") // Relation to Cart model
+  rating                Rating[]               @relation("RatingToUser") // Relation to Rating model
+  saveForLaterItems     SaveForLater[] // Relation to SaveForLater model
+  wishlistItems         Wishlist[] // Relation to Wishlist model
+  isTwoFactorEnabled    Boolean                @default(false)
+  twoFactorConfirmation TwoFactorConfirmation?
+  likedReviews          Like[]
+  dislikedReviews       Dislike[]
+  address               Address[] // Optional relation to Address model
+  cards                 Card[]                 @relation("UsertoCard")
+  wallet                Wallet?                @relation("UsertoWallet")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Wallet {
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  userId       String        @unique @db.ObjectId // Foreign Key to User
+  user         User          @relation("UsertoWallet", fields: [userId], references: [id])
+  balance      Float         @default(0.0)
+  orders       Order[]       @relation("WalletToOrder")
+  transactions Transaction[] @relation("WalletToTransaction")
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Transaction {
+  id          String          @id @default(auto()) @map("_id") @db.ObjectId
+  walletId    String          @db.ObjectId // Foreign Key to Wallet
+  wallet      Wallet          @relation("WalletToTransaction", fields: [walletId], references: [id])
+  amount      Float
+  type        TransactionType
+  description String?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+}
+
+enum TransactionType {
+  CREDIT
+  DEBIT
+}
+
+model Card {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId         String   @db.ObjectId // Foreign Key to User
+  user           User     @relation("UsertoCard", fields: [userId], references: [id])
+  cardNumber     String // Should be stored securely, preferably encrypted
+  cardExpiry     String
+  cardCvc        String // Should be stored securely, preferably encrypted
+  cardHolderName String
+  lastFourDigits String? // Last four digits of the card number
+  orders         Order[]  @relation("CardToOrder")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Address {
+  id          String  @id @default(auto()) @map("_id") @db.ObjectId
+  street      String
+  landmark    String? // Optional landmark
+  city        String
+  state       String
+  country     String
+  postalCode  String
+  firstName   String? // Optional first name
+  lastName    String? // Optional last name
+  apartment   String? // Optional apartment
+  phoneNumber String? // Optional phone number
+  orders      Order[] @relation("AddressToOrder")
+
+  userId String? @db.ObjectId
+  user   User?   @relation(fields: [userId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// a user can have multiple accounts (e.g., Google, Facebook,credentials etc.)
+model Account {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.String
+  access_token      String? @db.String
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.String
+  session_state     String?
+  userId            String  @db.ObjectId
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([provider, providerAccountId])
+}
+
+model VerificationToken {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
+model PasswordResetToken {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
+model TwoFactorToken {
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
+  email   String
+  token   String   @unique
+  expires DateTime
+
+  @@unique([email, token])
+}
+
+model TwoFactorConfirmation {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+
+  userId String @db.ObjectId
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId])
+}
+
+//  authentication models
+
+model Poster {
+  id         String     @id @default(auto()) @map("_id") @db.ObjectId
+  label      String
+  imageUrl   String
+  categories Category[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+}
+
+model Category {
+  id            String     @id @default(auto()) @map("_id") @db.ObjectId
+  PosterId      String?    @db.ObjectId // Foreign Key to Poster
+  Poster        Poster?    @relation(fields: [PosterId], references: [id])
+  name          String     @unique
+  products      Product[]  @relation("CategoryToProduct")
+  parentId      String?    @db.ObjectId // Reference to the parent category's ID (if this category is a subcategory)
+  parent        Category?  @relation("CategoryParent", fields: [parentId], references: [id], onDelete: NoAction, onUpdate: NoAction) // Self-referencing relation to the parent category
+  subcategories Category[] @relation("CategoryParent")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Index for the parentId to optimize queries
+  @@index([parentId])
+  @@index([PosterId])
+}
+
+// product models and product related models
+
+model Product {
+  id              String           @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  price           Float
+  brandId         String           @db.ObjectId // Foreign Key to Brand
+  brand           Brand            @relation("BrandToProduct", fields: [brandId], references: [id])
+  discount        Int?
+  discountedPrice Float?
+  productVariants ProductVariant[] // Relation to ProductVariant model
+  ratings         Rating[]         @relation("RatingToProduct")
+  images          Image[]
+  description     String
+  orderItems      OrderItem[]
+  cartItems       CartItem[]       @relation("ProductToCart")
+  saveForLater    SaveForLater[]
+  wishlists       Wishlist[]
+  categoryId      String           @db.ObjectId
+  category        Category         @relation("CategoryToProduct", fields: [categoryId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+model Color {
+  id              String           @id @default(auto()) @map("_id") @db.ObjectId
+  name            String           @unique
+  value           String
+  productVariants ProductVariant[]
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+model Size {
+  id              String           @id @default(auto()) @map("_id") @db.ObjectId
+  name            String           @unique
+  value           String
+  productVariants ProductVariant[]
+  category        String // For example, "clothing" or "shoes"
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+}
+
+model ProductVariant {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  productId String     @db.ObjectId
+  product   Product    @relation(fields: [productId], references: [id])
+  colorId   String     @db.ObjectId // Foreign Key to Color
+  color     Color      @relation(fields: [colorId], references: [id])
+  sizeId    String     @db.ObjectId // Foreign Key to Size
+  size      Size       @relation(fields: [sizeId], references: [id])
+  stock     Int
+  cartItems CartItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([productId, colorId, sizeId], name: "product_variant_idx")
+}
+
+// rating and reviews models
+
+model Rating {
+  id               String        @id @default(auto()) @map("_id") @db.ObjectId
+  productId        String        @db.ObjectId // Foreign Key to Product
+  product          Product       @relation("RatingToProduct", fields: [productId], references: [id])
+  rating           Int
+  reviewTitle      String?
+  review           String?
+  verifiedPurchase Boolean       @default(false)
+  userId           String        @db.ObjectId // Foreign Key to User  
+  user             User          @relation("RatingToUser", fields: [userId], references: [id])
+  images           ReviewImage[] @relation("RatingToImage")
+  likes            Like[]
+  dislikes         Dislike[]
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  @@index([productId])
+  @@index([userId])
+}
+
+model Like {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  ratingId  String   @db.ObjectId
+  rating    Rating   @relation(fields: [ratingId], references: [id])
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model Dislike {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  ratingId  String   @db.ObjectId
+  rating    Rating   @relation(fields: [ratingId], references: [id])
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+model ReviewImage {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  url      String
+  RatingId String @db.ObjectId // Foreign Key to Product
+  rating   Rating @relation("RatingToImage", fields: [RatingId], references: [id], onDelete: Cascade)
+}
+
+model Brand {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  name      String    @unique
+  products  Product[] @relation("BrandToProduct")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Image {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  productId String   @db.ObjectId // Foreign Key to Product
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String // URL of the image
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([productId])
+}
+
+// save for later and wishlist models
+
+model SaveForLater {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId // Foreign Key to User
+  user      User     @relation(fields: [userId], references: [id])
+  productId String   @db.ObjectId // Foreign Key to Product
+  product   Product  @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([productId])
+}
+
+model Wishlist {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String   @db.ObjectId // Foreign Key to User
+  user      User     @relation(fields: [userId], references: [id])
+  productId String   @db.ObjectId // Foreign Key to Product
+  product   Product  @relation(fields: [productId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([productId])
+}
+
+// cart Model
+model Cart {
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
+  userId    String     @db.ObjectId // Foreign Key to User
+  user      User       @relation("UsertoCart", fields: [userId], references: [id])
+  cartItems CartItem[] // Relation to CartItem model
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@index([userId])
+}
+
+model CartItem {
+  id                  String          @id @default(auto()) @map("_id") @db.ObjectId
+  cartId              String          @db.ObjectId // Foreign Key to Cart
+  cart                Cart            @relation(fields: [cartId], references: [id])
+  productId           String          @db.ObjectId // Foreign Key to Product
+  product             Product         @relation("ProductToCart", fields: [productId], references: [id])
+  quantity            Int             @default(1)
+  productVariantID    String?         @db.ObjectId // Optional Foreign Key to Product Variant
+  productVariant      ProductVariant? @relation(fields: [productVariantID], references: [id])
+  productColour       String? // Optional Product Colour
+  productSize         String? // Optional Product Size
+  productVarientStock Int? // Optional Product Varient Stock
+
+  @@index([cartId])
+  @@index([productId])
+  @@index([productVariantID])
+}
+
+// order model
+model Order {
+  id             String         @id @default(auto()) @map("_id") @db.ObjectId
+  orderItems     OrderItem[] // Relation to OrderItem model
+  isPaid         Boolean        @default(false)
+  deliveryStatus DeliveryStatus @default(ORDER_PLACED)
+  orderTotal     Float
+  userId         String         @db.ObjectId // Foreign Key to User
+  user           User           @relation("UsertoOrder", fields: [userId], references: [id])
+  addressId      String         @db.ObjectId // Foreign Key to Address
+  address        Address        @relation("AddressToOrder", fields: [addressId], references: [id])
+  cardId         String?        @db.ObjectId // Foreign Key to Card (optional)
+  card           Card?          @relation("CardToOrder", fields: [cardId], references: [id])
+  walletId       String?        @db.ObjectId // Foreign Key to Wallet (optional)
+  wallet         Wallet?        @relation("WalletToOrder", fields: [walletId], references: [id])
+  paymentMode    PaymentMode    @default(CARD)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+}
+
+model OrderItem {
+  id               String  @id @default(auto()) @map("_id") @db.ObjectId
+  orderId          String  @db.ObjectId // Foreign Key to Order
+  order            Order   @relation(fields: [orderId], references: [id])
+  productId        String  @db.ObjectId // Foreign Key to Product
+  product          Product @relation(fields: [productId], references: [id])
+  quantity         Int // Quantity of the product in this order item
+  price            Float // Price of the product at the time of order
+  productVariantID String? // Optional productVariantID of Product Variant
+  size             String? // Optional size of the product
+  color            String? // Optional color of the product
+
+  @@index([orderId])
+  @@index([productId])
+}
