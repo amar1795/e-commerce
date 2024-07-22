@@ -80,7 +80,7 @@
     height: 19rem;
   }
   .RelatedProductDetails{
-    height: 6.8rem;
+    height: 8rem;
     overflow: hidden;
   }
 
@@ -140,7 +140,7 @@ display: none;
     /* display: flex; */
     /* position: absolute;
     bottom: 0; */
-    height: 6.8rem;
+    height: 8rem;
   }
   /* .embla__controls {
     

@@ -70,6 +70,8 @@ const page = () => {
   const [totalCookieAmount, setTotalCookieAmount] = useState(0);
   const [productCookieCount, setProductCookieCount] = useState(0);
   const [updatedProducts, setupdatedProducts] = useState([]);
+  const [updatedProductsLoading, setupdatedProductsLoading] = useState(true);
+  
   const [CartRelatedProducts, setCartRelatedProducts] = useState(true);
   const [completeMergedupdatedProducts, setCompleteMergedupdatedProducts] =
     useState([]);
@@ -337,6 +339,7 @@ const page = () => {
 
   // related products useffect
   useEffect(() => {
+    setupdatedProductsLoading(true);
     const relatedData = async () => {
       // this needs to work without the user as well
 
@@ -344,6 +347,7 @@ const page = () => {
       console.log("this is the related updated products list", data);
 
       setupdatedProducts(data);
+      setupdatedProductsLoading(false);
     };
     relatedData();
   }, [updateRelatedTrigger]);
@@ -658,7 +662,9 @@ const page = () => {
         </div>
       }
 
-      {updatedProducts && updatedProducts.length > 0 && (
+
+        {
+           mergedTotalCount > 0 && (
         <div className=" bg-teal-600 min-h-[37rem] ">
           <div className="px-5">
             <div className=" pt-10 mb-8 ">
@@ -666,27 +672,39 @@ const page = () => {
                 Related Products
               </h3>
             </div>
+      { (
 
             <div className=" flex  flex-wrap pl-3">
               <div className=" pr-10 py-4 flex  flex-wrap">
-                {updatedProducts.map((product) => (
-                  <div className=" mb-4" key={product?.id}>
-                    <ProductCard
-                      callToast={toast}
-                      CartRelatedProducts={CartRelatedProducts}
-                      product={product}
-                      handleClickAdd={handleClickAdd}
-                      handleQuantityChange={handleQuantityCookieChange}
-                      handleWishlistToggle={handleWishlistToggle}
-                      productId={product?.id}
-                    />
-                  </div>
-                ))}
+                {
+                  updatedProductsLoading ? (<div className=" w-[100vw] bg-teal-600 min-h-[30rem] px-5 flex  items-center justify-center">
+                    <LoadingAnimation />
+                  </div>) :(
+                    <>{
+                     updatedProducts.map((product) => (
+                      <div className=" mb-4" key={product?.id}>
+                        <ProductCard
+                          callToast={toast}
+                          CartRelatedProducts={CartRelatedProducts}
+                          product={product}
+                          handleClickAdd={handleClickAdd}
+                          handleQuantityChange={handleQuantityCookieChange}
+                          handleWishlistToggle={handleWishlistToggle}
+                          productId={product?.id}
+                        />
+                      </div>
+                    ))
+                  }
+                  </>)
+                }
+               
               </div>
             </div>
+        )}
           </div>
         </div>
-      )}
+        )
+      }
     </div>
   );
 };

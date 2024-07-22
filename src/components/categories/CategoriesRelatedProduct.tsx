@@ -17,6 +17,7 @@ import increaseProductQuantity from "@/actions/cart/increaseProduct";
 import decreaseProductQuantity from "@/actions/cart/decreaseProduct";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { fetchSingleProduct } from "@/actions/cart/fetchSingleProduct";
+import LoadingAnimation from "../Loading/LoadingAnimation";
 
 interface CategoriesRelatedProductProps {
   relatedProduct: relatedProduct[];
@@ -30,7 +31,9 @@ const CategoriesRelatedProduct: React.FC<CategoriesRelatedProductProps> = ({
   filteredId,
   categoryPageData,
 }) => {
-  if (!relatedProduct) return <div>Loading ...</div>;
+  if (!relatedProduct) return <div className=" bg-teal-600 min-h-[30rem] px-5 flex  items-center justify-center">
+    <LoadingAnimation />
+  </div>;
 
   const testData = relatedProduct;
   console.log("this is the test related Data for wishlist", testData);
