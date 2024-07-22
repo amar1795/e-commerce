@@ -1,0 +1,27 @@
+@keyframes rainbowFill {
+    0% { fill: #ff0000; }      /* Bright Red */
+    10% { fill: #ff8000; }     /* Bright Orange */
+    20% { fill: #ffff00; }     /* Bright Yellow */
+    30% { fill: #00ff00; }     /* Bright Green */
+    40% { fill: #00ffff; }     /* Bright Cyan */
+    50% { fill: #0000ff; }     /* Bright Blue */
+    60% { fill: #ff00ff; }     /* Bright Magenta */
+    70% { fill: #ff0000; }     /* Bright Red */
+    80% { fill: #ff8000; }     /* Bright Orange */
+    90% { fill: #ffff00; }     /* Bright Yellow */
+    100% { fill: #ff0000; }    /* Final Bright Red */
+  }
+  
+  .heart-rainbow {
+    animation: rainbowFill 0.8s linear forwards; /* Longer animation */
+  }
+  
+  
+  .heart-red {
+    fill: red;
+    transition: fill 0.3s ease-in-out; /* Faster transition */
+  }
+  
+  .heartButton:hover .heart-icon {
+    fill: red;
+  }

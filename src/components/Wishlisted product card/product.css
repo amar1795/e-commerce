@@ -1,0 +1,244 @@
+.ProductEmbla_product {
+    max-width: 90rem;
+    margin: auto;
+    --slide-height: 25rem;
+    --slide-spacing: 3rem;
+    --slide-size: 100%;
+    /* position: relative; */
+    /* background-color: red; */
+  }
+  .embla__viewport_product {
+    
+    overflow: hidden;
+  }
+  .Product_embla__container {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    max-width: 22rem;
+    backface-visibility: hidden;
+    display: flex;
+    touch-action: pan-y pinch-zoom;
+    margin-left: calc(3rem * -1);
+  }
+  .embla__slide__number__product:hover {
+    transform: scale(1.1);    
+    transition: transform 0.3s ease-in-out;
+
+  }
+
+ 
+  .sembla__slide__number__product:hover .nbutton {
+    display: flex;
+    animation: fadeIn 0.3s ease-in-out;
+    animation: rainbow 5s infinite;
+    border: 2px solid;
+    animation-name: rainbow;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+  }
+
+
+  @keyframes rainbow {
+    0% {
+      color: red;
+    }
+    14% {
+      color: orange;
+    }
+    28% {
+      color: yellow;
+    }
+    42% {
+      color: green;
+    }
+    57% {
+      color: blue;
+    }
+    71% {
+      color: indigo;
+    }
+    85% {
+      color: violet;
+    }
+    100% {
+      color: red;
+    }
+  }
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  /* .ProductImageCard{
+    position: relative;
+  } */
+  /* .ProductImage{
+    position: absolute;
+    
+
+  } */
+
+  .heartButton{
+    position: absolute;
+    right: 0;
+    padding-right: 1rem;
+    padding-top: 1.5rem;
+  }
+
+.qrbuynow{
+position: absolute;
+right: 1rem;
+top: 4rem;
+display: flex;
+align-items: center;
+border: 2px solid black;
+padding: 7px;
+display: none;
+/* border-radius: 1rem; */
+
+}
+
+
+  .embla__slide_product {
+    flex: 0 0 100%;
+    min-width: 0;
+    padding-left: 3rem;
+  }
+  .embla__slide__number__product {
+    box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+    /* border-radius: 1.8rem; */
+    font-size: 2rem;
+    font-weight: 600;
+    /* display: flex;
+    flex-direction: column; */
+    overflow: hidden;
+    /* width: 15rem; */
+    
+    border: 2px solid black;
+    border-bottom: 8px solid black;
+    border-right: 4px solid black;
+    /* height: 25rem; */
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    /* position: relative; */
+  }
+
+  .card_slider{
+    /* display: flex; */
+    /* position: absolute;
+    bottom: 0; */
+  }
+  /* .embla__controls {
+    
+    display: flex;
+    grid-template-columns: auto 1fr;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 1.8rem;
+  } */
+  .embla__controls_product{
+ width: 100%;
+    
+    
+  }
+  /* outer buttons */
+  .embla__buttons_product {
+
+    padding-left: 1rem;
+    padding-right: 1.5rem;
+    /* position: absolute; */
+    top: 40%;
+    /* background-color: aquamarine; */
+    width: 100%;
+    display: flex;
+    
+    /* grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+    align-items: center; */
+    justify-content: space-between;
+   
+    
+    
+    
+  }
+  /* inside buttons */
+  .embla__button_product {
+    -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    touch-action: manipulation;
+    display: inline-flex;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    box-shadow: inset 0 0 0 0.2rem rgba(var(--detail-medium-contrast-rgb-value), 0.5);
+    width: 3.6rem;
+    height: 3.6rem;
+    z-index: 1;
+    border-radius: 50%;
+    color: var(--text-body);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  .embla__button_product:disabled {
+    color: var(--detail-high-contrast);
+  }
+  .embla__button__svg__product {
+    width: 35%;
+    height: 35%;
+  }
+  .embla__dots {
+   
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: calc((2.6rem - 1.4rem) / 2 * -1);
+  }
+
+  .embla__dot {   
+    -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    touch-action: manipulation;
+    display: inline-flex;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    width: 2.0rem;
+    height: 2.0rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    
+  }
+  .embla__dot:after {
+    box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    content: '';
+    
+  }
+  .embla__dot--selected:after {
+    box-shadow: inset 0 0 0 0.2rem var(--text-body);
+  }
+  

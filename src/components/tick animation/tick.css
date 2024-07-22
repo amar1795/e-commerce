@@ -1,0 +1,32 @@
+.tick-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .tick-svg {
+    width: 400px; /* Adjust size of the SVG container */
+    height: 400px; /* Adjust size of the SVG container */
+  }
+  
+  .tick-circle {
+    fill: none;
+    stroke: #FACC15; /* Circle color */
+    stroke-width: 2;
+  }
+  
+  .tick-path {
+    stroke-dasharray: 100; /* Length of the path */
+    stroke-dashoffset: 100; /* Start with the path invisible */
+    animation: drawTick 1s ease forwards; /* Animation duration and easing */
+  }
+  
+  @keyframes drawTick {
+    0% {
+      stroke-dashoffset: 100; /* Start with the path invisible */
+    }
+    100% {
+      stroke-dashoffset: 0; /* Fully reveal the path */
+    }
+  }
+  
