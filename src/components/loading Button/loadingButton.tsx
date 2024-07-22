@@ -4,7 +4,7 @@ import "./loadingStyle.css"
 const LoadingButton = () => {
   return (
     <div >
-      <div class="loader"></div>
+      <div class="loaderButton"></div>
 
     </div>
   )

@@ -1,5 +1,5 @@
 /* HTML: <div class="loader"></div> */
-.loader {
+.loaderButton {
     --w:10ch;
     font-weight: bold;
     font-family: monospace;
@@ -15,7 +15,7 @@
           calc(-5*var(--w)) 0 #000,calc(-6*var(--w)) 0 #000,calc(-7*var(--w)) 0 #000,calc(-8*var(--w)) 0 #000,calc(-9*var(--w)) 0 #000;
     animation: l20 2s infinite linear;
   }
-  .loader:before {
+  .loaderButton:before {
     content:"Loading...";
   }
   

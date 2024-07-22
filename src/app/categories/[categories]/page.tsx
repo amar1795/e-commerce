@@ -18,6 +18,7 @@ import {
 } from "@/actions/createProduct";
 import CategoriesRelatedProduct from "@/components/categories/CategoriesRelatedProduct";
 import { useToast } from "@/components/ui/use-toast";
+import LoadingAnimation from "@/components/Loading/LoadingAnimation";
 
 function decodeURLParams(url) {
   // Check if url is a string
@@ -73,6 +74,8 @@ const Page = ({ params }: { params: { categories: string } }) => {
   const [parentCategoryName, setparentCategoryName] = useState(
     params.categories
   );
+
+  const [loading, setLoading] = useState(false); // Added loading state
 
   // 'priceAsc', 'priceDesc', 'discountAsc', 'discountDesc', 'ratingsAsc', 'ratingsDesc'
   const [brandSelected, setBrandSelected] = useState(false);
@@ -162,6 +165,7 @@ const Page = ({ params }: { params: { categories: string } }) => {
   useEffect(() => {
     const fetchPaginatedData = async () => {
       // console.log("this is the minimum discount price", minDiscountedPrice)
+      setLoading(true); // Start loading
 
       const data = await getProductsByCategoryFiltered(
         parentCategoryName === "Kids" ? "KidsCategory" : parentCategoryName,
@@ -260,6 +264,8 @@ const Page = ({ params }: { params: { categories: string } }) => {
       } else {
         window.history.replaceState(null, "", window.location.pathname);
       }
+      setLoading(false); // End loading
+
     };
     fetchPaginatedData();
   }, [
@@ -272,6 +278,7 @@ const Page = ({ params }: { params: { categories: string } }) => {
     maxDiscountPercentage,
     sortBy,
   ]);
+  
 
   const fixedBrand = paginatedData.brands.map((brand) => ({
     label: brand,
@@ -324,6 +331,17 @@ const Page = ({ params }: { params: { categories: string } }) => {
               FILTERS
             </h1>
           </div>
+          <div>
+          <div className="  mb-2 ">
+          <h1 className=" text-[1.5rem] uppercase  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 font-bold">
+          {`SHOWING  ${start + 1} to ${
+                      end + 1
+                    } out of ${totalProducts} products`}{" "}
+          </h1>
+                  
+                    
+                  </div>
+          </div>
           <div className=" px-5 py-5 flex w-[19rem] justify-between ">
             <SelectDemo setSortBy={setSortBy} />
           </div>
@@ -361,21 +379,24 @@ const Page = ({ params }: { params: { categories: string } }) => {
                   </h1>
                 </div>
               ) : paginatedData.products?.length === 0 ? (
-                <div>Loading....</div>
+                <div className=" h-screen  flex items-center justify-center">
+                    <LoadingAnimation />
+                    </div>
               ) : (
                 <div>
-                  <div>
-                    This is the categories page for {params.categories} and
-                    showing{" "}
-                    {`Displaying products ${start + 1} to ${
-                      end + 1
-                    } out of ${totalProducts} products`}{" "}
-                  </div>
-                  <CategoriesRelatedProduct
-                    categoryPageData={true}
-                    relatedProduct={paginatedData.products}
-                    callToast={callToast}
-                  />
+                 
+                  {
+                    loading ? (<>
+                    <div className=" h-screen  flex items-center justify-center">
+                    <LoadingAnimation />
+                    </div>
+                    </>) :(<CategoriesRelatedProduct
+                      categoryPageData={true}
+                      relatedProduct={paginatedData.products}
+                      callToast={callToast}
+                    />)
+                  }
+                  
                 </div>
               )}
             </div>
