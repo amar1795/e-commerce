@@ -35,6 +35,7 @@ import {
 } from "@/actions/cart/addCartDatatoCookies";
 import { NotifyMeModal } from "../NotifyMeModal";
 import addItemToCart from "@/actions/cart/addItemToCart";
+import QuantitytLoading from "../quantity loading/QuantitytLoading";
 
 type ProductVariant = {
   id: string;
@@ -101,7 +102,10 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
   initialColor,
   initialSize,
 }) => {
-  console.log("this is the data quantities from categories right", data?.cartQuantity);
+  console.log(
+    "this is the data quantities from categories right",
+    data?.cartQuantity
+  );
   const user = useCurrentUser();
 
   // const initialColour= data?.productVariants && data?.productVariants[0]?.color;
@@ -118,7 +122,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
   const [initialLoadColorAndSize, setInitialLoadColorAndSize] = useState(true);
   const [productVarients, setProductVarients] = useState(data?.productVariants);
 
-  const [tempQuantity, setTempQuantity] = useState(data?.cartQuantity);
+  const [tempQuantity, setTempQuantity] = useState(null);
   console.log("this is the temp quantity", tempQuantity);
   console.log(
     "this is the selected color and size from initial data",
@@ -206,6 +210,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
   const [productVarientStock, setProductVarientStock] = useState(0);
   const [productVarientID, setProductVarientID] = useState("");
   const [itemInCart, setItemInCart] = useState(false);
+  const [loadingQuantity, setLoadingQuantity] = useState(true);
 
   console.log("this is the item in cart value", itemInCart);
 
@@ -215,11 +220,30 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
     return <div>Loading...</div>;
   }
 
+   // Effect for setting tempQuantity
+  //  useEffect(() => {
+  //   if (data?.cartQuantity !== undefined) {
+  //     setLoadingQuantity(true);
+  //     // Simulate a delay for loading
+  //     setTempQuantity(data.cartQuantity);
+  //     setLoadingQuantity(false);
+     
+  //   }
+  // }, [data?.cartQuantity]);
+
+  
   useEffect(() => {
     const fetchReviewData = async () => {
       const Data = await fetchReview({ productId: data?.id });
       // alert("fethcreviewdata is  been called")
-      setTempQuantity(data?.cartQuantity || 0);
+
+      if (data?.cartQuantity !== undefined) {
+        setLoadingQuantity(true);
+        // Simulate a delay for loading
+        setTempQuantity(data.cartQuantity);
+        setLoadingQuantity(false);
+       
+      }
 
       console.log("this is the fetchreview data", Data);
       setReviewData(Data);
@@ -232,7 +256,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
       }
     };
     fetchReviewData();
-  }, [data, newData]);
+  }, [data, newData,data?.cartQuantity]);
 
   console.log("this is the unique colors", uniqueColors);
 
@@ -378,7 +402,6 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
   };
 
   const handleConfirm = async () => {
-
     // alert("i have been called")
 
     if (tempQuantity == 0) {
@@ -466,7 +489,6 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
         console.log("this is the cookie value", success, cookieValue);
       }
     }
-
 
     callToast({
       title: "Item added to cart",
@@ -477,9 +499,8 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
   };
 
   const handleUpdate = async () => {
-
-    if(tempQuantity === data?.cartQuantity){
-      return 
+    if (tempQuantity === data?.cartQuantity) {
+      return;
     }
 
     // alert("i have been called")
@@ -570,12 +591,10 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
       }
     }
 
-   
-      callToast({
-        title: "Item updated in cart",
-        description: "successfully updated item in cart",
-      });
-   
+    callToast({
+      title: "Item updated in cart",
+      description: "successfully updated item in cart",
+    });
 
     setItemInCart(true);
   };
@@ -708,7 +727,13 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
                         <div className=" text-[2rem] w-11  bg-white h-[2.5rem]  ">
                           <h1 className="  flex text-center justify-center align-middle  ">
                             {/* {data?.cartQuantity || 0} */}
-                            {tempQuantity}
+                            {loadingQuantity ? (
+                              <div className=" flex justify-center items-center mt-2">
+                                <QuantitytLoading />
+                              </div>
+                            ) : (
+                              tempQuantity
+                            )}
                           </h1>
                         </div>
                         <button
@@ -770,36 +795,35 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
                       className={`w-60  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-red-600 `}
                       onClick={handleremove}
                     >
-                          <ShoppingCart />
+                      <ShoppingCart />
 
-                      <h1 className=" font-bold pl-4">Remove  </h1>
+                      <h1 className=" font-bold pl-4">Remove </h1>
                     </button>
                   </div>
                 </div>
 
                 <div className=" flex">
-                <div className=" h-[4rem]  mr-4">
+                  <div className=" h-[4rem]  mr-4">
                     <button
                       type="submit"
                       className={`w-60  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-green-500 `}
                       onClick={handleUpdate}
-                      >
-                         <ShoppingCart />
+                    >
+                      <ShoppingCart />
                       <h1 className=" font-bold pl-4">Update </h1>
                     </button>
                   </div>
                   <div className=" h-[4rem] ">
                     <Link href="/cart">
-                    <button
-                      className={`w-60  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-green-500 `}
-                      // onClick={handleremove}
-                    >
-                      <ShoppingCart />
-                      <h1 className=" font-bold pl-4">Go to Cart </h1>
-                    </button>
+                      <button
+                        className={`w-60  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-green-500 `}
+                        // onClick={handleremove}
+                      >
+                        <ShoppingCart />
+                        <h1 className=" font-bold pl-4">Go to Cart </h1>
+                      </button>
                     </Link>
                   </div>
-                  
                 </div>
               </div>
             ) : (
