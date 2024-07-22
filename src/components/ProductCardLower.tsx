@@ -175,9 +175,9 @@ const ProductCardLower = ({ product, theme, formatPrice, callToast }) => {
   };
 
   return (
-    <div>
-      <div>
-        <div className="mt-[1.5rem] text-sm flex justify-between bg-opacity-20 backdrop-blur-lg border border-white/30">
+    <div >
+      <div className="">
+        <div className="mt-[1.5rem]  text-sm flex justify-between bg-opacity-20 backdrop-blur-lg border border-white/30">
           <div className="bg-gray-200 w-16">
             <div className="flex justify-between px-2 pt-1">
               <span>{product?.ratings?.averageRating.toFixed(1)}</span>
@@ -208,7 +208,7 @@ const ProductCardLower = ({ product, theme, formatPrice, callToast }) => {
             </div>
           </div>
         </div>
-        <div className="ProductDetails">
+        <div className="ProductDetails ">
           <div
             className={`card_slider px-4 pb-5 ${
               theme === "dark" ? "bg-black text-white" : "bg-white text-black"

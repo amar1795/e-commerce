@@ -284,7 +284,10 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                   <div className="embla__slide_product">
                     {index !== 6 ? (
                       <div className="embla__slide__number__product">
-                        <div className="ProductImageCard h-60 over">
+                        
+
+                        
+                        <div className="ProductImageCard h-[16rem] over ">
                           <div className="ProductImage bg-red-400 h-full w-full">
                             <div
                               className={`heartButton hover:text-red-500`}
