@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+// import {PrismaClient} from "../prisma/generated/client"; // this works in production
 
 declare global {
   var prisma: PrismaClient | undefined;

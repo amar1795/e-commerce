@@ -44,7 +44,7 @@ interface ForgotPasswordParams {
   resetlink: string;
 }
 
-// http://localhost:3000/password-reset
+// process.env.MAIN_DOMAIN/password-reset
 
 
 export async function ForgotPassword({

@@ -328,7 +328,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                       </div>
                     ) : (
                       <Link
-                        href={`http://localhost:3000/categories/${category}`}
+                        href={`process.env.MAIN_DOMAIN/categories/${category}`}
                       >
                         <div className="embla__slide__number__product bg-yellow-500">
                           <div className="flex flex-col justify-center self-center h-full">

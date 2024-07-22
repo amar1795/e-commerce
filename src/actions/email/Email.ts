@@ -32,7 +32,7 @@ export async function ForgotPasswordEmail({first_name,senders_email,token}:{firs
       subject:"password reset",
       token:token,
       first_name: first_name,
-      resetlink:`http://localhost:3000/password-reset?token=${token}`
+      resetlink:`process.env.MAIN_DOMAIN/password-reset?token=${token}`
       ,
     });
     // console.log("Email sent successfully!");

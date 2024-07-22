@@ -82,7 +82,7 @@ export async function processOrder({
     if(walletId){
        await addTransaction(totalAmount, "DEBIT", `Payment for order ${orderResult?.createdOrder.id}`);
       // if wallet is used for payment then we need to update the wallet balance
-     const success_url = `http://localhost:3000/order-success/?success=true/orderId=${orderResult?.createdOrder.id}`;
+     const success_url = `process.env.MAIN_DOMAIN/order-success/?success=true/orderId=${orderResult?.createdOrder.id}`;
 
       return { url: success_url };
 
@@ -93,8 +93,8 @@ export async function processOrder({
     const session = await stripe.checkout.sessions.create({
       line_items,
       mode: "payment",
-      success_url: `http://localhost:3000/order-success/?success=true/orderId=${orderResult?.createdOrder.id}`,
-      cancel_url: `http://localhost:3000/cart/?canceled=true`,
+      success_url: `process.env.MAIN_DOMAIN/order-success/?success=true/orderId=${orderResult?.createdOrder.id}`,
+      cancel_url: `process.env.MAIN_DOMAIN/cart/?canceled=true`,
       metadata: {
         orderId: orderResult?.createdOrder.id,
       },
