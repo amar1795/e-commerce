@@ -40,13 +40,14 @@ import { fetchAllCartCookieData } from "@/actions/cart/fetchAllCartCookieData";
 import { toggleWishlist } from "@/actions/wishlist";
 import { useCheckoutStock } from "@/state hooks/product-checkout-stock";
 import { getProductsByCategoryOriginal } from "@/actions/createProduct";
+import LoadingAnimation from "@/components/Loading/LoadingAnimation";
 
 function calculateTotal(products) {
   let total = 0;
   for (let product of products) {
-      let cartQuantity = product.cartQuantity;
-      let discountedPrice = product.discountedPrice;
-      total += cartQuantity * discountedPrice;
+    let cartQuantity = product.cartQuantity;
+    let discountedPrice = product.discountedPrice;
+    total += cartQuantity * discountedPrice;
   }
   return total;
 }
@@ -54,7 +55,7 @@ function calculateTotal(products) {
 const page = () => {
   const user = useCurrentUser();
   const { toast } = useToast();
-  const testQuantity =useCheckoutStock((state) => state.cartProductQuantity);
+  const testQuantity = useCheckoutStock((state) => state.cartProductQuantity);
 
   const searchParams = useSearchParams();
   const cancelled = searchParams.get("canceled");
@@ -74,6 +75,8 @@ const page = () => {
     useState([]);
   const [mergedTotalCount, setMergedTotalCount] = useState(0);
   const [mergedTotalAmount, setMergedTotalAmount] = useState(0);
+  const [loading, setLoading] = useState(false);
+
   console.log("this is the  mereged products", completeMergedupdatedProducts);
 
   const [total, setTotal] = useState(0);
@@ -122,31 +125,34 @@ const page = () => {
   //   getCookiesData();
   // }, [updateTrigger, fetchnewTotal]);
 
-
   useEffect(() => {
-
     async function getCookiesData() {
       const { mergedData, total, count } = await fetchAllCartCookieData();
-    
+
       setMergedTotalAmount(total);
       setMergedTotalCount(count);
     }
 
     getCookiesData();
-
-  },[fetchnewTotal])
+  }, [fetchnewTotal]);
 
   useEffect(() => {
     async function getCookiesData() {
+      setLoading(true);
       const { mergedData, total, count } = await fetchAllCartCookieData();
-      // create another server function to merge the dbcart data and the cookie data lenght and show it everytime the same count on the shopping cart Icon in this way the consistency will be mainted and the data will be shown without any delayed updation 
+      // create another server function to merge the dbcart data and the cookie data lenght and show it everytime the same count on the shopping cart Icon in this way the consistency will be mainted and the data will be shown without any delayed updation
 
-      console.log("this is the merged data added to completemeregeddata", mergedData);
+      console.log(
+        "this is the merged data added to completemeregeddata",
+        mergedData
+      );
       setCompleteMergedupdatedProducts(mergedData);
       setMergedTotalAmount(total);
       setTotal(total);
 
       setMergedTotalCount(count);
+      setLoading(false);
+
     }
 
     getCookiesData();
@@ -193,6 +199,45 @@ const page = () => {
     }
   };
 
+  const handleClickDeleteAll = (userID) => {
+
+    // Iterate over each product in the cartCookieProducts and remove them
+    cartCookieProducts.forEach((product) => {
+      if (product?.id) {
+        removeProductFromCookies(product.id);
+      }
+    });
+  
+    // Update the state to trigger re-render
+    setUpdateTrigger((prev) => !prev);
+    setUpdateRelatedTrigger((prev) => !prev);
+  
+    // Show a toast notification after a short delay
+    toast({
+      title: "All items removed from cart",
+      description: "Successfully removed all items from the cart",
+      variant: "destructive",
+    });
+  
+    if (userID) {
+      // Delete all cart items for the user from the server
+      cartCookieProducts.forEach((product) => {
+        if (product?.id) {
+          deleteCartItem(userID, product.id);
+        }
+      });
+  
+      // Show a toast notification after a short delay
+      toast({
+        title: "All items removed from cart",
+        description: "Successfully removed all items from the cart",
+        variant: "destructive",
+      });
+    }
+
+  };
+  
+
   const handleClickCookieDelete = (userID, productID) => {
     cartCookieProducts.map((product) => {
       if (product?.id == productID) {
@@ -222,42 +267,52 @@ const page = () => {
     // });
     // addCartDatatoCookies(completedata);
 
-
     setUpdateTrigger((prev) => !prev);
     setUpdateRelatedTrigger((prev) => !prev);
   };
 
-  const handleWishlistToggle = useCallback(async (userId: string, productId: string) => {
-    if (!user) {
-      toast({
-        variant: "destructive",
-        title: "Not Logged In",
-        description: "Please login to wishlist this item",
-      });
-      return;
-    }
-    const updatedProductsList = updatedProducts.map((product) =>
-      product.id === productId ? { ...product, isWishlisted: !product.isWishlisted } : product
-    );
-    
-    setupdatedProducts(updatedProductsList);
-  
-    setTimeout(async () => {
-      const message = await toggleWishlist(userId, productId);
-      toast({
-        variant: message.message === "added" ? "default" : "destructive",
-        title: message.message === "added" ? "Added to Wishlist" : "Removed from Wishlist",
-        description: message.message === "added" ? "The item has been wishlisted" : "The item has been removed from wishlist",
-        
-      });
-    }, 200);
-  }, [updatedProducts, user, toast]);
-  
+  const handleWishlistToggle = useCallback(
+    async (userId: string, productId: string) => {
+      if (!user) {
+        toast({
+          variant: "destructive",
+          title: "Not Logged In",
+          description: "Please login to wishlist this item",
+        });
+        return;
+      }
+      const updatedProductsList = updatedProducts.map((product) =>
+        product.id === productId
+          ? { ...product, isWishlisted: !product.isWishlisted }
+          : product
+      );
+
+      setupdatedProducts(updatedProductsList);
+
+      setTimeout(async () => {
+        const message = await toggleWishlist(userId, productId);
+        toast({
+          variant: message.message === "added" ? "default" : "destructive",
+          title:
+            message.message === "added"
+              ? "Added to Wishlist"
+              : "Removed from Wishlist",
+          description:
+            message.message === "added"
+              ? "The item has been wishlisted"
+              : "The item has been removed from wishlist",
+        });
+      }, 200);
+    },
+    [updatedProducts, user, toast]
+  );
 
   useEffect(() => {
     const cartSummary = async () => {
       try {
-        const {products, totalAmount} = await getProductsInCartSummary(user?.id);
+        const { products, totalAmount } = await getProductsInCartSummary(
+          user?.id
+        );
         console.log(
           "this is the product data from getproductsCartSummary",
           products
@@ -268,8 +323,8 @@ const page = () => {
         // setSummaryData(cartSummaryData);
         setMergedTotalCount(products.length);
         setMergedTotalAmount(totalAmount);
-       
-      setTotal(totalAmount);
+
+        setTotal(totalAmount);
         // now merging the data from the db into the cookies data hence merge Data
         setCompleteMergedupdatedProducts(products);
       } catch (error) {
@@ -280,19 +335,15 @@ const page = () => {
     cartSummary();
   }, []);
 
-
-
   // related products useffect
   useEffect(() => {
     const relatedData = async () => {
       // this needs to work without the user as well
-     
+
       const data = await getRelatedProducts(user?.id);
       console.log("this is the related updated products list", data);
 
       setupdatedProducts(data);
-      
-    
     };
     relatedData();
   }, [updateRelatedTrigger]);
@@ -349,7 +400,6 @@ const page = () => {
 
   const handleQuantityCookieChange = useCallback(
     (userId: string, productId: string, change: number) => {
-      
       // update the change in the cookies and we will update the database when fethcning the data from the cookies
       const updatedProductsList = completeMergedupdatedProducts.map(
         (product) => {
@@ -367,9 +417,9 @@ const page = () => {
         }
       );
 
-      setfetchnewTotal(prev => !prev)
+      setfetchnewTotal((prev) => !prev);
       setCompleteMergedupdatedProducts(updatedProductsList);
-     const total= calculateTotal(updatedProductsList);
+      const total = calculateTotal(updatedProductsList);
       setTotal(total);
       setCartCookieProducts(updatedProductsList);
 
@@ -448,21 +498,37 @@ const page = () => {
       <div className=" bg-teal-600  px-5 py-5">
         <div>
           <h1 className=" text-[4rem] leading-none ">SHOPPING CART</h1>
+          <div className=" flex">
+
           <div className=" h-[4rem]">
             <h3 className="w-80 text-[2rem] leading-none p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
               TOTAL ITEMS ({mergedTotalCount})
             </h3>
           </div>
+          {
+            mergedTotalCount > 0 && (<div className=" h-[4rem] ml-5">
+              <button
+                type="submit"
+                className="w-60 text-[2rem] leading-none p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-red-600 "
+                onClick={() => handleClickDeleteAll(user?.id)}
+              >
+                <h1 className="  uppercase">{"Clear All"} </h1>
+                    <X size={35} />
+              </button>
+            </div>)
+          }
+          
+          </div>
+
 
           <div className=" w-[15rem]">
             <div className=" text-[2rem] leading-none  border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
               <div className=" flex self-center py-2  h-[3.5rem]">
                 <h1 className=" text-[2rem] self-center leading-none">
-                  { total?.toLocaleString("en-IN", {
-                        style: "currency",
-                        currency: "INR",
-                      })
-                  }
+                  {total?.toLocaleString("en-IN", {
+                    style: "currency",
+                    currency: "INR",
+                  })}
                 </h1>
               </div>
             </div>
@@ -476,6 +542,13 @@ const page = () => {
           <div>
             <div>
               <div className=" px-4 py-4 mt-2 w-[40rem] flex-1 ">
+                
+                 {  loading ? (
+                    <div className=" flex items-center justify-center">
+                      <LoadingAnimation />
+                    </div>
+                  ):(<>
+
                 {completeMergedupdatedProducts.map((product) => {
                   return (
                     <div className=" mb-4" key={product.id}>
@@ -489,6 +562,7 @@ const page = () => {
                     </div>
                   );
                 })}
+                </> )}
               </div>
             </div>
           </div>
@@ -584,9 +658,6 @@ const page = () => {
         </div>
       }
 
-    
-      
-
       {updatedProducts && updatedProducts.length > 0 && (
         <div className=" bg-teal-600 min-h-[37rem] ">
           <div className="px-5">
@@ -601,11 +672,11 @@ const page = () => {
                 {updatedProducts.map((product) => (
                   <div className=" mb-4" key={product?.id}>
                     <ProductCard
-                    callToast = {toast}
-                    CartRelatedProducts={CartRelatedProducts}
+                      callToast={toast}
+                      CartRelatedProducts={CartRelatedProducts}
                       product={product}
                       handleClickAdd={handleClickAdd}
-                      handleQuantityChange={handleQuantityCookieChange} 
+                      handleQuantityChange={handleQuantityCookieChange}
                       handleWishlistToggle={handleWishlistToggle}
                       productId={product?.id}
                     />

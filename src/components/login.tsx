@@ -45,14 +45,12 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
     },
   });
 
-  
   const calltwoFactor = async () => {
-toast({
-    title: "2 Factor Token Sent to your Email",
-    description: "Please check your email for the 2 Factor Token",
-  });
-  }
-  
+    toast({
+      title: "2 Factor Token Sent to your Email",
+      description: "Please check your email for the 2 Factor Token",
+    });
+  };
 
   console.log("this is callback url", callbackUrl);
 
@@ -64,7 +62,7 @@ toast({
       login(values, callbackUrl)
         .then((data) => {
           if (data?.error) {
-            reset();
+            // reset();
             setError(data.error);
           }
 
@@ -126,26 +124,34 @@ toast({
             )}
 
             {showTwoFactor && (
-               <input
-              {...registerField("code")}
-              type="text"
-              placeholder="Enter 2FA code"
-              className="w-96 p-2  border-2 border-black bg-white text-black flex self-center justify-center border-b-8 border-r-4  focus:outline-none mt-4"
-            />
-          )}
+              <input
+                {...registerField("code")}
+                type="text"
+                placeholder="Enter 2FA code"
+                className="w-96 p-2  border-2 border-black bg-white text-black flex self-center justify-center border-b-8 border-r-4  focus:outline-none mt-4"
+              />
+            )}
             {errors.password && (
               <span className=" italic text-red-950  text-[1.1rem]">
                 {errors.password.message}
               </span>
             )}
-           
 
             <div className=" h-[4rem]">
               <button
                 type="submit"
+                disabled={isPending}
                 className="w-80  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500"
               >
-                <h1 className=" font-bold">{showTwoFactor ?"confirm":"Login"} </h1>
+                <h1 className=" font-bold">
+                  {" "}
+                  {isPending
+                    ? "Submitting..."
+                    : showTwoFactor
+                    ? "Confirm"
+                    : "Login"}
+                </h1>
+                {/* {isPending && <span className="ml-2">Loading...</span>} */}
               </button>
             </div>
           </div>
