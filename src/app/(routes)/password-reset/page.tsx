@@ -16,7 +16,6 @@ const page = () => {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
 
-
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
@@ -43,7 +42,7 @@ const page = () => {
     setSuccess("");
 
     startTransition(() => {
-      newPassword(values,token)
+      newPassword(values, token)
         .then((data) => {
           if (data?.error) {
             reset();
@@ -54,7 +53,7 @@ const page = () => {
 
           if (data?.success) {
             reset();
-           
+
             setSuccess(data.success);
             // toast({
             //   title: "Password reset link sent!",
@@ -90,9 +89,6 @@ const page = () => {
     }
   }, [error, success]);
 
-
-
-
   const handleClick = () => {
     setShowToast(false);
     setTimeout(() => {
@@ -101,7 +97,7 @@ const page = () => {
   };
 
   useEffect(() => {
-    if (success ) {
+    if (success) {
       // toast({
       //   title: "Password has been reset successfully!",
       //   description:
@@ -116,11 +112,6 @@ const page = () => {
     }
   }, [success]);
 
-
-
-
-
-
   return (
     <div className=" overflow-hidden border-2 border-black">
       <div className=" flex h-screen ">
@@ -132,7 +123,7 @@ const page = () => {
             <form
               action="
             "
-            onSubmit={handleSubmit(onSubmit)}
+              onSubmit={handleSubmit(onSubmit)}
             >
               <input
                 type="password"
@@ -140,7 +131,7 @@ const page = () => {
                 {...registerField("password")}
                 className="w-[34rem] mt-4 mb-4 p-2 border-2 border-black bg-white text-black  flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
               />
-               {errors.password && (
+              {errors.password && (
                 <span className=" italic text-red-950  text-[1.1rem]">
                   {errors.password.message}
                 </span>
@@ -151,7 +142,7 @@ const page = () => {
                 {...registerField("confirmpassword")}
                 className="w-[34rem] p-2 border-2 mb-4 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
               />
-               {errors.confirmpassword && (
+              {errors.confirmpassword && (
                 <span className=" italic text-red-950  text-[1.1rem]">
                   {errors.confirmpassword.message}
                 </span>
@@ -159,7 +150,7 @@ const page = () => {
 
               <div className=" h-[4rem]">
                 <button
-                type="submit"
+                  type="submit"
                   className="w-[15rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  bg-yellow-400"
                   onClick={handleClick}
                 >

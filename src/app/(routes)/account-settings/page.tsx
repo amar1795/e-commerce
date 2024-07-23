@@ -8,7 +8,7 @@ import {
   RadioGroupComponent,
   formatAddress,
 } from "@/components/RadioGroupComponent";
-import { AddressSchema, PaymentSchema } from "@/schemas";
+import { AddressSchema, PaymentSchema, UpdatePasswordSchema } from "@/schemas";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -33,11 +33,13 @@ import { logout } from "@/actions/logout";
 import getUserWallet from "@/actions/payments/getUserWallet";
 import { redirect, useRouter } from "next/navigation";
 import LoadingButton from "@/components/loading Button/loadingButton";
+import { updatePassword } from "@/actions/email/UpdatePassword";
 
 const page = () => {
   const user = useCurrentUser();
+  // console.log("this is the user", user?.email);
   const router = useRouter();
-
+  const email = user?.email;
   const [activeTab, setActiveTab] = useState("credit");
 
   const { toast } = useToast();
@@ -329,6 +331,60 @@ const page = () => {
     toast({
       title: "Successfully added the address",
       description: "You have successfully added the address",
+    });
+  };
+
+  const {
+    register: NewPasswordField,
+    handleSubmit: handleSubmitNewPassword,
+    formState: { errors: errorsUpdatePassword },
+    reset: resetUpdatePassword,
+  } = useForm<z.infer<typeof UpdatePasswordSchema>>({
+    resolver: zodResolver(UpdatePasswordSchema),
+    defaultValues: {
+      currentPassword: "",
+      newPassword: "",
+      confirmNewPassword: "",
+    },
+  });
+
+  const onSubmitNewPassword = (
+    values: z.infer<typeof UpdatePasswordSchema>
+  ) => {
+    setError("");
+    setSuccess("");
+
+    startTransition(() => {
+      updatePassword(email, values)
+        .then((data) => {
+          if (data?.error) {
+            // resetUpdatePassword();
+            setError(data.error);
+            toast({
+              title: `${data?.error}`,
+              description:
+                `${data?.error}`,
+                variant: "destructive",
+            });
+
+            // setModalErrorToast(data.error);
+          }
+
+          if (data?.success) {
+            resetUpdatePassword();
+
+            setSuccess(data.success);
+            toast({
+              title: "Password Updated!",
+              description:
+                "You have successfully updated the password",
+            });
+            // setTimeout(() => {
+            //   router.push('/password-reset'); // Replace with your target page URL
+            // }, 2000); // 2000 milliseconds = 2 seconds
+          }
+        })
+        .catch(() => setError("Something went wrong"));
     });
   };
 
@@ -1044,36 +1100,66 @@ const page = () => {
                   Enter your Current Password to update it{" "}
                 </p>
               </div>
+                    <form  action=""
+                      onSubmit={handleSubmitNewPassword(onSubmitNewPassword)}
+                    >
               <div className="flex flex-col  border-2 border-black w-[50vw]  h-full  ">
                 <div className=" flex px-4 py-4 justify-center h-full ">
                   <div>
-                    <form className="">
+                     
                       <div className="flex flex-col items-center">
                         <input
                           type="password"
-                          placeholder="Current pasword"
+                          placeholder="Current password"
+                          {...NewPasswordField("currentPassword")}
                           className="w-[34rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
                         />
+                        {errorsUpdatePassword.currentPassword && (
+                          <span className=" italic text-red-950  text-[1.1rem]">
+                            {errorsUpdatePassword.currentPassword.message}
+                          </span>
+                        )}
 
                         <input
                           type="password"
-                          placeholder="New pasword"
+                          placeholder="New password"
+                          {...NewPasswordField("newPassword")}
                           className="w-[34rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
                         />
+                        {errorsUpdatePassword.newPassword && (
+                          <span className=" italic text-red-950  text-[1.1rem]">
+                            {errorsUpdatePassword.newPassword.message}
+                          </span>
+                        )}
+                        <input
+                          type="password"
+                          placeholder="Confirm New password"
+                          {...NewPasswordField("confirmNewPassword")}
+                          className="w-[34rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
+                        />
+                        {errorsUpdatePassword.confirmNewPassword && (
+                          <span className=" italic text-red-950  text-[1.1rem]">
+                            {errorsUpdatePassword.confirmNewPassword.message}
+                          </span>
+                        )}
                       </div>
-                    </form>
                   </div>
                 </div>
                 <div className="  border-black h-[5rem] flex w-full justify-end">
                   <div className=" flex pr-5 pb-6">
                     <div className="h-[4rem] ">
-                      <button className="w-[10rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500 mr-4">
-                        <h1 className="font-bold">Update</h1>
+                      <button
+                        type="submit"
+                        className="w-[10rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500 mr-4"
+                      >
+                        <h1 className="font-bold">Update Password</h1>
                       </button>
                     </div>
                   </div>
                 </div>
               </div>
+                </form>
+
             </div>
           </div>
         </div>

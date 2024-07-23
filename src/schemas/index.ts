@@ -4,38 +4,6 @@ import { UserRole } from "@prisma/client";
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
 
 
-// the below code was causing the error for the ADMIN undefined while building the project in vercel
-
-
-// export const SettingsSchema = z.object({
-//   name: z.optional(z.string()),
-//   isTwoFactorEnabled: z.optional(z.boolean()),
-//   role: z.enum([UserRole.ADMIN, UserRole.USER]),
-//   email: z.optional(z.string().email()),
-//   password: z.optional(z.string().min(6)),
-//   newPassword: z.optional(z.string().min(6)),
-// })
-//   .refine((data) => {
-//     if (data.password && !data.newPassword) {
-//       return false;
-//     }
-
-//     return true;
-//   }, {
-//     message: "New password is required!",
-//     path: ["newPassword"]
-//   })
-//   .refine((data) => {
-//     if (data.newPassword && !data.password) {
-//       return false;
-//     }
-
-//     return true;
-//   }, {
-//     message: "Password is required!",
-//     path: ["password"]
-//   })
-
 export const NewPasswordSchema = z.object({
   password: z.string().min(6, {
     message: "Minimum 6 characters required",
@@ -50,6 +18,25 @@ export const NewPasswordSchema = z.object({
   {
     message: "Please enter the same Password !",
     path: ["confirmpassword"],
+  }
+);
+
+export const UpdatePasswordSchema = z.object({
+  currentPassword: z.string().min(6, {
+    message: "Minimum 6 characters required",
+  }),
+  newPassword: z.string().min(6, {
+    message: "Minimum 6 characters required",
+  }).regex(passwordRegex, {
+    message: "Password must have at least one uppercase letter, one lowercase letter, one digit, and one special character",
+  }),
+  confirmNewPassword: z.string()
+}).refine(
+  (values) =>
+    values.newPassword === values.confirmNewPassword,
+  {
+    message: "Please enter the same password!",
+    path: ["confirmNewPassword"],
   }
 );
 
