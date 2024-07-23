@@ -171,7 +171,8 @@ const page = () => {
   }, [cancelled]);
 
   const handleClickDelete = (userID, productID) => {
-    cartCookieProducts.map((product) => {
+    
+    completeMergedupdatedProducts.map((product) => {
       if (product?.id == productID) {
         removeProductFromCookies(productID);
 
@@ -202,17 +203,21 @@ const page = () => {
   };
 
   const handleClickDeleteAll = (userID) => {
-
+// alert("delete all is being called")
+// console.log("this is the cart merged products from deleteall", completeMergedupdatedProducts)
+// console.log("this is the cart cookie products from deleteall", cartCookieProducts)
     // Iterate over each product in the cartCookieProducts and remove them
-    cartCookieProducts.forEach((product) => {
+    completeMergedupdatedProducts.forEach((product) => {
+      // alert("remove product from cookies is being called")
       if (product?.id) {
         removeProductFromCookies(product.id);
+        // alert("remove product from cookies is being called")
       }
     });
   
     // Update the state to trigger re-render
     setUpdateTrigger((prev) => !prev);
-    setUpdateRelatedTrigger((prev) => !prev);
+    // setUpdateRelatedTrigger((prev) => !prev);
   
     // Show a toast notification after a short delay
     toast({
@@ -223,9 +228,11 @@ const page = () => {
   
     if (userID) {
       // Delete all cart items for the user from the server
-      cartCookieProducts.forEach((product) => {
+      completeMergedupdatedProducts.forEach((product) => {
         if (product?.id) {
           deleteCartItem(userID, product.id);
+          // alert("remove product from cookies is being called")
+
         }
       });
   
@@ -236,6 +243,7 @@ const page = () => {
         variant: "destructive",
       });
     }
+    // setCompleteMergedupdatedProducts([]);
 
   };
   

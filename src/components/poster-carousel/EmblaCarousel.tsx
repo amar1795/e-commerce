@@ -68,31 +68,36 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
     <section className="embla ">
       <div className="embla__viewport  border-4 border-black" ref={emblaRef}>
         <div className="embla__container ">
-          {posterData.filter((_, index) => [0, 1, 2, 4].includes(index))
-.map((poster, index) => (
-           <div className="embla__slide  " key={index}>
-            <Link href={`${process.env.MAIN_DOMAIN}/categories/${poster.label.endsWith('s')
-                    ? poster.label
-                    : poster.label + 's'}`}>
-           <div className="embla__slide__number  ">
-             <div className="relative">
-               <Image
-                 src={poster.imageUrl}
-                 alt={poster.label}
-                 height={900}
-                 width={1500}
-                 layout="responsive"
-                 objectFit="fill"
-                 className="rounded-lg"
-               />
-               <div className="absolute w-full h-full bottom-4 left-0 text-white bg-black bg-opacity-40 px-4 py-2 rounded z-10">
-                {poster.label}
-               </div>
-             </div>
-           </div>
-           </Link>
-         </div>
-          ))}
+          {posterData
+            .filter((_, index) => [0, 1, 2, 4].includes(index))
+            .map((poster, index) => (
+              <div className="embla__slide  " key={index}>
+                <Link
+                  href={`${process.env.MAIN_DOMAIN}/categories/${
+                    poster.label.endsWith("s")
+                      ? poster.label
+                      : poster.label + "s"
+                  }`}
+                >
+                  <div className="embla__slide__number  ">
+                    <div className="relative">
+                      <Image
+                        src={poster.imageUrl}
+                        alt={poster.label}
+                        height={900}
+                        width={1500}
+                        layout="responsive"
+                        objectFit="fill"
+                        className="rounded-lg"
+                      />
+                      <div className="absolute w-full h-full bottom-4 left-0 text-white bg-black bg-opacity-40 px-4 py-2 rounded z-10">
+                        {poster.label}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
 
           {/* {slides.map((index) => (
             <div className="embla__slide  bg-red-400  " key={index}>

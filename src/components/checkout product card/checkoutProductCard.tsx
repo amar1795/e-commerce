@@ -22,6 +22,7 @@ const CheckoutProductCard = ({
   const [url, setUrl] = useState("");
 
   useEffect(() => {
+    // alert("product card use effect is being called")
     if (product && Array.isArray(product.cartItems) && product.cartItems.length > 0) {
       const cartItem = product.cartItems[0];
       if (cartItem?.productVarientStock) {

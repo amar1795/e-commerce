@@ -226,6 +226,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
         stock
       );
       // handleClickAdd(user?.id, data.id, selectedColor, selectedSize);
+
       const dataobj = {
         id: product.id,
         cartQuantity: tempquantity,
@@ -264,7 +265,9 @@ const ProductCard: React.FC<updatedDataResponse> = ({
       title: "Item added to cart",
       description: "successfully added item to cart",
     });
+    
     handleClickAdd();
+
     setItemInCart(true);
 
   }

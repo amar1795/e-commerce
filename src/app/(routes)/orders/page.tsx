@@ -10,7 +10,7 @@ import React, { use, useEffect, useState } from "react";
 const page =  () => {
 
   const [orders, setOrders] = useState([]);
-
+  const [orderLoading, setOrderLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(() => {
     const storedPage = localStorage.getItem("currentOrdersPage");
     return storedPage ? parseInt(storedPage, 10) : 1;
@@ -23,11 +23,12 @@ const page =  () => {
     }, [currentPage]);
 
   useEffect(() => {
+    setOrderLoading(true);
     const fetchOrders = async () => {
      const  fetchedOrders = await fetchAllOrders({page:currentPage,sortOrder});
       setOrders(fetchedOrders);
       console.log("these are the fetched orders",fetchedOrders);
-      
+      setOrderLoading(false);
      
     };
     fetchOrders();
@@ -80,9 +81,10 @@ const page =  () => {
         <div>
           <div className="  pt-5 pb-5">
          {
-          
-    (orders == null || orders.length === 0)
-      ?(<h1 className=" text-[2rem]">loading...</h1>)
+          orderLoading ? (<div>
+          loading...</div>):(
+            (orders == null || orders.length === 0)
+      ?(<h1 className=" text-[2rem] uppercase ml-8">No orders Placed yet</h1>)
       :(orders.map((order) => (
         <OrderSummaryComponent
           
@@ -90,6 +92,8 @@ const page =  () => {
           key={order.id}
         />
       )))
+          )
+    
     
     
   }
