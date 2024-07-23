@@ -3,6 +3,10 @@ import { UserRole } from "@prisma/client";
 
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/;
 
+
+// the below code was causing the error for the ADMIN undefined while building the project in vercel
+
+
 // export const SettingsSchema = z.object({
 //   name: z.optional(z.string()),
 //   isTwoFactorEnabled: z.optional(z.boolean()),
