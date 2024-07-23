@@ -227,7 +227,7 @@ const removeSpaces = (name: string): string => {
   const [barChartData, setbarChartData] = useState(initialData);
 
 
-  const url=`process.env.MAIN_DOMAIN/categories/${removeSpaces(topmostParentCategory)}/${removeSpaces(parentCategory)}/${data?.id}`
+  const url=`${process.env.MAIN_DOMAIN}/categories/${removeSpaces(topmostParentCategory)}/${removeSpaces(parentCategory)}/${data?.id}`
   // console.log("this is the unique colors",uniqueColors)
 
 

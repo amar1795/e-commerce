@@ -14,7 +14,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
 import { getAllPosters } from "@/actions/posterAction";
 import Link from "next/link";
-const URL = `process.env.MAIN_DOMAIN/api/posters`;
+const URL = `${process.env.MAIN_DOMAIN}/api/posters`;
 
 type Poster = {
   label: string;
@@ -71,7 +71,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
           {posterData.filter((_, index) => [0, 1, 2, 4].includes(index))
 .map((poster, index) => (
            <div className="embla__slide  " key={index}>
-            <Link href={`process.env.MAIN_DOMAIN/categories/${poster.label.endsWith('s')
+            <Link href={`${process.env.MAIN_DOMAIN}/categories/${poster.label.endsWith('s')
                     ? poster.label
                     : poster.label + 's'}`}>
            <div className="embla__slide__number  ">
