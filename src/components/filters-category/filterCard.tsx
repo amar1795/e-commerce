@@ -58,7 +58,7 @@ const Fcard: React.FC<{ category: Category }> = ({
   if(category.category === "Price"){
     console.log("this is the price category selected", category);
   }
-
+// console.log("this is the mindiscountedprice and maxdiscountedprice", setMinDiscountedPrice, setMaxDiscountedPrice)
   const [tempState, setTempState] = React.useState([])
   console.log("this is the temp state", tempState)
 

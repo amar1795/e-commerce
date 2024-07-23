@@ -4,12 +4,12 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import notfound from '../../video/pulp-fiction-john-travolta-ezgif.com-video-to-gif-converter.gif';
-import ConfettiComponent from '@/components/confetti';
+// import ConfettiComponent from '@/components/confetti';
 
 const NotFound = () => {
   return (
     <div className="flex-1 relative h-screen">
-        <ConfettiComponent />
+        {/* <ConfettiComponent /> */}
       <div className="relative w-full h-full">
         <Image
           src={notfound}

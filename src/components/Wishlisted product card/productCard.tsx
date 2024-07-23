@@ -1,6 +1,6 @@
 "use client"
 import { Heart, Minus, Plus, ShoppingCart, StarIcon } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./product.css";
 import Image from "next/image";
 import {
@@ -13,6 +13,7 @@ import { removeFromWishlist } from "@/actions/wishlist";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { revalidatePath } from "next/cache";
 import { toast } from "@/components/ui/use-toast";
+import { getProductDetailsByID } from "@/actions/product/searchedProductData";
 
 const formatPrice = (price: number): string => {
   // Format the price with the Indian Rupee symbol
@@ -26,7 +27,9 @@ const removeSpaces = (name: string): string => {
 
 const WishlistedProductCard: React.FC<updatedDataResponse> = ({ product,setData }) => {
   const user = useCurrentUser();
+  const [url, setUrl] = useState("");
 
+console.log("this is the product",product)
  
 
   const handleRemoveClick = async (userId, productId) => {
@@ -39,6 +42,28 @@ const WishlistedProductCard: React.FC<updatedDataResponse> = ({ product,setData 
       description: "Item removed from wishlist",
     })
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getProductDetailsByID(product.id);
+      console.log("this is the fetched data", data);
+      if (data) {
+        let { parentCategory, topmostParentCategory } = data?.parentCategoryIds;
+
+        const productId = data?.productId || "";
+        if (parentCategory === "Kids Category") {
+          parentCategory = "Kids";
+        }
+
+        const cleanedCategory0 = parentCategory.replace(/\s+/g, "");
+        const testUrl = `/categories/${topmostParentCategory}/${cleanedCategory0}/${productId}`;
+        console.log("this is the test url", testUrl);
+        setUrl(testUrl);
+      }
+    };
+
+    fetchData();
+  }, [product]);
 
   return (
     <div>
@@ -60,17 +85,20 @@ const WishlistedProductCard: React.FC<updatedDataResponse> = ({ product,setData 
                 />
               </button>
               <div className="ProductImage bg-red-400 h-full w-full absolute">
+              <Link href={url}>
+
                 <Image
                   alt="product image"
                   fill="true"
                   objectFit="cover"
                   src={product?.images[0]?.url}
                 />
+                </Link>
               </div>
             </div>
           </button>
           {/* middle part */}
-          <div className=" text-sm flex justify-between bg-opacity-20 backdrop-blur-lg border border-white/30 ">
+          {/* <div className=" text-sm flex justify-between bg-opacity-20 backdrop-blur-lg border border-white/30 ">
             <div className=" bg-gray-200 w-16  ">
               <div className=" flex justify-between px-2 pt-1">
                 <span>{product?.ratings?.averageRating.toFixed(1)}</span>
@@ -82,17 +110,17 @@ const WishlistedProductCard: React.FC<updatedDataResponse> = ({ product,setData 
             <div>
               <div className="box flex pr-4">
                 <button className=" pr-2  hover:bg-gray-200 pl-1">
-                  <Plus size={20} />
+                  <Minus size={20} />
                 </button>
                 <div className=" text-[1.5rem] w-7  bg-white  h-[2rem]">
                   <div className=" px-2 py-2 ">0</div>
                 </div>
                 <button className=" pl-2  hover:bg-gray-200 pr-1">
-                  <Minus size={20} />
+                  <Plus size={20} />
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
           {/* Bottom part */}
           <div className="ProductDetails  ">
             <div className="Wishlistedcard_slider px-2 pb-5 w-full text-[1.5rem]   flex justify-between bg-white bg-opacity-20 backdrop-blur-lg border border-white/30  ">
@@ -122,12 +150,14 @@ const WishlistedProductCard: React.FC<updatedDataResponse> = ({ product,setData 
                 </div>
               </div>
               <div className="right self-center ">
+                <Link href={url}>
                 <button className="nbutton items-center border-2 border-black p-2   justify-between hidden ">
                   <div>
                     <ShoppingCart size={20} />
                   </div>
                   <div className="text-sm px-3">Buy Now</div>
                 </button>
+                  </Link>
               </div>
             </div>
           </div>

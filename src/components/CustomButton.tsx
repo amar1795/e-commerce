@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React, { useState, useEffect, useRef } from 'react';
+import ButtonSpinner from './button spinner/ButtonSpinner';
 
 interface CustomButtonProps {
   initialButtonName: string;
@@ -32,6 +33,7 @@ previousSegment = previousSegment?.split(/[?#]/)[0];
   const [buttonName, setButtonName] = useState(initialButtonName);
   const [options, setOptions] = useState(initialOptions);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleButtonClick = () => {
     setIsOpen(!isOpen);
@@ -56,9 +58,13 @@ previousSegment = previousSegment?.split(/[?#]/)[0];
   }, [isOpen]);
 
   const handleOptionClick = (option: string) => {
+    setIsLoading(true); // Set loading state to true
+
     setButtonName(option);
     setOptions(options.filter(opt => opt !== option).concat(buttonName));
     setIsOpen(false);
+    setTimeout(() => setIsLoading(false), 2000); // Simulate loading time and reset loading state
+
   };
 
   return (
@@ -67,8 +73,11 @@ previousSegment = previousSegment?.split(/[?#]/)[0];
         className="w-[10rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500"
         onClick={handleButtonClick}
       >
-<h1 className="font-bold">{sanitizedSegment ? sanitizedSegment : "All"}</h1>
-</button>
+ {isLoading ? (
+    <div > <ButtonSpinner/></div> // Add a loader spinner
+  ) : (
+    <h1 className="font-bold">{sanitizedSegment ? sanitizedSegment : "All"}</h1>
+  )}</button>
       {isOpen && (
         <div className="absolute mt-2 w-[10rem] bg-white border border-black text-black z-10">
           <ul>

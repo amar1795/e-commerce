@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { MainNav } from "@/components/main-nav";
 import { BreadcrumbWithCustomSeparator } from "@/components/breadcrumb";
 import { useParams } from "next/navigation";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import MainFooter from "@/components/footer";
 import { SelectDemo } from "@/components/select";
 import { Separator } from "@/components/ui/separator";
@@ -50,7 +50,7 @@ const Page = ({ params }: { params: { categories: string } }) => {
     return storedPage ? parseInt(storedPage, 10) : 1;
   });
   const { toast } = useToast();
-
+  const router = useRouter();
   const callToast = ({ variant, title, description }) => {
     // alert("toast is being  called")
     toast({
@@ -74,6 +74,15 @@ const Page = ({ params }: { params: { categories: string } }) => {
   const [parentCategoryName, setparentCategoryName] = useState(
     params.categories
   );
+
+  const validCategories = ["Kids", "Mens", "Womens",""];
+
+  useEffect(() => {
+    if (!validCategories.includes(parentCategoryName)) {
+      // Redirect to 404 page if the category is invalid
+      router.replace('/404');
+    }
+  }, [parentCategoryName, router, validCategories]);
 
   const [loading, setLoading] = useState(false); // Added loading state
 

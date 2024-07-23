@@ -48,6 +48,8 @@ const Page = ({ params }: { params: { subcategories: string } }) => {
   const [minDiscountedPrice, setMinDiscountedPrice] = useState(0);
   const [maxDiscountedPrice, setMaxDiscountedPrice] = useState(100000);
   const [minDiscountPercentage, setMinDiscountPercentage] = useState(0);
+  // console.log("this is the minimum and maximum discount price", minDiscountedPrice, maxDiscountedPrice)
+  
   const [maxDiscountPercentage, setMaxDiscountPercentage] = useState(100);
   const [filterData, setFilterData] = useState([]);
   const [sortBy, setSortBy] = useState("");
@@ -92,15 +94,15 @@ const Page = ({ params }: { params: { subcategories: string } }) => {
       });
 
       const newFilterData = [
-        {
-          category: "Category",
-          options: data.uniqueCategories
-            .filter((category) => !["jewellery", "watches"].includes(category)) // Filter out categories with certain names
-            .map((category) => ({
-              label: category,
-              value: category,
-            })),
-        },
+        // {
+        //   category: "Category",
+        //   options: data.uniqueCategories
+        //     .filter((category) => !["jewellery", "watches"].includes(category)) // Filter out categories with certain names
+        //     .map((category) => ({
+        //       label: category,
+        //       value: category,
+        //     })),
+        // },
         {
           category: "Brand",
           options: !brandSelected
@@ -227,7 +229,8 @@ const callToast = ({ variant, title, description }) => {
                 (category) => category !== null && category.options.length > 0
               ) // Filter out null categories and those without options
               .map((category, index) => (
-                <Fcard key={index} 
+                <Fcard
+                key={index}
                 category={category}
                 setBrandSelected={setBrandSelected}
                 setSelectedCategoryName={setSelectedCategoryName}
@@ -235,7 +238,8 @@ const callToast = ({ variant, title, description }) => {
                 setMinDiscountedPrice={setMinDiscountedPrice}
                 setMaxDiscountedPrice={setMaxDiscountedPrice}
                 setMinDiscountPercentage={setMinDiscountPercentage}
-                setMaxDiscountPercentage={setMaxDiscountPercentage}/>
+                setMaxDiscountPercentage={setMaxDiscountPercentage}
+              />
               ))}
           </div>
 

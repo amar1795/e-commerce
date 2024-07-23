@@ -14,16 +14,15 @@ export const publicRoutes = [
 
 // Routes that require authentication
 export const authRoutes = [
-  "/password-reset",
   "/login",
   "/signup",
-  "/password-reset"
 ];
 
 // Restricted routes for logged-in users
 const restrictedRoutes = [
   "/checkout",
-  "/account-settings"
+  "/account-settings",
+  "/password-reset",
 ];
 
 // API routes that require authentication

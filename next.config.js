@@ -44,7 +44,8 @@ module.exports = {
     env: {
       MAIN_DOMAIN: process.env.MAIN_DOMAIN,
     },
-    
+    middleware:"./middleware.ts",
+
     
 }
 

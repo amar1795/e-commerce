@@ -5,7 +5,7 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import { ThemeProvider } from "@/components/theme-provider";
 import "../globals.css";
 import { MainNav } from "@/components/main-nav";
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import MainFooter from "@/components/footer";
 import { Toaster } from "@/components/ui/toaster";
 const fontSans = FontSans({

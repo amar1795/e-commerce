@@ -3,6 +3,7 @@
 import { fetchAllOrders } from "@/actions/order/fetchAllOrder";
 import CustomButton from "@/components/CustomButton";
 import CustomOrderSortButton from "@/components/CustomOrderSortButton";
+import LoadingAnimation from "@/components/Loading/LoadingAnimation";
 import OrderSummaryComponent from "@/components/order summary component/OrderSummaryComponent";
 import { PaginationComponent } from "@/components/pagination";
 import React, { use, useEffect, useState } from "react";
@@ -81,8 +82,9 @@ const page =  () => {
         <div>
           <div className="  pt-5 pb-5">
          {
-          orderLoading ? (<div>
-          loading...</div>):(
+          orderLoading ? ( <div className=" h-screen flex items-center justify-center">
+            <LoadingAnimation />
+          </div>):(
             (orders == null || orders.length === 0)
       ?(<h1 className=" text-[2rem] uppercase ml-8">No orders Placed yet</h1>)
       :(orders.map((order) => (
