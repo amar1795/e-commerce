@@ -16,7 +16,7 @@ import { getUserById } from "@/auth";
 import React from "react";
 import WishlistButton from "@/components/animated_heart/heart"
 import { generateCombinations, generatePantCombinations } from "@/actions/product/generateCombination";
-import { createProductVarient, deleteProductVarients, GenerateCombinationProductVarients } from "@/actions/product/createProductVarients";
+import { createProductVarient, deleteProductVarients, GenerateCombinationProductVarients, updateProductVariantStock } from "@/actions/product/createProductVarients";
 import emptyCart from "@/actions/cart/emptyCart";
 import getUserWallet from "@/actions/payments/getUserWallet";
 import deleteWallet from "@/actions/payments/deleteUserWallet";
@@ -75,7 +75,7 @@ const page = async() => {
   // deleteProductVarients("665b05173220eba7c7eabadd")
   
   // fetchProductsByCategory("665a0ba214be77720636d44c")
-  // fetchProduct("665d6679b76a9c2e856b5fb2")
+  // fetchProduct("665af50e3220eba7c7eab944")
   
 // const ProductsPants= [
   // { id: '665d68a9b76a9c2e856b5fbe' },
@@ -87,6 +87,8 @@ const page = async() => {
 // createProductVarient("665b03223220eba7c7eabacb")
 // GenerateCombinationProductVarients(ProductsPants)
 
+
+// updateProductVariantStock("665af6f73220eba7c7eab949", 200)
 // emptyCart()
   // const data=await getUserWallet()
   // console.log("this is the wallet data created", data?.wallet?.transactions);

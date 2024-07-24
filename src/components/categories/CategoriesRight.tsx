@@ -378,7 +378,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
         description: `You have successfully selected the size ${selectedSize} `,
       });
     } else {
-      if (tempQuantity > productVarientStock - 1) {
+      if (tempQuantity > productVarientStock - 1 || tempQuantity > 4) {
         return;
       }
       setTempQuantity((prev) => prev + 1);
@@ -745,7 +745,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
                       </div>
                     </div>
                   ) : (
-                    productVarientStock === 0 &&
+                    productVarientStock === 0 || productVarientStock <0 &&
                     selectedColor &&
                     selectedSize && (
                       <div className=" h-[4rem]">

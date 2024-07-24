@@ -13,6 +13,7 @@ import SummaryCard from "@/components/summary product card/SummaryCard";
 import TickAnimation from "@/components/tick animation/tickAnimation";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { CircleCheck, CircleCheckBig, DollarSign, X } from "lucide-react";
+import Link from "next/link";
 import React, { use, useEffect, useState } from "react";
 
 // Utility function to format date
@@ -169,9 +170,11 @@ const page = () => {
               <div></div>
             </div>
             <div className=" h-[4rem] ">
+              <Link href={`/orders/${orderData?.id}`}>
               <button className="w-auto  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  bg-yellow-400">
                 <h1 className=" font-bold">View or Manage orders</h1>
               </button>
+              </Link>
             </div>
             <div>
               <div className=" h-[10rem] border-b-2 border-black">

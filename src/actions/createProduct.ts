@@ -73,14 +73,14 @@ export async function createProduct({
 
 export async function createProductVarientOld() {
   try {
-    const productID = "665af50e3220eba7c7eab944"; // Replace with the actual product ID
+    const productID = "665b00173220eba7c7eabab3"; // Replace with the actual product ID
     const productVariants = await prismadb.productVariant.createMany({
       data: [
         {
           productId: productID,
-          colorId: "66570726617228492bfcb586",
+          colorId: "665af3c03220eba7c7eab93e",
           sizeId: "665aca6e5788e185779d7ce6",
-          stock: 10,
+          stock: 200,
         },
         {
           productId: productID,
@@ -387,7 +387,7 @@ export async function fetchProduct(productId) {
   // Access category name
   // const categoryName = category?.name;
 
-  // console.log("Product:", transformedProduct);
+  // console.log("this is the Product variations", transformedProduct);
   // console.log("Category:", categoryName);
 }
 

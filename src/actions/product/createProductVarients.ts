@@ -121,3 +121,23 @@ export async function GenerateCombinationProductVarients(data) {
   return  { success: "Product variants created successfully"}
 
 }
+
+
+export async function updateProductVariantStock(variantId, newStock) {
+  try {
+    const updatedProductVariant = await prismadb.productVariant.update({
+      where: {
+        id: variantId,
+      },
+      data: {
+        stock: newStock,
+      },
+    });
+
+    console.log("Product variant stock updated:", updatedProductVariant);
+  } catch (error) {
+    console.error("Error updating product variant stock:", error);
+  } finally {
+    await prismadb.$disconnect();
+  }
+}

@@ -31,9 +31,12 @@ const ProductCardLower = ({ product, theme, formatPrice, callToast }) => {
   }, [product]);
 
   const handleIncrease = () => {
-    if (tempquantity > stock - 1) {
+    if (tempquantity > stock - 1 || tempquantity > 4) {
       return;
     }
+
+   
+
     settempQuantity((prev) => prev + 1);
 
     // handleQuantityChange(user?.id, data.id, 1)
