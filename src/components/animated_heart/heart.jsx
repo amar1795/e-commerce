@@ -38,7 +38,7 @@ const WishlistButton = ({ user, product, handleWishlistToggle,isWishlistedData ,
       <Heart
         size={40}
         strokeWidth={0.7}
-        className={`heart-icon text-black ${isAnimating ? "heart-rainbow" : isHeartWishlisted ? "heart-red" : ""}`}
+        className={`heart-icon text-black ${isAnimating ? "heart-rainbow" : isWishlistedData ? "heart-red" : ""}`}
         onAnimationEnd={handleAnimationEnd}
       />
       <Confetti active={confettiActive} config={{ spread: 60, startVelocity: 30, elementCount: 50, decay: 0.9 }} />

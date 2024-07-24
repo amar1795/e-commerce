@@ -25,8 +25,15 @@ export default async function getUserWallet() {
 
       return { success: true, wallet: existingWallet };
     } else {
+      const newWallet = await prismadb.wallet.create({
+        data: {
+            userId: userId,
+            balance: 100000 // Initial balance for new wallet
+        }
         
-        return { success: false, wallet: "no wallet for this user yet"  };
+    });
+    
+        return { success: false, wallet: newWallet  };
     }
       
     

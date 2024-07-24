@@ -106,12 +106,12 @@ const page = async() => {
     { name: 'Product 3', quantity: 3, price: 5.99 }
   ];
   // OrderConfirmationEmail({first_name:"john",senders_email:"debine8588@modotso.com",orderNumber:"66756c6354363728fe808d27",orderItems:orderItems})
-  const orderId="66A0FED08CB7A73A01EE13EC";
-   const orderData = await fetchOrderById(orderId);
+  // const orderId="66A0FED08CB7A73A01EE13EC";
+  //  const orderData = await fetchOrderById(orderId);
         // setOrderData(orderData?.order);
         // setOrderItems(orderData?.order?.orderItems);
         // setDeliveryDate(getRandomFutureDate(orderData?.order?.createdAt));
-        console.log("this is the orderData ", orderData?.order?.orderItems[0]?.product?.images[0].url);
+        // console.log("this is the orderData ", orderData?.order?.orderItems[0]?.product?.images[0].url);
         // await OrderConfirmationEmail({first_name:"sadfsd",senders_email:"debine8588@modotso.com",orderNumber:orderId,orderItems:orderData?.order?.orderItems,orderData:orderData?.order})
 
 

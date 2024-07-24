@@ -43,7 +43,7 @@ const SelectionSizeBox = ({size,color}) => {
     "UK Kids 12-13": "12-13Y"
   };
   
-  
+
     const circleStyle = (size) => ({
         borderRadius: "5%",
         width: "40px",
@@ -54,7 +54,7 @@ const SelectionSizeBox = ({size,color}) => {
         margin: "5px",
         cursor: "pointer",
         border: "2px solid black",
-        color: "white",
+        color: "#EC4899",
         backgroundColor: color,
         fontSize: size?.includes("Kids") || size?.includes("One") ? "0.8rem" : "2rem", // Adjust font size conditionally
         hover: {

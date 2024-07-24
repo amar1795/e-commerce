@@ -228,13 +228,13 @@ const CheckoutProductCard = ({
               </div>
               <div className=" flex justify-between ">
                 <button className="transform transition-transform duration-300 hover:scale-110">
-                  <Heart size={25} />
+                  {/* <Heart size={25} /> */}
                 </button>
                 <button
                   className="transform transition-transform duration-300 hover:scale-110"
                   onClick={() => handleClickDelete(user?.id, product?.id)}
                 >
-                  <Trash2 />
+                  <Trash2 size={30} strokeWidth={1.5}  />
                 </button>
               </div>
             </div>
