@@ -16,8 +16,8 @@ const CustomInput = () => {
   const timeoutRef = useRef(null); // Ref for timeout ID
   const router = useRouter();
 
-  console.log("this is the searched value", searchedData);
-  console.log("this is the suggestions", suggestions);
+  // console.log("this is the searched value", searchedData);
+  // console.log("this is the suggestions", suggestions);
 
   const fetchSearchedData = async (id) => {
     // alert(searchedData)

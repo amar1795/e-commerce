@@ -6,10 +6,10 @@ import Confetti from 'react-dom-confetti';
 const WishlistButton = ({ user, product, handleWishlistToggle,isWishlistedData ,Added}) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [confettiActive, setConfettiActive] = useState(false);
-console.log("this is added data from parent",Added)
+// console.log("this is added data from parent",Added)
     const [isHeartWishlisted, setIsHeartWishlisted] = useState(isWishlistedData);
 //   const isWishlisted = true;
-
+// console.log("this is isHeartWishlisted",isHeartWishlisted)
   const handleClick = () => {
     if(isHeartWishlisted === false)
         {

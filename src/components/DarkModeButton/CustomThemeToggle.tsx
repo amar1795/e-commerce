@@ -6,7 +6,7 @@ import { MoonIcon, SunIcon } from 'lucide-react'
 
 const CustomThemeToggle = () => {
   const { theme, setTheme } = useTheme()
-  console.log("this is the theme",theme)
+  // console.log("this is the theme",theme)
   
     const toggle=()=>{
         setTheme(theme==="light"?"dark":"light")

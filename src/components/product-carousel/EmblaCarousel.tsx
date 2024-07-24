@@ -86,7 +86,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   // const [productVarientID , setProductVarientID] = useState();
   // const [stock , setStock] = useState();
 
-  console.log("this is the product", updatedProducts);
+  // console.log("this is the product", updatedProducts);
 
   const { theme } = useTheme();
   const { toast } = useToast();
@@ -157,7 +157,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       });
       setupdatedProducts(updatedProductsList);
 
-      console.log("these are the updated products", updatedProducts);
+      // console.log("these are the updated products", updatedProducts);
 
       // Save updated product information to cookies
       if (

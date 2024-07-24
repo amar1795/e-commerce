@@ -23,7 +23,7 @@ const Uppernav = ({mensCollectionData,cartCountData}) => {
   const previousSegment = segments[segments.length - 2];
   const previousSegment1 = segments[segments.length - 3];
   const user = useCurrentUser();
-  console.log("this is the user", user);
+  // console.log("this is the user", user);
   // console.log("this is the mens collection data", mensCollectionData);
   return (
     <div className=" flex justify-center items-center mt-7 w-full h-10 px-[1.9rem] z-50">

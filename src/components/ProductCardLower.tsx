@@ -100,14 +100,14 @@ const ProductCardLower = ({ product, theme, formatPrice, callToast }) => {
       if (success === true) {
         //   alert("Item added to cart successfully")
       }
-      console.log(
-        "this is the final value to be updated in the db",
-        tempquantity,
-        color,
-        size,
-        productVarientID,
-        stock
-      );
+      // console.log(
+      //   "this is the final value to be updated in the db",
+      //   tempquantity,
+      //   color,
+      //   size,
+      //   productVarientID,
+      //   stock
+      // );
       // handleClickAdd(user?.id, data.id, selectedColor, selectedSize);
       const dataobj = {
         id: product.id,
@@ -120,7 +120,7 @@ const ProductCardLower = ({ product, theme, formatPrice, callToast }) => {
       };
 
       const value = await addCartDatatoCookies([dataobj]);
-      console.log("this is the cookie value", value.success, value.cookieValue);
+      // console.log("this is the cookie value", value.success, value.cookieValue);
     } else {
       const dataobj = {
         id: product.id,
@@ -132,16 +132,16 @@ const ProductCardLower = ({ product, theme, formatPrice, callToast }) => {
         productVarientID: productVarientID,
       };
 
-      console.log(
-        "this is the final value to be updated in the db",
-        tempquantity,
-        color,
-        size,
-        productVarientID,
-        stock
-      );
+      // console.log(
+      //   "this is the final value to be updated in the db",
+      //   tempquantity,
+      //   color,
+      //   size,
+      //   productVarientID,
+      //   stock
+      // );
       const { success, cookieValue } = await addCartDatatoCookies([dataobj]);
-      console.log("this is the cookie value", success, cookieValue);
+      // console.log("this is the cookie value", success, cookieValue);
     }
     callToast({
       message: "Item added to cart",

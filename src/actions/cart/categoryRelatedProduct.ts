@@ -21,7 +21,15 @@ export async function getRelatedProducts(userId: string) {
       include: { cartItems: { include: { product: true } } }
     });
   
-    if (!cart || cart.cartItems.length === 0) return [];
+    if (!cart ) {
+      const { mergedData } = await fetchAllCartCookieData();
+    cartProducts = mergedData;
+    }
+    else if (cart.cartItems.length === 0)
+    {
+       cartProducts = [];
+    }
+    else
     cartProducts = cart.cartItems.map(item => item.product);
 
   }

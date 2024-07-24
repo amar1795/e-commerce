@@ -54,6 +54,7 @@ function calculateTotal(products) {
 
 const page = () => {
   const user = useCurrentUser();
+  // console.log("this is real the user", user?.id);
   const { toast } = useToast();
   const testQuantity = useCheckoutStock((state) => state.cartProductQuantity);
 
@@ -350,8 +351,8 @@ const page = () => {
     setupdatedProductsLoading(true);
     const relatedData = async () => {
       // this needs to work without the user as well
-
-      const data = await getRelatedProducts(user?.id);
+      const userId = user?.id;
+      const data = await getRelatedProducts(userId);
       console.log("this is the related updated products list", data);
 
       setupdatedProducts(data);

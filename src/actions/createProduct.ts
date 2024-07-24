@@ -24,7 +24,7 @@ export async function deleteProduct(productId: string) {
         id: productId,
       },
     });
-    console.log("Product deleted:", deletedProduct);
+    // console.log("Product deleted:", deletedProduct);
   } catch (error) {
     console.error("Error deleting product:", error);
   }
@@ -63,7 +63,7 @@ export async function createProduct({
         },
       },
     });
-    console.log("Product created:", formalShirt);
+    // console.log("Product created:", formalShirt);
   } catch (error) {
     console.error("Error creating product:", error);
   }
@@ -151,7 +151,7 @@ export async function createProductVarientOld() {
       ],
     });
 
-    console.log("Product variants created:", productVariants);
+    // console.log("Product variants created:", productVariants);
   } catch (error) {
     console.error("Error creating product variant:", error);
   }
@@ -331,7 +331,7 @@ export async function createProductReview(productID: string) {
       });
     }
 
-    console.log("Product reviews created");
+    // console.log("Product reviews created");
   } catch (error) {
     console.error("Error creating product reviews:", error);
   }
@@ -387,7 +387,7 @@ export async function fetchProduct(productId) {
   // Access category name
   // const categoryName = category?.name;
 
-  console.log("Product:", transformedProduct);
+  // console.log("Product:", transformedProduct);
   // console.log("Category:", categoryName);
 }
 
@@ -403,7 +403,7 @@ export async function fetchAllProduct() {
     //   // Write JSON string to a file named products.json
     //   fs.writeFileSync('products.json', productsJSON);
 
-    console.log("Products saved to products.json", productCount);
+    // console.log("Products saved to products.json", productCount);
   } catch (error) {
     console.error("Error saving products:", error);
   }
@@ -433,7 +433,7 @@ export async function fetchProductsByCategory(category: string) {
     },
   });
   const productCount = products.length;
-  console.log("Products:", products, "Product Count:", productCount);
+  // console.log("Products:", products, "Product Count:", productCount);
   return products;
 }
 
@@ -443,7 +443,7 @@ export async function fethChildrenCategories(categoryId: string) {
       parentId: categoryId,
     },
   });
-  console.log("Children Categories:", childrenCategories);
+  // console.log("Children Categories:", childrenCategories);
 }
 
 // gives all the products of a specific category and its nested subcategories
@@ -550,13 +550,13 @@ export async function getProductsByCategoryOriginal(categoryId: string) {
   );
   const selectedRelatedProducts = shuffledRelatedProducts.slice(0, 10);
 
-  console.log(
-    "These are the Products:",
-    formattedProducts,
-    "Product Count:",
-    productCount
-  );
-  console.log("Related Products:", selectedRelatedProducts);
+  // console.log(
+  //   "These are the Products:",
+  //   formattedProducts,
+  //   "Product Count:",
+  //   productCount
+  // );
+  // console.log("Related Products:", selectedRelatedProducts);
 
   // return { products: formattedProducts, relatedProducts: relatedProducts };
   return selectedRelatedProducts;
@@ -962,7 +962,7 @@ export const getProductsByCategoryFiltered = cache(
   ) => {
     const userSession = await auth();
     const userId = userSession?.user?.id;
-    console.log("Filtered User ID:", userId);
+    // console.log("Filtered User ID:", userId);
     // Function to format camel case or Pascal case strings to separate words
     const formatCategoryName = (name: string): string => {
       return name.replace(/([a-z])([A-Z])/g, "$1 $2");
@@ -1252,7 +1252,7 @@ export const getProductsByCategoryFiltered = cache(
     // console.log('Fetched Products:', products);
     // Count the number of fetched products
     const productCount = allProducts.length;
-    console.log("Total Products:", productCount);
+    // console.log("Total Products:", productCount);
 
     // console.log("Fetched Products:", products);
 
@@ -1282,7 +1282,7 @@ export const getProductsByCategoryFiltered = cache(
       },
     });
 
-    console.log("Total Products Count:", totalProductsCount);
+    // console.log("Total Products Count:", totalProductsCount);
 
     const uniqueBrands = Array.from(
       new Set(allProducts.map((product) => product.brand.name))
@@ -1420,12 +1420,12 @@ export async function fetchAllReviews() {
     });
 
     // Log the rating counts
-    console.log("Rating Counts:", ratingCounts);
+    // console.log("Rating Counts:", ratingCounts);
 
     // Log the reviews
-    console.log("Reviews:");
+    // console.log("Reviews:");
     reviews.forEach((review) => {
-      console.log(`Rating: ${review.rating}, Review: ${review.review}`);
+      // console.log(`Rating: ${review.rating}, Review: ${review.review}`);
     });
   } catch (error) {
     console.error("Error fetching product reviews:", error);
@@ -1471,7 +1471,7 @@ export const fetchProductAllData = cache(async (productdata: string) => {
   });
 
   if (!product) {
-    console.log("Product not found");
+    // console.log("Product not found");
     return;
   }
   const parentCategory = product.category.parent; // Access the parent category
@@ -1569,6 +1569,6 @@ export const fetchProductAllData = cache(async (productdata: string) => {
     // relatedProducts: relatedProducts, // Add related products to the organizedProduct
   };
   
-  console.dir(organizedProduct, { depth: null });
+  // console.dir(organizedProduct, { depth: null });
   return organizedProduct;
 });
