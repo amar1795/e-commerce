@@ -173,7 +173,8 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
             </button>
           </p>
         </div>
-        <div className=" flex justify-center mt-4">
+
+        {/* <div className=" flex justify-center mt-4">
           <div className=" border-2 border-gray-600 w-[10rem] h-0 self-center mr-5"></div>
           Or
           <div className=" border-2 border-gray-600  w-[10rem] h-0 ml-5 self-center"></div>
@@ -189,7 +190,7 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
             />
             <h1 className="">Login with Google</h1>
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
