@@ -337,20 +337,7 @@ const page = () => {
 
       return;
       // Await until the transition is complete
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      toast({
-        title: "Successfully Filled the Data",
-        description:
-          "Order Creation in progress and proceeding to the next step...",
-      });
-
-      const order = await processOrder({
-        selectedAddressId: selectedAddress?.id,
-        cardId: paymentData.card.id,
-        paymentMode: paymentMode,
-        walletId: "",
-      });
+      
       // console.log("this is the order data", order.url);
 
       // Creating the order after the transition

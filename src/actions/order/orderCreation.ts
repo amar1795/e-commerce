@@ -46,7 +46,7 @@ export async function createOrder(props: CreateOrderProps) {
         },
       },
       paymentMode: paymentMode as any,
-      deliveryStatus: DeliveryStatus.ORDER_PLACED,
+      deliveryStatus: "ORDER_PLACED",
       orderTotal: totalAmount,
 
       orderItems: {
