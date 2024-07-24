@@ -18,6 +18,7 @@ import { login } from "@/actions/login";
 import { LoginSchema } from "@/schemas";
 import { useSearchParams } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
+import ButtonSpinner from "./button spinner/ButtonSpinner";
 
 const Login: React.FC<LoginProps> = ({ toggleView }) => {
   const { toast } = useToast();
@@ -146,7 +147,7 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
                 <h1 className=" font-bold">
                   {" "}
                   {isPending
-                    ? "Submitting..."
+                    ? <div > <ButtonSpinner/></div>
                     : showTwoFactor
                     ? "Confirm"
                     : "Login"}
