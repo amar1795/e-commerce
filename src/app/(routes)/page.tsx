@@ -1,3 +1,4 @@
+
 import {
   Carousel,
   CarouselContent,
@@ -12,25 +13,15 @@ import ProductCarousel from "@/components/product-carousel/carousel";
 import Testcarousel from "@/components/poster-carousel/carousel";
 import { ThreeDCardDemo } from "@/components/3d card/3dCard";
 import { getProductsByCategory } from "@/actions/createProduct";
+import { use, useEffect, useState } from "react";
 
 export default async function Home() {
   // const session = await auth();
 
   // const user = session?.user?.id;
-
-  const mensCollectionData = await getProductsByCategory(
-    "665a0b9f14be77720636d443"
-   
-  );
-  // console.log("this is the menscollection", mensCollectionData);
-  const womensCollection = await getProductsByCategory(
-    "665d97977547073cf15bf546"
-   
-  );
-  // console.log("this is the womenscollection", womensCollection);
-  const kidsCollection = await getProductsByCategory(
-    "665de7eb62075d484b0229db"
-  );
+  const mensCollectionData = [];
+  const womensCollection = [];
+  const kidsCollection = [];
 
   // console.log("this is the menscollection cart quantity for the user test", mensCollectionData );
   return (
@@ -56,6 +47,7 @@ export default async function Home() {
             </div>
             <ProductCarousel
               SlideCount={20}
+              CategoryId="665a0b9f14be77720636d443"
               cardData={mensCollectionData}
               category="Mens"
             />
@@ -67,6 +59,7 @@ export default async function Home() {
               </h1>
             </div>
             <ProductCarousel
+            CategoryId="665d97977547073cf15bf546"
               SlideCount={20}
               cardData={womensCollection}
               category="Womens"
@@ -79,6 +72,7 @@ export default async function Home() {
               </h1>
             </div>
             <ProductCarousel
+            CategoryId="665de7eb62075d484b0229db"
               SlideCount={20}
               cardData={kidsCollection}
               category="Kids"

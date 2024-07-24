@@ -46,13 +46,15 @@ type Product = {
 
 
 
-const  ProductCarousel=async({SlideCount,cardData,category}:{SlideCount:number,cardData:Product[],category:string})=> {
+const  ProductCarousel=async({SlideCount,cardData,category,CategoryId}:{SlideCount:number,cardData:Product[],category:string})=> {
+
+  const cardValue = await getProductsByCategory(CategoryId);
     const OPTIONS: EmblaOptionsType = { dragFree: false, loop: false , slidesToScroll: 3, containScroll: "keepSnaps",watchSlides:true,align:"start"}
     const SLIDE_COUNT = SlideCount
     const SLIDES = Array.from(Array(SLIDE_COUNT).keys())
   return (
     <div>
-        <EmblaCarousel slides={SLIDES} options={OPTIONS} products={cardData} category={category}  />
+        <EmblaCarousel slides={SLIDES} options={OPTIONS} products={cardValue} category={category}  />
     </div>
   )
 }
