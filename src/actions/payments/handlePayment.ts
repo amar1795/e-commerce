@@ -22,7 +22,7 @@ export async function handlePaymentInfo(paymentInfo: HandlePaymentInfoInput): Pr
         let card: Card | undefined;
         let wallet: Wallet | undefined;
 
-        if (paymentInfo.paymentMode === PaymentMode.CARD) {
+        if (paymentInfo.paymentMode === "CARD") {
             // Fetch existing card if available
             // const existingCard = await prismadb.card.findFirst({
             //     where: {
@@ -39,7 +39,7 @@ export async function handlePaymentInfo(paymentInfo: HandlePaymentInfoInput): Pr
                 const newCard = await createSecureCard(paymentInfo.userId, paymentInfo.cardDetails);
                 card = newCard;
             }
-        } else if (paymentInfo.paymentMode === PaymentMode.WALLET) {
+        } else if (paymentInfo.paymentMode === "WALLET") {
             // Fetch existing wallet if available
             const existingWallet = await prismadb.wallet.findFirst({
                 where: {

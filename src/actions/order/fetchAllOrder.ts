@@ -29,7 +29,7 @@ export const getNestedParentCategories=cache(async(categoryId: string)=> {
 })
 
 // export const getProductsByCategoryFiltered = cache(
-export const  fetchAllOrders = ( async ({page = 1, limit = 5, sortOrder = 'desc'})=> {
+export const  fetchAllOrders = cache( async ({page = 1, limit = 5, sortOrder = 'desc'})=> {
     const userSession = await auth();
     const user = userSession?.user?.id;
     const offset = (page - 1) * limit;  // Calculate offset
