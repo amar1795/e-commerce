@@ -1,6 +1,6 @@
 "use server"
 
-import { sendEmail,ForgotPassword, PasswordChanged, TwoFactorMailgunEmail } from "@/lib/email";
+import { sendEmail,ForgotPassword, PasswordChanged, TwoFactorMailgunEmail, OrderConfirmation } from "@/lib/email";
 
 export async function testEmail({last_name,first_name}) {
   // Example usage
@@ -70,6 +70,26 @@ export async function TwoFactorEmail({senders_email,token,first_name}:{senders_e
       token:token,
       first_name: first_name,
   
+    });
+    // console.log("Email sent successfully!");
+  } catch (error) {
+    console.error("Error sending email:", error);
+    // Handle error
+  }
+}
+
+// order confirmation email
+export async function OrderConfirmationEmail({first_name,senders_email,orderNumber,orderItems,orderData}:{first_name:string|null,senders_email:string,orderNumber:string,orderItems:any,orderData:any}) {
+  // Example usage
+  try {
+    await OrderConfirmation({
+      senders_email: senders_email,
+      from_email: "PurchasesPal OrderConfirmation <no-reply@purchaespal.shop>",
+      subject:`Order Confirmation for the order no ${orderNumber}`,
+      first_name: first_name,
+      orderNumber:orderNumber,
+      orderItems:orderItems,
+      orderData:orderData
     });
     // console.log("Email sent successfully!");
   } catch (error) {

@@ -27,7 +27,7 @@ const page = async ({ params }: { params: { ordernumber: string } }) => {
   const formattedDate = `${day} ${month} ${year}`;
   const formattedTime = `${hours}:${minutes}`;
 
-  const formatPrice = (price: number): string => {
+   const formatPrice = (price: number): string => {
     // Format the price with the Indian Rupee symbol
     return "₹" + price?.toLocaleString("en-IN");
   };

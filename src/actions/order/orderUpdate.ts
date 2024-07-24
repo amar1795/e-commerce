@@ -40,7 +40,7 @@ export async function updateOrderPaymentStatus({ orderId }: UpdateOrderProps) {
         });
 
 
-        
+        // need to send email to the customer as well upon successful payment
 
         // console.log('Order payment status updated successfully', updatedOrder);
 

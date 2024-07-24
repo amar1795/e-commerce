@@ -75,6 +75,35 @@ export async function ForgotPassword({
   }
 }
 
+export async function OrderConfirmation({
+  first_name,
+  senders_email,
+  from_email,
+  subject,
+  orderNumber,
+  orderItems,
+  orderData,
+} : any) {
+  const emailData = {
+    from: from_email,
+    to: senders_email,
+    subject: subject,
+    template: "orderconfirmation",
+    "h:X-Mailgun-Variables": JSON.stringify({
+      first_name,orderNumber,orderItems,...orderData
+    }),
+  };
+
+  try {
+    const result = await mailgunClient.messages().send(emailData);
+    // console.log("Email sent successfully!");
+    return result;
+  } catch (error) {
+    console.error("Error sending email:", error);
+    throw error;
+  }
+}
+
 interface PasswordChangedParams {
   first_name: string|null;
   senders_email: string;

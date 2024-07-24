@@ -1,5 +1,6 @@
 "use client";
 import emptyCart from "@/actions/cart/emptyCart";
+import { OrderConfirmationEmail } from "@/actions/email/Email";
 import { fetchOrderById } from "@/actions/order/fetchSingleOrder";
 import { updateOrderPaymentStatus } from "@/actions/order/orderUpdate";
 import StepProgress from "@/components/StepProgress";
@@ -61,6 +62,8 @@ const page = () => {
           setOrderData(orderData?.order);
           setOrderItems(orderData?.order?.orderItems);
           setDeliveryDate(getRandomFutureDate(orderData?.order?.createdAt));
+
+        await OrderConfirmationEmail({first_name:user?.name,senders_email:user?.email,orderNumber:orderId,orderItems:orderData?.order?.orderItems,orderData:orderData?.order})
           // console.log("this is the orderData ", orderData?.order);
         }
       } else {

@@ -21,6 +21,7 @@ import emptyCart from "@/actions/cart/emptyCart";
 import getUserWallet from "@/actions/payments/getUserWallet";
 import deleteWallet from "@/actions/payments/deleteUserWallet";
 import CreateUserWallet from "@/actions/payments/createUserWallet";
+import { OrderConfirmationEmail } from "@/actions/email/Email";
 const page = async() => {
   // CreateColour()
   // CreateSize()
@@ -87,7 +88,7 @@ const page = async() => {
 // GenerateCombinationProductVarients(ProductsPants)
 
 // emptyCart()
-  const data=await getUserWallet()
+  // const data=await getUserWallet()
   // console.log("this is the wallet data created", data?.wallet?.transactions);
   // this is the wallet data created [
   //   {
@@ -99,6 +100,20 @@ const page = async() => {
   //     createdAt: 2024-07-11T06:58:52.318Z,
   //     updatedAt: 2024-07-11T06:58:52.318Z
   //   }
+  const orderItems = [
+    { name: 'Product 1', quantity: 2, price: 19.99 },
+    { name: 'Product 2', quantity: 1, price: 9.99 },
+    { name: 'Product 3', quantity: 3, price: 5.99 }
+  ];
+  // OrderConfirmationEmail({first_name:"john",senders_email:"debine8588@modotso.com",orderNumber:"66756c6354363728fe808d27",orderItems:orderItems})
+  const orderId="66A0FED08CB7A73A01EE13EC";
+   const orderData = await fetchOrderById(orderId);
+        // setOrderData(orderData?.order);
+        // setOrderItems(orderData?.order?.orderItems);
+        // setDeliveryDate(getRandomFutureDate(orderData?.order?.createdAt));
+        console.log("this is the orderData ", orderData?.order?.orderItems[0]?.product?.images[0].url);
+        // await OrderConfirmationEmail({first_name:"sadfsd",senders_email:"debine8588@modotso.com",orderNumber:orderId,orderItems:orderData?.order?.orderItems,orderData:orderData?.order})
+
 
   return (
     <div className=" bg-pink-500 border-2 border-black px-10 ">
