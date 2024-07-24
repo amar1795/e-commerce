@@ -97,7 +97,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
 
   const handleIncrease = () => {
     // alert("add to cart is being called");
-    if (tempquantity > stock - 1) {
+    if (tempquantity > stock - 1 || tempquantity > 4) {
       return;
     }
     settempQuantity((prev) => prev + 1);
