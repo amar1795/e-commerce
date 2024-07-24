@@ -36,21 +36,21 @@ const CategoriesRelatedProduct: React.FC<CategoriesRelatedProductProps> = ({
   </div>;
 
   const testData = relatedProduct;
-  console.log("this is the test related Data for wishlist", testData);
-  console.log(
-    "this is the related product from related products page",
-    relatedProduct
-  );
+  // console.log("this is the test related Data for wishlist", testData);
+  // console.log(
+  //   "this is the related product from related products page",
+  //   relatedProduct
+  // );
   // Filter out the product with the same ID as ProductId
   const filteredProducts = relatedProduct.filter(
     (product) => product.id !== filteredId
   );
-  console.log("this is the filtered test ", filteredProducts);
+  // console.log("this is the filtered test ", filteredProducts);
   // console.log("this is the product id from related products page:", filteredId);
   const [updatedProducts, setupdatedProducts] =
     useState<Product[]>(filteredProducts);
 
-  console.log("this is the updated test products", updatedProducts);
+  // console.log("this is the updated test products", updatedProducts);
   // Initialize a state to control the merging process
   const [isMerged, setIsMerged] = useState(false);
 
@@ -65,19 +65,19 @@ const CategoriesRelatedProduct: React.FC<CategoriesRelatedProductProps> = ({
     const updatefunction = () => {
       setupdatedRelatedProducts(relatedProduct);
       setupdatedProducts(relatedProduct);
-      console.log(
-        "this is the related product from categories products page",
-        relatedProduct
-      );
+      // console.log(
+      //   "this is the related product from categories products page",
+      //   relatedProduct
+      // );
       setIsMerged(false);
     };
     updatefunction();
   }, [relatedProduct]);
 
-  console.log(
-    "this is the updatedProducts product from related products page",
-    updatedProducts
-  );
+  // console.log(
+  //   "this is the updatedProducts product from related products page",
+  //   updatedProducts
+  // );
 
   const { toast } = useToast();
   const user = useCurrentUser();
@@ -94,7 +94,7 @@ const CategoriesRelatedProduct: React.FC<CategoriesRelatedProductProps> = ({
 
   const handleClickAdd = async (userID, productID) => {
     // alert("add to cart is being called")
-    console.log("this is the product id", productID);
+    // console.log("this is the product id", productID);
     // const completedata = await fetchSingleProduct(productID);
     // console.log("this is the completed data", completedata);
     // // addProductToCart(userID, productID);
@@ -109,10 +109,10 @@ const CategoriesRelatedProduct: React.FC<CategoriesRelatedProductProps> = ({
           return product;
         }
       );
-      console.log(
-        "this is the updated products test handliclick list",
-        updatedRelatedProductsList
-      );
+      // console.log(
+      //   "this is the updated products test handliclick list",
+      //   updatedRelatedProductsList
+      // );
 
       setupdatedRelatedProducts(updatedRelatedProductsList);
       addCartDatatoCookies(updatedRelatedProductsList); // Otherwise, save updated data to cookies
@@ -123,10 +123,10 @@ const CategoriesRelatedProduct: React.FC<CategoriesRelatedProductProps> = ({
         }
         return product;
       });
-      console.log(
-        "this is the updated products test handliclick list",
-        updatedProductsList
-      );
+      // console.log(
+      //   "this is the updated products test handliclick list",
+      //   updatedProductsList
+      // );
 
       setupdatedProducts(updatedProductsList);
       addCartDatatoCookies(updatedProductsList); // Otherwise, save updated data to cookies
@@ -155,10 +155,10 @@ const CategoriesRelatedProduct: React.FC<CategoriesRelatedProductProps> = ({
           ? { ...product, isWishlisted: !product.isWishlisted }
           : product
       );
-      console.log(
-        "this is the updated test products list",
-        updatedProductsList
-      );
+      // console.log(
+      //   "this is the updated test products list",
+      //   updatedProductsList
+      // );
       setupdatedProducts(updatedProductsList);
 
       const updatedRelatedProductsList = updatedRelatedProducts.map((product) =>
@@ -204,10 +204,10 @@ const CategoriesRelatedProduct: React.FC<CategoriesRelatedProductProps> = ({
         }
         return product;
       });
-      console.log(
-        "this is the updated products test handliclick list",
-        updatedProductsList
-      );
+      // console.log(
+      //   "this is the updated products test handliclick list",
+      //   updatedProductsList
+      // );
       setupdatedProducts(updatedProductsList);
 
       const updatedProductsListRelated = updatedRelatedProducts.map(
@@ -226,7 +226,7 @@ const CategoriesRelatedProduct: React.FC<CategoriesRelatedProductProps> = ({
         }
       );
       setupdatedRelatedProducts(updatedProductsListRelated);
-      console.log("these are the updated products", updatedProducts);
+      // console.log("these are the updated products", updatedProducts);
 
       if (categoryPageData == true) {
         // Save updated product information to cookies
@@ -271,7 +271,7 @@ const CategoriesRelatedProduct: React.FC<CategoriesRelatedProductProps> = ({
     if (!isMerged) {
       async function mergeDataFromCookies() {
         const cookieData = await getCartDataFromCookies();
-        console.log("this is the updatedProducts data", updatedProducts);
+        // console.log("this is the updatedProducts data", updatedProducts);
         // create another function here to merge the login usercart lenght and the cookie cart length and then update the cart length in the shopping cart Icon
         const mergedProducts = updatedProducts.map((product) => {
           const cookieProduct = cookieData.find(
@@ -281,15 +281,15 @@ const CategoriesRelatedProduct: React.FC<CategoriesRelatedProductProps> = ({
             ? { ...product, cartQuantity: cookieProduct.cartQuantity }
             : product;
         });
-        console.log(
-          "this is the meregedproduct inside the merged cookies",
-          mergedProducts
-        );
+        // console.log(
+        //   "this is the meregedproduct inside the merged cookies",
+        //   mergedProducts
+        // );
         setupdatedProducts(mergedProducts);
-        console.log(
-          "this is the updated related inside the useeffect products",
-          updatedRelatedProducts
-        );
+        // console.log(
+        //   "this is the updated related inside the useeffect products",
+        //   updatedRelatedProducts
+        // );
 
         const mergedRelatedProducts = updatedRelatedProducts.map((product) => {
           const cookieProduct = cookieData.find(
@@ -301,10 +301,10 @@ const CategoriesRelatedProduct: React.FC<CategoriesRelatedProductProps> = ({
         });
 
         setupdatedRelatedProducts(mergedRelatedProducts);
-        console.log(
-          "Merged related products with cookies:",
-          mergedRelatedProducts
-        );
+        // console.log(
+        //   "Merged related products with cookies:",
+        //   mergedRelatedProducts
+        // );
 
         // Set isMerged to true to avoid re-running the effect unnecessarily
         setIsMerged(true);
@@ -313,7 +313,7 @@ const CategoriesRelatedProduct: React.FC<CategoriesRelatedProductProps> = ({
     }
   }, [updateTrigger, relatedProduct, isMerged]);
 
-  console.log("this is the updated related products", updatedRelatedProducts);
+  // console.log("this is the updated related products", updatedRelatedProducts);
   return (
     <div>
       <div className="  bg-teal-600 min-h-[30rem] px-5">

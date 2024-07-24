@@ -38,7 +38,7 @@ const CheckoutProductCard = ({
     // }
   }, [product]);
 
-  console.log("this is the updated products", product);
+  // console.log("this is the updated products", product);
 
   const [tempQuantity, setTempQuantity] = useState(0);
   const [varientStock, setVarientStock] = useState(0);
@@ -49,7 +49,7 @@ const CheckoutProductCard = ({
   useEffect(() => {
     const fetchData = async () => {
       const data = await getProductDetailsByID(product.id);
-      console.log("this is the fetched data", data);
+      // console.log("this is the fetched data", data);
       if (data) {
         let { parentCategory, topmostParentCategory } = data?.parentCategoryIds;
 
@@ -60,7 +60,7 @@ const CheckoutProductCard = ({
 
         const cleanedCategory0 = parentCategory.replace(/\s+/g, "");
         const testUrl = `/categories/${topmostParentCategory}/${cleanedCategory0}/${productId}`;
-        console.log("this is the test url", testUrl);
+        // console.log("this is the test url", testUrl);
         setUrl(testUrl);
       }
     };

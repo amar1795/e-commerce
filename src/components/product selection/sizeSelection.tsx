@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const SizeSelection = ({variants, sizes, color, setSize, selectedColor,setInitialLoadColorAndSize }) => {
   const [selectedSize, setSelectedSize] = useState(sizes[0]);
   const [initialLoadCount, setInitialLoadCount] = useState(0);
-  console.log("this is the selected size", selectedSize);
+  // console.log("this is the selected size", selectedSize);
 
 
   useEffect(() => {

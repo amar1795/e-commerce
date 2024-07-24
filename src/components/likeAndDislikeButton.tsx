@@ -12,7 +12,7 @@ const LikeAndDislikeButton = ({
   const [dislike, setDislike] = useState(review?.dislikedByUser);
   const [totalLikes, setTotalLikes] = useState(review?.totalLikes);
   const [totalDislikes, setTotalDislikes] = useState(review?.totalDislikes);
-  console.log("this is the review data for the like and dislike button:", review);
+  // console.log("this is the review data for the like and dislike button:", review);
   const user = useCurrentUser();
 
   // const debouncedLikeDislikeLogic = debounce(likeDislikeLogic, 2000);

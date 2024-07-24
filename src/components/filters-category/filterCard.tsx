@@ -56,14 +56,14 @@ const Fcard: React.FC<{ category: Category }> = ({
   setBrandSelected
 }) => {
   if(category.category === "Price"){
-    console.log("this is the price category selected", category);
+    // console.log("this is the price category selected", category);
   }
 // console.log("this is the mindiscountedprice and maxdiscountedprice", setMinDiscountedPrice, setMaxDiscountedPrice)
   const [tempState, setTempState] = React.useState([])
-  console.log("this is the temp state", tempState)
+  // console.log("this is the temp state", tempState)
 
   const { minPrice, maxPrice } = getMinMaxPrice(tempState);
-  console.log(`this is the Min price: ₹${minPrice} and this is the Max price: ₹${maxPrice}`);
+  // console.log(`this is the Min price: ₹${minPrice} and this is the Max price: ₹${maxPrice}`);
 
   useEffect(() => {
     setMinDiscountedPrice(minPrice);

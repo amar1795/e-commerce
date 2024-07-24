@@ -14,7 +14,7 @@ import {
 
 export default function StarChart(barChartData,initialCount) {
 // console.log("this is the initialCount", initialCount);
-  console.log("this is the barchart data:", barChartData.barChartData);
+  // console.log("this is the barchart data:", barChartData.barChartData);
 
 //   const initialData = [
 //     {

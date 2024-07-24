@@ -69,7 +69,7 @@ const Page = ({ params }: { params: { categories: string } }) => {
     fetchedCategories: [],
   });
   const [categoryName, setSelectedCategoryName] = useState([]);
-  console.log("this is the selected category name", categoryName);
+  // console.log("this is the selected category name", categoryName);
 
   const [parentCategoryName, setparentCategoryName] = useState(
     params.categories
@@ -91,7 +91,7 @@ const Page = ({ params }: { params: { categories: string } }) => {
   const [brandName, setBrandName] = useState([]);
   const [sortBy, setSortBy] = useState("");
   // console.log("this is brand name", brandName)
-  console.log("this is the sort by", sortBy);
+  // console.log("this is the sort by", sortBy);
 
   const [minDiscountedPrice, setMinDiscountedPrice] = useState(0);
   const [maxDiscountedPrice, setMaxDiscountedPrice] = useState(100000);
@@ -188,7 +188,7 @@ const Page = ({ params }: { params: { categories: string } }) => {
         9,
         sortBy
       );
-      console.log("this is the data filtred", data.products);
+      // console.log("this is the data filtred", data.products);
       setProductsFound(data.products.length > 0 ? true : false);
       setPaginatedData({
         products: data.products,
@@ -240,7 +240,7 @@ const Page = ({ params }: { params: { categories: string } }) => {
 
       // Construct the query parameters
       const queryParams = new URLSearchParams();
-      console.log("this is the brand name", brandName);
+      // console.log("this is the brand name", brandName);
       if (categoryName && categoryName.length > 0) {
         // Remove duplicates from categoryName
 

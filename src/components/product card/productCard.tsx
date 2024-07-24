@@ -57,8 +57,8 @@ const ProductCard: React.FC<updatedDataResponse> = ({
   const [itemInCart, setItemInCart] = useState(false);
   const [fetchedData, setFetchedData] = useState("");
   const [url, setUrl] = useState("");
-  console.log("this is the url", url);
-  console.log("this is the fetched product data", product);
+  // console.log("this is the url", url);
+  // console.log("this is the fetched product data", product);
 
   useEffect(() => {
     settempQuantity(product.cartQuantity || 0);
@@ -75,7 +75,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
   useEffect(() => {
     const fetchData = async () => {
       const data = await getProductDetailsByID(product.id);
-      console.log("this is the fetched data", data);
+      // console.log("this is the fetched data", data);
       setFetchedData(data);
       if (data) {
         let { parentCategory, topmostParentCategory } = data?.parentCategoryIds;
@@ -87,7 +87,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
 
         const cleanedCategory0 = parentCategory.replace(/\s+/g, "");
         const testUrl = `/categories/${topmostParentCategory}/${cleanedCategory0}/${productId}`;
-        console.log("this is the test url", testUrl);
+        // console.log("this is the test url", testUrl);
         setUrl(testUrl);
       }
     };
@@ -136,14 +136,14 @@ const ProductCard: React.FC<updatedDataResponse> = ({
       if (success === true) {
         //   alert("Item added to cart successfully")
       }
-      console.log(
-        "this is the final value to be updated in the db",
-        tempquantity,
-        color,
-        size,
-        productVarientID,
-        stock
-      );
+      // console.log(
+      //   "this is the final value to be updated in the db",
+      //   tempquantity,
+      //   color,
+      //   size,
+      //   productVarientID,
+      //   stock
+      // );
       // handleClickAdd(user?.id, data.id, selectedColor, selectedSize);
       const dataobj = {
         id: product.id,
@@ -156,7 +156,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
       };
 
       const value = await addCartDatatoCookies([dataobj]);
-      console.log("this is the cookie value", value.success, value.cookieValue);
+      // console.log("this is the cookie value", value.success, value.cookieValue);
     } else {
       const dataobj = {
         id: product.id,
@@ -168,16 +168,16 @@ const ProductCard: React.FC<updatedDataResponse> = ({
         productVarientID: productVarientID,
       };
 
-      console.log(
-        "this is the final value to be updated in the db",
-        tempquantity,
-        color,
-        size,
-        productVarientID,
-        stock
-      );
+      // console.log(
+      //   "this is the final value to be updated in the db",
+      //   tempquantity,
+      //   color,
+      //   size,
+      //   productVarientID,
+      //   stock
+      // );
       const { success, cookieValue } = await addCartDatatoCookies([dataobj]);
-      console.log("this is the cookie value", success, cookieValue);
+      // console.log("this is the cookie value", success, cookieValue);
     }
     callToast({
       title: "Item added to cart",
@@ -217,14 +217,14 @@ const ProductCard: React.FC<updatedDataResponse> = ({
       if (success === true) {
         //   alert("Item added to cart successfully")
       }
-      console.log(
-        "this is the final value to be updated in the db",
-        tempquantity,
-        color,
-        size,
-        productVarientID,
-        stock
-      );
+      // console.log(
+      //   "this is the final value to be updated in the db",
+      //   tempquantity,
+      //   color,
+      //   size,
+      //   productVarientID,
+      //   stock
+      // );
       // handleClickAdd(user?.id, data.id, selectedColor, selectedSize);
 
       const dataobj = {
@@ -238,7 +238,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
       };
 
       const value = await addCartDatatoCookies([dataobj]);
-      console.log("this is the cookie value", value.success, value.cookieValue);
+      // console.log("this is the cookie value", value.success, value.cookieValue);
     } else {
       const dataobj = {
         id: product.id,
@@ -250,16 +250,16 @@ const ProductCard: React.FC<updatedDataResponse> = ({
         productVarientID: productVarientID,
       };
 
-      console.log(
-        "this is the final value to be updated in the db",
-        tempquantity,
-        color,
-        size,
-        productVarientID,
-        stock
-      );
+      // console.log(
+      //   "this is the final value to be updated in the db",
+      //   tempquantity,
+      //   color,
+      //   size,
+      //   productVarientID,
+      //   stock
+      // );
       const { success, cookieValue } = await addCartDatatoCookies([dataobj]);
-      console.log("this is the cookie value", success, cookieValue);
+      // console.log("this is the cookie value", success, cookieValue);
     }
     callToast({
       title: "Item added to cart",
@@ -294,21 +294,21 @@ const ProductCard: React.FC<updatedDataResponse> = ({
     }
   };
 
-  console.log("this is the product card data", product);
+  // console.log("this is the product card data", product);
   // console.log("this is the updated products", updatedProducts);
 
   // console.log("this is the productID from product card", product?.category?.name);
 
   const completeUrl =
     typeof window !== "undefined" ? window.location.href.split("?")[0] : "";
-  console.log("this is the complete url", completeUrl);
+  // console.log("this is the complete url", completeUrl);
 
   const segments = completeUrl.split("/");
 
   const matchingSegmentIndex = segments.findIndex(
     (segment) => removeSpaces(segment) === removeSpaces(product?.category?.name)
   );
-  console.log("this is the product category name", product?.category?.name);
+  // console.log("this is the product category name", product?.category?.name);
   // If a matching segment is found, construct the new URL
   let newUrl = completeUrl;
 

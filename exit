@@ -1,0 +1,168 @@
+[33mcommit c3d8425467a86286aac28d3627bc41c2397b2c54[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31me-commerce/main[m[33m)[m
+Merge: 7660337 ce20b13
+Author: Amar <jeetamar496@gmail.com>
+Date:   Wed Jul 24 11:50:26 2024 +0530
+
+    Merge branch 'main' of https://github.com/amar1795/e-commerce
+
+[33mcommit 766033789e59fe7803b89447d705e3ea7ae064ae[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Wed Jul 24 11:50:22 2024 +0530
+
+    previous commits rolled back
+
+[33mcommit ce20b13d38fc0ca360b939e0d9f88f9e85eff78e[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Wed Jul 24 11:04:18 2024 +0530
+
+    console.log removed from all the server functions and actions
+
+[33mcommit 91d40c04f9a0ef3fa67faf7415d821a5cb085aed[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Wed Jul 24 11:03:31 2024 +0530
+
+    console.log removed from all the components
+
+[33mcommit bf524e5bb9b9832fbb9b550ea863c513e4954302[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Wed Jul 24 10:46:25 2024 +0530
+
+    all console.log removed from homepage
+
+[33mcommit d1a06b9c0d0329b56f5aeff630264f5378a2e9e1[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Tue Jul 23 17:54:37 2024 +0530
+
+    accoutn settings password updation functionality added
+
+[33mcommit 40645f39f62e46a8716eccbb736f357757ebbade[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Tue Jul 23 17:02:12 2024 +0530
+
+    loading indicators and animations added
+
+[33mcommit dc646b58f7028d85c2dddc03dc8393a57da52db1[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Tue Jul 23 12:54:52 2024 +0530
+
+    delete and deletall functionality not working unlesss clicking on clicking add in the cart items fixed
+
+[33mcommit c1193b947b37ec2ba03b3d6bea1ff652fa4e4d00[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Tue Jul 23 12:04:31 2024 +0530
+
+    wishlisting and process.env.domain showing undefined issue fixed
+
+[33mcommit 09c5775c26775b9c97bab7920dbafbea2597a30c[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Tue Jul 23 10:30:30 2024 +0530
+
+    domain error fixed
+
+[33mcommit 69b69a6c6a4aa37b8b535ac00441ca4904dd0908[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Tue Jul 23 10:12:58 2024 +0530
+
+    middleware logic updated to handle favicon issue
+
+[33mcommit 0fc850e2723ce81bc8a28a3fdd489f442806d954[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Tue Jul 23 01:16:12 2024 +0530
+
+    prisma generate client updated
+
+[33mcommit 02e7f64570e981909998c22ea140efade1152875[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Tue Jul 23 01:12:38 2024 +0530
+
+    settings schema removed
+
+[33mcommit b5fcf71b72616864ad2887ccd34a4b52b59039d8[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Tue Jul 23 01:07:59 2024 +0530
+
+    prisma generate client updated
+
+[33mcommit e52771bb7f7cda49075530dd69d0f1892367a717[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Tue Jul 23 01:03:18 2024 +0530
+
+    prisma version updated
+
+[33mcommit df48f8f89de155d9762b8009a334d1354033e22d[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Tue Jul 23 00:49:03 2024 +0530
+
+    json file updated
+
+[33mcommit 2f58d7b2c1d6d0640dfe837cc7f0cd65ed19cb5e[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Tue Jul 23 00:43:34 2024 +0530
+
+    prisma client ouput updated for production
+
+[33mcommit 7cf49e04a48298aba13c2517927fb81ed8bccd3c[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Tue Jul 23 00:36:15 2024 +0530
+
+    prisma client updated for production
+
+[33mcommit 2626d729f0c722ca54b8b4c3b5ddb332e3572880[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Tue Jul 23 00:32:23 2024 +0530
+
+    build created
+
+[33mcommit ab94243fb6b81b913f005f6f65a70105b4ed2f1d[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Tue Jul 23 00:16:20 2024 +0530
+
+    related items from cart loading added
+
+[33mcommit 2beacd4e961217b65c3f1968acf5f6e2e24f4d2c[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Mon Jul 22 23:27:02 2024 +0530
+
+    product  card css styles finally fixed
+
+[33mcommit 169fb52bf55f7e67c3f9daa113eedb84d8dc4ecf[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Mon Jul 22 22:50:32 2024 +0530
+
+    card allignemnet issue corrected
+
+[33mcommit a2ca6be26c29773bc5d7e448619e72f8156084a8[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Mon Jul 22 22:09:32 2024 +0530
+
+    logiin and sign in functionality udpated
+
+[33mcommit 9f7abe95c4d847ae9141d52bd1de6329d699a0dc[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Mon Jul 22 18:06:15 2024 +0530
+
+    quantity loading indicators  added for consistent quantity update
+
+[33mcommit f366af53b1fb2c84380e903fdbbb180896fa3e3a[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Mon Jul 22 17:15:31 2024 +0530
+
+    more bugs corrected and data fethcing logic improved when doing the page transition
+
+[33mcommit 6dfe490c1f9e74355b7cb1b8dc30a2b522309f44[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Mon Jul 22 15:12:42 2024 +0530
+
+    updated fluid ui logic
+
+[33mcommit c94b312f8d5b7734689ae0a6d76fbf24287e26a1[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Mon Jul 22 15:05:17 2024 +0530
+
+    loading indicators added for fluid and faster uis
+
+[33mcommit 1a01334c59b685405351e12605241bc7a10e6e10[m
+Author: Amar <jeetamar496@gmail.com>
+Date:   Mon Jul 22 13:34:06 2024 +0530
+
+    initial commit with laoding state added for faster page transitions

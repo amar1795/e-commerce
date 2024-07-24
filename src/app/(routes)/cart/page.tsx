@@ -80,7 +80,7 @@ const page = () => {
   const [mergedTotalAmount, setMergedTotalAmount] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  console.log("this is the  mereged products", completeMergedupdatedProducts);
+  // console.log("this is the  mereged products", completeMergedupdatedProducts);
 
   const [total, setTotal] = useState(0);
 
@@ -145,10 +145,10 @@ const page = () => {
       const { mergedData, total, count } = await fetchAllCartCookieData();
       // create another server function to merge the dbcart data and the cookie data lenght and show it everytime the same count on the shopping cart Icon in this way the consistency will be mainted and the data will be shown without any delayed updation
 
-      console.log(
-        "this is the merged data added to completemeregeddata",
-        mergedData
-      );
+      // console.log(
+      //   "this is the merged data added to completemeregeddata",
+      //   mergedData
+      // );
       setCompleteMergedupdatedProducts(mergedData);
       setMergedTotalAmount(total);
       setTotal(total);
@@ -324,10 +324,10 @@ const page = () => {
         const { products, totalAmount } = await getProductsInCartSummary(
           user?.id
         );
-        console.log(
-          "this is the product data from getproductsCartSummary",
-          products
-        );
+        // console.log(
+        //   "this is the product data from getproductsCartSummary",
+        //   products
+        // );
         // setproductData(data);
         // const cartSummaryData = await calculateCartSummary(user?.id);
         // // console.log("this is the cart summary data", cartSummaryData);
@@ -340,7 +340,7 @@ const page = () => {
         setCompleteMergedupdatedProducts(products);
       } catch (error) {
         // alert(error);
-        console.log("this is the error", error);
+        // console.log("this is the error", error);
       }
     };
     cartSummary();
@@ -353,7 +353,7 @@ const page = () => {
       // this needs to work without the user as well
       const userId = user?.id;
       const data = await getRelatedProducts(userId);
-      console.log("this is the related updated products list", data);
+      // console.log("this is the related updated products list", data);
 
       setupdatedProducts(data);
       setupdatedProductsLoading(false);
@@ -440,7 +440,7 @@ const page = () => {
 
       // need to add the updated products to the database as well since it is being added in the cookies already
 
-      console.log("these are the updated products", cartCookieProducts);
+      // console.log("these are the updated products", cartCookieProducts);
 
       // Save updated product information to cookies
       if (

@@ -83,12 +83,12 @@ const formatDate = (dateString: string) => {
 
 const handlelike = async (ratingId: string) => {
   const { error, message, like } = await productLike(ratingId);
-  console.log("this is the liked data response", error, message, like);
+  // console.log("this is the liked data response", error, message, like);
 };
 
 const handleDislike = async (ratingId: string) => {
   const { error, message, dislike } = await productDislike(ratingId);
-  console.log("this is the disliked data response", error, message, dislike);
+  // console.log("this is the disliked data response", error, message, dislike);
 };
 
 const CategoriesRight: React.FC<CategoriesRightProps> = ({
@@ -102,19 +102,19 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
   initialColor,
   initialSize,
 }) => {
-  console.log(
-    "this is the data quantities from categories right",
-    data?.cartQuantity
-  );
+  // console.log(
+  //   "this is the data quantities from categories right",
+  //   data?.cartQuantity
+  // );
   const user = useCurrentUser();
 
   // const initialColour= data?.productVariants && data?.productVariants[0]?.color;
   // const initialSize=data?.productVariants && data?.productVariants[0]?.size;
-  console.log(
-    "this is the initial colour and size inside the categories right",
-    initialColor,
-    initialSize
-  );
+  // console.log(
+  //   "this is the initial colour and size inside the categories right",
+  //   initialColor,
+  //   initialSize
+  // );
 
   const [uniqueColors, setUniqueColors] = useState([]);
   const [selectedColor, setSelectedColor] = useState(null);
@@ -123,12 +123,12 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
   const [productVarients, setProductVarients] = useState(data?.productVariants);
 
   const [tempQuantity, setTempQuantity] = useState(null);
-  console.log("this is the temp quantity", tempQuantity);
-  console.log(
-    "this is the selected color and size from initial data",
-    selectedColor,
-    selectedSize
-  );
+  // console.log("this is the temp quantity", tempQuantity);
+  // console.log(
+  //   "this is the selected color and size from initial data",
+  //   selectedColor,
+  //   selectedSize
+  // );
 
   // useEffect(() => {
   //   if (data?.productVariants && data.productVariants.length > 0) {
@@ -142,7 +142,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
   //   }
   // }, [data]);
 
-  console.log("this is the selected size", selectedSize);
+  // console.log("this is the selected size", selectedSize);
   // useEffect(() => {
   //   if (selectedColor !== null) {
   //     if (initialLoadColorAndSize === true) {
@@ -199,7 +199,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
     },
   ];
 
-  console.log("this is the initial data", initialData);
+  // console.log("this is the initial data", initialData);
 
   const [reviews, setReviews] = useState([]);
   const [verifiedPurchaseCount, setVerifiedPurchaseCount] = useState("");
@@ -212,9 +212,9 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
   const [itemInCart, setItemInCart] = useState(false);
   const [loadingQuantity, setLoadingQuantity] = useState(true);
 
-  console.log("this is the item in cart value", itemInCart);
+  // console.log("this is the item in cart value", itemInCart);
 
-  console.log("this is the chart data", barChartData);
+  // console.log("this is the chart data", barChartData);
 
   if (!data) {
     return <div>Loading...</div>;
@@ -245,12 +245,12 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
        
       }
 
-      console.log("this is the fetchreview data", Data);
+      // console.log("this is the fetchreview data", Data);
       setReviewData(Data);
       setUniqueColors(getUniqueColors(data?.productVariants));
 
       if (data?.cartQuantity) {
-        console.log("this is the data cart quantity", data?.cartQuantity);
+        // console.log("this is the data cart quantity", data?.cartQuantity);
         setItemInCart(true);
         setVarientQuantity(data?.cartQuantity);
       }
@@ -258,7 +258,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
     fetchReviewData();
   }, [data, newData,data?.cartQuantity]);
 
-  console.log("this is the unique colors", uniqueColors);
+  // console.log("this is the unique colors", uniqueColors);
 
   useEffect(() => {
     const getReviews = async () => {
@@ -272,10 +272,10 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
         const value = reviews;
         setVerifiedPurchaseCount(verifiedPurchaseCount);
         setReviews(value);
-        console.log(
-          `this is the reviews data for the product ID ${data?.id} ${verifiedPurchaseCount}`,
-          value
-        );
+        // console.log(
+        //   `this is the reviews data for the product ID ${data?.id} ${verifiedPurchaseCount}`,
+        //   value
+        // );
 
         setUpdateChart((prev) => !prev);
       }
@@ -284,7 +284,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
   }, [data, newData]);
 
   // brand cannot be destructured from data issue arised because the data  was null , so i added a check to see if data is null or not and display the loading message if it is null
-  console.log("this is the data from categories right", data);
+  // console.log("this is the data from categories right", data);
   // data.ratings.count
   const { brand, price, discountedPrice, description } = data;
 
@@ -321,10 +321,10 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
         selectedSize
       );
       setProductVarientStock(productVarietnID?.stock);
-      console.log(
-        "this is the product varient id which is selected",
-        productVarietnID
-      );
+      // console.log(
+      //   "this is the product varient id which is selected",
+      //   productVarietnID
+      // );
     }
   };
 
@@ -441,14 +441,14 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
         if (success === true) {
           // alert("Item added to cart successfully")
         }
-        console.log(
-          "this is the final value to be updated in the db",
-          tempQuantity,
-          selectedColor,
-          selectedSize,
-          productVarientID,
-          productVarientStock
-        );
+        // console.log(
+        //   "this is the final value to be updated in the db",
+        //   tempQuantity,
+        //   selectedColor,
+        //   selectedSize,
+        //   productVarientID,
+        //   productVarientStock
+        // );
         // handleClickAdd(user?.id, data.id, selectedColor, selectedSize);
         const dataobj = {
           id: data.id,
@@ -461,11 +461,11 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
         };
 
         const value = await addCartDatatoCookies([dataobj]);
-        console.log(
-          "this is the cookie value",
-          value.success,
-          value.cookieValue
-        );
+        // console.log(
+        //   "this is the cookie value",
+        //   value.success,
+        //   value.cookieValue
+        // );
       } else {
         const dataobj = {
           id: data.id,
@@ -477,16 +477,16 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
           productVarientID: productVarientID,
         };
 
-        console.log(
-          "this is the final value to be updated in the cookie",
-          tempQuantity,
-          selectedColor,
-          selectedSize,
-          productVarientID,
-          productVarientStock
-        );
+        // console.log(
+        //   "this is the final value to be updated in the cookie",
+        //   tempQuantity,
+        //   selectedColor,
+        //   selectedSize,
+        //   productVarientID,
+        //   productVarientStock
+        // );
         const { success, cookieValue } = await addCartDatatoCookies([dataobj]);
-        console.log("this is the cookie value", success, cookieValue);
+        // console.log("this is the cookie value", success, cookieValue);
       }
     }
 
@@ -542,14 +542,14 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
         if (success === true) {
           // alert("Item added to cart successfully")
         }
-        console.log(
-          "this is the final value to be updated in the db",
-          tempQuantity,
-          selectedColor,
-          selectedSize,
-          productVarientID,
-          productVarientStock
-        );
+        // console.log(
+        //   "this is the final value to be updated in the db",
+        //   tempQuantity,
+        //   selectedColor,
+        //   selectedSize,
+        //   productVarientID,
+        //   productVarientStock
+        // );
         // handleClickAdd(user?.id, data.id, selectedColor, selectedSize);
         const dataobj = {
           id: data.id,
@@ -562,11 +562,11 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
         };
 
         const value = await addCartDatatoCookies([dataobj]);
-        console.log(
-          "this is the cookie value",
-          value.success,
-          value.cookieValue
-        );
+        // console.log(
+        //   "this is the cookie value",
+        //   value.success,
+        //   value.cookieValue
+        // );
       } else {
         const dataobj = {
           id: data.id,
@@ -578,16 +578,16 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
           productVarientID: productVarientID,
         };
 
-        console.log(
-          "this is the final value to be updated in the cookie",
-          tempQuantity,
-          selectedColor,
-          selectedSize,
-          productVarientID,
-          productVarientStock
-        );
+        // console.log(
+        //   "this is the final value to be updated in the cookie",
+        //   tempQuantity,
+        //   selectedColor,
+        //   selectedSize,
+        //   productVarientID,
+        //   productVarientStock
+        // );
         const { success, cookieValue } = await addCartDatatoCookies([dataobj]);
-        console.log("this is the cookie value", success, cookieValue);
+        // console.log("this is the cookie value", success, cookieValue);
       }
     }
 
@@ -644,10 +644,10 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
       );
       setProductVarientStock(productVarietnID?.stock);
       setProductVarientID(productVarietnID?.id);
-      console.log(
-        "this is the product varient id which is selected",
-        productVarietnID
-      );
+      // console.log(
+      //   "this is the product varient id which is selected",
+      //   productVarietnID
+      // );
       // setToggledVarientQuantity( (prev) => !prev);
       // setTempQuantity(0);
     }
@@ -1047,8 +1047,8 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
                   {reviews?.length > 0 ? (
                     reviews
                       .filter((review) => review?.review !== null)
-                      .map((review) => (
-                        <div className=" flex border-2 border-black  bg-teal-600  min-h-28 mt-6">
+                      .map((review,index) => (
+                        <div key={index} className=" flex border-2 border-black  bg-teal-600  min-h-28 mt-6">
                           <div className=" w-[3rem] border-r-2 border-black ">
                             <div className=" flex justify-between px-2 pt-1">
                               <div>{review?.rating}</div>

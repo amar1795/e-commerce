@@ -9,15 +9,15 @@ const ColorSelection = ({ variants,setSize,setColor,setInitialLoadColorAndSize }
 
   const uniqueColors = getUniqueColors(data);
   const initialColor = uniqueColors[0];
-  console.log("this is the initial color", initialColor);
+  // console.log("this is the initial color", initialColor);
   const [selectedColor, setSelectedColor] = useState(initialColor);
  
 
 
 
-  console.log("this is the selected color", selectedColor);
+  // console.log("this is the selected color", selectedColor);
   
-  console.log("this is the unique colours", uniqueColors[0]);
+  // console.log("this is the unique colours", uniqueColors[0]);
 
     // Set the initial color and size when the component mounts
     // useEffect(() => {
@@ -37,7 +37,7 @@ const ColorSelection = ({ variants,setSize,setColor,setInitialLoadColorAndSize }
     }, [uniqueColors]);
 
   useEffect(() => {
-    console.log("this is the selected color inside useeffect", selectedColor);
+    // console.log("this is the selected color inside useeffect", selectedColor);
 
     
      if (selectedColor) {

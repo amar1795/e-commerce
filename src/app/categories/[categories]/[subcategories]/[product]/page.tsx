@@ -97,7 +97,7 @@ const page = ({ params }: { params: { product: string } }) => {
   const { toast } = useToast();
   const user = useCurrentUser();
 
-  console.log("this is the session", session?.user?.id);
+  // console.log("this is the session", session?.user?.id);
 
   const [outOfStock, setoutOfStock] = React.useState(false);
 
@@ -114,11 +114,11 @@ const page = ({ params }: { params: { product: string } }) => {
   const [initialColor, setInitialColor] = useState("");
   const [initialSize, setInitialSize] = useState("");
   const [updatedProducts, setupdatedProducts] = useState([]);
-console.log("this is the initial colour and size", initialColor, initialSize)
-  console.log(
-    "this is the updatedProducts product from related products page",
-    updatedProducts
-  );
+// console.log("this is the initial colour and size", initialColor, initialSize)
+//   console.log(
+//     "this is the updatedProducts product from related products page",
+//     updatedProducts
+//   );
 
 
 
@@ -142,7 +142,7 @@ console.log("this is the initial colour and size", initialColor, initialSize)
       // this needs to be revalidated via polling every 30 minutes because if everyone starts rating it simulteneously it will hit the backend mulitple times
       const updatedData: updatedDataResponse | undefined =
         await fetchProductAllData(params.product);
-      console.log("this is the updatedData:", updatedData);
+      // console.log("this is the updatedData:", updatedData);
       setupdatedProducts(updatedData || null);
 
       // const relatedProducts = await getProductsByCategoryOriginal(updatedData?.category?.parentId)
@@ -150,7 +150,7 @@ console.log("this is the initial colour and size", initialColor, initialSize)
         updatedData?.category?.id
       );
       // issue is here the wihsliost is coming to be empty "" string hence unable to update the wishlist properly
-      console.log("this is the related products test", relatedProducts);
+      // console.log("this is the related products test", relatedProducts);
 
       const filteredRelatedProducts = relatedProducts.filter(
         (item) => item.id !== updatedData?.id
@@ -224,19 +224,20 @@ console.log("this is the initial colour and size", initialColor, initialSize)
     selectedSize
   ) => {
     // alert("add to cart is being called")
-    console.log(
-      "this is the product from handleadd to the cart function ",
-      userID,
-      productID,
-      selectedColor,
-      selectedSize
-    );
-    console.log("this is the product id", productID);
+    // console.log(
+    //   "this is the product from handleadd to the cart function ",
+    //   userID,
+    //   productID,
+    //   selectedColor,
+    //   selectedSize
+    // );
+
+    // console.log("this is the product id", productID);
     const completedata = await fetchSingleProduct(productID);
     completedata.map((item) => {
       if (item.id === productID) {
         const newData = { ...item, cartQuantity: 1 };
-        console.log("this is the new data", newData);
+        // console.log("this is the new data", newData);
         addCartDatatoCookies([newData]);
       }
     });
@@ -270,7 +271,7 @@ console.log("this is the initial colour and size", initialColor, initialSize)
           cartQuantity: newQuantity,
         };
         setupdatedProducts(updatedProductsList);
-        console.log("this is the updated products", updatedProductsList);
+        // console.log("this is the updated products", updatedProductsList);
 
         if (updatedProductsList?.cartQuantity === 0) {
           // alert(updatedProductsList?.cartQuantity)
@@ -304,7 +305,7 @@ console.log("this is the initial colour and size", initialColor, initialSize)
       // alert("Merge data from cookie called")
       const updatedData: updatedDataResponse | undefined =
         await fetchProductAllData(params.product);
-      console.log("this is the updatedData:", updatedData);
+      // console.log("this is the updatedData:", updatedData);
 
       const cookieProduct = cookieData.find(
         (item) => item.id === updatedData?.id

@@ -47,7 +47,7 @@ export function EditReviewModal({
   reviewTitle?: string;
   reviewMessage?: string;
 }) {
-  console.log("this is the isPaid data from the review Modal", isPaid);
+  // console.log("this is the isPaid data from the review Modal", isPaid);
   const { toast } = useToast();
 
   const router = useRouter();
@@ -112,7 +112,7 @@ export function EditReviewModal({
    
     setValue("rating", starRating); // Sync starRating with form state
     // alert("this is the star rating"+starRating)
-    console.log("this is the star rating", starRating);
+    // console.log("this is the star rating", starRating);
   }, [starRating]);
 
   const onSubmit = (values: z.infer<typeof ReviewSchema>) => {
