@@ -75,7 +75,7 @@ export function EditReviewModal({
     setSelectedFiles(fileNames);
 
     // Optionally, you can also handle other file details here if needed
-    console.log("Selected files:", files);
+    // console.log("Selected files:", files);
   };
 
   const {
@@ -102,7 +102,7 @@ export function EditReviewModal({
   useEffect(() => {
     if(reviewTitle || reviewMessage || reviewStars){
       setValue("review", reviewMessage);
-      console.log("this is the  review message"+reviewMessage)
+      // console.log("this is the  review message"+reviewMessage)
       setValue("rating", starRating);
       setValue("title", reviewTitle);
     }
@@ -124,7 +124,7 @@ export function EditReviewModal({
 
     // alert("form submitted")
     startTransition(() => {
-      console.log("Form values:", values);
+      // console.log("Form values:", values);
       ValidatedReviewData(values, ProductId, isPaid)
         .then((data) => {
           if (data?.error) {

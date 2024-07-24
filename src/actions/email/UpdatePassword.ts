@@ -43,7 +43,7 @@ export const updatePassword = async (
     first_name: existingUser.name,
     senders_email: existingUser.email,
   });
-  console.log("Password updated!");
+  // console.log("Password updated!");
 
   return { success: "Password updated!" };
 };

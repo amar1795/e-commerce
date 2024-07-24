@@ -21,7 +21,7 @@ interface CreateOrderProps {
 }
 
 export async function createOrder(props: CreateOrderProps) {
-  console.log("create order function is being called");
+  // console.log("create order function is being called");
   try {
     const {
       userId,
@@ -75,7 +75,7 @@ export async function createOrder(props: CreateOrderProps) {
         },
       };
     }
-    console.log("Order data prepared successfully", formattedOrder);
+    // console.log("Order data prepared successfully", formattedOrder);
     // Step 2: Create the order using the formatted order details
     const createdOrder = await prismadb.order.create({
       data: formattedOrder,
@@ -83,7 +83,7 @@ export async function createOrder(props: CreateOrderProps) {
         orderItems: true,
       },
     });
-    console.log("Order created successfully", createdOrder);
+    // console.log("Order created successfully", createdOrder);
     // Step 3: Delete cart items (assuming this function is elsewhere)
     // await prismadb.cartItem.deleteMany({
     //     where: {

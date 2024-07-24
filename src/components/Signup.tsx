@@ -26,7 +26,7 @@ const Signup: React.FC<SignupProps> = ({ toggleView, setIsSignup }) => {
   const [error, setError] = useState<string | undefined>("");
   const [success, setSuccess] = useState<string | undefined>("");
   const [isPending, startTransition] = useTransition();
-  console.log(error, success);
+  // console.log(error, success);
 
   const {
     register: registerField,

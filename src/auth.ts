@@ -9,7 +9,7 @@ import { getTwoFactorConfirmationByUserId } from "./actions/two-factor and secur
 export const getUserById = async (id: string) => {
   try {
     const user = await prismadb.user.findUnique({ where: { id } });
-    console.log("this is the user data", user)
+    // console.log("this is the user data", user)
     return user;
   } catch {
     return null;

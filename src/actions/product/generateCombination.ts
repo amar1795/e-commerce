@@ -139,7 +139,7 @@ export function generateCombinations(productID) {
     }
   });
 
-  console.log("this is the data ", data);
+  // console.log("this is the data ", data);
   return data;
 }
 
@@ -159,7 +159,7 @@ export function generatePantCombinations(productID) {
       });
     });
   
-    console.log("Generated Pant Combinations:", data);
+    // console.log("Generated Pant Combinations:", data);
     return data;
   }
 

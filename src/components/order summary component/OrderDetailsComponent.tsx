@@ -40,7 +40,7 @@ const OrderDetailsComponent = ({ orderItem, isPaid }) => {
   const [newData, setNewData] = useState(true);
   const [url, setUrl] = useState("");
 
-  console.log("this is the review Data", reviewData);
+  // console.log("this is the review Data", reviewData);
   // console.log("this is the review rating", reviewData?.review?.rating);
   // console.log("this is the review reviewTitle", reviewData?.review?.review);
   // console.log(
@@ -48,7 +48,7 @@ const OrderDetailsComponent = ({ orderItem, isPaid }) => {
   //   reviewData?.review?.reviewTitle
   // );
   // console.log("this is the product ID and the name", orderItem?.product.id, orderItem?.product.name)
-  console.log("this is the product ID inside the orderItem", orderItem)
+  // console.log("this is the product ID inside the orderItem", orderItem)
   useEffect(() => {
     const fetchReviewData = async () => {
       const Data = await fetchReview({ productId: orderItem?.productId });
@@ -65,7 +65,7 @@ const OrderDetailsComponent = ({ orderItem, isPaid }) => {
 
         const cleanedCategory0 = parentCategory.replace(/\s+/g, "");
         const testUrl = `/categories/${topmostParentCategory}/${cleanedCategory0}/${productId}`;
-        console.log("this is the test url", testUrl);
+        // console.log("this is the test url", testUrl);
         setUrl(testUrl);
       }
     };

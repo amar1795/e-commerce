@@ -37,7 +37,7 @@ export default async function CreateUserWallet() {
         }
       });
 
-    console.log("New Wallet Created:", newWallet);
+    // console.log("New Wallet Created:", newWallet);
    
 
       return { success: true, wallet: newWallet };

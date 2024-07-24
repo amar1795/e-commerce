@@ -66,14 +66,14 @@ const Page = ({ params }: { params: { subcategories: string } }) => {
     localStorage.setItem("currentPage", currentPage.toString());
   }, [currentPage]);
 
-  console.log("this is the parent category name", parentCategoryName);
+  // console.log("this is the parent category name", parentCategoryName);
   
   useEffect(() => {
     const fetchPaginatedData = async () => {
       setLoading(true); // Start loading
 
         // alert("fetching data")
-      console.log("this is the minimum discount price", minDiscountedPrice)
+      // console.log("this is the minimum discount price", minDiscountedPrice)
       const data = await getProductsByCategoryFiltered(
         parentCategoryName ,
         categoryName,
@@ -85,7 +85,7 @@ const Page = ({ params }: { params: { subcategories: string } }) => {
         currentPage,
         9
       );
-      console.log("this is the data", data)
+      // console.log("this is the data", data)
       setPaginatedData({
         products: data.products,
         totalPages: data.totalPages,
@@ -148,7 +148,7 @@ const Page = ({ params }: { params: { subcategories: string } }) => {
     setLoading(false); // End loading
 
     };
-    console.log("hello")
+    // console.log("hello")
     fetchPaginatedData();
   }, [
     currentPage,

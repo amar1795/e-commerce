@@ -48,8 +48,8 @@ const CustomInput = () => {
     const testUrl = `/categories/${topmostParentCategory}/${cleanedCategory0}/${productId}`;
     // alert(testUrl)
     router.push(testUrl);
-    console.log("this is the test url", testUrl);
-    console.log("this is the fetched data", fetchedData);
+    // console.log("this is the test url", testUrl);
+    // console.log("this is the fetched data", fetchedData);
   };
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const CustomInput = () => {
 
   const handleInputChange = async (event) => {
     const value = event.target.value;
-    console.log("this is the value", value);
+    // console.log("this is the value", value);
     setInputValue(value);
 
     // Clear the previous timeout

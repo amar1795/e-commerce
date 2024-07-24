@@ -109,7 +109,7 @@ const removeSpaces = (name: string): string => {
     //  const likedData=like ? true : false
     //  setLike(likedData)
     //  callToast({title:`${message}` ,description :"You have succesfully liked the Comment"})
-    console.log("this is the liked data response", error, message, like);
+    // console.log("this is the liked data response", error, message, like);
   };
 
   const handleDislike = async (ratingId: string) => {
@@ -119,7 +119,7 @@ const removeSpaces = (name: string): string => {
     //  setDislike(dislikedData)
     //  callToast({title:`${message}` ,description :"You have succesfully disliked the Comment",variant:"destructive"})
 
-    console.log("this is the disliked data response", error, message, dislike);
+    // console.log("this is the disliked data response", error, message, dislike);
   };
 
   useEffect(() => {
@@ -128,8 +128,8 @@ const removeSpaces = (name: string): string => {
       // this needs to be revalidated via polling every 30 minutes because if everyone starts rating it simulteneously it will hit the backend mulitple times
       const updatedData: updatedDataResponse | undefined =
         await fetchProductAllData(params.productID);
-        console.log("this is the category",updatedData?.category?.id)
-      console.log("this is the updatedData:", updatedData);
+        // console.log("this is the category",updatedData?.category?.id)
+      // console.log("this is the updatedData:", updatedData);
       setData(updatedData || null);
       // const relatedProducts = await getProductsByCategoryOriginal(updatedData?.category?.parentId)
       const relatedProducts = await getProductsByCategory(
@@ -138,12 +138,12 @@ const removeSpaces = (name: string): string => {
 
       setRelatedProducts(relatedProducts);
       setParentCategory(updatedData?.category?.parentName || "");
-      console.log("this is the parent category", updatedData?.category?.parentName);
+      // console.log("this is the parent category", updatedData?.category?.parentName);
       // alert("update Data is being called")
       // console.log("these are the related products:", relatedProducts);
       const {topmostParentCategory} = await findAllParentCategories(updatedData?.category?.id)
       setTopmostParentCategory(topmostParentCategory)
-      console.log("this is the parent categories",topmostParentCategory)
+      // console.log("this is the parent categories",topmostParentCategory)
     };
 
     updateData();
@@ -154,7 +154,7 @@ const removeSpaces = (name: string): string => {
     const fetchReviewData = async () => {
       const Data = await fetchReview({ productId: data?.id });
       // alert("fethcreviewdata is  been called")
-      console.log("this is the fetchreview data", Data);
+      // console.log("this is the fetchreview data", Data);
       setReviewData(Data);
     };
     fetchReviewData();
@@ -182,9 +182,9 @@ const removeSpaces = (name: string): string => {
         //   reviews
         // );
 
-        console.log(
-          `these are the reviews data `
-         , reviews  );
+        // console.log(
+        //   `these are the reviews data `
+        //  , reviews  );
 
         // setUpdateChart((prev) => !prev);
       }

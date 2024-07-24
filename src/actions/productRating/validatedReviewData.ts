@@ -28,17 +28,17 @@ const data={
     
 }
 
-  console.log("This is the review Id:", reviewId);
+  // console.log("This is the review Id:", reviewId);
   // Conditionally add ratingId if reviewId is present
 // Conditionally add ratingId if reviewId is not present (creating a new review)
 if (!reviewId) {
   const validatedReviewData = await createUserReview({ ...data });
-  console.log("New User review created:", validatedReviewData);
+  // console.log("New User review created:", validatedReviewData);
   return { success: " New User review created:" ,data:validatedReviewData};
 } else {
-  console.log("this contains the review id",reviewId)
+  // console.log("this contains the review id",reviewId)
   const validatedUpdatedReviewData = await updateUserReview({ ratingId: reviewId, ...data });
-  console.log(" Updated User Review Data:", validatedUpdatedReviewData);
+  // console.log(" Updated User Review Data:", validatedUpdatedReviewData);
   return { success: " Updated User Review Data:" ,data:validatedUpdatedReviewData};
 
 }

@@ -25,7 +25,7 @@ export default async function emptyCart() {
         data: { stock: newStock },
       });
 
-      console.log("Stock updated successfully for the product variant");
+      // console.log("Stock updated successfully for the product variant");
     }
   }
 
@@ -41,7 +41,7 @@ export default async function emptyCart() {
     });
     // clearing the cart cookies as well
     await clearCartCookies();
-    console.log("Cookie Cart items deleted successfully");
+    // console.log("Cookie Cart items deleted successfully");
   }
 
   // Check if there are items in the cart before deleting
@@ -66,5 +66,5 @@ export default async function emptyCart() {
   // } else {
   //     console.log('No items found in the cart');
   // }
-  console.log("Cart items deleted successfully");
+  // console.log("Cart items deleted successfully");
 }

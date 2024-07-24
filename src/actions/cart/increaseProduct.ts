@@ -5,16 +5,16 @@ import { prismadb } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 
 export default async function increaseProductQuantity(userId: string, productId: string) {
-  console.log("this is the user id", userId)
+  // console.log("this is the user id", userId)
   // Find the user's most recent cart or create a new one if it doesn't exist
 //   need to also modify this part later that when the user completes the order in that case do not use that cart anymore
-console.log("this is the user ID from increase product server action", userId)
+// console.log("this is the user ID from increase product server action", userId)
   let cart = await prismadb.cart.findFirst({
     where: { userId },
     orderBy: { createdAt: 'desc' },
     include: { cartItems: true }
   });
-console.log("this is the cart data from increase product server action", cart)
+// console.log("this is the cart data from increase product server action", cart)
   if (!cart) {
     // Create a new cart and add the product with quantity 1
     cart = await prismadb.cart.create({

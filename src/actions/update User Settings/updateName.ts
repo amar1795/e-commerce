@@ -42,7 +42,7 @@ export async function UpdateName(name: z.infer<typeof NameUpdateSchema>) {
     },
   });
 
-  console.log(`Name updated successfully to ${updatedUser.name} `, updatedUser);
+  // console.log(`Name updated successfully to ${updatedUser.name} `, updatedUser);
   return { success:`Name updated successfully to ${updatedUser.name} ` };
   } catch (error) {
     console.error("Error updating name:", error);

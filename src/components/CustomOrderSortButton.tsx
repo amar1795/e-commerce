@@ -22,10 +22,10 @@ const CustomOrderSortButton: React.FC<CustomButtonProps> = ({ initialButtonName,
   const completeUrl = typeof window !== "undefined" ? window.location.href : "";
 
   const segments = completeUrl.split("/");
-  console.log("this is the segments",segments);
+  // console.log("this is the segments",segments);
 
   let removeSegment = segments[segments.length - 2];
-  console.log("this is the removeSegment",removeSegment);
+  // console.log("this is the removeSegment",removeSegment);
 
 // Get the second segment from the path
 let previousSegment = segments.length >= 3 ? segments[4] : '';

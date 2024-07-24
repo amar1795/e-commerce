@@ -36,11 +36,11 @@ const data={
     ratingId:ratingId,
 }
 
-  console.log("Data:", data);
+  // console.log("Data:", data);
 
   const validatedReviewData = await updateUserReview({...data});
 
-    console.log("User review created:", validatedReviewData);
+    // console.log("User review created:", validatedReviewData);
 
 // send email to user with reset link now commented out for testing
 

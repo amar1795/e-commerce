@@ -65,7 +65,7 @@ export async function createUserReview({
       },
     });
 
-    console.log("User review created:", newRating);
+    // console.log("User review created:", newRating);
   } catch (error) {
     console.error("Error creating user review:", error);
   }

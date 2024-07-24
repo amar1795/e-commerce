@@ -176,7 +176,7 @@ export async function getRelatedProducts(userId: string) {
   const relatedProducts = formattedProducts.slice(0, 6);
   revalidatePath("/cart")
   // Ensure we do not exceed 6 products
-  console.log("relatedProducts", relatedProducts.length);
+  // console.log("relatedProducts", relatedProducts.length);
   return relatedProducts;
 }
 

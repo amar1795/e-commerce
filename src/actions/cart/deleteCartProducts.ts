@@ -22,11 +22,11 @@ export default async function deleteCartItem(userId: string, productId: string) 
                     where: { id: cartItem.id }
                 });
                 revalidatePath('/cart');
-                console.log("Product removed from cart");
+                // console.log("Product removed from cart");
                 return { success: true, message: "Product removed from cart" };
             }
         }
-        console.log("Product not found in cart");
+        // console.log("Product not found in cart");
         return { success: false, message: "Product not found in cart" };
     } catch (error) {
         console.error("Error deleting the product:", error);

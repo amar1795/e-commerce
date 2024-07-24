@@ -62,9 +62,9 @@ const page = () => {
   const [walletData, setWalletData] = useState([]);
   const [WalletTrigger, setWalletTrigger] = useState(false);
   const [totalAmount, setTotalAmount] = useState(null);
-  console.log("this is the wallet data", walletData);
-  console.log("this is the payment mode", paymentMode);
-  console.log("this is the selected card id", selectedCardId);
+  // console.log("this is the wallet data", walletData);
+  // console.log("this is the payment mode", paymentMode);
+  // console.log("this is the selected card id", selectedCardId);
   // CARD or WALLET
 
   // Function to handle card selection
@@ -78,7 +78,7 @@ const page = () => {
       cardID: card.id,
     };
     setCardDetails(cardDetails);
-    console.log("Selected Card Details:", cardDetails);
+    // console.log("Selected Card Details:", cardDetails);
   };
 
   const router = useRouter();
@@ -87,7 +87,7 @@ const page = () => {
   const formRef = useRef<HTMLFormElement | null>(null);
 
   const user = useCurrentUser();
-  console.log("this is the user id", user?.id);
+  // console.log("this is the user id", user?.id);
 
   const addresses = [
     "1234 Elm Street, Apt 5B, Springfield, IL 62704, United States",
@@ -150,7 +150,7 @@ const page = () => {
 
     window.location = order.url;
 
-    console.log("this is the order data", order.url);
+    // console.log("this is the order data", order.url);
   };
 
   useEffect(() => {
@@ -202,7 +202,7 @@ const page = () => {
       const data = await getProductsInCartSummary(user.id);
       setproductData(data);
       setTotalAmount(data.totalAmount)
-      console.log("this is the product data", data);
+      // console.log("this is the product data", data);
       const allUserCards = await fetchUserCards(user?.id);
       setAllUserCards(allUserCards);
       setIsLoading(false);
@@ -323,10 +323,10 @@ const page = () => {
             title: "Successfully added the New Card ",
             description: "You have successfully added the Card",
           });
-          console.log(
-            "this is the payment card data from usercheckout action",
-            data.paymentRecord
-          );
+          // console.log(
+          //   "this is the payment card data from usercheckout action",
+          //   data.paymentRecord
+          // );
         } catch (error) {
           console.error("Error during payment:", error);
           setError("Failed to process payment. Please try again.");
@@ -351,7 +351,7 @@ const page = () => {
         paymentMode: paymentMode,
         walletId: "",
       });
-      console.log("this is the order data", order.url);
+      // console.log("this is the order data", order.url);
 
       // Creating the order after the transition
       // const { userId, products, addressID,totalAmount } =  prepareOrderData(user.id, productData, selectedAddress?.id);
@@ -437,7 +437,7 @@ const page = () => {
     });
     setSelectedAddress(address);
 
-    console.log("Selected Address: ", selectedAddress?.id);
+    // console.log("Selected Address: ", selectedAddress?.id);
     // alert(`Your Shipping Address is: ${formatAddress(address)}`);
   };
 

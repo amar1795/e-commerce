@@ -18,7 +18,7 @@ export async function fetchImagesByProductId(productId: string) {
         updatedAt: true,
       },
     });
-    console.log("Images fetched:", images);
+    // console.log("Images fetched:", images);
     return images;
   } catch (error) {
     console.error("Error fetching images:", error);
@@ -86,7 +86,7 @@ export async function createdummyPosterFunction() {
 export async function getAllDummyPosters() {
   try {
     const dummyPosters = await prismadb.poster.findMany();
-    console.log("Retrieved dummy posters:", dummyPosters);
+    // console.log("Retrieved dummy posters:", dummyPosters);
     return dummyPosters;
   } catch (error) {
     console.error("Error retrieving dummy posters:", error);
@@ -98,12 +98,12 @@ export async function getAllUsers() {
   try {
     const users = await prismadb.user.findMany();
     const count = await prismadb.user.count();
-    console.log(
-      "successfully retrieved users",
-      users,
-      "and user count is ",
-      count
-    );
+    // console.log(
+    //   "successfully retrieved users",
+    //   users,
+    //   "and user count is ",
+    //   count
+    // );
     return users;
   } catch (error) {
     console.error("Error retrieving users:", error);
@@ -149,12 +149,12 @@ export async function getAllColorsWithCount() {
   try {
     const colors = await prismadb.color.findMany();
     const colorCount = await prismadb.color.count();
-    console.log(
-      "successfully retrieved colors",
-      colors,
-      "and color count is ",
-      colorCount
-    );
+    // console.log(
+    //   "successfully retrieved colors",
+    //   colors,
+    //   "and color count is ",
+    //   colorCount
+    // );
     return { colors, count: colorCount };
   } catch (error) {
     console.error("Error fetching colors:", error);
@@ -186,7 +186,7 @@ export async function CreateSize() {
       sizes.push(size);
     }
 
-    console.log("successfully created sizes", sizes);
+    // console.log("successfully created sizes", sizes);
   } catch (error) {
     console.error("Error creating sizes:", error);
     throw error;
@@ -198,12 +198,12 @@ export async function getAllSizes() {
     const sizes = await prismadb.size.findMany();
     const sizeCount = await prismadb.size.count();
 
-    console.log(
-      "successfully retrieved sizes",
-      sizes,
-      "and size count is ",
-      sizeCount
-    );
+    // console.log(
+    //   "successfully retrieved sizes",
+    //   sizes,
+    //   "and size count is ",
+    //   sizeCount
+    // );
     return sizes;
   } catch (error) {
     console.error("Error fetching sizes:", error);
@@ -255,7 +255,7 @@ export async function CreateBrand() {
       brands.push(brand);
     }
 
-    console.log("successfully created brands", brands);
+    // console.log("successfully created brands", brands);
   } catch (error) {
     console.error("Error creating brands:", error);
     throw error;
@@ -267,12 +267,12 @@ export async function getBrand() {
     const brand = await prismadb.brand.findMany();
     const sizeCount = await prismadb.brand.count();
 
-    console.log(
-      "successfully created brands",
-      brand,
-      "size count is ",
-      sizeCount
-    );
+    // console.log(
+    //   "successfully created brands",
+    //   brand,
+    //   "size count is ",
+    //   sizeCount
+    // );
   } catch (error) {
     console.error("Error creating brands:", error);
     throw error;
@@ -326,7 +326,7 @@ export async function fetchCategoriesWithPosters() {
       },
     });
 
-    console.log("this is the linkedposterwith categories", categories);
+    // console.log("this is the linkedposterwith categories", categories);
   } catch (error) {
     console.error(error);
   }
@@ -335,7 +335,7 @@ export async function getallCategory() {
   try {
     const categories = await prismadb.category.findMany();
 
-    console.log("this is the linkedposterwith categories", categories);
+    // console.log("this is the linkedposterwith categories", categories);
   } catch (error) {
     console.error(error);
   }
@@ -346,7 +346,7 @@ export async function deleteSize() {
     // Delete all sizes
     await prismadb.size.deleteMany();
 
-    console.log("All sizes deleted successfully.");
+    // console.log("All sizes deleted successfully.");
   } catch (error) {
     console.error("Error deleting sizes:", error);
   }
@@ -356,7 +356,7 @@ export async function deleteduplicatebrandnames() {
     // Delete all sizes
     await prismadb.brand.deleteMany();
 
-    console.log("All sizes deleted successfully.");
+    // console.log("All sizes deleted successfully.");
   } catch (error) {
     console.error("Error deleting sizes:", error);
   }
@@ -370,7 +370,7 @@ export async function CreateCategories() {
         parentId: "665de7eb62075d484b0229db",
       },
     });
-    console.log("successfully created categories");
+    // console.log("successfully created categories");
   } catch (error) {
     console.error("Error deleting sizes:", error);
   }
@@ -386,7 +386,7 @@ export async function UpdateCategory() {
     },
   });
 
-  console.log("Updated category:", updatedCategory);
+  // console.log("Updated category:", updatedCategory);
 }
 
 export async function test() {}

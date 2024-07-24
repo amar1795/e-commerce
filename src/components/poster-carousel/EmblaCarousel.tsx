@@ -91,7 +91,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                         className="rounded-lg"
                       />
                       <div className="absolute w-full h-full bottom-4 left-0 text-white bg-black bg-opacity-40 px-4 py-2 rounded z-10">
-                        {poster.label}
+                        {/* {poster.label} */}
                       </div>
                     </div>
                   </div>

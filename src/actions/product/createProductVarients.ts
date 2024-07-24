@@ -89,7 +89,7 @@ export async function createProductVarient(productid) {
       data: combinations,
     });
 
-    console.log("Product variants created:", productVariants);
+    // console.log("Product variants created:", productVariants);
   } catch (error) {
     console.error("Error creating product variant:", error);
   }
@@ -101,7 +101,7 @@ export async function deleteProductVarients(productid) {
       where: { productId: productid },
     });
 
-    console.log("Product variants deleted:", deletedProductVariants);
+    // console.log("Product variants deleted:", deletedProductVariants);
   } catch (error) {
     console.error("Error deleting product variants:", error);
   }
@@ -113,7 +113,7 @@ export async function GenerateCombinationProductVarients(data) {
   for (const product of data) {
     try {
       await createProductVarient(product.id);
-      console.log("Product variants created successfully");
+      // console.log("Product variants created successfully");
     } catch (error) {
       return { error: "Failed to process product ID:"};
     }

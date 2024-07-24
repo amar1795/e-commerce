@@ -131,7 +131,7 @@ async function main() {
   
   // Wait for all products to be created
   const products = await Promise.all(productPromises);
-  console.log('Created products:', products);
+  // console.log('Created products:', products);
 }
 
 main()

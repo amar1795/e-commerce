@@ -41,7 +41,7 @@ export async function UpdateEmail( email:z.infer<typeof EmailUpdateSchema>) {
         data: { email: validatedEmail.data.email },
       });
   
-      console.log('Email updated successfully', updatedUser);
+      // console.log('Email updated successfully', updatedUser);
       return { success: "Email updated successfully" };
       
     } catch (error) {

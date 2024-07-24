@@ -4,7 +4,7 @@ import { prismadb } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 
 export default async function addItemToCart(userId, productId, productVariant, productColour, productSize, quantity,productVarientStock) {
-  console.log("User ID:", userId);
+  // console.log("User ID:", userId);
 
   try {
   // Find the user's most recent cart or create a new one if it doesn't exist
@@ -14,7 +14,7 @@ export default async function addItemToCart(userId, productId, productVariant, p
     include: { cartItems: true }
   });
 
-  console.log("Cart data:", cart);
+  // console.log("Cart data:", cart);
 
   if (!cart) {
     // Create a new cart and add the product with specified quantity

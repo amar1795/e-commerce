@@ -75,7 +75,7 @@ export const getUserWishlist = async (userId: string) => {
     }));
     revalidatePath("/")
 
-    console.log("this is the wishlist", formattedWishlist);
+    // console.log("this is the wishlist", formattedWishlist);
     return formattedWishlist;
   } catch (error) {
     console.error("Error retrieving wishlist:", error);

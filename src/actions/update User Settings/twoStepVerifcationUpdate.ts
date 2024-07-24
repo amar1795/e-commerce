@@ -32,7 +32,7 @@ export async function updateTwoStepVerificationStatus({
       },
     });
 
-    console.log('Two-step verification status updated successfully', updatedUser);
+    // console.log('Two-step verification status updated successfully', updatedUser);
 
     return { data: updatedUser.isTwoFactorEnabled, success: true, message: `Two-step verification status updated successfully to ${updatedUser.isTwoFactorEnabled}` };
   } catch (error) {

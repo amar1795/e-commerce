@@ -37,7 +37,7 @@ export default function UploadImage({fetchUpdatedImage}) {
 
   function submitCircleRegistration(value: RegisterCircleInputClient) {
     UpdateAvatar(value.circle_image);
-    console.log("Image uploaded successfully", value.circle_image);
+    // console.log("Image uploaded successfully", value.circle_image);
    
     fetchUpdatedImage();
     // alert("Image uploaded successfully: " + value.circle_image);

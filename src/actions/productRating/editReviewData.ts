@@ -72,7 +72,7 @@ export const updateUserReview=async({
         data: updatedData,
       });
   
-      console.log("User review updated:", updatedReview);
+      // console.log("User review updated:", updatedReview);
 
       return { message: "Review updated successfully", review: updatedReview };
     } catch (error) {

@@ -52,7 +52,7 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
     });
   };
 
-  console.log("this is callback url", callbackUrl);
+  // console.log("this is callback url", callbackUrl);
 
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     setError("");

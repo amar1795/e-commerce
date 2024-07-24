@@ -39,7 +39,7 @@ export  async function dummyUserFunction() {
               email: email,
             },
           });
-          console.log("this is the user", user);
+          // console.log("this is the user", user);
           return user;
         } catch (error) {
           console.error('Error fetching user by email:', error);

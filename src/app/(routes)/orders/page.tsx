@@ -28,7 +28,7 @@ const page =  () => {
     const fetchOrders = async () => {
      const  fetchedOrders = await fetchAllOrders({page:currentPage,sortOrder});
       setOrders(fetchedOrders);
-      console.log("these are the fetched orders",fetchedOrders);
+      // console.log("these are the fetched orders",fetchedOrders);
       setOrderLoading(false);
      
     };
@@ -39,7 +39,7 @@ const page =  () => {
 
 
 
-  console.log("these are the orders",orders);
+  // console.log("these are the orders",orders);
   // orders.forEach((order) => {
   //   console.log(`Order ID: ${order.id}`);
   //   console.log(`Order Total: ${order.orderTotal}`);

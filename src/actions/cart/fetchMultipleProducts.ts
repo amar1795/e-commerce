@@ -3,7 +3,7 @@
 import { prismadb } from "@/lib/db";
 
 export async function fetchMultipleProducts(productIds: string[]) {
-  console.log("Fetching products in cart summary:", productIds);
+  // console.log("Fetching products in cart summary:", productIds);
     try{
       // Fetch product details for the extracted product IDs
       let products = await prismadb.product.findMany({

@@ -27,7 +27,7 @@ export async function sendEmail({
 
   try {
     const result = await mailgunClient.messages().send(emailData);
-    console.log("Email sent successfully!");
+    // console.log("Email sent successfully!");
     return result;
   } catch (error) {
     console.error("Error sending email:", error);
@@ -67,7 +67,7 @@ export async function ForgotPassword({
 
   try {
     const result = await mailgunClient.messages().send(emailData);
-    console.log("Email sent successfully!");
+    // console.log("Email sent successfully!");
     return result;
   } catch (error) {
     console.error("Error sending email:", error);
@@ -102,7 +102,7 @@ export async function PasswordChanged({
 
   try {
     const result = await mailgunClient.messages().send(emailData);
-    console.log("Email sent successfully!");
+    // console.log("Email sent successfully!");
     return result;
   } catch (error) {
     console.error("Error sending email:", error);
@@ -132,7 +132,7 @@ export async function TwoFactorMailgunEmail({
 
   try {
     const result = await mailgunClient.messages().send(emailData);
-    console.log("Email sent successfully!");
+    // console.log("Email sent successfully!");
     return result;
   } catch (error) {
     console.error("Error sending email:", error);

@@ -17,7 +17,7 @@ export async function getProductReviews({
     starRating?: number;
     sortDirection?: 'asc' | 'desc';
 }) {
-    console.log("this is the curretn page:", page)
+    // console.log("this is the curretn page:", page)
 
     const userSession = await auth();
     const user = userSession?.user?.id;

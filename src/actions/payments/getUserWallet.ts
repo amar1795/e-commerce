@@ -20,7 +20,7 @@ export default async function getUserWallet() {
     });
 
     if (existingWallet) {
-      console.log("Existing Wallet:", existingWallet);
+      // console.log("Existing Wallet:", existingWallet);
     //   revalidatePath("/");
 
       return { success: true, wallet: existingWallet };

@@ -13,7 +13,7 @@ export default async function addTransaction( amount, type, description = '') {
         return { success: false, message: "User not found" };
     }
 
-    console.log("User ID:", userId, "Amount:", amount, "Type:", type);
+    // console.log("User ID:", userId, "Amount:", amount, "Type:", type);
   try {
     // Fetch the wallet for the user
     const wallet = await prismadb.wallet.findFirst({

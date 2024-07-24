@@ -42,7 +42,7 @@ export async function updateOrderPaymentStatus({ orderId }: UpdateOrderProps) {
 
         
 
-        console.log('Order payment status updated successfully', updatedOrder);
+        // console.log('Order payment status updated successfully', updatedOrder);
 
         return { updatedOrder: updatedOrder, success: true, message: "Order payment status updated successfully" };
     } catch (error) {

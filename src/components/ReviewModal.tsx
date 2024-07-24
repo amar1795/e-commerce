@@ -79,7 +79,7 @@ export function ReviewModal({
     setSelectedFiles(fileNames);
 
     // Optionally, you can also handle other file details here if needed
-    console.log("Selected files:", files);
+    // console.log("Selected files:", files);
   };
 
   const {
@@ -109,7 +109,7 @@ export function ReviewModal({
       setValue("review", reviewMessage || "");
       setValue("rating", reviewStars || 0);
       setValue("title", reviewTitle || "");
-      console.log("Setting initial form values");
+      // console.log("Setting initial form values");
     }
   }, [isOpen]);
 
@@ -128,7 +128,7 @@ export function ReviewModal({
 
     // alert("form submitted")
     startTransition(() => {
-      console.log("Form values:", values);
+      // console.log("Form values:", values);
       ValidatedReviewData(values, ProductId, reviewId, isPaid)
         .then((data) => {
           if (data?.error) {

@@ -14,7 +14,7 @@ export const getUserByEmail = async (email: string) => {
 export const getUserById = async (userId: string) => {
   try {
     const user = await prismadb.user.findUnique({ where: { id:userId } });
-    console.log("user", user);
+    // console.log("user", user);
     return user;
   } catch (error) {
     console.error("Error fetching user by ID:", error);

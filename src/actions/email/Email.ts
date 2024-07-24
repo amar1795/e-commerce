@@ -14,7 +14,7 @@ export async function testEmail({last_name,first_name}) {
       last_name: last_name,
       first_name: first_name,
     });
-    console.log("Email sent successfully!");
+    // console.log("Email sent successfully!");
   } catch (error) {
     console.error("Error sending email:", error);
     // Handle error

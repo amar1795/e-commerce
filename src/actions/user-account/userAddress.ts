@@ -34,7 +34,7 @@ export async function addAddressToUser(userId: string, address: z.infer<typeof A
       },
     });
 
-    console.log('Address added successfully', newAddress);
+    // console.log('Address added successfully', newAddress);
     return { success: "Address added successfully" };
   } catch (error) {
     console.error(error);

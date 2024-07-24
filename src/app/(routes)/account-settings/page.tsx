@@ -57,7 +57,7 @@ const page = () => {
   const [creditTransaction, setCreditTransaction] = useState([]);
   const [debitTransaction, setDebitTransaction] = useState([]);
   const [walletData, setWalletData] = useState([]);
-  console.log("this is the credit transaction", creditTransaction);
+  // console.log("this is the credit transaction", creditTransaction);
   const [isAllDataFetched, setIsAllDataFetched] = useState(false);
 
   const [loading, setLoading] = useState(false);
@@ -65,7 +65,7 @@ const page = () => {
   const [isTwoFactorEnabled, setIsTwoFactorEnabled] = useState();
   // personalInformation?.data?.isTwoFactorEnabled
 
-  console.log("this is the isTwoFactorEnabled", isTwoFactorEnabled);
+  // console.log("this is the isTwoFactorEnabled", isTwoFactorEnabled);
   const [initialState, setInitialState] = useState(
     personalInformation?.data?.isTwoFactorEnabled
   );
@@ -87,13 +87,13 @@ const page = () => {
   useEffect(() => {
     const data = async () => {
       const alladdress = await getAllAddressesForUser(user?.id);
-      console.log("All Address: ", alladdress);
+      // console.log("All Address: ", alladdress);
       setalladdress(alladdress);
       const allUserCards = await fetchUserCards(user?.id);
       setAllUserCards(allUserCards);
       const walletData = await getUserWallet();
       setWalletData(walletData);
-      console.log("this is the wallet data", walletData);
+      // console.log("this is the wallet data", walletData);
       const transactionData = walletData?.wallet?.transactions;
 
       if (transactionData) {
@@ -117,7 +117,7 @@ const page = () => {
       // } else {
       //   setDebitTransaction(transactionData);
       // }
-      console.log("this is the wallet data created", transactionData);
+      // console.log("this is the wallet data created", transactionData);
 
       //   {
       //     "id": "668f82acdfb64b86fd862474",
@@ -144,7 +144,7 @@ const page = () => {
     const fetchUpdatedImage = async () => {
       const newData = await getUserById(user?.id);
       setUserImage(newData?.image);
-      console.log("this is the new data", newData);
+      // console.log("this is the new data", newData);
     };
     fetchUpdatedImage();
   }, []);
@@ -165,7 +165,7 @@ const page = () => {
   const fetchUpdatedImage = async () => {
     const newData = await getUserById(user?.id);
     setUserImage(newData?.image);
-    console.log("this is the new data", newData);
+    // console.log("this is the new data", newData);
 
     toast({
       title: "Updated Profile Image",
@@ -233,9 +233,9 @@ const page = () => {
     }).format(amount);
   };
 
-  console.log("this is the user", user);
+  // console.log("this is the user", user);
   // console.log("All Address: ", alladdress);
-  console.log("All User Cards: ", AllUserCards);
+  // console.log("All User Cards: ", AllUserCards);
 
   const {
     register: registerPayment,
@@ -396,7 +396,7 @@ const page = () => {
     });
     setSelectedAddress(address);
 
-    console.log("Selected Address: ", selectedAddress?.id);
+    // console.log("Selected Address: ", selectedAddress?.id);
     // alert(`Your Shipping Address is: ${formatAddress(address)}`);
   };
 

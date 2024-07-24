@@ -45,7 +45,7 @@ const handleClickOutside = (event: MouseEvent) => {
   }, [isOpen]);
 
   const handleOptionClick = (option: String) => {
-    console.log(`You clicked ${option}`);
+    // console.log(`You clicked ${option}`);
     setIsOpen(false);
 
     switch(option) {

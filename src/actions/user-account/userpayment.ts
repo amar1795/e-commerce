@@ -46,7 +46,7 @@ export async function userCheckoutPayment(userId: string, paymentDetails: z.infe
    const paymentRecord= await handlePaymentInfo({ userId, paymentMode: "CARD", cardDetails: {...UserCardDetails} });
     
 
-    console.log('Payment processed successfully', paymentRecord);
+    // console.log('Payment processed successfully', paymentRecord);
 
     return {paymentRecord, success: "Payment processed successfully" };
   } catch (error) {

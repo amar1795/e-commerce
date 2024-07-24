@@ -29,7 +29,7 @@ const WishlistedProductCard: React.FC<updatedDataResponse> = ({ product,setData 
   const user = useCurrentUser();
   const [url, setUrl] = useState("");
 
-console.log("this is the product",product)
+// console.log("this is the product",product)
  
 
   const handleRemoveClick = async (userId, productId) => {
@@ -46,7 +46,7 @@ console.log("this is the product",product)
   useEffect(() => {
     const fetchData = async () => {
       const data = await getProductDetailsByID(product.id);
-      console.log("this is the fetched data", data);
+      // console.log("this is the fetched data", data);
       if (data) {
         let { parentCategory, topmostParentCategory } = data?.parentCategoryIds;
 
@@ -57,7 +57,7 @@ console.log("this is the product",product)
 
         const cleanedCategory0 = parentCategory.replace(/\s+/g, "");
         const testUrl = `/categories/${topmostParentCategory}/${cleanedCategory0}/${productId}`;
-        console.log("this is the test url", testUrl);
+        // console.log("this is the test url", testUrl);
         setUrl(testUrl);
       }
     };

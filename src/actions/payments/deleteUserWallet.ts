@@ -7,7 +7,7 @@ import { revalidatePath } from "next/cache";
 export default async function deleteWallet() {
     const userSession = await auth();
     const userId = userSession?.user?.id;
-    console.log("User ID:", userId);
+    // console.log("User ID:", userId);
   try {
     // Fetch the wallet for the user
     const wallet = await prismadb.wallet.findFirst({
@@ -28,7 +28,7 @@ export default async function deleteWallet() {
       }
     });
 
-    console.log("Wallet Deleted:", wallet);
+    // console.log("Wallet Deleted:", wallet);
     revalidatePath('/');
     return { success: true, message: "Wallet and transactions deleted successfully." };
   } catch (error) {

@@ -8,7 +8,7 @@ interface Product {
 }
 
 export async function fetchSingleProduct(productId: string, cartQuantity: number = 1){
-  console.log("Fetching product:", productId);
+  // console.log("Fetching product:", productId);
   try {
     // Fetch product details for the given productId
     const product = await prismadb.product.findUnique({

@@ -36,7 +36,7 @@ export async function searchProductsByNameOrBrand(searchTerm) {
       
     });
 
-    console.log("Search results:", products);
+    // console.log("Search results:", products);
     return products;
   } catch (error) {
     console.error("Error searching for products:", error);

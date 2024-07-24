@@ -26,7 +26,7 @@ export async function processOrder({
   
 }) {
   // need to pass the card ID/wallet ID as well from here and the payment mode as well
-  console.log("Process order function is being called ");
+  // console.log("Process order function is being called ");
   try {
     const userSession = await auth();
     const user = userSession?.user?.id;
@@ -39,7 +39,7 @@ export async function processOrder({
 
     const productData = data?.products;
 
-    console.log("Product data is ", productData);
+    // console.log("Product data is ", productData);
     if (!productData || productData.length === 0) {
       throw new Error("No products found in the cart");
     }

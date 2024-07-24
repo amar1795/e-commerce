@@ -38,7 +38,7 @@ const page = () => {
   const [orderItems, setOrderItems] = useState([]);
   const [deliveryDate, setDeliveryDate] = useState([]);
 
-  console.log("this is hte delviery Date ", deliveryDate);
+  // console.log("this is hte delviery Date ", deliveryDate);
   const user = useCurrentUser();
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const page = () => {
           setOrderData(orderData?.order);
           setOrderItems(orderData?.order?.orderItems);
           setDeliveryDate(getRandomFutureDate(orderData?.order?.createdAt));
-          console.log("this is the orderData ", orderData?.order);
+          // console.log("this is the orderData ", orderData?.order);
         }
       } else {
         // this needs to be used in if block

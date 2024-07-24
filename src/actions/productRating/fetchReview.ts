@@ -29,7 +29,7 @@ export async function fetchReview({
       },
     });
 
-    console.log("This is the Existing review:", existingReview);
+    // console.log("This is the Existing review:", existingReview);
     if (existingReview) {
       // User has already created a review for this product
       return {

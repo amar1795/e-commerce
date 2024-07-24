@@ -33,7 +33,7 @@ export async function fetchAllCartCookieData() {
             count++;
           });
     
-          console.log("fetchAllCartCookieData is being called",count);
+          // console.log("fetchAllCartCookieData is being called",count);
 
           revalidatePath("/");
         return  { mergedData, total, count };

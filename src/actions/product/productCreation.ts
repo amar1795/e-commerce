@@ -59,7 +59,7 @@ export async function productReviewCreation() {
             await createProductReview(productId);
         }
         
-        console.log("Product reviews created successfully!");
+        // console.log("Product reviews created successfully!");
     } catch (error) {
         console.error("Error creating product reviews:", error);
     } finally {
