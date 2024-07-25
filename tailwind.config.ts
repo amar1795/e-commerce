@@ -16,9 +16,15 @@ const config = {
       padding: "2rem",
       screens: {
         "2xl": "1400px",
+        
       },
     },
-    extend: { fontFamily: {
+    extend: {screens: {
+      'below-1319': {'max': '1318px'},
+      'below-900': {'max': '899px'},
+      'below-700': {'max': '805px'},
+      'below-695': {'max': '695px'},
+    }, fontFamily: {
       sans: ["var(--font-sans)", ...fontFamily.sans],
       
     },

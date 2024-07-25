@@ -128,8 +128,8 @@ const CheckoutProductCard = ({
       ?.quantity || 0;
 
   return (
-    <div>
-      <div className=" border-2 border-black border-b-8 border-r-4  overflow-hidden">
+    <div className=" flex justify-center">
+      <div className="below-695:w-[30rem] border-2 border-black border-b-8 border-r-4  overflow-hidden">
         <div className=" overflow-hidden flex justify-between bg-opacity-20 backdrop-blur-lg border border-white/30 bg-white  ">
           <div className=" flex">
             <div>
@@ -145,25 +145,25 @@ const CheckoutProductCard = ({
             </Link>
             </div>
             <div className=" price py-4">
-              <h1 className=" self-center px-2  text-[1.2rem] ">
+              <h1 className=" self-center px-2  text-[1.2rem] below-695:text-[1rem] ">
                 <span className=" font-bold ">NAME:</span>{" "}
                 {product?.name.length > 36
                   ? product?.name.slice(0, 40) + "..."
                   : product?.name}
               </h1>
-              <h1 className="  px-2 text-[1.2rem] uppercase">
+              <h1 className="  px-2 text-[1.2rem]  below-695:text-[1rem] uppercase">
                 <span className=" font-bold">BRAND : </span>
                 {product?.brand?.name}
               </h1>
 
               {product?.cartItems && product?.cartItems[0]?.productSize ? (
-                <div className="  px-2 text-[1.2rem] uppercase flex self-center">
+                <div className="  px-2 text-[1.2rem]  below-695:text-[1rem] uppercase flex self-center">
                   <span className=" font-bold self-center">SIZE:</span>
                   {/* {product?.cartItems[0]?.productSize} */}
                   {/* <SelectionSizeBox size={product?.cartItems[0]?.productSize} color={product?.cartItems[0]?.productColour} /> */}
                   <SelectionSizeBox size={size} color={color} />
                 </div>
-              ) : ( <div className="  px-2 text-[1.2rem] uppercase flex self-center">
+              ) : ( <div className="  px-2 text-[1.2rem]  below-695:text-[1rem] uppercase flex self-center">
                 <span className=" font-bold self-center">SIZE:</span>
                 {/* {product?.cartItems[0]?.productSize} */}
                 {/* <SelectionSizeBox size={product?.cartItems[0]?.productSize} color={product?.cartItems[0]?.productColour} /> */}
@@ -171,7 +171,7 @@ const CheckoutProductCard = ({
               </div>)}
 
               {product?.cartItems && product?.cartItems[0]?.productColour ? (
-                <div className="  px-2 text-[1.2rem] uppercase flex self-center">
+                <div className="  px-2 text-[1.2rem]  below-695:text-[1rem] uppercase flex self-center">
                   <span className=" font-bold mt-1">COLOUR:</span>
                   {/* {product?.cartItems[0]?.productColour} */}
                   {/* when the user is signed in */}
@@ -190,7 +190,7 @@ const CheckoutProductCard = ({
                 
                 <div>
                 <div className="box flex pr-4 px-2">
-                  <span className=" font-bold text-[1.2rem]">QUANTITY :</span>
+                  <span className=" font-bold text-[1.2rem]  below-695:text-[1rem]">QUANTITY :</span>
                 <button className=" pr-2  hover:bg-gray-200 pl-1">
                   <Minus
                     size={20}
@@ -198,8 +198,8 @@ const CheckoutProductCard = ({
                     }
                   />
                 </button>
-                <div className=" text-[1.5rem] w-7  h-[2rem]">
-                  <div className=" px-2  ">{product?.cartQuantity}</div>
+                <div className=" text-[1.5rem]  below-695:text-[1rem] w-7  h-[2rem]">
+                  <div className=" px-2 below-695:pt-1 ">{product?.cartQuantity}</div>
                   {/* <div className=" px-2  ">{tempQuantity}</div> */}
                   {/* <div className=" px-2  ">{testQuantity}</div> */}
                 </div>
@@ -219,7 +219,7 @@ const CheckoutProductCard = ({
           <div className="  w-[6rem] px-2 self-center h-[5rem]  mr-10">
             <div className="">
               <div className=" flex self-center py-2 ">
-                <h1 className=" text-[1.3rem] self-center">
+                <h1 className=" text-[1.3rem]  below-695:text-[1rem] self-center">
                   {product?.discountedPrice.toLocaleString("en-IN", {
                     style: "currency",
                     currency: "INR",
@@ -234,7 +234,7 @@ const CheckoutProductCard = ({
                   className="transform transition-transform duration-300 hover:scale-110"
                   onClick={() => handleClickDelete(user?.id, product?.id)}
                 >
-                  <Trash2 size={30} strokeWidth={1.5}  />
+                  <Trash2 className=" below-695:w-6 below-695:h-6 w-8 h-8" strokeWidth={1.5}  />
                 </button>
               </div>
             </div>

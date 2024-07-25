@@ -14,10 +14,11 @@ const ColourBox = ({color}) => {
       });
 
   return (
-    <div>
+    <div className="m-1">
       <div
-            style={circleStyle() }
-          ></div>
+        className={`inline-block  w-8 h-8 below-695:w-5  below-695:h-5 border-2 border-black cursor-pointer`}
+        style={{ backgroundColor: color }}
+      ></div>
     </div>
   )
 }

@@ -1,6 +1,10 @@
 import React from 'react'
 
 const SelectionSizeBox = ({size,color}) => {
+   // Determine Tailwind classes based on size
+   const sizeClasses = size?.includes("Kids") || size?.includes("One")
+   ? 'text-sm w-8 h-8'
+   : 'text-[2rem] w-12 h-12';
 
   const sizeAbbreviations = {
     Small: "S",
@@ -62,12 +66,16 @@ const SelectionSizeBox = ({size,color}) => {
         },
       });
   return (
-    <div>
+    <div className="flex justify-center items-center m-2">
       <div
-              style={circleStyle(size)}
-            >
-              { sizeAbbreviations[size] || size && size[0]?.toUpperCase()}
-            </div>
+      style={{ backgroundColor: color }}
+        className={`inline-flex justify-center items-center =  border-2 border-black
+          ${sizeClasses}
+          bg-[${color}]-500 text-[#20c6c6]
+          hover:bg-yellow-400 below-695:w-8  below-695:h-8 below-695:text-[1.3rem] `} // Adjust hover color as needed
+      >
+        {sizeAbbreviations[size] || (size && size[0]?.toUpperCase())}
+      </div>
     </div>
   )
 }

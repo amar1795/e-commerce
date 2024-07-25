@@ -84,49 +84,7 @@ const page = () => {
 
   const [total, setTotal] = useState(0);
 
-  // fethcing the cookies Data
-  // useEffect(() => {
-  //   async function getCookiesData() {
-  //     // alert("get cookies data is being called")
-  //     const cookieData = await getCartDataFromCookies();
-  //     const completedata = await fetchMultipleProducts(
-  //       cookieData.map((product) => product.id)
-  //     );
-  //     // Merge cartQuantity from cookies into completedata
-  //     const mergedData = completedata.map((product) => {
-  //       const cookieProduct = cookieData.find((item) => item.id === product.id);
-  //       if (cookieProduct) {
-  //         return { ...product, cartQuantity: cookieProduct.cartQuantity };
-  //       }
-  //       return product;
-  //     });
-
-  //     setCartCookieProducts(mergedData);
-  //     console.log("this is the cookie data", mergedData);
-  //     setCompleteMergedupdatedProducts(mergedData);
-
-  //     console.log("this is the merged data", mergedData);
-  //     // Calculate total amount and product count
-  //     let total = 0;
-  //     let count = 0;
-
-  //     cookieData.forEach((product) => {
-  //       const price = product.discountedPrice || 0;
-  //       const quantity = product.cartQuantity || 0;
-  //       total += price * quantity;
-  //       count++;
-  //     });
-
-  //     // setTotalCookieAmount(total);
-  //     setMergedTotalAmount(total);
-  //     // alert("merged total amount is being called")
-  //     // alert("setTotalCookieAmount" + total)
-  //     // setProductCookieCount(count);
-  //     setMergedTotalCount(count);
-  //   }
-
-  //   getCookiesData();
-  // }, [updateTrigger, fetchnewTotal]);
+  
 
   useEffect(() => {
     async function getCookiesData() {
@@ -507,14 +465,17 @@ const page = () => {
   // console.log("this is the summary data", summaryData);
 
   return (
-    <div className="  border-2 border-black overflow-hidden ">
-      <div className=" bg-teal-600  px-5 py-5">
+    <div>
+
+   
+    <div className=" below-1319:mt-[12rem] below-900:mt-[15rem] border-2 border-black overflow-hidden ">
+      <div className=" bg-teal-600 px-5 py-5">
         <div>
-          <h1 className=" text-[4rem] leading-none ">SHOPPING CART</h1>
+          <h1 className=" text-[4rem] leading-none below-700:text-[2.5rem] ">SHOPPING CART</h1>
           <div className=" flex">
 
           <div className=" h-[4rem]">
-            <h3 className="w-80 text-[2rem] leading-none p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
+            <h3 className="w-80 below-700:w-40 text-[2rem] leading-none p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 below-700:text-[1rem] ">
               TOTAL ITEMS ({mergedTotalCount})
             </h3>
           </div>
@@ -522,11 +483,11 @@ const page = () => {
             mergedTotalCount > 0 && (<div className=" h-[4rem] ml-5">
               <button
                 type="submit"
-                className="w-60 text-[2rem] leading-none p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-red-600 "
+                className="w-60 text-[2rem] below-700:text-[1rem] below-700:w-40 leading-none p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-red-600 "
                 onClick={() => handleClickDeleteAll(user?.id)}
               >
-                <h1 className="  uppercase">{"Clear All"} </h1>
-                    <X size={35} />
+                <h1 className="  uppercase ">{"Clear All"} </h1>
+                    <X  className=" below-700:w-4 below-700:h-4 w-8 h-8" />
               </button>
             </div>)
           }
@@ -534,10 +495,10 @@ const page = () => {
           </div>
 
 
-          <div className=" w-[15rem]">
-            <div className=" text-[2rem] leading-none  border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
-              <div className=" flex self-center py-2  h-[3.5rem]">
-                <h1 className=" text-[2rem] self-center leading-none">
+          <div className=" w-[15rem] below-700:w-40">
+            <div className=" text-[2rem] below-700:text-[1rem] leading-none  border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 ">
+              <div className=" flex self-center py-2   h-[3.5rem] below-700:h-[2rem]">
+                <h1 className=" self-center leading-none">
                   {total?.toLocaleString("en-IN", {
                     style: "currency",
                     currency: "INR",
@@ -551,7 +512,7 @@ const page = () => {
 
       {/* if the user is signed in */}
       {
-        <div className=" bg-orange-300 flex justify-around px-30 py-4">
+        <div className=" bg-orange-300 flex justify-around px-30 py-4 flex-wrap-reverse">
           <div>
             <div>
               <div className=" px-4 py-4 mt-2 w-[40rem] flex-1 ">
@@ -579,11 +540,11 @@ const page = () => {
               </div>
             </div>
           </div>
-          <div className=" w-[45rem]  border-b-8 border-r-4 border-2 border-black  mt-6">
+          <div className=" w-[45rem] below-700:w-[38rem]  border-b-8 border-r-4 border-2 border-black  mt-6">
             <div className="   bg-opacity-20 backdrop-blur-lg border border-white/30 bg-white">
-              <div className=" px-4 py-4  ">
-                <div className=" h-[4rem] pl-6 mb-8">
-                  <h3 className=" text-[2rem] leading-none p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
+              <div className=" px-4 py-4   ">
+                <div className=" h-[4rem] pl-6 mb-8  flex justify-center ">
+                  <h3 className=" text-[2rem] below-700:w-40  below-700:text-[1rem] leading-none p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 uppercase">
                     Order Summary
                   </h3>
                 </div>
@@ -592,23 +553,23 @@ const page = () => {
                   <div className="orderSummary">
                     <div className=" flex justify-between ">
                       <div className=" w-[26rem]">
-                        <h1 className=" self-center  text-[1.2rem] font-bold">
+                        <h1 className=" self-center below-700:text-[1rem]   text-[1.2rem] font-bold">
                           {" "}
                           {item.name.length > 36
                             ? item.name.slice(0, 35) + "..."
                             : item.name}
                         </h1>
                       </div>
-                      <span className=" flex  self-center   w-[4rem]  justify-between">
+                      <span className=" flex  self-center   w-[4rem]  justify-between below-700:pr-4">
                         <div className=" self-center">
                           <X />
                         </div>{" "}
-                        <h1 className=" text-[1.5rem] ">{item.cartQuantity}</h1>
+                        <h1 className=" text-[1.5rem] below-700:text-[1rem] ">{item.cartQuantity}</h1>
                         {/* <h1 className=" text-[1.5rem] ">{testQuantity}</h1> */}
                       </span>
 
                       <div className=" flex self-center py-2  w-[10rem]">
-                        <h1 className=" text-[1.3rem] self-center">
+                        <h1 className=" text-[1.3rem] below-700:text-[1rem] self-center">
                           {(
                             item.discountedPrice * item.cartQuantity
                           )?.toLocaleString("en-IN", {
@@ -623,12 +584,12 @@ const page = () => {
 
                 <div></div>
                 <div className=" flex justify-between px-12 ">
-                  <h1 className=" self-center text-[1.5rem] uppercase font-bold">
+                  <h1 className=" self-center text-[1.5rem] below-700:text-[1rem] uppercase font-bold">
                     Delivery
                   </h1>
 
                   <div className=" flex self-center py-2   mr-12">
-                    <h1 className=" text-[1.3rem] self-center font-bold ">
+                    <h1 className=" text-[1.3rem] below-700:text-[1rem] uppercase self-center font-bold ">
                       Free
                     </h1>
                   </div>
@@ -637,12 +598,12 @@ const page = () => {
 
                 <div className=" border-b-2 border-black "></div>
                 <div className=" flex justify-between py-8 px-8 ">
-                  <h1 className=" self-center font-bold text-[2rem] uppercase">
+                  <h1 className=" self-center font-bold text-[2rem] below-700:text-[1.2rem] uppercase">
                     Total
                   </h1>
 
                   <div className=" flex self-center py-2 font-bold">
-                    <h1 className=" text-[1.3rem] self-center">
+                    <h1 className=" text-[1.3rem] below-700:text-[1rem] self-center">
                       {total?.toLocaleString("en-IN", {
                         style: "currency",
                         currency: "INR",
@@ -675,16 +636,16 @@ const page = () => {
         {
            mergedTotalCount > 0 && (
         <div className=" bg-teal-600 min-h-[37rem] ">
-          <div className="px-5">
-            <div className=" pt-10 mb-8 ">
+          <div className="">
+            <div className=" pt-10 mb-8 px-5">
               <h3 className="w-[20rem] text-[2rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
                 Related Products
               </h3>
             </div>
       { (
 
-            <div className=" flex  flex-wrap pl-3">
-              <div className=" pr-10 py-4 flex  flex-wrap">
+            <div className=" flex  flex-wrap pl-3 below-900:pl-0  ">
+              <div className=" pr-10 py-4 flex  flex-wrap  below-900:pr-0 below-900:py-0 ">
                 {
                   updatedProductsLoading ? (<div className=" w-[100vw] bg-teal-600 min-h-[30rem] px-5 flex  items-center justify-center">
                     <LoadingAnimation />
@@ -714,6 +675,8 @@ const page = () => {
         </div>
         )
       }
+    </div>
+
     </div>
   );
 };

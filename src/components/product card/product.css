@@ -74,11 +74,12 @@
       transform: translateY(0);
     }
   }
-
+/* 
   .RelatedProductImageCard{
-    /* position: relative; */
     height: 19rem;
-  }
+  } */
+
+
   .RelatedProductDetails{
     height: 8rem;
     overflow: hidden;
