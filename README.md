@@ -6,6 +6,7 @@ Hey everyone! This is my first self-coded, 0-to-completion E-commerce project, a
 
 ## here is the link to the previous repo https://github.com/amar1795/PROJECTS-
 
+## Please use Temporary emails if you do not want to use your email by going in here https://temp-mail.org/en/ and use this for creating your account
 
 ## Tech Stack
 
@@ -44,8 +45,6 @@ CLOUDINARY_API_SECRET=
 STRIPE_API_KEY=
 
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
-
-RESEND_API_KEY=
 
 VERIFICATION_PUBLIC_KEY=
 
