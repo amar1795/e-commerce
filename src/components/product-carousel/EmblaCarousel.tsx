@@ -241,7 +241,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   return (
     <section className="ProductEmbla_product">
       <div className="embla__viewport_product" ref={emblaRef}>
-        <div className="Product_embla__container">
+        <div className="Product_embla__container below-868 ">
           {!products ? (
             <>
               {slides.map((index) => (
@@ -332,7 +332,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                       >
                         <div className="embla__slide__number__product bg-yellow-500">
                           <div className="flex flex-col justify-center self-center h-full">
-                            <h1 className="text-[3rem] italic pl-5">
+                            <h1 className="text-[3rem] italic pl-5 below-700:text-[1rem]">
                               See More in {category} Categories
                             </h1>
                           </div>

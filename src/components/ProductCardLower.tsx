@@ -217,28 +217,28 @@ const ProductCardLower = ({ product, theme, formatPrice, callToast }) => {
               theme === "dark" ? "bg-black text-white" : "bg-white text-black"
             }`}
           >
-            <div>{product?.brand?.name}</div>
-            <div className="font-extralight text-lg">
-              {product.name.length > 36
+            <div className="below-868:text-[1.2rem]">{product?.brand?.name}</div>
+            <div className="font-extralight text-lg below-700:text-[0.8rem]">
+              {product.name.length > 30
                 ? product.name.slice(0, 30) + "..."
                 : product.name}
             </div>
-            <div>{formatPrice(product.price)}</div>
+            <div className="below-868:text-[1rem]">{formatPrice(product.price)}</div>
             {/* <Link href={`/cart`}> */}
 
             {product.cartQuantity || itemInCart ? (
               <button className="buynow" onClick={handleremove}>
                 <div>
-                  <ShoppingCart size={30} />
+                  <ShoppingCart className=" below-868:w-4 below-700:h-4 w-8 h-8" />
                 </div>
                 <div className="text-sm px-1">Remove </div>
               </button>
             ) : (
               <button className="buynow" onClick={handleConfirm}>
                 <div>
-                  <ShoppingCart size={30} />
+                  <ShoppingCart className=" below-868:w-4 below-700:h-4 w-8 h-8"/>
                 </div>
-                <div className="text-sm px-1">Add to Cart </div>
+                <div className="text-sm px-1 below-868:text-[0.5rem]">Add to Cart </div>
               </button>
             )}
 

@@ -41,7 +41,7 @@ export default async function Home() {
         <div className="">
           <div className=" my-12 ">
             <div className=" h-[4rem] mb-[2rem]">
-              <h1 className="w-80  text-[2rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4  bg-yellow-500">
+              <h1 className="w-80  text-[2rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4  bg-yellow-500 below-700:text-[1rem]">
                 Mens Collection
               </h1>
             </div>
@@ -54,7 +54,8 @@ export default async function Home() {
           </div>
           <div className=" my-12">
             <div className=" h-[4rem] mb-[2rem]">
-              <h1 className="w-[25rem]  text-[2rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4  bg-yellow-500">
+              <h1 className="w-[25rem]  text-[2rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4  bg-yellow-500
+              below-700:text-[1rem]">
                 Womens Collection
               </h1>
             </div>
@@ -67,7 +68,8 @@ export default async function Home() {
           </div>
           <div className=" my-12 mb-4">
             <div className=" h-[4rem] mb-[2rem]">
-              <h1 className="w-80  text-[2rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4  bg-yellow-500">
+              <h1 className="w-80  text-[2rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4  bg-yellow-500
+              below-700:text-[1rem]">
                 Kids Collection
               </h1>
             </div>
