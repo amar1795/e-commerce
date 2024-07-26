@@ -91,7 +91,7 @@ const Uppernav = ({ mensCollectionData, cartCountData }) => {
       </div>
 
       {/* tablet view */}
-      <div className="w-full h-[9rem] bg-white bg-opacity-[80px] backdrop-blur-lg border border-white/30   items-center hidden below-1319:flex below-1319:flex-col below-1319:pt-[4rem]   below-1319:h-[12rem] below-600:hidden">
+      <div className="w-full h-[9rem] bg-white bg-opacity-[80px] backdrop-blur-lg    items-center hidden below-1319:flex below-1319:flex-col below-1319:pt-[4rem]   below-1319:h-[12rem] below-600:hidden">
         <div className=" flex ">
           <div className=" mr-5">
             <CustomInput />
@@ -159,7 +159,7 @@ const Uppernav = ({ mensCollectionData, cartCountData }) => {
       </div>
 
       {/* mobile view */}
-      <div className="w-full h-[9rem] bg-red-500 bg-opacity-[80px] backdrop-blur-lg border border-white/30   items-center hidden below-600:flex below-600:flex-col below-600:h-[12rem] below-600:mt-[10rem]">
+      <div className="w-full h-[9rem] bg-red-500 bg-opacity-[80px] backdrop-blur-lg    items-center hidden below-600:flex below-600:flex-col below-600:h-[12rem] below-600:mt-[10rem]">
         <div className=" flex  ">
           <div className=" mr-5">
             <CustomInput />

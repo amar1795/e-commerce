@@ -72,7 +72,7 @@ const SelectionSizeBox = ({size,color}) => {
         className={`inline-flex justify-center items-center =  border-2 border-black
           ${sizeClasses}
           bg-[${color}]-500 text-[#20c6c6]
-          hover:bg-yellow-400 below-695:w-8  below-695:h-8 below-695:text-[1.3rem] `} // Adjust hover color as needed
+          hover:bg-yellow-400 below-700:w-8  below-700:h-8 below-700:text-[1.3rem] below-590:h-6 below-590:w-6  `} // Adjust hover color as needed
       >
         {sizeAbbreviations[size] || (size && size[0]?.toUpperCase())}
       </div>

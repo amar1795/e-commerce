@@ -209,6 +209,25 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
+
+
+@media (max-width: 805px) {
+  .embla__button_product {
+    width: 2.5rem;
+  height: 2.5rem;
+  }
+}
+
+
+@media (max-width: 435px) {
+  .embla__button_product {
+    width: 2rem;
+  height: 2rem;
+  }
+}
+
+
+
 .embla__button_product:disabled {
   color: var(--detail-high-contrast);
 }

@@ -469,12 +469,12 @@ const page = () => {
 
    
     <div className=" below-1319:mt-[12rem] below-900:mt-[15rem] border-2 border-black overflow-hidden ">
-      <div className=" bg-teal-600 px-5 py-5">
-        <div>
-          <h1 className=" text-[4rem] leading-none below-700:text-[2.5rem] ">SHOPPING CART</h1>
-          <div className=" flex">
+      <div className=" bg-teal-600 px-5 py-5 ">
+        <div className=" below-378:flex below-378:flex-col below-378:items-center">
+          <h1 className=" text-[4rem] leading-none below-700:text-[2.5rem] below-378:text-[2rem] ">SHOPPING CART</h1>
+          <div className=" flex below-378:flex-col   ">
 
-          <div className=" h-[4rem]">
+          <div className=" h-[4rem] ">
             <h3 className="w-80 below-700:w-40 text-[2rem] leading-none p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 below-700:text-[1rem] ">
               TOTAL ITEMS ({mergedTotalCount})
             </h3>
@@ -483,7 +483,7 @@ const page = () => {
             mergedTotalCount > 0 && (<div className=" h-[4rem] ml-5">
               <button
                 type="submit"
-                className="w-60 text-[2rem] below-700:text-[1rem] below-700:w-40 leading-none p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-red-600 "
+                className="w-60 text-[2rem] below-700:text-[1rem] below-700:w-40 leading-none p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-red-600  below-566:w-32"
                 onClick={() => handleClickDeleteAll(user?.id)}
               >
                 <h1 className="  uppercase ">{"Clear All"} </h1>
@@ -512,10 +512,10 @@ const page = () => {
 
       {/* if the user is signed in */}
       {
-        <div className=" bg-orange-300 flex justify-around px-30 py-4 flex-wrap-reverse">
-          <div>
-            <div>
-              <div className=" px-4 py-4 mt-2 w-[40rem] flex-1 ">
+        <div className=" bg-orange-300 flex justify-around px-30 py-4 flex-wrap-reverse ">
+          <div className=" ">
+            <div className="">
+              <div className=" px-4  mt-2 w-[40rem] flex-1 below-600:w-[30rem]   ">
                 
                  {  loading ? (
                     <div className=" flex items-center justify-center">
@@ -540,7 +540,7 @@ const page = () => {
               </div>
             </div>
           </div>
-          <div className=" w-[45rem] below-700:w-[38rem]  border-b-8 border-r-4 border-2 border-black  mt-6">
+          <div className=" w-[45rem] below-700:w-[38rem]  below-695:w-[30rem] below-566:w-[20rem]  below-378:w-[18rem] border-b-8 border-r-4 border-2 border-black  mt-6">
             <div className="   bg-opacity-20 backdrop-blur-lg border border-white/30 bg-white">
               <div className=" px-4 py-4   ">
                 <div className=" h-[4rem] pl-6 mb-8  flex justify-center ">
@@ -553,23 +553,23 @@ const page = () => {
                   <div className="orderSummary">
                     <div className=" flex justify-between ">
                       <div className=" w-[26rem]">
-                        <h1 className=" self-center below-700:text-[1rem]   text-[1.2rem] font-bold">
+                        <h1 className=" self-center below-700:text-[1rem] below-566:text-[0.8rem]  text-[1.2rem] font-bold">
                           {" "}
-                          {item.name.length > 36
+                          {item.name.length > 30
                             ? item.name.slice(0, 35) + "..."
                             : item.name}
                         </h1>
                       </div>
                       <span className=" flex  self-center   w-[4rem]  justify-between below-700:pr-4">
                         <div className=" self-center">
-                          <X />
+                          <X  className=" below-566:w-4 below-566:h-4 w-8 h-8"/>
                         </div>{" "}
-                        <h1 className=" text-[1.5rem] below-700:text-[1rem] ">{item.cartQuantity}</h1>
+                        <h1 className=" text-[1.5rem] below-700:text-[1rem] below-566:text-[0.8rem] ">{item.cartQuantity}</h1>
                         {/* <h1 className=" text-[1.5rem] ">{testQuantity}</h1> */}
                       </span>
 
                       <div className=" flex self-center py-2  w-[10rem]">
-                        <h1 className=" text-[1.3rem] below-700:text-[1rem] self-center">
+                        <h1 className=" text-[1.3rem] below-700:text-[1rem] below-566:text-[0.8rem] self-center">
                           {(
                             item.discountedPrice * item.cartQuantity
                           )?.toLocaleString("en-IN", {
@@ -583,13 +583,13 @@ const page = () => {
                 ))}
 
                 <div></div>
-                <div className=" flex justify-between px-12 ">
-                  <h1 className=" self-center text-[1.5rem] below-700:text-[1rem] uppercase font-bold">
+                <div className=" flex justify-between px-12 below-566:px-0 ">
+                  <h1 className=" self-center text-[1.5rem] below-700:text-[1rem] below-566:text-[0.8rem] uppercase font-bold">
                     Delivery
                   </h1>
 
                   <div className=" flex self-center py-2   mr-12">
-                    <h1 className=" text-[1.3rem] below-700:text-[1rem] uppercase self-center font-bold ">
+                    <h1 className=" text-[1.3rem] below-700:text-[1rem] below-566:text-[0.8rem] uppercase self-center font-bold ">
                       Free
                     </h1>
                   </div>
@@ -597,13 +597,13 @@ const page = () => {
                 <div></div>
 
                 <div className=" border-b-2 border-black "></div>
-                <div className=" flex justify-between py-8 px-8 ">
-                  <h1 className=" self-center font-bold text-[2rem] below-700:text-[1.2rem] uppercase">
+                <div className=" flex justify-between py-8 px-8 below-566:px-0  below-566:py-2  ">
+                  <h1 className=" self-center font-bold text-[2rem] below-700:text-[1.2rem] below-566:text-[1rem]  uppercase">
                     Total
                   </h1>
 
                   <div className=" flex self-center py-2 font-bold">
-                    <h1 className=" text-[1.3rem] below-700:text-[1rem] self-center">
+                    <h1 className=" text-[1.3rem] below-700:text-[1rem]  self-center">
                       {total?.toLocaleString("en-IN", {
                         style: "currency",
                         currency: "INR",
@@ -638,13 +638,13 @@ const page = () => {
         <div className=" bg-teal-600 min-h-[37rem] ">
           <div className="">
             <div className=" pt-10 mb-8 px-5">
-              <h3 className="w-[20rem] text-[2rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
+              <h3 className="w-[20rem] text-[2rem] below-378:w-[15rem] below-378:text-[1rem] uppercase leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
                 Related Products
               </h3>
             </div>
       { (
 
-            <div className=" flex  flex-wrap pl-3 below-900:pl-0  ">
+            <div className=" flex  flex-wrap pl-3 below-900:pl-0  below-378:px-[3rem]  ">
               <div className=" pr-10 py-4 flex  flex-wrap  below-900:pr-0 below-900:py-0 ">
                 {
                   updatedProductsLoading ? (<div className=" w-[100vw] bg-teal-600 min-h-[30rem] px-5 flex  items-center justify-center">

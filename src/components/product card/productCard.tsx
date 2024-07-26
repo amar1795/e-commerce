@@ -337,11 +337,11 @@ const ProductCard: React.FC<updatedDataResponse> = ({
       <div className="sembla__slide_product pl-[3rem] below-900:pl-[1rem]     ">
         <div
           className="sembla__slide__number__product flex flex-col relative  w-[18rem]  border-2 border-black border-b-8 border-r-4
-        transition-transform duration-300 ease-in-out hover:scale-110 below-695:h-[20.5rem] below-695:w-[10rem]"
+        transition-transform duration-300 ease-in-out hover:scale-110 below-700:h-[20.5rem] below-700:w-[10rem] "
          >
           {/* top part */}
           <button>
-            <div className="RelatedProductImageCard h-[19rem]  below-695:h-[10rem]  relative ">
+            <div className="RelatedProductImageCard h-[19rem]  below-700:h-[10rem]  relative ">
               <button
                 className={`heartButton z-10 hover:text-red-500`}
                 onClick={() => handleWishlistToggle(user?.id, product.id)}
@@ -376,7 +376,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
           </button>
           <div className=" ">
           {/* middle part */}
-          <div className="below-695:hidden  text-sm flex h-[2rem] justify-between bg-opacity-20 backdrop-blur-lg border border-white/30 ">
+          <div className="below-700:hidden  text-sm flex h-[2rem] justify-between bg-opacity-20 backdrop-blur-lg border border-white/30 ">
             <div className=" bg-gray-200 w-16  ">
               <div className=" flex justify-between px-2 pt-1">
                 <span>{product?.ratings?.averageRating.toFixed(1)}</span>
@@ -412,9 +412,9 @@ const ProductCard: React.FC<updatedDataResponse> = ({
             </div>
           </div>
 
-          <div className=" hidden below-695:flex below-695:justify-between  text-sm bg-pink-600 h-[2rem] justify-between bg-opacity-20 backdrop-blur-lg border border-white/30 ">
+          <div className=" hidden below-700:flex below-700:justify-between  text-sm bg-pink-600 h-[2rem] justify-between bg-opacity-20 backdrop-blur-lg border border-white/30 ">
             <div className=" bg-gray-200 w-16 mr-2  ">
-              <div className=" flex justify-between px-2 pt-1 below-695:text-[0.7rem]">
+              <div className=" flex justify-between px-2 pt-1 below-700:text-[0.7rem]">
                 <span>{product?.ratings?.averageRating.toFixed(1)}</span>
                 <div className=" self-center pl-2">
                   <StarIcon className=" below-700:w-4 below-700:h-4 w-8 h-8" stroke="" fill="black" />
@@ -434,7 +434,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
                   >
                     <Minus className=" below-700:w-4 below-700:h-4 w-8 h-8" />
                   </button>
-                  <div className=" text-[1.5rem] below-695:text-[1rem]  bg-white  h-[2rem]">
+                  <div className=" text-[1.5rem] below-700:text-[1rem]  bg-white  h-[2rem]">
                     <div className=" px-2 py-2 ">{tempquantity || 0}</div>
                   </div>
                   <button
@@ -453,43 +453,43 @@ const ProductCard: React.FC<updatedDataResponse> = ({
 
           {/* Bottom part */}
           <div className="RelatedProductDetails    ">
-            <div className="Relatedcard_slider px-2 pb-5 w-full text-[1.5rem]   flex below-695:flex-col justify-between bg-white bg-opacity-20 backdrop-blur-lg border border-white/30  ">
+            <div className="Relatedcard_slider px-2 pb-5 w-full text-[1.5rem]   flex below-700:flex-col justify-between bg-white bg-opacity-20 backdrop-blur-lg border border-white/30  ">
               <div className="left w-[9rem]  pt-1">
-                <h1 className=" text-[19px] below-695:text-[10px] font-bold">
+                <h1 className=" text-[19px] below-700:text-[10px] font-bold">
                   {product?.brand?.name}
                 </h1>
-                <p className="font-extralight text-[0.9rem] below-695:text-[0.7rem]">
+                <p className="font-extralight text-[0.9rem] below-700:text-[0.7rem]">
                   {" "}
                   {product?.name.length > 30
                     ? product?.name.slice(0, 25) + "..."
                     : product?.name}
                 </p>
-                <div className=" flex  mt-4 below-695:hidden ">
+                <div className=" flex  mt-4 below-700:hidden ">
                   <h1
-                    className=" text-[1.4rem] font-bold below-695:text-[1rem]"
+                    className=" text-[1.4rem] font-bold below-700:text-[1rem]"
                     style={{ textDecoration: "line-through" }}
                   >
                     {product?.price}
                   </h1>
-                  <h1 className=" text-[1.2rem] font-bold ml-2 below-695:text-[0.8rem]">
+                  <h1 className=" text-[1.2rem] font-bold ml-2 below-700:text-[0.8rem]">
                     {formatPrice(product?.discountedPrice?.toFixed(2))}
                   </h1>
-                  <h1 className=" text-[1.2rem] below-695:text-[0.8rem] font-bold ml-2">
+                  <h1 className=" text-[1.2rem] below-700:text-[0.8rem] font-bold ml-2">
                     ({product?.discount}%OFF)
                   </h1>
                 </div>
-                <div className="  mt-4 below-695:flex below-695:justify-between   hidden">
+                <div className="  mt-4 below-700:flex below-700:justify-between   hidden">
                  <div>
                  <h1
-                    className=" text-[1.4rem] font-bold below-695:text-[1rem]"
+                    className=" text-[1.4rem] font-bold below-700:text-[1rem]"
                     style={{ textDecoration: "line-through" }}
                   >
                     {product?.price}
                   </h1>
-                  <h1 className=" text-[1.2rem] font-bold  below-695:text-[0.8rem]">
+                  <h1 className=" text-[1.2rem] font-bold  below-700:text-[0.8rem]">
                     {formatPrice(product?.discountedPrice?.toFixed(2))}
                   </h1>
-                  <h1 className=" text-[1.2rem] below-695:text-[0.8rem] font-bold ">
+                  <h1 className=" text-[1.2rem] below-700:text-[0.8rem] font-bold ">
                     ({product?.discount}%OFF)
                   </h1>
                  </div>
@@ -500,9 +500,9 @@ const ProductCard: React.FC<updatedDataResponse> = ({
                       onClick={handleConfirmCart}
                     >
                       <div>
-                      <ShoppingCart className=" below-695:w-3 below-695:h-3 w-6 h-6" />
+                      <ShoppingCart className=" below-700:w-3 below-700:h-3 w-6 h-6" />
                       </div>
-                      <div className="text-sm   ml-1 below-695:text-[0.4rem]  below-695:px-0 below-695:py-0">Add to Cart</div>
+                      <div className="text-sm   ml-1 below-700:text-[0.4rem]  below-700:px-0 below-700:py-0">Add to Cart</div>
                     </button>
                   </div> 
                  </div>
@@ -527,7 +527,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
                 ))} */}
 
               {product?.cartQuantity || itemInCart ? (
-                <div className="right self-center pb-7 below-695:hidden">
+                <div className="right self-center pb-7 below-700:hidden">
                   <button
                     className="nbutton items-center border-2 border-black   px-2  py-2 justify-between hidden "
                     onClick={handleremove}
@@ -540,29 +540,29 @@ const ProductCard: React.FC<updatedDataResponse> = ({
                 </div>  
               ) : CartRelatedProducts == true ? (
                 <>
-                  <div className="right self-center pb-7 below-695:hidden">
+                  <div className="right self-center pb-7 below-700:hidden">
                     <button
                       className="nbutton items-center border-2 border-black  px-2  justify-between hidden  "
                       onClick={handleConfirmCart}
                     >
                       <div>
-                      <ShoppingCart className=" below-695:w-4 below-695:h-4 w-6 h-6" />
+                      <ShoppingCart className=" below-700:w-4 below-700:h-4 w-6 h-6" />
                       </div>
-                      <div className="text-sm px-3 below-695:text-[0.5rem]  below-695:px-0 below-695:py-0">Add to Cart</div>
+                      <div className="text-sm px-3 below-700:text-[0.5rem]  below-700:px-0 below-700:py-0">Add to Cart</div>
                     </button>
                   </div>
                 </>
               ) : (
                 <>
-                  <div className="right self-center pb-7 below-695:hidden">
+                  <div className="right self-center pb-7 below-700:hidden">
                     <button
                       className="nbutton items-center border-2 border-black  px-2  justify-between hidden "
                       onClick={handleConfirm}
                     >
                       <div>
-                        <ShoppingCart className=" below-695:w-4 below-695:h-4 w-6 h-6" />
+                        <ShoppingCart className=" below-700:w-4 below-700:h-4 w-6 h-6" />
                       </div>
-                      <div className="text-sm px-3 below-695:text-[0.5rem]">Add to Cart</div>
+                      <div className="text-sm px-3 below-700:text-[0.5rem]">Add to Cart</div>
                     </button>
                   </div>
                 </>
