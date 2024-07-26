@@ -43,6 +43,16 @@
   animation-iteration-count: infinite;
 }
 
+.embla__slide__number__product:hover .Mainbuynow {
+  display: flex;
+  animation: fadeIn 0.3s ease-in-out;
+  animation: rainbow 5s infinite;
+  border: 2px solid;
+  animation-name: rainbow;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
 @keyframes rainbow {
   0% {
     color: red;
@@ -108,8 +118,31 @@
   border: 2px solid black;
   /* border-radius: 1rem; */
   padding: 0.5rem;
-  display: none;
+  /* display: none; */
 }
+
+.Mainbuynow {
+  position: absolute;
+  right: 1rem;
+  top: 6rem;
+  display: flex;
+  align-items: center;
+  border: 2px solid black;
+  padding: 0.5rem;
+    display: none;
+
+}
+
+@media (max-width: 805px) {
+  .Mainbuynow {
+    /* min-width: 2rem; */
+    padding: 0.2rem;
+    top: 4rem;
+
+
+  }
+}
+
 
 .embla__slide_product {
   flex: 0 0 var(--slide-size);

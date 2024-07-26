@@ -35,8 +35,6 @@ const ProductCardLower = ({ product, theme, formatPrice, callToast }) => {
       return;
     }
 
-   
-
     settempQuantity((prev) => prev + 1);
 
     // handleQuantityChange(user?.id, data.id, 1)
@@ -169,36 +167,35 @@ const ProductCardLower = ({ product, theme, formatPrice, callToast }) => {
       const userID = user?.id;
       const productID = product.id;
 
-        if (userID) {
-          // alert("delete cart item is being called")
-          deleteCartItem(userID, productID);
-        }
-      
+      if (userID) {
+        // alert("delete cart item is being called")
+        deleteCartItem(userID, productID);
+      }
     }
   };
 
   return (
-    <div >
-      <div className="">
-        <div className="mt-[1.5rem]  text-sm flex justify-between bg-opacity-20 backdrop-blur-lg border border-white/30">
+    <div>
+      <div className=" ">
+        <div className="mt-[1.5rem]  text-sm below-700:text-[0.8rem] flex justify-between bg-opacity-20 backdrop-blur-lg border border-white/30">
           <div className="bg-gray-200 w-16">
             <div className="flex justify-between px-2 pt-1">
               <span>{product?.ratings?.averageRating.toFixed(1)}</span>
               <div className="self-center">
-                <StarIcon size={20} fill="black" />
+                <StarIcon className=" below-700:w-4 below-700:h-4 w-8 h-8" fill="black" />
               </div>
             </div>
           </div>
           <div>
-            <div className="box flex pr-4">
+            <div className="box flex pr-4 ">
               {/* <button className="pr-2 hover:bg-gray-200 pl-1" onClick={() => handleQuantityChange(user?.id, product.id, -1)}> */}
               <button
                 className="pr-2 hover:bg-gray-200 pl-1"
                 onClick={handleDecrease}
               >
-                <Minus size={20} />
+                <Minus className=" below-700:w-4 below-700:h-4 w-8 h-8" />
               </button>
-              <div className="text-[1.5rem] bg-white h-[2rem]">
+              <div className="text-[1.5rem] below-700:text-[1rem] bg-white h-[2rem]">
                 {/* <div className="px-2 py-2">{product.cartQuantity || 0}</div> */}
                 <div className="px-2 py-2">{tempquantity}</div>
               </div>
@@ -206,39 +203,48 @@ const ProductCardLower = ({ product, theme, formatPrice, callToast }) => {
                 className="pl-2 hover:bg-gray-200 pr-1"
                 onClick={handleIncrease}
               >
-                <Plus size={20} />
+                <Plus className=" below-700:w-4 below-700:h-4 w-8 h-8" />
               </button>
             </div>
           </div>
         </div>
-        <div className="ProductDetails ">
+        
+        <div className="ProductDetails   ">
           <div
-            className={`card_slider px-4 pb-5 ${
+            className={`card_slidery px-4  w-full h-[10rem] below-700:h-[7rem] absolute bottom-0 ${
               theme === "dark" ? "bg-black text-white" : "bg-white text-black"
             }`}
           >
-            <div className="below-868:text-[1.2rem]">{product?.brand?.name}</div>
-            <div className="font-extralight text-lg below-700:text-[0.8rem]">
+            <div className="below-868:text-[1.2rem]">
+              {product?.brand?.name}
+            </div>
+            <div className="font-extralight text-lg below-700:text-[0.8rem]  below-700:leading-4">
               {product.name.length > 30
                 ? product.name.slice(0, 30) + "..."
                 : product.name}
             </div>
-            <div className="below-868:text-[1rem]">{formatPrice(product.price)}</div>
+            <div className="below-868:text-[1rem]">
+              {formatPrice(product.price)}
+            </div>
             {/* <Link href={`/cart`}> */}
 
+
+
             {product.cartQuantity || itemInCart ? (
-              <button className="buynow" onClick={handleremove}>
+              <button className="Mainbuynow" onClick={handleremove}>
                 <div>
                   <ShoppingCart className=" below-868:w-4 below-700:h-4 w-8 h-8" />
                 </div>
                 <div className="text-sm px-1">Remove </div>
               </button>
             ) : (
-              <button className="buynow" onClick={handleConfirm}>
+              <button className="Mainbuynow" onClick={handleConfirm}>
                 <div>
-                  <ShoppingCart className=" below-868:w-4 below-700:h-4 w-8 h-8"/>
+                  <ShoppingCart className=" below-868:w-4 below-700:h-4 w-8 h-8" />
                 </div>
-                <div className="text-sm px-1 below-868:text-[0.5rem]">Add to Cart </div>
+                <div className="text-sm px-1 below-868:text-[0.5rem]">
+                  Add to Cart{" "}
+                </div>
               </button>
             )}
 

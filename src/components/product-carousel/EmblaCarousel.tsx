@@ -287,7 +287,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                         
 
                         
-                        <div className="ProductImageCard h-[16rem] over ">
+                        <div className="ProductImageCard h-[16rem] below-700:h-[9rem] over ">
                           <div className="ProductImage bg-red-400 h-full w-full">
                             <div
                               className={`heartButton hover:text-red-500`}
