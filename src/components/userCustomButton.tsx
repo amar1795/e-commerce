@@ -78,19 +78,19 @@ const handleClickOutside = (event: MouseEvent) => {
   return (
     <div className="h-[4rem] relative" ref={dropdownRef}>
       <button
-        className="w-[10rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500"
+        className="w-[10rem] below-400:w-[6rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500"
         onClick={handleButtonClick}
       >
-        <h1 className="font-bold">{buttonName}</h1>
+        <h1 className="font-bold below-400:text-[0.8rem]">{buttonName}</h1>
       </button>
       {isOpen && (
-        <div className="absolute mt-2 w-[10rem]  bg-white border border-black  text-black z-10">
+        <div className="absolute mt-2 w-[10rem] below-400:w-[6rem] bg-white border border-black  text-black z-10">
           <ul>
             
-            <li onClick={() => handleOptionClick('Settings')} className="p-2 hover:bg-gray-200 cursor-pointer flex justify-center">Settings</li>
-            <li onClick={() => handleOptionClick('OrderHistory')} className="p-2 hover:bg-gray-200 cursor-pointer flex justify-center">Order History</li>
-            <li onClick={() => handleOptionClick('Wishlist')} className="p-2 hover:bg-gray-200 cursor-pointer flex justify-center">Wishlist</li>
-             <li onClick={() =>  initiateLogout()} className="p-2 hover:bg-gray-200 cursor-pointer flex justify-center font-bold text-red-800 ">Logout</li>
+            <li onClick={() => handleOptionClick('Settings')} className="p-2 hover:bg-gray-200 cursor-pointer flex justify-center below-400:text-[0.8rem]">Settings</li>
+            <li onClick={() => handleOptionClick('OrderHistory')} className="p-2 hover:bg-gray-200 cursor-pointer flex justify-center below-400:text-[0.8rem] below-400:pl-5 ">Order History</li>
+            <li onClick={() => handleOptionClick('Wishlist')} className="p-2 hover:bg-gray-200 cursor-pointer flex justify-center below-400:text-[0.8rem]">Wishlist</li>
+             <li onClick={() =>  initiateLogout()} className="p-2 hover:bg-gray-200 cursor-pointer flex justify-center font-bold text-red-800 below-400:text-[0.8rem]">Logout</li>
           </ul>
         </div>
       )}

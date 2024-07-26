@@ -59,7 +59,7 @@ const count=data.length;
                 <MainNav mensCollectionData={mensCollectionData} cartCountData={count}/>
               </div>
               <Toaster />
-              <div className=" mt-[8rem] below-1319:mt-[11rem]">
+              <div className=" mt-[8rem] below-1319:mt-[11rem] below-600:mt-[15rem]">
                 {children}
 
                 <MainFooter />

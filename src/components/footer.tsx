@@ -52,19 +52,19 @@ const MainFooter = () => {
           </div>
         ))}
       </div>
-      <div className=' grid grid-cols-3 px-8 pt-4 bg-slate-950 '>
-        <div className=''>
+      <div className=' grid grid-cols-3 px-8 pt-4 bg-slate-950 below-730:flex  below-730:flex-col below-730:items-center '>
+        <div className='below-730:py-2'>
        <p>&copy;PurchasePal {new Date().getFullYear()}.All rights reserved</p>
         </div>
-        <button>
+        <button className='below-730:py-2'>
           Privacy Policy | Terms of Conditions
         </button>
-        <div  className=' flex justify-end'>
-          <Image src="/1.jpg" width={30} height={20} alt="Logo" className=' rounded-md mr-2' />
-          <Image src="/2.jpg" width={30} height={20} alt="Logo" className=' rounded-md mr-2' />
-          <Image src="/3.jpg" width={30} height={20} alt="Logo" className=' rounded-md mr-2' />
-          <Image src="/4.png" width={30} height={20} alt="Logo" className=' rounded-md mr-2' />
-          <Image src="/5.jpg" width={30} height={20} alt="Logo" className=' rounded-md mr-2' />
+        <div  className=' flex justify-end below-730:py-2'>
+          <Image src="/1.jpg" width={30} height={20}  alt="Logo" className=' below-925:h-[2rem] below-925:w-[2rem] h-10 w-[3rem] rounded-md mr-2' />
+          <Image src="/2.jpg" width={30} height={20}  alt="Logo" className=' below-925:h-[2rem] below-925:w-[2rem] h-10 w-[3rem] rounded-md mr-2' />
+          <Image src="/3.jpg" width={30} height={20}  alt="Logo" className=' below-925:h-[2rem] below-925:w-[2rem] h-10 w-[3rem] rounded-md mr-2' />
+          <Image src="/4.png" width={30} height={20}  alt="Logo" className=' below-925:h-[2rem] below-925:w-[2rem] h-10 w-[3rem] rounded-md mr-2' />
+          <Image src="/5.jpg" width={30} height={20}  alt="Logo" className=' below-925:h-[2rem] below-925:w-[2rem] h-10 w-[3rem] rounded-md mr-2' />
         </div>
 
       </div>

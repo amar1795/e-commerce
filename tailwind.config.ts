@@ -22,9 +22,15 @@ const config = {
     extend: {screens: {
       'below-1319': {'max': '1318px'},
       'below-900': {'max': '899px'},
+      'below-925': {'max': '925px'},
       'below-868': {'max': '868px'},
       'below-700': {'max': '805px'},
+      'below-730': {'max': '730px'},
       'below-695': {'max': '695px'},
+      'below-600': {'max': '600px'},
+      'below-566': {'max': '566px'},
+      'below-460': {'max': '460px'},
+      'below-400': {'max': '400px'},
     }, fontFamily: {
       sans: ["var(--font-sans)", ...fontFamily.sans],
       

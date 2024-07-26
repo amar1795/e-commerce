@@ -172,7 +172,8 @@ const CustomInput = () => {
     <div ref={containerRef} className="relative">
       <input
         type="text"
-        className={`w-[40rem]  outline-none bg-white text-black p-2 border-2 border-black   flex self-center justify-center border-b-8 border-r-4 `}
+        className={`w-[40rem] below-695:w-[30rem] below-566:w-[20rem] 
+          below-400:w-[15rem] below-400:text-[0.8rem] outline-none bg-white text-black p-2 border-2 border-black   flex self-center justify-center border-b-8 border-r-4 `}
         placeholder="Search for products,brands and more"
         value={inputValue}
         onChange={handleInputChange}
@@ -180,17 +181,17 @@ const CustomInput = () => {
         onKeyDown={handleKeyDown} // Add this line
       />
       {isDropdownVisible && (
-        <div className="absolute bg-white border border-black w-[40rem] mt-2 z-20 max-h-[30rem] overflow-y-auto">
+        <div className="absolute bg-white border border-black w-[40rem] mt-2 z-20 max-h-[30rem]  below-400:w-[15rem]  overflow-y-auto ">
           {inputValue.trim() === "" ? (
             recentSearches.length > 0 ? (
               <>
-                <div className="p-2 text-red-500 font-bold">
+                <div className="p-2 text-red-500 font-bold below-400:text-[1rem]">
                   Recent Searches
                 </div>
                 {recentSearches.map((search, index) => (
                   <div
                     key={index}
-                    className="p-2 cursor-pointer hover:bg-gray-200 text-red-500"
+                    className="p-2 cursor-pointer hover:bg-gray-200 text-red-500 below-400:text-[0.8rem]"
                     onClick={() =>
                       handleSuggestionClick({
                         suggestion: search,
@@ -203,13 +204,13 @@ const CustomInput = () => {
                 ))}
               </>
             ) : (
-              <div className="p-2 text-gray-500">No recent searches</div>
+              <div className="p-2 text-gray-500 below-400:text-[0.8rem]">No recent searches</div>
             )
           ) : suggestions.length > 0 ? (
             suggestions.map((suggestion, index) => (
               <div
                 key={index}
-                className="p-2 cursor-pointer hover:bg-gray-200"
+                className="p-2 cursor-pointer hover:bg-gray-200 below-400:text-[0.8rem] "
                 onClick={() =>
                   handleSuggestionClick({
                     suggestion: suggestion.name,
@@ -222,7 +223,7 @@ const CustomInput = () => {
               </div>
             ))
           ) : (
-            <div className="p-2 text-gray-500">No products found</div> // Show message when no suggestions
+            <div className="p-2 text-gray-500 below-400:text-[0.8rem] ">No products found</div> // Show message when no suggestions
           )}
         </div>
       )}

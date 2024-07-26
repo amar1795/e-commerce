@@ -88,9 +88,9 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
                         width={1500}
                         layout="responsive"
                         objectFit="fill"
-                        className="rounded-lg"
+                        className="rounded-lg  "
                       />
-                      <div className="absolute w-full h-full bottom-4 left-0 text-white bg-black bg-opacity-40 px-4 py-2 rounded z-10">
+                      <div className="absolute w-full h-full bottom-4 left-0 text-white bg-black bg-opacity-40 px-4 py-2 rounded z-10 ">
                         {/* {poster.label} */}
                       </div>
                     </div>
