@@ -150,6 +150,13 @@
   padding-left: var(--slide-spacing);
 }
 
+@media (max-width: 1920px) {
+  .embla__slide_product {
+    min-width: 0rem;
+ 
+  }
+}
+
 @media (max-width: 868px) {
   .embla__slide_product {
     min-width: 2rem;
@@ -242,6 +249,8 @@
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
+
+
 
 
 @media (max-width: 805px) {

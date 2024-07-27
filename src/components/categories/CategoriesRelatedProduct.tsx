@@ -316,10 +316,10 @@ const CategoriesRelatedProduct: React.FC<CategoriesRelatedProductProps> = ({
   // console.log("this is the updated related products", updatedRelatedProducts);
   return (
     <div>
-      <div className="  bg-teal-600 min-h-[30rem] px-5">
+      <div className="  bg-teal-600 min-h-[30rem] px-5 ">
         {/* <h1 className=" pt-4 pb-4 text-[2rem]">Related products</h1> */}
         {/* relatedProduct */}
-        <div className=" flex  flex-wrap pl-3">
+        <div className=" flex  flex-wrap pl-3 below-460:w-[12rem] ">
           {categoryPageData
             ? updatedRelatedProducts
                 .filter((product) => product.id !== ProductId)

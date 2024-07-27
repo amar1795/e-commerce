@@ -19,6 +19,7 @@ import { LoginSchema } from "@/schemas";
 import { useSearchParams } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import ButtonSpinner from "./button spinner/ButtonSpinner";
+import { signIn } from "next-auth/react";
 
 const Login: React.FC<LoginProps> = ({ toggleView }) => {
   const { toast } = useToast();
@@ -89,6 +90,12 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
       // alert(success);
     }
   }, [error, success]);
+
+  const onClick = (provider: "google" | "github") => {
+    signIn(provider, {
+      callbackUrl: callbackUrl || "/",
+    });
+  }
 
   return (
     <div>
@@ -174,13 +181,13 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
           </p>
         </div>
 
-        {/* <div className=" flex justify-center mt-4">
+        <div className=" flex justify-center mt-4">
           <div className=" border-2 border-gray-600 w-[10rem] h-0 self-center mr-5"></div>
           Or
           <div className=" border-2 border-gray-600  w-[10rem] h-0 ml-5 self-center"></div>
         </div>
         <div className=" flex justify-center">
-          <button className="w-80 p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2">
+          <button className="w-80 p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2"   onClick={() => onClick("google")}>
             <Image
               src="/google.png"
               width={20}
@@ -190,7 +197,7 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
             />
             <h1 className="">Login with Google</h1>
           </button>
-        </div> */}
+        </div>
       </div>
     </div>
   );

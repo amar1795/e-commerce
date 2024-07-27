@@ -17,7 +17,7 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "Category",
+  title: "PurchasesPal",
   description: "Men's clothing",
 };
 
@@ -54,7 +54,10 @@ export default async function RootLayout({
         <MainNav mensCollectionData={mensCollectionData} cartCountData={count}/>
       </div>
       <Toaster />
+      <div className="  below-1319:mt-[4rem] below-600:mt-[5rem]">
+
           {children}
+        </div>
         </ThemeProvider>
       </body>
     </html>

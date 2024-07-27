@@ -464,7 +464,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
                     ? product?.name.slice(0, 25) + "..."
                     : product?.name}
                 </p>
-                <div className=" flex  mt-4 below-700:hidden ">
+                <div className=" flex  mt-4 below-700:hidden  ">
                   <h1
                     className=" text-[1.4rem] font-bold below-700:text-[1rem]"
                     style={{ textDecoration: "line-through" }}
@@ -479,7 +479,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
                   </h1>
                 </div>
                 <div className="  mt-4 below-700:flex below-700:justify-between   hidden">
-                 <div>
+                 <div className=" pb-5">
                  <h1
                     className=" text-[1.4rem] font-bold below-700:text-[1rem]"
                     style={{ textDecoration: "line-through" }}
@@ -489,7 +489,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
                   <h1 className=" text-[1.2rem] font-bold  below-700:text-[0.8rem]">
                     {formatPrice(product?.discountedPrice?.toFixed(2))}
                   </h1>
-                  <h1 className=" text-[1.2rem] below-700:text-[0.8rem] font-bold ">
+                  <h1 className=" text-[1.2rem] below-700:text-[0.8rem] font-bold  ">
                     ({product?.discount}%OFF)
                   </h1>
                  </div>

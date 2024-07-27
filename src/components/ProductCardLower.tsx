@@ -182,7 +182,7 @@ const ProductCardLower = ({ product, theme, formatPrice, callToast }) => {
             <div className="flex justify-between px-2 pt-1">
               <span>{product?.ratings?.averageRating.toFixed(1)}</span>
               <div className="self-center">
-                <StarIcon className=" below-700:w-4 below-700:h-4 w-8 h-8" fill="black" />
+                <StarIcon className=" below-700:w-4 below-700:h-4 w-5 h-5" fill="black" />
               </div>
             </div>
           </div>

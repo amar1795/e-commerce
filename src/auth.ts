@@ -62,6 +62,8 @@ export const {
         // prevent signin using two factor authentication
 
       if (existingUser?.isTwoFactorEnabled) {
+        if (account?.provider !== "credentials") return true;
+
         const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(
           existingUser.id
         );

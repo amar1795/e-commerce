@@ -49,6 +49,8 @@ const Page = ({ params }: { params: { categories: string } }) => {
     const storedPage = localStorage.getItem("currentPage");
     return storedPage ? parseInt(storedPage, 10) : 1;
   });
+  const [filterVisible, setFilterVisible] = useState(false); // Add this state variable
+
   const { toast } = useToast();
   const router = useRouter();
   const callToast = ({ variant, title, description }) => {
@@ -75,12 +77,12 @@ const Page = ({ params }: { params: { categories: string } }) => {
     params.categories
   );
 
-  const validCategories = ["Kids", "Mens", "Womens",""];
+  const validCategories = ["Kids", "Mens", "Womens", ""];
 
   useEffect(() => {
     if (!validCategories.includes(parentCategoryName)) {
       // Redirect to 404 page if the category is invalid
-      router.replace('/404');
+      router.replace("/404");
     }
   }, [parentCategoryName, router, validCategories]);
 
@@ -326,34 +328,42 @@ const Page = ({ params }: { params: { categories: string } }) => {
 
   return (
     <div className=" overflow-hidden ">
-      {/* <div className="fixed top-0 left-0 right-0  z-10">
-        <MainNav />
-      </div> */}
+   
 
       <div className=" mt-[8rem]">
         <BreadcrumbWithCustomSeparator items={breadcrumbsData} />
         <div className="filter flex justify-between w-full px-5 mt-5  overflow-hidden relative">
           <div className=" h-[4rem]">
-            <h1 className="w-40  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4  bg-pink-500 font-bold">
+            <h1
+              onClick={() => setFilterVisible(!filterVisible)} // Add this onClick handler
+              className="w-40 below-700:w-28  below-700:text-[0.8rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4  bg-pink-500 font-bold"
+            >
               FILTERS
             </h1>
           </div>
           <div>
             <div className="  mb-2 ">
-              <h1 className=" text-[1.5rem] uppercase  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 font-bold">
+              <h1 className=" text-[1.5rem] below-700:text-[0.8rem] below-600:hidden uppercase  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 font-bold">
                 {`SHOWING  ${start + 1} to ${
                   end + 1
                 } out of ${totalProducts} products`}{" "}
               </h1>
             </div>
           </div>
-          <div className=" px-5 py-5 flex w-[19rem] justify-between ">
+          <div className=" px-5 py-5 flex w-[19rem] justify-between below-700:w-[10rem] ">
             <SelectDemo setSortBy={setSortBy} />
           </div>
         </div>
+        <div className="  mb-2 ">
+          <h1 className=" text-[1.5rem] below-700:text-[0.8rem] below-600:flex hidden uppercase  p-2 border-2 border-black text-black mt-4  self-center justify-center border-b-8 border-r-4 bg-yellow-500 font-bold">
+            {`SHOWING  ${start + 1} to ${
+              end + 1
+            } out of ${totalProducts} products`}{" "}
+          </h1>
+        </div>
         <Separator />
-        <div className=" flex justify-between">
-          <div className=" flex-none w-1/5 border-r">
+        <div className=" flex justify-between below-695:hidden ">
+          <div className="filterCategorysection flex-none w-1/5 border-r  below-1000:w-[12rem] ">
             {filterData.map((category, index) => (
               <Fcard
                 key={index}
@@ -369,8 +379,72 @@ const Page = ({ params }: { params: { categories: string } }) => {
             ))}
           </div>
 
-          <div className=" flex-grow">
+          <div className="productsRight flex-grow ">
             <div className={`min-h-[90vh] `}>
+              {productsFound === false ? (
+                <div className=" text-center self-center">
+                  <h1 className=" text-[4rem] leading-[7rem] ">
+                    No Products found Lmao 😂
+                  </h1>
+                  <h1 className=" text-[4rem] leading-[7rem]  ">
+                    What you Filtering ?
+                  </h1>
+                  <h1 className=" text-[4rem] leading-[7rem] ">
+                    Search again Bruh...
+                  </h1>
+                </div>
+              ) : paginatedData.products?.length === 0 ? (
+                <div className=" h-screen  flex items-center justify-center">
+                  <LoadingAnimation />
+                </div>
+              ) : (
+                <div>
+                  {loading ? (
+                    <>
+                      <div className=" h-screen  flex items-center justify-center">
+                        <LoadingAnimation />
+                      </div>
+                    </>
+                  ) : (
+                    <CategoriesRelatedProduct
+                      categoryPageData={true}
+                      relatedProduct={paginatedData.products}
+                      callToast={callToast}
+                    />
+                  )}
+                </div>
+              )}
+            </div>
+
+            <div className=" h-[4rem] ">
+              <PaginationComponent
+                currentPage={currentPage}
+                totalPages={paginatedData.totalPages}
+                onPageChange={(page) => setCurrentPage(page)}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className={` justify-between below-695:flex hidden transition-all duration-500 ${filterVisible ? 'ml-0' : '-ml-full'}`}>
+        <div className={`filterCategorysection flex-none w-1/5 border-r below-1000:w-[12rem]  transition-all duration-500 ${filterVisible ? 'translate-x-0' : '-translate-x-full'}`}>
+        {filterData.map((category, index) => (
+              <Fcard
+                key={index}
+                category={category}
+                setBrandSelected={setBrandSelected}
+                setSelectedCategoryName={setSelectedCategoryName}
+                setBrandName={setBrandName}
+                setMinDiscountedPrice={setMinDiscountedPrice}
+                setMaxDiscountedPrice={setMaxDiscountedPrice}
+                setMinDiscountPercentage={setMinDiscountPercentage}
+                setMaxDiscountPercentage={setMaxDiscountPercentage}
+              />
+            ))}
+          </div>
+
+          <div className={`productsRight flex-grow transition-all duration-500 ${filterVisible ? 'ml-[0vw]' : 'ml-[-65vw] '}`}>
+          <div className={`min-h-[90vh] `}>
               {productsFound === false ? (
                 <div className=" text-center self-center">
                   <h1 className=" text-[4rem] leading-[7rem] ">

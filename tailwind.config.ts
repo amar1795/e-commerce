@@ -21,6 +21,7 @@ const config = {
     },
     extend: {screens: {
       'below-1319': {'max': '1318px'},
+      'below-1000': {'max': '1000px'},
       'below-900': {'max': '899px'},
       'below-925': {'max': '925px'},
       'below-868': {'max': '868px'},
