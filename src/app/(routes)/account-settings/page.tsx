@@ -508,13 +508,13 @@ const page = () => {
 
       <div className="flex-1 below-1319:mt-8 ">
         {/* Adjust this margin-top to ensure content starts below the fixed topbar */}
-        <div className="bg-pink-600 flex-1 border-2 border-black min-h-96 px-[5rem] below-426:px-8 below-378:px-2 ">
+        <div className="bg-pink-600 flex-1 border-2 border-black min-h-96 px-[5rem] below-426:px-8  below-400:px-0 ">
           {/* profile photo */}
           <div className="  bg-teal-600 border-2 border-black   mt-5  ">
-            <div className="flex justify-between h-full px-6 py-6 below-500:pl-2  text-wrap below-695:flex-col ">
-              <div className="  h-full pr-4  w-[34rem] below-695:w-[18rem] below-566:w-[15rem] ">
-                <h1 className=" text-4xl font-bold below-695:text-[1.5rem]">Profile Photo</h1>
-                <p className=" text-2xl mt-4 below-695:text-[1rem] below-695:text-wrap">
+            <div className="flex justify-between h-full px-6 py-6 below-500:pl-2  text-wrap below-695:flex-col below-400:w-full ">
+              <div className="  h-full pr-4  w-[34rem] below-695:w-[18rem] below-566:w-[15rem]  ">
+                <h1 className=" text-4xl font-bold below-695:text-[1.5rem] uppercase">Profile Photo</h1>
+                <p className=" text-2xl mt-4 below-695:text-[1rem] below-695:text-wrap uppercase">
                   {" "}
                   This image will appear as your profile photo
                 </p>
@@ -522,7 +522,7 @@ const page = () => {
                   {<CustomUserAvatar src={userImage} />}
                 </div>
               </div>
-              <div className=" flex-col   below-695:flex below-695:mt-4   border-2 border-black flex-1  h-[20rem]  below-566:w-[15rem] ">
+              <div className=" flex-col   below-695:flex below-695:mt-4   border-2 border-black flex-1  h-[20rem]  below-566:w-[15rem] below-400:w-[14rem] ">
                 <div className=" flex  px-4 py-4 below-500:px-0 justify-between h-full  ">
                   <div >
                     <div className=" pl-[2rem] below-500:pl-2 pt-4 flex below-695:pt-0 below-695:h-[12rem]  h-[10rem] w-full">
