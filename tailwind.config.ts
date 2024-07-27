@@ -33,6 +33,7 @@ const config = {
       'below-590': {'max': '590px'},
       'below-566': {'max': '566px'},
       'below-500': {'max': '500px'},
+      'below-445': {'max': '445px'},
       'below-426': {'max': '426px'},
       'below-460': {'max': '460px'},
       'below-400': {'max': '400px'},

@@ -536,7 +536,7 @@ const page = () => {
             </div>
           </div>
           {/* personal information  */}
-          <div className="  bg-teal-600 border-2 border-black  below-566:w-[18rem]  mt-5  ">
+          <div className="  bg-teal-600 border-2 border-black  below-566:w-[18rem] below-500:w-full  mt-5  ">
             <div className="flex justify-between h-full px-6 py-6  text-wrap below-868:flex-col below-868:items-center  ">
               <div className="  h-full pr-4 uppercase  below-868:mb-4">
                 <h1 className=" text-4xl font-bold below-730:text-[1.2rem]">Personal information </h1>
@@ -660,7 +660,7 @@ const page = () => {
             </div>
           </div>
           {/*user  addresss */}
-          <div className="  bg-teal-600 border-2 border-black below-500:w-[18rem]  mt-5 below-370:w-[16rem] below-370:px-1  ">
+          <div className="  bg-teal-600 border-2 border-black below-566:w-[18rem] below-500:w-full  mt-5 below-370:w-[16rem] below-370:px-1  ">
             <div className="flex justify-between   h-full px-6 py-6  text-wrap">
               <div className="  h-full pr-4  w-full">
                 <h1 className=" text-4xl font-bold uppercase below-500:text-[1.5rem]">Your Address </h1>
@@ -1046,7 +1046,7 @@ const page = () => {
 
                 <div className=" bg-teal-600 h-[20rem]  w-full border-black border-2  below-500:border-none">
                   {activeTab === "credit" && (
-                    <div className=" px-4 mt-2  overflow-y-auto">
+                    <div className=" px-4 mt-2 below-500:px-0   overflow-y-auto">
                       {creditTransaction.length === 0 && (
                         <div className=" h-[40vh]   text-center">
                           <div className=" flex justify-center ">
@@ -1061,7 +1061,7 @@ const page = () => {
                         creditTransaction.map((transaction) => (
                           <div
                             key={transaction.id}
-                            className="flex justify-between border-b-8 border-r-4  bg-white border-black border-2 px-2 "
+                            className="flex justify-between border-b-8 border-r-4  bg-white border-black border-2 px-2 mb-2 overflow-y-auto "
                           >
                             <div className=" ">
                               <div className="left  flex pt-2">
@@ -1111,7 +1111,7 @@ const page = () => {
                         debitTransaction.map((transaction) => (
                           <div
                             key={transaction.id}
-                            className="flex justify-between border-b-8 border-r-4  bg-white border-black border-2 px-2  overflow-y-auto"
+                            className="flex justify-between border-b-8 border-r-4  bg-white border-black border-2 px-2  mb-2 overflow-y-auto"
                           >
                             <div className=" ">
                               <div className="left  flex pt-2">
@@ -1211,7 +1211,7 @@ const page = () => {
                       <div className="h-[4rem] ">
                         <button
                           type="submit"
-                          className="w-[10rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500 mr-4 below-400:w-[8rem] below-400:text-[0.8rem] uppercase "
+                          className="w-[10rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500 mr-4 below-500:text-[0.8rem] below-400:w-[8rem] below-400:text-[0.8rem] uppercase "
                         >
                           <h1 className="font-bold">Update Password</h1>
                         </button>

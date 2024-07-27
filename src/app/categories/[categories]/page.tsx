@@ -450,7 +450,7 @@ const Page = ({ params }: { params: { categories: string } }) => {
           </div>
 
           <div
-            className={`productsRight  below-426:hidden  below-378:hidden flex-grow   transition-all duration-500 ${
+            className={`productsRight  below-445:hidden  below-378:hidden flex-grow   transition-all duration-500 ${
               filterVisible ? "ml-[0vw]" : "ml-[-40vw] "
             }`}
           >
@@ -499,9 +499,13 @@ const Page = ({ params }: { params: { categories: string } }) => {
             </div>
           </div>
 
-          {/* below 426 */}
+              {/* below-435 */}
+           
+
+
+          {/* below 445 */}
           <div
-            className={`productsRight hidden below-426:block  below-378:hidden flex-grow   transition-all duration-500 ${
+            className={`productsRight hidden below-445:block  below-378:hidden flex-grow   transition-all duration-500 ${
               filterVisible ? "ml-[0vw]" : "ml-[-55vw] "
             }`}
           >
