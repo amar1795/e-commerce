@@ -94,7 +94,7 @@
     return (
       <div className="mt-5 mb-3">
         <Pagination>
-          <PaginationContent className="w-[30rem] flex justify-between">
+          <PaginationContent className="w-[30rem] flex justify-between below-426:w-[21rem] ">
             {/* Previous Button */}
             <div className="first previous">
               <button
@@ -103,7 +103,7 @@
                 className="hover:bg-black hover:text-white"
               >
                 <PaginationItem>
-                  <PaginationPrevious className="hover:bg-black hover:text-white" />
+                  <PaginationPrevious className="hover:bg-black hover:text-white " />
                 </PaginationItem>
               </button>
             </div>
@@ -119,7 +119,7 @@
                   ) : (
                     <button
                       onClick={() => handlePageChange(page)}
-                      className={`hover:bg-black hover:text-white ${
+                      className={`hover:bg-black hover:text-white   ${
                         currentPage === page ? "bg-black text-white" : ""
                       }`}
                     >

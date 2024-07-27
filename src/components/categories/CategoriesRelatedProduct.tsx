@@ -319,7 +319,7 @@ const CategoriesRelatedProduct: React.FC<CategoriesRelatedProductProps> = ({
       <div className="  bg-teal-600 min-h-[30rem] px-5 ">
         {/* <h1 className=" pt-4 pb-4 text-[2rem]">Related products</h1> */}
         {/* relatedProduct */}
-        <div className=" flex  flex-wrap pl-3 below-460:w-[12rem] ">
+        <div className=" flex  flex-wrap pl-3 below-460:w-[24rem] below-378:w-[20rem] below-378:pl-[5rem] below-321:pl-[1rem] below-695:pl-[1rem] ">
           {categoryPageData
             ? updatedRelatedProducts
                 .filter((product) => product.id !== ProductId)

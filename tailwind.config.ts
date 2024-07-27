@@ -21,6 +21,7 @@ const config = {
     },
     extend: {screens: {
       'below-1319': {'max': '1318px'},
+      'below-1265': {'max': '1265px'},
       'below-1000': {'max': '1000px'},
       'below-900': {'max': '899px'},
       'below-925': {'max': '925px'},
@@ -31,10 +32,13 @@ const config = {
       'below-600': {'max': '600px'},
       'below-590': {'max': '590px'},
       'below-566': {'max': '566px'},
+      'below-500': {'max': '500px'},
+      'below-426': {'max': '426px'},
       'below-460': {'max': '460px'},
       'below-400': {'max': '400px'},
       'below-378': {'max': '378px'},
       'below-370': {'max': '370px'},
+      'below-321': {'max': '321px'},
     }, fontFamily: {
       sans: ["var(--font-sans)", ...fontFamily.sans],
       

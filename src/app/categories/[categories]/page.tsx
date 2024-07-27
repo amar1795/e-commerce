@@ -328,15 +328,13 @@ const Page = ({ params }: { params: { categories: string } }) => {
 
   return (
     <div className=" overflow-hidden ">
-   
-
       <div className=" mt-[8rem]">
         <BreadcrumbWithCustomSeparator items={breadcrumbsData} />
         <div className="filter flex justify-between w-full px-5 mt-5  overflow-hidden relative">
           <div className=" h-[4rem]">
             <h1
               onClick={() => setFilterVisible(!filterVisible)} // Add this onClick handler
-              className="w-40 below-700:w-28  below-700:text-[0.8rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4  bg-pink-500 font-bold"
+              className="w-40 below-700:w-28  below-700:text-[0.8rem] p-2 border-2 border-black text-black mt-4  self-center justify-center border-b-8 border-r-4  bg-pink-500 font-bold  below-695:flex hidden"
             >
               FILTERS
             </h1>
@@ -426,9 +424,17 @@ const Page = ({ params }: { params: { categories: string } }) => {
           </div>
         </div>
 
-        <div className={` justify-between below-695:flex hidden transition-all duration-500 ${filterVisible ? 'ml-0' : '-ml-full'}`}>
-        <div className={`filterCategorysection flex-none w-1/5 border-r below-1000:w-[12rem]  transition-all duration-500 ${filterVisible ? 'translate-x-0' : '-translate-x-full'}`}>
-        {filterData.map((category, index) => (
+        <div
+          className={` justify-between below-695:flex hidden transition-all duration-500 ${
+            filterVisible ? "ml-0" : "-ml-full"
+          }`}
+        >
+          <div
+            className={`filterCategorysection flex-none w-1/5 border-r below-1000:w-[12rem]  transition-all duration-500 ${
+              filterVisible ? "translate-x-0" : "-translate-x-full"
+            }`}
+          >
+            {filterData.map((category, index) => (
               <Fcard
                 key={index}
                 category={category}
@@ -443,8 +449,115 @@ const Page = ({ params }: { params: { categories: string } }) => {
             ))}
           </div>
 
-          <div className={`productsRight flex-grow transition-all duration-500 ${filterVisible ? 'ml-[0vw]' : 'ml-[-65vw] '}`}>
-          <div className={`min-h-[90vh] `}>
+          <div
+            className={`productsRight  below-426:hidden  below-378:hidden flex-grow   transition-all duration-500 ${
+              filterVisible ? "ml-[0vw]" : "ml-[-40vw] "
+            }`}
+          >
+            <div className={`min-h-[90vh] `}>
+              {productsFound === false ? (
+                <div className=" text-center self-center">
+                  <h1 className=" text-[4rem] leading-[7rem] ">
+                    No Products found Lmao 😂
+                  </h1>
+                  <h1 className=" text-[4rem] leading-[7rem]  ">
+                    What you Filtering ?
+                  </h1>
+                  <h1 className=" text-[4rem] leading-[7rem] ">
+                    Search again Bruh...
+                  </h1>
+                </div>
+              ) : paginatedData.products?.length === 0 ? (
+                <div className=" h-screen  flex items-center justify-center">
+                  <LoadingAnimation />
+                </div>
+              ) : (
+                <div>
+                  {loading ? (
+                    <>
+                      <div className=" h-screen  flex items-center justify-center">
+                        <LoadingAnimation />
+                      </div>
+                    </>
+                  ) : (
+                    <CategoriesRelatedProduct
+                      categoryPageData={true}
+                      relatedProduct={paginatedData.products}
+                      callToast={callToast}
+                    />
+                  )}
+                </div>
+              )}
+            </div>
+
+            <div className=" h-[4rem] ">
+              <PaginationComponent
+                currentPage={currentPage}
+                totalPages={paginatedData.totalPages}
+                onPageChange={(page) => setCurrentPage(page)}
+              />
+            </div>
+          </div>
+
+          {/* below 426 */}
+          <div
+            className={`productsRight hidden below-426:block  below-378:hidden flex-grow   transition-all duration-500 ${
+              filterVisible ? "ml-[0vw]" : "ml-[-55vw] "
+            }`}
+          >
+            <div className={`min-h-[90vh] `}>
+              {productsFound === false ? (
+                <div className=" text-center self-center">
+                  <h1 className=" text-[4rem] leading-[7rem] ">
+                    No Products found Lmao 😂
+                  </h1>
+                  <h1 className=" text-[4rem] leading-[7rem]  ">
+                    What you Filtering ?
+                  </h1>
+                  <h1 className=" text-[4rem] leading-[7rem] ">
+                    Search again Bruh...
+                  </h1>
+                </div>
+              ) : paginatedData.products?.length === 0 ? (
+                <div className=" h-screen  flex items-center justify-center">
+                  <LoadingAnimation />
+                </div>
+              ) : (
+                <div>
+                  {loading ? (
+                    <>
+                      <div className=" h-screen  flex items-center justify-center">
+                        <LoadingAnimation />
+                      </div>
+                    </>
+                  ) : (
+                    <CategoriesRelatedProduct
+                      categoryPageData={true}
+                      relatedProduct={paginatedData.products}
+                      callToast={callToast}
+                    />
+                  )}
+                </div>
+              )}
+            </div>
+
+            <div className=" h-[4rem] ">
+              <PaginationComponent
+                currentPage={currentPage}
+                totalPages={paginatedData.totalPages}
+                onPageChange={(page) => setCurrentPage(page)}
+              />
+            </div>
+          </div>
+
+          {/* below 378 */}
+
+          <div
+            className={`productsRight hidden below-378:block  flex-grow   transition-all duration-500 ${
+              filterVisible ? "ml-[0vw]" : "ml-[-60vw] "
+            }`}
+          >
+            <div className={`min-h-[90vh] `}>
               {productsFound === false ? (
                 <div className=" text-center self-center">
                   <h1 className=" text-[4rem] leading-[7rem] ">

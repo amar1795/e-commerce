@@ -26,7 +26,7 @@ const Uppernav = ({ mensCollectionData, cartCountData }) => {
   // console.log("this is the user", user);
   // console.log("this is the mens collection data", mensCollectionData);
   return (
-    <div className=" flex justify-center items-center mt-7 w-full h-10 px-[1.9rem] z-50">
+    <div className=" flex justify-center items-center mt-7 w-full h-10 px-[1.9rem] z-50 ">
       {/* desktop view */}
       <div className="w-full h-[9rem] bg-white bg-opacity-[80px] backdrop-blur-lg border border-white/30 flex justify-center items-center below-1319:hidden ">
         <div className=" mr-5 ">
@@ -159,7 +159,7 @@ const Uppernav = ({ mensCollectionData, cartCountData }) => {
       </div>
 
       {/* mobile view */}
-      <div className="w-full h-[9rem] bg-red-500 bg-opacity-[80px] backdrop-blur-lg    items-center hidden below-600:flex below-600:flex-col below-600:h-[12rem] below-600:mt-[10rem]">
+      <div className="w-full h-[9rem]  bg-white bg-opacity-[80px] backdrop-blur-lg    items-center hidden below-600:flex below-600:flex-col below-600:h-[12rem] below-600:mt-[10rem] below-426:">
         <div className=" flex  ">
           <div className=" mr-5">
             <CustomInput />

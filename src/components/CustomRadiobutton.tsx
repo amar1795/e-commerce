@@ -35,7 +35,7 @@ className={`w-4 h-4  border rounded-full flex items-center justify-center border
 {/* {checked && <CheckIcon className="w-3 h-3 text-white" />} */}
 </div>
 </div>
-<span className=" text-[1.1rem] pl-2">{label}</span>
+<span className=" text-[1.1rem] below-500:text-[0.8rem] pl-2">{label}</span>
       </div>
     </div>
   );

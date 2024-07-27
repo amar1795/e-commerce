@@ -113,7 +113,7 @@ export function DeleteModal({ buttonName }: { buttonName: string }) {
         <DialogTrigger asChild>
           {/* <Button variant="outline">Edit Profile</Button> */}
           <button className="">
-            <h1 className=" font-bold"><Trash2  strokeWidth={1.5}  /> </h1>
+            <h1 className=" font-bold"><Trash2 className=" below-700:w-4 below-700:h-4 w-8 h-8" strokeWidth={1.5}  /> </h1>
           </button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[445px] h-[20rem]">
@@ -138,17 +138,18 @@ export function DeleteModal({ buttonName }: { buttonName: string }) {
             
          
             <DialogFooter>
-            <button
-                type="submit"
-                className="w-[12rem] h-[3rem]  p-2 border-2 border-black text-black mt-16 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  bg-red-600"
-              >
-                <h1 className=" font-bold">Yes </h1>
-              </button>
+            
               <button
                 type="submit"
                 className="w-[12rem] h-[3rem]  p-2 border-2 border-black text-black mt-16 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  bg-green-600"
               >
                 <h1 className=" font-bold">No </h1>
+              </button>
+              <button
+                type="submit"
+                className="w-[12rem] h-[3rem]  p-2 border-2 border-black text-black mt-16 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  bg-red-600"
+              >
+                <h1 className=" font-bold">Yes </h1>
               </button>
             </DialogFooter>
           </form>

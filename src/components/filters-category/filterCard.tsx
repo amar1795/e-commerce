@@ -74,7 +74,7 @@ const Fcard: React.FC<{ category: Category }> = ({
     <div className="mt-4 pb-2 border-b">
       <div className="heading font-bold flex flex-col">
       <div className=" h-[4rem]">
-            <h1 className="w-40  p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4  bg-pink-500 font-bold">
+            <h1 className="w-40  p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4  bg-pink-500 font-bold below-426:text-[0.8rem] uppercase below-426:w-28">
             {category.category}
             </h1>
           </div>

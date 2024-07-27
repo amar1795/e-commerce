@@ -374,13 +374,14 @@ const page = () => {
       // update the change in the cookies and we will update the database when fethcning the data from the cookies
       const updatedProductsList = completeMergedupdatedProducts.map(
         (product) => {
-          if (product.id === productId) {
+          if (product?.id === productId) {
             // Ensure quantity doesn't go below 0
             const currentQuantity = product?.cartQuantity
               ? product?.cartQuantity
               : 0; // Initialize to 0 if undefined or null
-            const newQuantity = Math.max(currentQuantity + change, 0);
-            // alert( newQuantity)
+              const newQuantity = Math.max(currentQuantity + change, 0);
+              // alert( newQuantity)
+              if(newQuantity > 5 ) return product ;
 
             return { ...product, cartQuantity: newQuantity };
           }
@@ -525,7 +526,7 @@ const page = () => {
 
                 {completeMergedupdatedProducts.map((product) => {
                   return (
-                    <div className=" mb-4" key={product.id}>
+                    <div className=" mb-4" key={product?.id}>
                       <CheckoutProductCard
                         handleClickDelete={handleClickDelete}
                         product={product}
