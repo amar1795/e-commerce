@@ -516,7 +516,7 @@ const page = () => {
         <div className=" bg-orange-300 flex justify-around px-30 py-4 flex-wrap-reverse ">
           <div className=" ">
             <div className="">
-              <div className=" px-4  mt-2 w-[40rem] flex-1 below-600:w-[30rem]   ">
+              <div className=" px-4  mt-2 w-[40rem] flex-1 below-600:w-[30rem]    ">
                 
                  {  loading ? (
                     <div className=" flex items-center justify-center">
@@ -526,7 +526,7 @@ const page = () => {
 
                 {completeMergedupdatedProducts.map((product) => {
                   return (
-                    <div className=" mb-4" key={product?.id}>
+                    <div className=" below-500:w-[24rem] below-445:w-[20rem] below-378:w-[17rem] mb-4  below-321:w-[15rem]" key={product?.id}>
                       <CheckoutProductCard
                         handleClickDelete={handleClickDelete}
                         product={product}
@@ -541,7 +541,7 @@ const page = () => {
               </div>
             </div>
           </div>
-          <div className=" w-[45rem] below-700:w-[38rem]  below-695:w-[30rem] below-566:w-[20rem]  below-378:w-[18rem] border-b-8 border-r-4 border-2 border-black  mt-6">
+          <div className=" w-[45rem] below-700:w-[38rem]  below-695:w-[30rem] below-566:w-[20rem]  below-378:w-[18rem] below-321:w-[15rem] border-b-8 border-r-4 border-2 border-black  mt-6">
             <div className="   bg-opacity-20 backdrop-blur-lg border border-white/30 bg-white">
               <div className=" px-4 py-4   ">
                 <div className=" h-[4rem] pl-6 mb-8  flex justify-center ">

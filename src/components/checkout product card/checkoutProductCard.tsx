@@ -119,8 +119,8 @@ const CheckoutProductCard = ({
       ?.quantity || 0;
 
   return (
-    <div className=" flex justify-center below-695:flex below-695:flex-col ">
-      <div className="below-700:w-[30rem] below-695:w-[25rem] below-460:w-[20rem] below-400:w-[18rem] below-370:w-[14rem] border-2 border-black border-b-8 border-r-4  overflow-hidden  ">
+    <div className=" flex justify-center below-695:flex below-695:flex-col below-695:w-full  items-center ">
+      <div className="below-700:w-[30rem] below-695:w-[25rem] below-460:w-[20rem] below-400:w-[18rem] below-370:w-[14rem] border-2 border-black border-b-8 border-r-4  overflow-hidden   below-500:w-[20rem]   ">
         <div className=" below-460:flex below-460:flex-col overflow-hidden flex justify-between bg-opacity-20 backdrop-blur-lg border border-white/30 bg-white  ">
           <div className=" flex ">
             <div>
