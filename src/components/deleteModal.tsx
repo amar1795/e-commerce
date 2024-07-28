@@ -19,65 +19,78 @@ import { Reset } from "@/actions/email/reset-password";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { Trash2 } from "lucide-react";
+import { deleteSecureCard } from "@/actions/payments/handlePayment";
 
-export function DeleteModal({ buttonName }: { buttonName: string }) {
+export function DeleteModal({ buttonName,cardID,setToastData,setNewData }: { buttonName: string }) {
   const { toast } = useToast();
 
   const router = useRouter();
-
 
   const [isPending, startTransition] = useTransition();
   const [isOpen, setIsOpen] = useState(false);
   const [Modalerror, setModalError] = useState<string | undefined>("");
   const [Modalsuccess, setModalSuccess] = useState<string | undefined>("");
 
-  const {
-    register: registerField,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<z.infer<typeof ResetSchema>>({
-    resolver: zodResolver(ResetSchema),
-    defaultValues: {
-      email: "",
-    },
-  });
 
   // toast is not working inside the modal need to check
 
   // console.log("this is callback url", callbackUrl);
 
-  const onSubmit = (values: z.infer<typeof ResetSchema>) => {
+  const onSubmit = () => {
     setModalError("");
     setModalSuccess("");
+    handleModalClose();
+    
+    // startTransition(() => {
+    //   Reset(values)
+    //     .then((data) => {
+    //       if (data?.error) {
+    //         reset();
+    //         setModalError(data.error);
 
-    startTransition(() => {
-      Reset(values)
-        .then((data) => {
-          if (data?.error) {
-            reset();
-            setModalError(data.error);
+    //         // setModalErrorToast(data.error);
+    //       }
 
-            // setModalErrorToast(data.error);
-          }
+    //       if (data?.success) {
+    //         reset();
+    //         // alert("Password reset link sent! Password rest link has been sent to your email address. Please check your email to reset your password.");
+    //         setModalSuccess(data.success);
+    //         // toast({
+    //         //   title: "Password reset link sent!",
+    //         //   description:
+    //         //     "Password rest link has been sent to your email address. Please check your email to reset your password.",
+    //         // });
+    //         // setTimeout(() => {
+    //         //   router.push('/password-reset'); // Replace with your target page URL
+    //         // }, 2000); // 2000 milliseconds = 2 seconds
+    //       }
+    //     })
+    //     .catch(() => setModalError("Something went wrong"));
+    // });
+    
 
-          if (data?.success) {
-            reset();
-            // alert("Password reset link sent! Password rest link has been sent to your email address. Please check your email to reset your password.");
-            setModalSuccess(data.success);
-            // toast({
-            //   title: "Password reset link sent!",
-            //   description:
-            //     "Password rest link has been sent to your email address. Please check your email to reset your password.",
-            // });
-            // setTimeout(() => {
-            //   router.push('/password-reset'); // Replace with your target page URL
-            // }, 2000); // 2000 milliseconds = 2 seconds
-          }
-        })
-        .catch(() => setModalError("Something went wrong"));
-    });
   };
+
+  const deleteCard = async(e) => {
+    e.preventDefault();
+   await deleteSecureCard(cardID);
+   handleModalClose(e);
+    setToastData({
+      title: "Card Deleted",
+      description: "Successfully Deleted the Card",
+    })
+  }
+
+  const handleModalClose = (e) => {
+    e.preventDefault();
+    setIsOpen(false);
+    setModalError("");
+    setModalSuccess("");
+    setNewData(prev => !prev);
+
+ 
+  };
+
 
   useEffect(() => {
     if (Modalerror) {
@@ -106,6 +119,7 @@ export function DeleteModal({ buttonName }: { buttonName: string }) {
         if (!open) {
           setModalError("");
           setModalSuccess("");
+          handleModalClose();
         }
       }}
     >
@@ -117,7 +131,7 @@ export function DeleteModal({ buttonName }: { buttonName: string }) {
           </button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[445px] h-[20rem]">
-          <form action="" onSubmit={handleSubmit(onSubmit)}>
+          <form action="" >
             <DialogHeader>
               <DialogTitle>
                 <h1 className="w-[full]  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4   bg-yellow-400">
@@ -140,16 +154,18 @@ export function DeleteModal({ buttonName }: { buttonName: string }) {
             <DialogFooter>
             
               <button
-                type="submit"
+                onClick={handleModalClose}
+
                 className="w-[12rem] h-[3rem]  p-2 border-2 border-black text-black mt-16 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  bg-green-600"
               >
                 <h1 className=" font-bold">No </h1>
               </button>
               <button
                 type="submit"
+                onClick={deleteCard}
                 className="w-[12rem] h-[3rem]  p-2 border-2 border-black text-black mt-16 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  bg-red-600"
               >
-                <h1 className=" font-bold">Yes </h1>
+                <h1 className=" font-bold" >Yes </h1>
               </button>
             </DialogFooter>
           </form>

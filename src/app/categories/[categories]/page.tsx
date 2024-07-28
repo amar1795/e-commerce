@@ -468,14 +468,14 @@ const Page = ({ params }: { params: { categories: string } }) => {
                   </h1>
                 </div>
               ) : paginatedData.products?.length === 0 ? (
-                <div className=" h-screen  flex items-center justify-center">
+                <div className=" h-screen   flex items-center justify-center">
                   <LoadingAnimation />
                 </div>
               ) : (
                 <div>
                   {loading ? (
                     <>
-                      <div className=" h-screen  flex items-center justify-center">
+                      <div className=" h-screen   flex items-center justify-center">
                         <LoadingAnimation />
                       </div>
                     </>
@@ -523,14 +523,14 @@ const Page = ({ params }: { params: { categories: string } }) => {
                   </h1>
                 </div>
               ) : paginatedData.products?.length === 0 ? (
-                <div className=" h-screen  flex items-center justify-center">
+                <div className=" h-screen below-445:h-[10rem]  flex items-center justify-center">
                   <LoadingAnimation />
                 </div>
               ) : (
                 <div>
                   {loading ? (
                     <>
-                      <div className=" h-screen  flex items-center justify-center">
+                      <div className=" h-screen below-445:h-[10rem] flex items-center justify-center">
                         <LoadingAnimation />
                       </div>
                     </>

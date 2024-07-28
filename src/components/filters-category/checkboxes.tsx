@@ -96,7 +96,7 @@ const Checkboxes:React.FC<CheckboxesProps> = ({ label, value, qty,setSelectedCat
             <div className=' pr-5 flex self-center '>
             <Checkbox checked={isChecked} onClick={handleCheckboxClick} />
             </div>
-            <h1 className=' uppercase below-426:text-[0.8rem]'>
+            <h1 className=' uppercase below-445:text-[0.8rem]'>
             {label} 
             </h1>
             </div>

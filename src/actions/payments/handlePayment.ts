@@ -4,6 +4,8 @@ import { prismadb } from "@/lib/db";
 
 import { PrismaClient, Card, Wallet, PaymentMode } from '@prisma/client';
 import bcrypt from 'bcryptjs';
+import { revalidatePath } from "next/cache";
+import { fetchUserCards } from "./fetchAllCards";
 
 
 interface HandlePaymentInfoInput {
@@ -98,5 +100,21 @@ async function createSecureCard(userId: string, cardDetails: HandlePaymentInfoIn
     } catch (error) {
         console.error('Error creating secure card:', error);
         throw new Error('Failed to create secure card');
+    }
+}
+
+export async function deleteSecureCard(cardId: string) {
+    try {
+        // Delete the card entity
+        await prismadb.card.delete({
+            where: {
+                id: cardId,
+            },
+        });
+        
+        console.log('Secure card deleted:', cardId);
+    } catch (error) {
+        console.error('Error deleting secure card:', error);
+        throw new Error('Failed to delete secure card');
     }
 }

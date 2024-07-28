@@ -2,9 +2,10 @@
 
 import { auth } from "@/auth";
 import { prismadb } from "@/lib/db";
+import { revalidatePath } from "next/cache";
 
 
-export async function fetchUserCards(userId: string)  {
+export async function fetchUserCards()  {
 
     const userSession = await auth();
     const user = userSession?.user?.id;
@@ -25,7 +26,7 @@ export async function fetchUserCards(userId: string)  {
                 lastFourDigits: true
             }
         });
-
+        
         return userCards;
     } catch (error) {
         console.error('Error fetching user cards:', error);

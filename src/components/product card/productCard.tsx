@@ -67,9 +67,12 @@ const ProductCard: React.FC<updatedDataResponse> = ({
     setProductVarientID(product.productVarientID);
     setStock(product.stock);
 
-    if (product.cartQuantity) {
+    if (product.cartQuantity > 0) {
       setItemInCart(true);
+    } else {
+      setItemInCart(false);
     }
+
   }, [product]);
 
   useEffect(() => {
@@ -494,7 +497,19 @@ const ProductCard: React.FC<updatedDataResponse> = ({
                   </h1>
                  </div>
                  <div>
-                 <div className="right self-center pb-7 mr-2">
+
+                  {
+                    itemInCart   ?(<div className="right self-center pb-7 mr-2 ">
+                      <button
+                        className="nbutton items-center border-2 border-black   px-2  justify-between hidden "
+                        onClick={handleremove}
+                      >
+                        <div>
+                          <ShoppingCart className=" below-700:w-3 below-700:h-3 w-6 h-6" />
+                        </div>
+                        <div className="text-sm  ml-1 below-700:text-[0.4rem]  below-700:px-0 below-700:py-0">Remove</div>
+                      </button>
+                    </div>  ):(<div className="right self-center pb-7 mr-2">
                     <button
                       className="nbutton items-center border-2 border-black  px-2  justify-between hidden  "
                       onClick={handleConfirmCart}
@@ -504,29 +519,17 @@ const ProductCard: React.FC<updatedDataResponse> = ({
                       </div>
                       <div className="text-sm   ml-1 below-700:text-[0.4rem]  below-700:px-0 below-700:py-0">Add to Cart</div>
                     </button>
-                  </div> 
+                  </div> )
+                  }
+                 
+                  
                  </div>
                 </div>
               </div>
 
-              {/* {product?.cartQuantity === 0 ||
-                (!product?.cartQuantity && (
-                  <div className="right self-center pb-7">
-                    <button
-                      className="nbutton items-center border-2 border-black  px-2  justify-between hidden "
-                      onClick={() => {
-                        // handleClickAdd(user?.id, product?.id);
-                      }}
-                    >
-                      <div>
-                        <ShoppingCart size={20} />
-                      </div>
-                      <div className="text-sm px-3">Add to Cart</div>
-                    </button>
-                  </div>
-                ))} */}
+              
 
-              {product?.cartQuantity || itemInCart ? (
+              { itemInCart ? (
                 <div className="right self-center pb-7 below-700:hidden">
                   <button
                     className="nbutton items-center border-2 border-black   px-2  py-2 justify-between hidden "

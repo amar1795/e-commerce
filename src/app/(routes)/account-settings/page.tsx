@@ -34,6 +34,8 @@ import getUserWallet from "@/actions/payments/getUserWallet";
 import { redirect, useRouter } from "next/navigation";
 import LoadingButton from "@/components/loading Button/loadingButton";
 import { updatePassword } from "@/actions/email/UpdatePassword";
+import { da } from "@faker-js/faker";
+import LoadingAnimation from "@/components/Loading/LoadingAnimation";
 
 const page = () => {
   const user = useCurrentUser();
@@ -51,6 +53,7 @@ const page = () => {
   const [AllUserCards, setAllUserCards] = useState([]);
   const [personalInformation, setPersonalInformation] = useState([]);
   const [newData, setNewData] = useState(true);
+  const [NewCardData, setNewCardData] = useState(true);
   const [userImage, setUserImage] = useState("");
   const [fetchImage, setfetchImage] = useState(false);
   const [walletBalance, setWalletBalance] = useState(0);
@@ -59,7 +62,6 @@ const page = () => {
   const [walletData, setWalletData] = useState([]);
   // console.log("this is the credit transaction", creditTransaction);
   const [isAllDataFetched, setIsAllDataFetched] = useState(false);
-
   
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -67,9 +69,10 @@ const page = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   // const [toastData, setToastData] = useState({});
   const [isTwoFactorEnabled, setIsTwoFactorEnabled] = useState();
+  const [originalTwoFactorStatus, setOriginalTwoFactorStatus] = useState(false);
   // personalInformation?.data?.isTwoFactorEnabled
 
   // console.log("this is the isTwoFactorEnabled", isTwoFactorEnabled);
@@ -96,8 +99,10 @@ const page = () => {
       const alladdress = await getAllAddressesForUser(user?.id);
       // console.log("All Address: ", alladdress);
       setalladdress(alladdress);
-      const allUserCards = await fetchUserCards(user?.id);
-      setAllUserCards(allUserCards);
+      // const allUserCards = await fetchUserCards(user?.id);
+      // setAllUserCards(allUserCards);
+
+      setLoading(true);
       const walletData = await getUserWallet();
       setWalletData(walletData);
       // console.log("this is the wallet data", walletData);
@@ -119,33 +124,29 @@ const page = () => {
         setDebitTransaction(debitTransactions);
       }
 
-      // if (transactionData.type === "CREDIT") {
-      //   setCreditTransaction(transactionData);
-      // } else {
-      //   setDebitTransaction(transactionData);
-      // }
-      // console.log("this is the wallet data created", transactionData);
-
-      //   {
-      //     "id": "668f82acdfb64b86fd862474",
-      //     "walletId": "668f82acdfb64b86fd862473",
-      //     "amount": 100000,
-      //     "type": "CREDIT",
-      //     "description": "Initial deposit",
-      //     "createdAt": "2024-07-11T06:58:52.318Z",
-      //     "updatedAt": "2024-07-11T06:58:52.318Z"
-      // }
+     
 
       setWalletBalance(walletData?.wallet?.balance || 0);
+      setLoading(false);
+
       const personalData = await getUserNameandEmailData();
       setPersonalInformation(personalData.data);
       setIsTwoFactorEnabled(personalData.data.isTwoFactorEnabled);
-
+      setOriginalTwoFactorStatus(personalData.data.isTwoFactorEnabled);
       setIsAllDataFetched(true);
     };
 
     data();
   }, [success, newData]);
+
+  useEffect(() => {
+    const data = async () => {
+    const allUserCards = await fetchUserCards(user?.id);
+    setAllUserCards(allUserCards);
+    }
+
+    data();
+  }, [NewCardData]);
 
   useEffect(() => {
     const fetchUpdatedImage = async () => {
@@ -197,16 +198,25 @@ const page = () => {
 
   const toggleTwoFactor = (e) => {
     e.preventDefault();
+    
     setIsTwoFactorEnabled(!isTwoFactorEnabled); // Toggle the state using the previous state
     // setShowSaveChanges(true); // Show Save Changes whenever toggled
+
+   
+
     setShowSaveChanges(
-      isTwoFactorEnabled !== personalInformation?.data?.isTwoFactorEnabled
+      isTwoFactorEnabled == originalTwoFactorStatus
     );
+
+   
+    
+    
   };
 
   const saveChanges = () => {
     // Implement the function to save changes to the database
     setInitialState(isTwoFactorEnabled); // Update the initial state to match the new saved state
+    setOriginalTwoFactorStatus(isTwoFactorEnabled); // Update the original state to match the new saved state
     setShowSaveChanges(false); // Hide Save Changes after saving
     updateTwoStepVerificationStatus({ isTwoFactorEnabled })
       .then((data) => {
@@ -581,9 +591,12 @@ const page = () => {
                             setToastData={setToastData}
                           />
                         </div>
-                        <div className=" mt-4 flex h-full ">
-                          <h3 className=" w-[25rem] below-1000:w-[18rem] h-[3.4rem] pt-4 mt-3 text-[1rem] below-730:w-[10rem] below-730:text-[0.8rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
-                            Enable two Step Verification
+                        <div className=" mt-4 flex h-full below-500:hidden ">
+                          
+
+                         
+                          <h3 className=" uppercase w-[25rem] below-1000:w-[18rem] h-[3.4rem] pt-4 mt-3 text-[1rem] below-730:w-[10rem] below-730:text-[0.8rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
+                            {originalTwoFactorStatus == true ? "Disable" :"Enable"} two Step Verification   
                           </h3>
                           <div className=" h-[4rem] mr-4">
                             {isTwoFactorEnabled !== undefined && (
@@ -604,16 +617,63 @@ const page = () => {
                               </button>
                             )}
                           </div>
-                          {showSaveChanges && (
+                          
+                          {showSaveChanges == true && (
                             <button
                               className="p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-green-500"
                               onClick={saveChanges}
                             >
                               <h1 className="font-bold">Save Changes</h1>
                             </button>
+                            
                           )}
+                           
                         </div>
+                        <div className=" mt-4  h-full hidden below-500:flex  ">
+                          <div className=" below-500:flex below-500:flex-col">
 
+                          <div className=" below-500:flex">
+
+                          
+                          <h3 className=" uppercase w-[25rem] below-1000:w-[18rem] h-[3.4rem] pt-4 mt-3 text-[1rem] below-730:w-[10rem] below-730:text-[0.8rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 below-500:text-center below-500:pt-2">
+                            {originalTwoFactorStatus == true ? "Disable" :"Enable"} two Step Verification   
+                          </h3>
+                          <div className=" h-[4rem] mr-4">
+                            {isTwoFactorEnabled !== undefined && (
+                              <button
+                                className="p-1 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 ml-2 bg-green-500"
+                                onClick={toggleTwoFactor}
+                              >
+                                <div
+                                  className={`h-6 w-6 ${
+                                    isTwoFactorEnabled === true
+                                      ? "bg-black"
+                                      : "bg-white"
+                                  }`}
+                                >
+                                  {/* Add an empty space to keep the div rendered */}
+                                  &nbsp;
+                                </div>
+                              </button>
+                            )}
+                          </div>
+                          </div>
+                          
+                          <div>
+
+                          
+                          {showSaveChanges == true && (
+                            <button
+                              className="p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-green-500"
+                              onClick={saveChanges}
+                            >
+                              <h1 className="font-bold below-500:text-[0.8rem] uppercase">Save Changes</h1>
+                            </button>
+                            
+                          )}
+                          </div>
+                           </div>
+                        </div>
                         <div></div>
                         <div className=" flex">
                           {personalInformation.emailVerified ? (
@@ -622,7 +682,7 @@ const page = () => {
                                 <h1 className=" font-bold">
                                   <div className=" flex">
                                     <Check className=" mr-2" />
-                                    <span>{"Your Email is Verified"}</span>
+                                    <span className=" below-500:text-[0.8rem]">{"Your Email is Verified"}</span>
                                   </div>
                                 </h1>
                               </div>
@@ -630,7 +690,7 @@ const page = () => {
                           ) : (
                             <div className=" h-[4rem]">
                               <button className="  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  bg-green-500">
-                                <h1 className=" font-bold">
+                                <h1 className=" font-bold uppercase  below-500:text-[0.8rem]">
                                   {" "}
                                   Please Verify Your Email{" "}
                                 </h1>
@@ -867,12 +927,12 @@ const page = () => {
               </div>
             </div>
             <div className=" m-8 below-500:mx-2 flex  justify-between below-1000:flex-col  ">
-              <div className="w-[34rem] below-700:w-[30rem] below-730:w-[20rem] flex-1 below-590:w-[18rem] below-500:w-[15rem] below-460:w-[15rem]">
+              <div className="w-[34rem] below-700:w-[30rem] below-730:w-[20rem] flex-1 below-590:w-[18rem]  below-445:w-full  below-500:w-full">
                 <form
                   // ref={formRef}
                   onSubmit={handleSubmitPayment(onSubmitPayment)}
                 >
-                  <div className=" pt-5 ">
+                  <div className=" pt-5  ">
                     <h3 className=" w-full text-[2rem] leading-none p-2 border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 below-500:text-[1.5rem] uppercase">
                       Payment Method
                     </h3>
@@ -977,7 +1037,10 @@ const page = () => {
                               </div>
                             </div>
                             <div className=" flex self-center">
-                              <DeleteModal />
+                              <DeleteModal 
+                              setNewData={setNewCardData}
+                              cardID={card.id}  setToastData={setToastData}
+ />
                             </div>
                           </div>
                         </div>
@@ -1047,7 +1110,9 @@ const page = () => {
                 <div className=" bg-teal-600 h-[20rem]  w-full border-black border-2  below-500:border-none">
                   {activeTab === "credit" && (
                     <div className=" px-4 mt-2 below-500:px-0   overflow-y-auto">
-                      {creditTransaction.length === 0 && (
+                      { loading === true  ? (<div className="  h-[10rem]
+                       flex items-center justify-center    "><LoadingAnimation/> </div>)
+                      :(creditTransaction.length === 0 && (
                         <div className=" h-[40vh]   text-center">
                           <div className=" flex justify-center ">
                             {" "}
@@ -1056,7 +1121,7 @@ const page = () => {
                             </h3>
                           </div>
                         </div>
-                      )}
+                      ))}
                       {creditTransaction &&
                         creditTransaction.map((transaction) => (
                           <div
@@ -1165,7 +1230,7 @@ const page = () => {
                 action=""
                 onSubmit={handleSubmitNewPassword(onSubmitNewPassword)}
               >
-                <div className="flex flex-col  border-2 border-black w-[50vw]  h-full   ">
+                <div className="flex flex-col   border-2 border-black w-[50vw]  h-full  below-445:w-[22rem] below-426:w-full   ">
                   <div className=" flex px-4 py-4 justify-center w-full h-full ">
                     <div className=" w-full">
                       <div className="flex w-full flex-col items-center justify-center">

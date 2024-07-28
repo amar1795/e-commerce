@@ -25,8 +25,10 @@ const ProductCardLower = ({ product, theme, formatPrice, callToast }) => {
     setProductVarientID(product.productVarientID);
     setStock(product.stock);
 
-    if (product.cartQuantity) {
+    if (product.cartQuantity > 0) {
       setItemInCart(true);
+    } else {
+      setItemInCart(false);
     }
   }, [product]);
 
@@ -230,12 +232,12 @@ const ProductCardLower = ({ product, theme, formatPrice, callToast }) => {
 
 
 
-            {product.cartQuantity || itemInCart ? (
+            { itemInCart ? (
               <button className="Mainbuynow" onClick={handleremove}>
                 <div>
                   <ShoppingCart className=" below-868:w-4 below-700:h-4 w-8 h-8" />
                 </div>
-                <div className="text-sm px-1">Remove </div>
+                <div className="text-sm px-1 below-868:text-[0.5rem]" >Remove </div>
               </button>
             ) : (
               <button className="Mainbuynow" onClick={handleConfirm}>
