@@ -82,7 +82,7 @@ export function DeleteModal({ buttonName,cardID,setToastData,setNewData }: { but
   }
 
   const handleModalClose = (e) => {
-    e.preventDefault();
+    e?.preventDefault();
     setIsOpen(false);
     setModalError("");
     setModalSuccess("");
@@ -130,7 +130,7 @@ export function DeleteModal({ buttonName,cardID,setToastData,setNewData }: { but
             <h1 className=" font-bold"><Trash2 className=" below-700:w-4 below-700:h-4 w-8 h-8" strokeWidth={1.5}  /> </h1>
           </button>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-[445px] h-[20rem]">
+        <DialogContent className=" below-500:w-[20rem] sm:max-w-[445px] h-[20rem]">
           <form action="" >
             <DialogHeader>
               <DialogTitle>
@@ -141,8 +141,8 @@ export function DeleteModal({ buttonName,cardID,setToastData,setNewData }: { but
               </DialogTitle>
          
               <DialogTitle>
-                <h1 className="w-[full]  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4   bg-yellow-400">
-                  <h1 className=" font-bold">Please confirm</h1>
+                <h1 className="w-[full]   p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4   bg-yellow-400">
+                  <h1 className=" font-bold uppercase  ">Please confirm</h1>
                   
                 </h1>
               </DialogTitle>
@@ -156,16 +156,16 @@ export function DeleteModal({ buttonName,cardID,setToastData,setNewData }: { but
               <button
                 onClick={handleModalClose}
 
-                className="w-[12rem] h-[3rem]  p-2 border-2 border-black text-black mt-16 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  bg-green-600"
+                className="w-[12rem] h-[3rem]  p-2 border-2 border-black text-black mt-16 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  below-500:mt-5  bg-green-600 below-500:w-[7rem] below-500:px-1"
               >
-                <h1 className=" font-bold">No </h1>
+                <h1 className=" uppercase  font-bold ">No </h1>
               </button>
               <button
                 type="submit"
                 onClick={deleteCard}
-                className="w-[12rem] h-[3rem]  p-2 border-2 border-black text-black mt-16 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  bg-red-600"
+                className="w-[12rem] h-[3rem]  p-2 border-2 border-black text-black mt-16 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  bg-red-600 below-500:mt-5 below-500:w-[7rem] below-500:px-1"
               >
-                <h1 className=" font-bold" >Yes </h1>
+                <h1 className=" uppercase font-bold" >Yes </h1>
               </button>
             </DialogFooter>
           </form>

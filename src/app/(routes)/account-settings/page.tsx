@@ -36,6 +36,7 @@ import LoadingButton from "@/components/loading Button/loadingButton";
 import { updatePassword } from "@/actions/email/UpdatePassword";
 import { da } from "@faker-js/faker";
 import LoadingAnimation from "@/components/Loading/LoadingAnimation";
+import { addWalletBalance } from "@/actions/payments/addWalletBalance";
 
 const page = () => {
   const user = useCurrentUser();
@@ -430,6 +431,27 @@ const page = () => {
   const handleClick = () => {
     router.push("/");
   };
+
+  const AddWalletBalance = async () => {
+     
+     const {success,error}= await addWalletBalance();
+
+     if(success){
+      toast({
+        title: "Balance Added",
+        description: "Successfully Added the Balance",
+      });
+    }
+    if(error){
+      toast({
+        title: error,
+        variant: "destructive",
+        description: "Please try again later",
+      });
+    }
+     
+  }
+
 
   return (
     <div className=" overflow-hidden border-2 border-black  flex flex-col ">
@@ -1072,7 +1094,7 @@ const page = () => {
                   </div>
 
                   <div className=" mt-5 w-[15rem] below-400:w-[12rem]">
-                    <StyledButton buttonName="Add Money" />
+                    <StyledButton buttonName="Add Money" AddWalletBalance={AddWalletBalance} />
                   </div>
                 </div>
               </div>
@@ -1107,9 +1129,9 @@ const page = () => {
                   </div>
                 </div>
 
-                <div className=" bg-teal-600 h-[20rem]  w-full border-black border-2  below-500:border-none">
+                <div className=" bg-teal-600 h-[20rem] overflow-y-auto   w-full border-black border-2  below-500:border-none">
                   {activeTab === "credit" && (
-                    <div className=" px-4 mt-2 below-500:px-0   overflow-y-auto">
+                    <div className=" px-4 mt-2 below-500:px-0   ">
                       { loading === true  ? (<div className="  h-[10rem]
                        flex items-center justify-center    "><LoadingAnimation/> </div>)
                       :(creditTransaction.length === 0 && (
@@ -1126,7 +1148,7 @@ const page = () => {
                         creditTransaction.map((transaction) => (
                           <div
                             key={transaction.id}
-                            className="flex justify-between border-b-8 border-r-4  bg-white border-black border-2 px-2 mb-2 overflow-y-auto "
+                            className="flex justify-between border-b-8 border-r-4  bg-white border-black border-2 px-2 mb-2 overflow-y-auto  "
                           >
                             <div className=" ">
                               <div className="left  flex pt-2">
