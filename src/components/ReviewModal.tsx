@@ -212,7 +212,7 @@ export function ReviewModal({
                       className=" h-[5.5rem]  object-contain "
                     />
                   </div>
-                  <h1 className=" h-[4rem] border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4 pt-4 text-[1.1rem]  bg-yellow-400">
+                  <h1 className=" h-[4rem] border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4 pt-4 text-[1.1rem]  below-600:text-[0.7rem] bg-yellow-400">
                     {ProductName}
                   </h1>
                 </div>
