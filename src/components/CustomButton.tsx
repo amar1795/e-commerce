@@ -27,6 +27,9 @@ previousSegment = previousSegment?.split(/[?#]/)[0];
     ? previousSegment.slice(0, -1) 
     : previousSegment;
   }
+  if(sanitizedSegment === "Kids%20Category"){
+    sanitizedSegment = "Kids"
+  }
 
 
   const [isOpen, setIsOpen] = useState(false);

@@ -342,8 +342,11 @@ const page = ({ params }: { params: { product: string } }) => {
   const completeUrl = typeof window !== "undefined" ? window.location.href : "";
   const segments = completeUrl.split("/");
   const previousSegment = segments[segments.length - 2];
-  const previousSegment1 = segments[segments.length - 3];
-  // console.log("this is the Previous segment:", previousSegment);
+  let previousSegment1 = segments[segments.length - 3];
+  // console.log("this is the Previous segment:", previousSegment1);
+  if(previousSegment1 === "Kids%20Category"){
+    previousSegment1 = "Kids";
+  }
  
 
   const breadcrumbsData = [

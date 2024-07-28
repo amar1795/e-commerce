@@ -196,7 +196,7 @@ export function ReviewModal({
         <DialogTrigger asChild>
           {/* <Button variant="outline">Edit Profile</Button> */}
           <button className={`w-auto p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2   ${buttonColour ? buttonColour : "bg-teal-600"}`}>
-            <h1 className=" font-bold">{buttonName} </h1>
+            <h1 className=" font-bold below-868:text-[0.8rem] uppercase">{buttonName} </h1>
           </button>
         </DialogTrigger>
         <DialogContent className=" h-[41rem] ">

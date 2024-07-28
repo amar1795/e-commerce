@@ -35,17 +35,17 @@ const page = async ({ params }: { params: { ordernumber: string } }) => {
     <div>
       <div className=" min-h-[95vh] bg-pink-500 ">
         <h1 className=" text-[4rem] pl-10 uppercase">Your Orders</h1>
-        <div className=" text-[1.3rem] flex px-8 mb-5 justify-between">
-          <h1 className=" mr-11">
+        <div className=" text-[1.3rem] flex px-8 mb-5 justify-between below-1000:flex-col">
+          <h1 className=" mr-11 uppercase">
             Ordered on : {formattedDate} {formattedTime}
           </h1>
-          <h1>Ordered Number : #{params.ordernumber}</h1>
+          <h1 className="uppercase">Ordered Number : #{params.ordernumber}</h1>
           <div className="">
-          <div className=" h-[4rem]">
+          <div className=" h-[4rem] uppercase">
                       <Link href="/orders">
                       <button
                         type="submit"
-                        className="w-80  p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-teal-600"
+                        className="w-80  p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-teal-600 below-566:w-[12rem] below-566:text-[1rem] uppercase "
                       >
                         <h1 className=" font-bold">Back to Orders </h1>
                       </button>
@@ -59,76 +59,76 @@ const page = async ({ params }: { params: { ordernumber: string } }) => {
         </div>
         <div className="mx-11">
           <div className=" mt-8 pt-2  pb-5">
-            <div className=" bg-yellow-500 text-black  flex justify-between px-9 mx-2 border-2 border-black border-b-8 border-r-4 text-[1.3rem] ">
+            <div className=" bg-yellow-500 text-black below-1265:flex-col flex justify-between px-9 mx-2 border-2 border-black border-b-8 border-r-4 text-[1.3rem] ">
               <div>
-                <div className=" flex  pt-4 pb-4  justify-between">
-                  <div className=" shippping address">
-                    <h1 className="font-bold">SHIPPING ADDRESS</h1>
+                <div className=" flex  pt-4 pb-4  justify-between below-600:flex-col ">
+                  <div className=" shippping address ">
+                    <h1 className="font-bold ">SHIPPING ADDRESS</h1>
 
-                    <p>Street: {orderData.order.address.street}</p>
-                    <p>Apartment: {orderData.order.address.apartment}</p>
-                    <p>City: {orderData.order.address.city}</p>
-                    <p>State: {orderData.order.address.state}</p>
-                    <p>Landmark: {orderData.order.address.landmark}</p>
-                    <p>Postal Code: {orderData.order.address.postalCode}</p>
-                    <p>Country: {orderData.order.address.country}</p>
-                    <p>Phone Number: {orderData.order.address.phoneNumber}</p>
+                    <p className=" uppercase below-695:text-[1rem] ">Street: {orderData.order.address.street}</p>
+                    <p className=" uppercase below-695:text-[1rem]">Apartment: {orderData.order.address.apartment}</p>
+                    <p className=" uppercase below-695:text-[1rem]">City: {orderData.order.address.city}</p>
+                    <p className=" uppercase below-695:text-[1rem]">State: {orderData.order.address.state}</p>
+                    <p className=" uppercase below-695:text-[1rem]">Landmark: {orderData.order.address.landmark}</p>
+                    <p className=" uppercase below-695:text-[1rem]">Postal Code: {orderData.order.address.postalCode}</p>
+                    <p className=" uppercase below-695:text-[1rem]">Country: {orderData.order.address.country}</p>
+                    <p className=" uppercase below-695:text-[1rem]">Phone Number: {orderData.order.address.phoneNumber}</p>
                   </div>
                   <div className=" Billing address ml-6">
                     <h1 className="font-bold">BILLING ADDRESS</h1>
 
-                    <p>Street: {orderData.order.address.street}</p>
-                    <p>Apartment: {orderData.order.address.apartment}</p>
-                    <p>City: {orderData.order.address.city}</p>
-                    <p>State: {orderData.order.address.state}</p>
-                    <p>Landmark: {orderData.order.address.landmark}</p>
-                    <p>Postal Code: {orderData.order.address.postalCode}</p>
-                    <p>Country: {orderData.order.address.country}</p>
-                    <p>Phone Number: {orderData.order.address.phoneNumber}</p>
+                    <p className=" uppercase below-695:text-[1rem]">Street: {orderData.order.address.street}</p>
+                    <p className=" uppercase below-695:text-[1rem]">Apartment: {orderData.order.address.apartment}</p>
+                    <p className=" uppercase below-695:text-[1rem]">City: {orderData.order.address.city}</p>
+                    <p className=" uppercase below-695:text-[1rem]">State: {orderData.order.address.state}</p>
+                    <p className=" uppercase below-695:text-[1rem]">Landmark: {orderData.order.address.landmark}</p>
+                    <p className=" uppercase below-695:text-[1rem]">Postal Code: {orderData.order.address.postalCode}</p>
+                    <p className=" uppercase below-695:text-[1rem]">Country: {orderData.order.address.country}</p>
+                    <p className=" uppercase below-695:text-[1rem]">Phone Number: {orderData.order.address.phoneNumber}</p>
                   </div>
 
                   <div className=" w-[20rem]  pl-12 ">
-                    <h1 className="font-bold">PAYMENT METHOD</h1>
+                    <h1 className="font-bold ">PAYMENT METHOD</h1>
 
                     {orderData.order?.card != null ? (
                       <>
-                        <p>CREDIT CARD</p>
-                        <p>CARD HOLDER NAME</p>
-                        <p>{orderData.order?.card.cardHolderName}</p>
+                        <p className=" uppercase below-695:text-[1rem]">CREDIT CARD</p>
+                        <p className=" uppercase below-695:text-[1rem]">CARD HOLDER NAME</p>
+                        <p className=" uppercase below-695:text-[1rem]">{orderData.order?.card.cardHolderName}</p>
                       </>
                     ) : (
-                      <p>ONLINE</p>
+                      <p className="below-695:text-[1rem]">ONLINE</p>
                     )}
                   </div>
                 </div>
               </div>
               <div className=" order Summary">
                 <div className=" mr-4">
-                  <h1 className=" text-[2rem]"> Order Summary</h1>
+                  <h1 className=" text-[2rem] uppercase"> Order Summary</h1>
                   <div className="">
                     <div className=" flex justify-between">
                       <div>Item(s) Subtotal </div>
-                      <div className=" ">
+                      <div className="below-695:text-[1rem] ">
                         :{formatPrice(orderData.order?.orderTotal.toFixed(2))}
                       </div>
                     </div>
                     <div className=" flex justify-between">
-                      <h1>Shipping </h1>
-                      <div className=" w-[6.5rem]">:{formatPrice(0)}</div>
+                      <h1 className=" uppercase below-695:text-[1rem]">Shipping </h1>
+                      <div className=" w-[6.5rem] below-695:text-[1rem]">:{formatPrice(0)}</div>
                     </div>
                     <div className=" flex justify-between">
-                      <h1>Discount </h1>
-                      <div className=" w-[6.5rem]">:{formatPrice(0)}</div>
+                      <h1 className=" uppercase below-695:text-[1rem]">Discount </h1>
+                      <div className=" w-[6.5rem] below-695:text-[1rem]">:{formatPrice(0)}</div>
                     </div>
                     <div className=" flex justify-between">
-                      <h1>Total</h1>
-                      <div className=" ">
+                      <h1 className=" uppercase below-695:text-[1rem]">Total</h1>
+                      <div className="below-695:text-[1rem] ">
                         :{formatPrice(orderData.order?.orderTotal.toFixed(2))}
                       </div>
                     </div>
                     <div className=" flex justify-between font-bold">
-                      <h1 className=" ">GrandTotal </h1>
-                      <div className=" ">
+                      <h1 className=" uppercase below-695:text-[1rem]">GrandTotal </h1>
+                      <div className="below-695:text-[1rem] ">
                         :{formatPrice(orderData.order?.orderTotal.toFixed(2))}
                       </div>
                     </div>
@@ -137,9 +137,9 @@ const page = async ({ params }: { params: { ordernumber: string } }) => {
                     <div className=" h-[4rem]">
                       <button
                         type="submit"
-                        className="w-80  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-teal-600"
+                        className="w-80  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-teal-600 below-566:w-[12rem] below-566:text-[1rem]"
                       >
-                        <h1 className=" font-bold">Download Invoice </h1>
+                        <h1 className=" font-bold uppercase">Download Invoice </h1>
                       </button>
                     </div>
                   </div>

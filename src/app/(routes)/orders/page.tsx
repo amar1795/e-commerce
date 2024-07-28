@@ -58,20 +58,20 @@ const page =  () => {
   // });
 
   return (
-    <div>
-      <div className=" min-h-[95vh] bg-pink-500 ">
-        <div className=" flex justify-between">
+    <div className=" ">
+      <div className="  bg-pink-500   w-full ">
+        <div className=" flex justify-between below-730:flex-col below-730:items-center">
       
-        <div>
-        <h1 className=" text-[4rem] pl-10 uppercase">Your Total Orders : {orders[0]?.totalOrdersCount}</h1>
+        <div className="">
+        <h1 className=" text-[4rem] pl-10 uppercase below-925:text-[2rem]">Your Total Orders : {orders[0]?.totalOrdersCount}</h1>
         </div>
         <div className=" pr-11">
        
-       <CustomOrderSortButton
-            initialButtonName="SORTBY"
-            initialOptions={["New to Old", "Old to New"]}
-            setSortOrder={setSortOrder}
-          />
+          <CustomOrderSortButton
+                initialButtonName="SORTBY"
+                initialOptions={["New to Old", "Old to New"]}
+                setSortOrder={setSortOrder}
+              />
         </div>
         </div>
         <div className=" px-8">
@@ -79,8 +79,8 @@ const page =  () => {
           
           </div>
         </div>
-        <div>
-          <div className="  pt-5 pb-5">
+        <div className="">
+          <div className="  pt-5 pb-5 ">
          {
           orderLoading ? ( <div className=" h-screen flex items-center justify-center">
             <LoadingAnimation />
@@ -102,13 +102,15 @@ const page =  () => {
          
           </div>
         </div>
-        <div className="px-8  mt-[5rem] ml-[50rem]">
-          <PaginationComponent 
-          currentOrderPage={currentPage}
-          totalPages={orders[0]?.totalPages}
-          onPageChange={(page) => setCurrentPage(page)}/>
-
-        </div>
+        <div className="flex justify-end mt-[5rem] px-8">
+  <div>
+    <PaginationComponent 
+      currentOrderPage={currentPage}
+      totalPages={orders[0]?.totalPages}
+      onPageChange={(page) => setCurrentPage(page)}
+    />
+  </div>
+</div>
       </div>
     </div>
   );
