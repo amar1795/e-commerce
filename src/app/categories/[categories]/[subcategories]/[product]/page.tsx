@@ -344,15 +344,7 @@ const page = ({ params }: { params: { product: string } }) => {
   const previousSegment = segments[segments.length - 2];
   const previousSegment1 = segments[segments.length - 3];
   // console.log("this is the Previous segment:", previousSegment);
-  const images = [
-    "https://images.pexels.com/photos/23541799/pexels-photo-23541799/free-photo-of-shine-bright.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/17395579/pexels-photo-17395579/free-photo-of-shiny-water-at-sunset.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/20632751/pexels-photo-20632751/free-photo-of-a-cup-of-tea-and-dates-on-a-white-cloth.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/19602378/pexels-photo-19602378/free-photo-of-hands-holding-pizzas.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/23541799/pexels-photo-23541799/free-photo-of-shine-bright.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/20582544/pexels-photo-20582544/free-photo-of-waves.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://images.pexels.com/photos/24023467/pexels-photo-24023467/free-photo-of-a-wedding-reception-in-a-greenhouse-with-chandeliers.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  ];
+ 
 
   const breadcrumbsData = [
     { id: 1, href: "/", label: "Home" },
@@ -380,8 +372,8 @@ const page = ({ params }: { params: { product: string } }) => {
             <BreadcrumbWithCustomSeparator items={breadcrumbsData} />
           </div>
 
-          <div className=" bg-orange-300 h-auto flex ">
-            <div className=" bg-orange-300 flex-1 h-auto">
+          <div className=" bg-orange-300 h-auto flex below-730:flex-col ">
+            <div className=" bg-orange-300 flex-1 h-auto below-1265:w-[22rem]">
               <PhotoViewer images={updatedProducts?.images} />
             </div>
             <div className="flex-1 ">
@@ -402,19 +394,24 @@ const page = ({ params }: { params: { product: string } }) => {
               {/* <h1 className=" text-[2rem]">{data?.brand.name}</h1>  */}
             </div>
           </div>
-          <div>
+          <div className="bg-teal-600  flex items-center flex-col">
 
             <div className="bg-teal-600   pt-6">
-              <h3 className=" ml-8 w-[20rem] text-[2rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
+              <h3 className=" ml-8 w-[20rem] text-[2rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 uppercase">
                 Related Products
               </h3>
             </div>
+
+     
+
+             
             <CategoriesRelatedProduct
               relatedProduct={relatedProducts}
               ProductId={ProductId}
               callToast={callToast}
               filteredId={params.product}
             />
+         
           </div>
           <MainFooter />
         </div>

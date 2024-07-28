@@ -107,10 +107,10 @@ const SizeSelection = ({variants, sizes, color, setSize, selectedColor,setInitia
 
   return (
     <div>
-      <div className="flex">
+      <div className="flex below-1025:flex-col  below-1025:w-[25rem] below-868:w-[20rem]">
         <div className=" pt-4  ">
           <div className=" h-[4rem]">
-            <h1 className="w-40  p-2  border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4  bg-yellow-500 font-bold">
+            <h1 className="w-40  p-2  border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4  bg-yellow-500 font-bold  below-1025:ml-5">
               {"SIZE"}
             </h1>
           </div>
@@ -118,7 +118,7 @@ const SizeSelection = ({variants, sizes, color, setSize, selectedColor,setInitia
         <div className=" self-center ml-5">
           {sizes.map((size, index) => (
             <div
-              key={index}
+              key={index} 
               style={circleStyle(size)}
               onClick={() => setSelectedSize(size)}
             >

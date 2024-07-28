@@ -36,6 +36,7 @@ import {
 import { NotifyMeModal } from "../NotifyMeModal";
 import addItemToCart from "@/actions/cart/addItemToCart";
 import QuantitytLoading from "../quantity loading/QuantitytLoading";
+import LoadingAnimation from "../Loading/LoadingAnimation";
 
 type ProductVariant = {
   id: string;
@@ -130,41 +131,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
   //   selectedSize
   // );
 
-  // useEffect(() => {
-  //   if (data?.productVariants && data.productVariants.length > 0) {
-  //     // alert("i have been called")
-  //     const initialColour = data.productVariants[0]?.color;
-  //     const initialSize = data.productVariants[0]?.size;
-  //     console.log("Initial color and size:", initialColour, initialSize);
 
-  //     setSelectedColor(initialColour);
-  //     setSelectedSize(initialSize);
-  //   }
-  // }, [data]);
-
-  // console.log("this is the selected size", selectedSize);
-  // useEffect(() => {
-  //   if (selectedColor !== null) {
-  //     if (initialLoadColorAndSize === true) {
-  //       callToast({
-  //         title: `You selected colour ${selectedColor}`,
-  //         description: `You have successfully selected the colour ${selectedColor} `,
-  //       });
-  //     }
-  //   }
-  // }, [selectedColor]);
-
-  // useEffect(() => {
-  //   if (selectedSize !== null) {
-  //     if (initialLoadColorAndSize === true) {
-  //       callToast({
-  //         title: `You selected Size ${selectedSize}`,
-  //         description: `You have successfully selected the Size ${selectedSize} `,
-  //       });
-  //     }
-  //   }
-  //   // setInitialLoadColorAndSize(true);
-  // }, [selectedSize]);
 
   const initialData = [
     {
@@ -217,7 +184,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
   // console.log("this is the chart data", barChartData);
 
   if (!data) {
-    return <div>Loading...</div>;
+    return <div><LoadingAnimation/></div>;
   }
 
    // Effect for setting tempQuantity
@@ -657,10 +624,10 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
 
   return (
     <div>
-      <div className=" bg-teal-600  ">
-        <div className=" px-4">
-          <h1 className=" text-[4rem] font-bold">{data?.brand?.name}</h1>
-          <h2 className=" text-[1.2rem]">{data?.name}</h2>
+      <div className=" bg-teal-600 w-full  ">
+        <div className=" px-4   w-full"> 
+          <h1 className=" text-[4rem] font-bold  below-1000:text-[1.5rem] uppercase">{data?.brand?.name}</h1>
+          <h2 className=" text-[1.2rem] below-1000:text-[1.2rem] below-1000:w-[30rem] below-868:w-[20rem] uppercase below-868:text-[1rem]  ">{data?.name}</h2>
           <div className="star_rating flex justify-between w-[14rem] border border-black mt-5 h-[2rem]">
             <div className="star flex self-center border-r border-black pr-4">
               <div className=" pl-2">
@@ -678,27 +645,28 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
           <div className=" border-b-2 border-gray-300 mt-5"></div>
           <div className=" mt-2">
             <div className=" flex  w-[35rem]  mb-2">
-              <h1 className=" self-center text-[2rem]">MRP</h1>
+              <h1 className=" self-center text-[2rem] below-1025:text-[1.5rem] below-868:text-[1rem]">MRP</h1>
 
               <div className=" flex  self-center">
-                <div className=" self-center ">
-                  <DollarSign size={36} />
-                </div>
+              
                 <h1
-                  className=" text-[2.5rem] font-bold"
+                  className=" text-[2.5rem] font-bold ml-2 below-1025:text-[1.5rem] below-868:text-[1rem]"
                   style={{ textDecoration: "line-through" }}
                 >
-                  {data?.price}
+                  {data?.price?.toLocaleString("en-IN", {
+                    style: "currency",
+                    currency: "INR",
+                  })}
                 </h1>
-                <h1 className=" text-[2.5rem] font-bold ml-5">
+                <h1 className=" text-[2.5rem] font-bold ml-5 below-1025:text-[1.5rem]  below-868:text-[1rem]">
                   {data?.discountedPrice?.toFixed(2)}
                 </h1>
-                <h1 className=" text-[2.5rem] font-bold ml-5 text-yellow-400">
+                <h1 className=" text-[2.5rem] font-bold ml-5 text-yellow-400 below-1025:text-[1.5rem]  below-868:text-[1rem]">
                   ({data?.discount}%OFF)
                 </h1>
               </div>
             </div>
-            <h3>Inclusive of all taxes</h3>
+            <h3 className=" uppercase">Inclusive of all taxes</h3>
 
             <div>
               <div>
@@ -711,7 +679,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
               </div>
             </div>
 
-            <div className="button flex w-[15rem] justify-between mt-5">
+            <div className="button flex w-[15rem] justify-between mt-5 below-868:flex-col">
               {
                 <div className="button flex w-[15rem] justify-between mt-4">
                   {productVarientStock > 0 ? (
@@ -759,18 +727,18 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
               }
 
               {!data?.isWishlisted ? (
-                <div className=" h-[4rem] ml-5">
+                <div className=" h-[4rem] ml-5 below-868:ml-0">
                   <button
                     type="submit"
-                    className="w-60  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500"
+                    className="w-60  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500  "
                     onClick={() => handleWishlistToggle(user?.id, data.id)}
                   >
                     <Heart size={25} className=" mr-2" />
-                    <h1 className=" font-bold">{"Wishlist this item"} </h1>
+                    <h1 className=" font-bold below-868:text-[0.8rem] uppercase">{"Wishlist this item"} </h1>
                   </button>
                 </div>
               ) : (
-                <div className=" h-[4rem] ml-5">
+                <div className=" h-[4rem] ml-5 below-868:ml-0">
                   <button
                     type="submit"
                     className="w-60  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500"
@@ -792,17 +760,17 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
                   <div className=" h-[4rem] mt-8">
                     <button
                       type="submit"
-                      className={`w-60  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-red-600 `}
+                      className={`w-60  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-red-600  `}
                       onClick={handleremove}
                     >
                       <ShoppingCart />
 
-                      <h1 className=" font-bold pl-4">Remove </h1>
+                      <h1 className=" font-bold pl-4 below-868:text-[0.8rem] uppercase">Remove </h1>
                     </button>
                   </div>
                 </div>
 
-                <div className=" flex">
+                <div className=" flex below-925:flex-col">
                   <div className=" h-[4rem]  mr-4">
                     <button
                       type="submit"
@@ -810,7 +778,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
                       onClick={handleUpdate}
                     >
                       <ShoppingCart />
-                      <h1 className=" font-bold pl-4">Update </h1>
+                      <h1 className=" font-bold pl-4 below-868:text-[0.8rem] uppercase">Update </h1>
                     </button>
                   </div>
                   <div className=" h-[4rem] ">
@@ -820,7 +788,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
                         // onClick={handleremove}
                       >
                         <ShoppingCart />
-                        <h1 className=" font-bold pl-4">Go to Cart </h1>
+                        <h1 className=" font-bold pl-4 below-868:text-[0.8rem] uppercase">Go to Cart </h1>
                       </button>
                     </Link>
                   </div>
@@ -841,8 +809,10 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
           </div>
           <div className=" border-b-2 border-gray-300 mt-5"></div>
           <div className="   mt-10 text-[1.2rem]">
-            <h1 className=" text-[2rem] font-bold">Product Details</h1>
+            <h1 className=" text-[2rem] font-bold  uppercase">Product Details</h1>
+            <p className=" uppercase below-1025:w-[32rem] below-868:text-[1rem] below-868:w-[25rem] below-835:w-[20rem] below-835:text-[0.8rem] ">
             {data?.description}
+            </p>
           </div>
           <div className=" border-b-2 border-gray-300 mt-5"></div>
           <div className="  mt-4 bg">
@@ -859,10 +829,30 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
                     stroke="black"
                   />
                 </div>
+                
               </div>
 
-              <div className=" flex mt-6">
-                <div className="left flex-1 border-r-2 border-gray-600 pl-8 pr-4 ">
+              <div className=" hidden below-1025:block pl-8">
+                    <div className="top flex mt-5 mb-2">
+                      <p className=" text-[5rem] leading-none m-0 p-0 font-thin ">
+                        {data?.ratings?.averageRating.toFixed(1)}
+                      </p>
+                      <div className=" self-center ml-5">
+                        <Star
+                          fill="yellow"
+                          size={38}
+                          stroke="black"
+                          strokeWidth={0.5}
+                        />
+                      </div>
+                    </div>
+                    <div className="Bottom">
+                      {verifiedPurchaseCount} Verified Buyers
+                    </div>
+                  </div>
+
+              <div className=" flex mt-6 ">
+                <div className="left flex-1 border-r-2 border-gray-600 pl-8 pr-4 below-1025:hidden ">
                   <div className="">
                     <div className="top flex mt-5 mb-2">
                       <p className=" text-[5rem] leading-none m-0 p-0 font-thin ">
@@ -882,7 +872,9 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
                     </div>
                   </div>
                 </div>
-                <div className=" text-black w-[5rem] pl-5  flex flex-col justify-between">
+            
+                
+                <div className=" below-1025:hidden  text-black w-[5rem] pl-5  flex flex-col justify-between">
                   <div className=" flex w-5">
                     5{" "}
                     <div className=" self-center pl-2 ">
@@ -915,7 +907,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
                   </div>
                 </div>
 
-                <div className="right flex-1 pl-[14rem]  z-0">
+                <div className="right flex-1 pl-[14rem]  z-0 below-1025:hidden">
                   <div className="  rotate-90 w-[5.5rem] h-[2rem] ">
                     <StarChart
                       barChartData={initialData}
@@ -923,7 +915,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
                     />
                   </div>
                 </div>
-                <div className=" text-black w-[5rem]   flex flex-col justify-between">
+                <div className=" text-black w-[5rem]  below-1025:hidden  flex flex-col justify-between">
                   <p className=" flex w-5 pl-0">{data?.ratings?.count[5]} </p>
                   <p className=" flex w-5">{data?.ratings?.count[4]} </p>
                   <p className=" flex w-5">{data?.ratings?.count[3]} </p>
@@ -934,7 +926,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
             </div>
 
             {/* review component */}
-            <div>
+            <div className=" below-900:w-[30rem] below-835:w-[23rem]">
               {reviewData?.review?.rating ? (
                 <div className="mr-11">
                   <div className=" flex ">
@@ -962,7 +954,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
                   ) : (
                     <div>
                       <p>Your Review is :</p>
-                      <p>{reviewData?.review?.review}</p>
+                      <p >{reviewData?.review?.review}</p>
                       <ReviewModal
                         setNewData={setNewData}
                         reviewId={reviewData?.review?.id}
@@ -1012,8 +1004,8 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
               )}
             </div>
 
-            <div className="reviews border-2 border-black mt-11  ">
-              <div className=" cxphotos   px-4 pt-4 border-b-2 border-black">
+            <div className="reviews border-2 border-black mt-11 below-1000:w-[32rem]  below-868:w-[25rem] below-835:w-[20rem]">
+              <div className=" cxphotos   px-4 pt-4 border-b-2 border-black ">
                 <div>
                   <h1 className=" text-[1.2rem] font-semibold">
                     CUSTOMER PHOTOS({reviews?.images?.length || 0})
@@ -1080,13 +1072,13 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
                               </div>
                             )}
 
-                            <div className="  h-[3rem] flex justify-between px-2 py-2  mt-5">
-                              <div className=" bg-white border-2 border-black flex self-center py-1 px-4    ">
-                                <p className="border-gray-500 border-r-2 pr-2 ">
+                            <div className="   flex justify-between px-2 py-2  mt-5 below-868:flex-col">
+                              <div className=" below-868:mb-2 bg-white border-2 border-black flex self-center py-1 px-4    ">
+                                <p className="border-gray-500 border-r-2 pr-2 below-868:text-[0.8rem] ">
                                   {review?.user?.name}
                                 </p>
 
-                                <p className=" pl-2 ">
+                                <p className=" pl-2 below-868:text-[0.8rem] ">
                                   {formatDate(review?.createdAt)}{" "}
                                 </p>
                               </div>
@@ -1123,7 +1115,7 @@ const CategoriesRight: React.FC<CategoriesRightProps> = ({
                           <Link href={`/reviews/${data?.id}`}>
                             <button
                               type="submit"
-                              className="w-80  p-2  border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500"
+                              className="w-80  p-2  border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500 below-835:w-[15rem] uppercase below-868:text-[1rem] below-868:mr-5"
                             >
                               <h1 className=" font-bold">
                                 {"Read all the reviews"}{" "}

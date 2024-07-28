@@ -22,10 +22,12 @@ const config = {
     extend: {screens: {
       'below-1319': {'max': '1318px'},
       'below-1265': {'max': '1265px'},
+      'below-1025': {'max': '1025px'},
       'below-1000': {'max': '1000px'},
       'below-900': {'max': '899px'},
       'below-925': {'max': '925px'},
       'below-868': {'max': '868px'},
+      'below-835': {'max': '835px'},
       'below-700': {'max': '805px'},
       'below-730': {'max': '730px'},
       'below-695': {'max': '695px'},

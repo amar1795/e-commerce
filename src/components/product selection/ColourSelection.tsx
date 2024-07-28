@@ -74,18 +74,18 @@ const ColorSelection = ({ variants,setSize,setColor,setInitialLoadColorAndSize }
   return (
     <div>
       {/* <h2>Select Color</h2> */}
-      <div className=' flex'>
+      <div className=' flex below-1000:flex-col w-full  below-1000:w-[25rem] '>
       <div className=" pt-4  ">
           <div className=" h-[4rem]">
             <h1
              
-              className="w-40  p-2  border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4  bg-yellow-500 font-bold"
+              className="w-40  p-2  border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4  bg-yellow-500 font-bold  below-1000:ml-5"
             >
              {"COLOUR"} 
             </h1>
           </div>
         </div>
-       <div className=' self-center ml-5'>
+       <div className='  ml-5 below-1000:items-center  flex justify-center items-center  below-1000:w-[20rem] below-1000:ml-0'>
        {uniqueColors.map((color, index) => (
           <div
             key={index}
