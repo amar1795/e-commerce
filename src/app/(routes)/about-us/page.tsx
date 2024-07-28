@@ -121,7 +121,7 @@ const page = async() => {
     <div className=" bg-pink-500 border-2 border-black px-10 ">
       <div>
         <div className=" ">
-          <h1 className=" text-[6rem] uppercase  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 font-bold">
+          <h1 className=" text-[6rem] uppercase below-695:text-[2rem]  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 font-bold">
           About Us
           </h1>
         </div>
@@ -129,13 +129,13 @@ const page = async() => {
         <div className=" mt-10">
           <div>
             {/* <WishlistButton /> */}
-            <p className=" text-4xl">
+            <p className=" text-4xl below-695:text-[1.5rem] uppercase">
               <strong>
                 Welcome to Purchase Pal - Your Trusted Companion in Online
                 Shopping!
               </strong>
             </p>
-            <p className=" text-lg  mt-4">
+            <p className=" text-lg  mt-4 uppercase">
               At Purchase Pal, we believe that shopping online should be an
               enjoyable and seamless experience. Founded with the vision to
               revolutionize the way people shop, we are committed to offering a
@@ -144,8 +144,8 @@ const page = async() => {
             </p>
 
             <div className=" mt-5">
-              <div className=" w-[20rem] ">
-                <h2 className=" text-4xl font-bold uppercase  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
+              <div className=" w-[20rem] below-426:w-[15rem]  ">
+                <h2 className="below-426:text-[1.2rem] text-4xl font-bold uppercase below-695:text-[2rem]  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
                  Our Mission
                 </h2>
               </div>
@@ -187,8 +187,8 @@ const page = async() => {
             </div>
 
             <div>
-              <div className=" w-[20rem]">
-                <h2 className=" text-4xl font-bold uppercase  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
+              <div className=" w-[20rem] below-426:w-[15rem]">
+                <h2 className=" below-426:text-[1.2rem] below-695:text-[2rem] text-4xl font-bold uppercase  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
                 Our Vision
                 </h2>
               </div>
@@ -201,8 +201,8 @@ const page = async() => {
                 and rewarding.
               </p>
 
-              <div className=" w-[34rem]">
-                <h2 className=" text-4xl font-bold uppercase  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
+              <div className=" w-[34rem] below-695:w-[25rem] below-500:w-[20rem] below-426:w-[15rem]">
+                <h2 className=" below-695:text-[1rem] text-4xl font-bold uppercase  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
                 Why Choose Purchase Pal?
                 </h2>
               </div>
@@ -233,8 +233,8 @@ const page = async() => {
             </div>
 
             <div>
-            <div className=" w-[20rem] h-[5rem]">
-                <h2 className=" text-4xl font-bold uppercase  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
+            <div className=" w-[20rem] h-[5rem] below-426:w-[15rem]">
+                <h2 className=" below-426:text-[1.2rem]  below-695:text-[2rem] text-4xl font-bold uppercase  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
                 Our Community 
                 </h2>
               </div>

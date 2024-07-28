@@ -199,7 +199,7 @@ export function ReviewModal({
             <h1 className=" font-bold below-868:text-[0.8rem] uppercase">{buttonName} </h1>
           </button>
         </DialogTrigger>
-        <DialogContent className=" h-[41rem] ">
+        <DialogContent className=" h-[41rem] below-1265:h-[35rem] ">
           <form onSubmit={handleSubmit(onSubmit)}>
             <DialogHeader>
               <DialogTitle>
@@ -218,13 +218,13 @@ export function ReviewModal({
                 </div>
               </DialogTitle>
             </DialogHeader>
-            <div className=" main flex bg-pink-500 h-[30rem]  border-2 border-black border-b-8 border-r-4">
+            <div className=" main flex below-600:flex-col below-600:overflow-y-auto bg-pink-500 below-1265:h-[23rem]  h-[30rem]  border-2 border-black border-b-8 border-r-4">
               <div className=" left flex-1 pl-5">
                 {/* star rating component */}
-                <div>
+                <div className="">
                   <div>
-                    <h1 className="w-[25rem]  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4   bg-yellow-400">
-                      <h1 className=" font-bold text-[1.5rem]">
+                    <h1 className="w-[25rem] below-1000:w-[15rem]  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4   bg-yellow-400">
+                      <h1 className=" font-bold text-[1.5rem] below-1265:text-[1.2rem] below-1000:text-[0.8rem] uppercase">
                         How would you rate it ?
                       </h1>
                     </h1>
@@ -330,8 +330,8 @@ export function ReviewModal({
                 <div>
                   {/* review Title */}
                   <div>
-                    <h1 className="w-[30rem]  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4   bg-yellow-400">
-                      <h1 className=" font-bold text-[1.5rem]">
+                    <h1 className="w-[30rem] below-1000:w-[15rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4   bg-yellow-400">
+                      <h1 className=" font-bold text-[1.5rem] below-1265:text-[1.2rem] below-1000:text-[0.8rem] uppercase">
                         Title your Review
                       </h1>
                     </h1>
@@ -341,7 +341,7 @@ export function ReviewModal({
                       type="text"
                       {...reviewField("title")}
                       placeholder="Whats most important to know?"
-                      className=" w-[30rem] h-[3rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
+                      className=" w-[30rem] below-1000:w-full h-[3rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
                     />
                   </div>
                   {errors.title && (
@@ -354,8 +354,8 @@ export function ReviewModal({
                 <div>
                   <div>
                     {/* review textArea */}
-                    <h1 className="w-[30rem]  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4   bg-yellow-400">
-                      <h1 className=" font-bold text-[1.5rem]">
+                    <h1 className="w-[30rem]  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4   bg-yellow-400 below-1000:w-[15rem]">
+                      <h1 className=" font-bold text-[1.5rem] below-1265:text-[1.2rem] below-1000:text-[0.8rem] uppercase">
                         Write your Review
                       </h1>
                     </h1>
@@ -364,7 +364,7 @@ export function ReviewModal({
                     <textarea
                       {...reviewField("review")}
                       placeholder="What did you like or dislike? What did you use this product for?"
-                      className=" w-[30rem] h-[13.5rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
+                      className=" w-[30rem] below-1000:w-full h-[13.5rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none below-1265:h-[7rem]"
                     />
                   </div>
                   {errors.review && (

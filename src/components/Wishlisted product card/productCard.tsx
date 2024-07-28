@@ -67,21 +67,22 @@ const WishlistedProductCard: React.FC<updatedDataResponse> = ({ product,setData 
 
   return (
     <div>
-      <div className="sembla__slide_product pl-[3rem] ">
+      <div className="sembla__slide_product pl-[3rem] below-500:pl-0 ">
         <div
-          className="sembla__slide__number__product flex flex-col relative min-h-[25rem] w-[18rem]  border-2 border-black border-b-8 border-r-4
+          className="sembla__slide__number__product flex flex-col relative min-h-[25rem] w-[18rem]  below-868:min-h-[12rem]  below-868:w-[12rem]   border-2 border-black border-b-8 border-r-4
         transition-transform duration-300 ease-in-out hover:scale-110"
-        >
+        > 
           {/* top part */}
           <button>
-            <div className="ProductImageCard min-h-[19rem] relative ">
+            <div className="ProductImageCard min-h-[19rem]  below-868:min-h-[12rem] relative ">
               <button className={`heartButton z-10 hover:text-red-500`}>
                 <Trash2
                 
                   onClick={() => handleRemoveClick(user?.id, product.id)}
                   size={40}
                   strokeWidth={0.8}
-                  className={` hover:fill-red-500 text-black`}
+                  
+                  className={` hover:fill-red-500 text-black below-700:w-5 below-700:h-5 w-8 h-8 `}
                 />
               </button>
               <div className="ProductImage bg-red-400 h-full w-full absolute">
@@ -123,12 +124,12 @@ const WishlistedProductCard: React.FC<updatedDataResponse> = ({ product,setData 
           </div> */}
           {/* Bottom part */}
           <div className="ProductDetails  ">
-            <div className="Wishlistedcard_slider px-2 pb-5 w-full text-[1.5rem]   flex justify-between bg-white bg-opacity-20 backdrop-blur-lg border border-white/30  ">
+            <div className="Wishlistedcard_slider px-2 pb-5 w-full text-[1.5rem]   flex justify-between bg-white bg-opacity-20 backdrop-blur-lg border border-white/30  below-868:flex-col ">
               <div className="left w-[9rem]  pt-1">
-                <h1 className=" text-[19px] font-bold">
+                <h1 className=" text-[19px] font-bold  below-868:text-[1rem]">
                   {product?.brand?.name}
                 </h1>
-                <p className="font-extralight text-[0.9rem]">
+                <p className="font-extralight text-[0.9rem]  below-868:text-[0.8rem]">
                   {" "}
                   {product?.name.length > 30
                     ? product?.name.slice(0, 25) + "..."
@@ -136,26 +137,26 @@ const WishlistedProductCard: React.FC<updatedDataResponse> = ({ product,setData 
                 </p>
                 <div className=" flex ">
                   <h1
-                    className=" text-[1.4rem] font-bold"
+                    className=" text-[1.4rem] font-bold  below-868:text-[0.8rem]"
                     style={{ textDecoration: "line-through" }}
                   >
                     {product?.price}
                   </h1>
-                  <h1 className=" text-[1.2rem] font-bold ml-2">
+                  <h1 className=" text-[1.2rem] font-bold ml-2  below-868:text-[0.8rem]">
                     {formatPrice(product?.discountedPrice?.toFixed(2))}
                   </h1>
-                  <h1 className=" text-[1.2rem] font-bold ml-2">
+                  <h1 className=" text-[1.2rem] font-bold ml-2  below-868:text-[0.8rem]">
                     ({product?.discount}%OFF)
                   </h1>
                 </div>
               </div>
               <div className="right self-center ">
                 <Link href={url}>
-                <button className="nbutton items-center border-2 border-black p-2   justify-between hidden ">
+                <button className="nbutton items-center border-2 border-black p-2   justify-between hidden below-700:pt-1  ">
                   <div>
-                    <ShoppingCart size={20} />
+                    <ShoppingCart  className=" below-700:w-4 below-700:h-4 w-5 h-5" />
                   </div>
-                  <div className="text-sm px-3">Buy Now</div>
+                  <div className="text-sm px-3 below-700:text-[0.7rem]  below-868:text-[0.8rem]">Buy Now</div>
                 </button>
                   </Link>
               </div>

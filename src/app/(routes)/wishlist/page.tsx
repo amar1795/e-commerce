@@ -22,7 +22,7 @@ const page = async() => {
 
       <div className=" min-h-[95vh] bg-pink-500 ">
       <div className=" pt-4">
-      <h1 className=" m-4  text-[4rem] leading-none p-2 border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">{wishlist.length >0 ? "Your Wishlisted Items":"You have not Wishlisted any items"}
+      <h1 className=" m-4  text-[4rem] leading-none p-2 border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 uppercase below-835:text-[2rem]">{wishlist.length >0 ? "Your Wishlisted Items":"You have not Wishlisted any items"}
              
              </h1>
       </div>
@@ -36,7 +36,7 @@ const page = async() => {
             
             {
               wishlist.length ==0 && 
-            <h1 className=" text-[4rem] pl-10 uppercase mt-20">{"Please Wishlist the Product to see it here"}</h1>
+            <h1 className=" text-[4rem]  pl-10 uppercase mt-20">{"Please Wishlist the Product to see it here"}</h1>
             }
             {wishlist?.map((product) => (
               <div className="py-4" key={product?.id}>
