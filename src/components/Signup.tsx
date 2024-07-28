@@ -69,24 +69,24 @@ const Signup: React.FC<SignupProps> = ({ toggleView, setIsSignup }) => {
 
   return (
     <div>
-      <div className=" mt-8">
-        <h1 className="text-4xl font-bold text-center ">
+      <div className=" mt-8 ">
+        <h1 className="text-4xl font-bold text-center uppercase ">
           Get Started with Us !
         </h1>
-        <h1 className="text-4xl font-bold text-center">
+        <h1 className="text-4xl font-bold text-center uppercase">
           Create Your Free Account
         </h1>
 
         <form className="mt-8" onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center below-590:w-full px-4 below-370:w-[25rem]   ">
             <div className=" flex ">
-              <div>
+              <div className="below-590:mr-2 ">
                 <input
                   type="text"
                   {...registerField("firstname")}
                   // name="firstname"
                   placeholder="First Name"
-                  className=" w-64 p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none  mr-8"
+                  className=" w-64 p-2 below-590:w-full  border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none  mr-8"
                 />
                 {errors.firstname && (
                   <span className=" italic text-red-950  text-[1.1rem]">
@@ -100,7 +100,7 @@ const Signup: React.FC<SignupProps> = ({ toggleView, setIsSignup }) => {
                   {...registerField("lastname")}
                   // name="lastname"
                   placeholder="lastname"
-                  className="w-64 p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
+                  className="w-64 below-590:w-full p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
                 />
                 {errors.lastname && (
                   <span className=" italic text-red-950  text-[1.1rem]">
@@ -114,7 +114,7 @@ const Signup: React.FC<SignupProps> = ({ toggleView, setIsSignup }) => {
               // name="email"
               {...registerField("email")}
               placeholder="Email"
-              className="w-[34rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
+              className="w-[34rem] below-590:w-full p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
             />
             {errors.email && (
               <span className=" italic text-red-950  text-[1.1rem]">
@@ -127,7 +127,7 @@ const Signup: React.FC<SignupProps> = ({ toggleView, setIsSignup }) => {
               // name="password"
               {...registerField("password")}
               placeholder="Password"
-              className="w-[34rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
+              className="w-[34rem] below-590:w-full p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
             />
             <div className=" px-5 ml-4 mt-2">
               {errors.password && (
@@ -141,7 +141,7 @@ const Signup: React.FC<SignupProps> = ({ toggleView, setIsSignup }) => {
               type="password"
               {...registerField("confirmpassword")}
               placeholder="Confirm Password"
-              className="w-[34rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
+              className="w-[34rem] below-590:w-full p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
             />
             {errors.confirmpassword && (
               <span className=" italic text-red-950  text-[1.1rem]">
@@ -160,10 +160,10 @@ const Signup: React.FC<SignupProps> = ({ toggleView, setIsSignup }) => {
           </div>
         </form>
 
-        <div className=" text-center pb-7">
+        <div className=" text-center pb-7 flex items-center justify-center ">
           <p className=" mx-[5rem] mt-4">
             Already have an Account ?{" "}
-            <button className=" font-bold text-2xl" onClick={toggleView}>
+            <button className="w-40 below-370:w-[18rem] below-500:w-[] font-bold text-2xl p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500 uppercase below-500:text-[1rem] ml-5 " onClick={toggleView}>
               Login{" "}
             </button>
           </p>

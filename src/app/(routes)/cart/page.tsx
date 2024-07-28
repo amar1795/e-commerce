@@ -619,11 +619,18 @@ const page = () => {
                       <StyledButton buttonName="Please Sign In to purchase" />
                     </div>
                   ) : (
-                    <Link href={"/checkout"}>
-                      <div className=" flex justify-center">
-                        <StyledButton buttonName=" Proceed to Checkout" />
-                      </div>
-                    </Link>
+
+                    
+                      mergedTotalCount == 0 ? (<div className=" flex justify-center">
+                        <StyledButton buttonName="Empty Cart" />
+                      </div>) :( <div> <Link href={"/checkout"}>
+                        <div className=" flex justify-center">
+                          <StyledButton buttonName=" Proceed to Checkout" />
+                        </div>
+                      </Link>
+                      </div>)
+                    
+                  
                   )}
                   {/* <StyledButton buttonName=" Proceed to Checkout" /> */}
                 </div>

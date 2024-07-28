@@ -99,20 +99,20 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
 
   return (
     <div>
-      <div className=" mt-8">
-        <h1 className="text-4xl font-bold text-center ">
-          Welcome To Purchase Pal!
+      <div className=" mt-8   ">
+        <h1 className="text-4xl font-bold text-center uppercase below-378:text-[1.5rem] below-378:text-wrap  ">
+          Welcome To Purchases Pal!
         </h1>
         {error && (
           <span className=" italic text-red-950  text-[1.5rem]">{error}</span>
         )}
         <form className="mt-8" onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center  px-4 w-full">
             <input
               type="text"
               placeholder="Email"
               {...registerField("email")}
-              className="w-96 p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
+              className="w-96 below-500:w-full below-370:w-[18rem] below-445:w-[24rem] below-378:w-[20rem]  p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
             />
             {errors.email && (
               <span className=" italic text-red-950  text-[1.1rem]">
@@ -123,7 +123,7 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
               {...registerField("password")}
               type="password"
               placeholder="Password"
-              className="w-96 p-2  border-2 border-black bg-white text-black flex self-center justify-center border-b-8 border-r-4  focus:outline-none mt-4"
+              className="w-96 p-2  below-500:w-full below-370:w-[18rem] below-445:w-[24rem] below-378:w-[20rem]  border-2 border-black bg-white text-black flex self-center justify-center border-b-8 border-r-4  focus:outline-none mt-4"
             />
             {errors.password && (
               <span className=" italic text-red-950  text-[1.1rem]">
@@ -136,7 +136,7 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
                 {...registerField("code")}
                 type="text"
                 placeholder="Enter 2FA code"
-                className="w-96 p-2  border-2 border-black bg-white text-black flex self-center justify-center border-b-8 border-r-4  focus:outline-none mt-4"
+                className="w-96 p-2 below-500:w-full below-370:w-[18rem] border-2 border-black bg-white text-black flex self-center justify-center border-b-8 border-r-4  focus:outline-none mt-4 below-378:w-[20rem] below-445:w-[24rem] "
               />
             )}
             {errors.password && (
@@ -149,7 +149,7 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
               <button
                 type="submit"
                 disabled={isPending}
-                className="w-80  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500"
+                className="w-80 below-370:w-[18rem]   p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500 uppercase"
               >
                 <h1 className=" font-bold">
                   {" "}
@@ -164,7 +164,7 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
             </div>
           </div>
         </form>
-        <div className=" mt-4 flex justify-center ">
+        <div className=" mt-4 flex justify-center below-370:flex-col below-370:items-center  ">
           <p className=" self-center pr-4 text-1xl font-bold">
             Forgot your Password ?
           </p>
@@ -172,22 +172,24 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
             <CustomModal buttonName="click here" />
           </div>
         </div>
-        <div className=" text-center">
+        <div className=" text-center flex flex-col items-center ">
           <p className=" mx-[5rem] mt-4">
             Don't have an account ?{" "}
-            <button onClick={toggleView} className=" font-bold text-2xl">
+            <button onClick={toggleView} 
+             className="w-80 below-370:w-[18rem] below-500:w-[] font-bold text-2xl p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500 uppercase below-500:text-[1rem]"
+            >
               Sign Up
             </button>
           </p>
         </div>
 
-        <div className=" flex justify-center mt-4">
+        <div className=" flex justify-center mt-4 ">
           <div className=" border-2 border-gray-600 w-[10rem] h-0 self-center mr-5"></div>
           Or
           <div className=" border-2 border-gray-600  w-[10rem] h-0 ml-5 self-center"></div>
         </div>
-        <div className=" flex justify-center">
-          <button className="w-80 p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2"   onClick={() => onClick("google")}>
+        <div className=" flex justify-center below-700:mb-7 ">
+          <button className="w-80 below-378:w-[18rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2"   onClick={() => onClick("google")}>
             <Image
               src="/google.png"
               width={20}

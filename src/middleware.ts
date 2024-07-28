@@ -37,7 +37,7 @@ export default auth((req) => {
   const { nextUrl } = req;
 
   try {
-    console.log(`Handling request for: ${nextUrl.pathname}`);
+    // console.log(`Handling request for: ${nextUrl.pathname}`);
 
     const userLoggedIn = req.auth ? true : false;
     const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
@@ -46,28 +46,28 @@ export default auth((req) => {
     const isRestrictedRoute = restrictedRoutes.some(route => nextUrl.pathname === route || nextUrl.pathname.startsWith(route));
 
     if (isApiAuthRoute) {
-      console.log("API auth route, proceeding without checks.");
+      // console.log("API auth route, proceeding without checks.");
       return null;
     }
 
     if (isAuthRoute) {
       if (userLoggedIn) {
-        console.log("User logged in, redirecting to default path.");
+        // console.log("User logged in, redirecting to default path.");
         return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT_PATH, nextUrl));
       }
-      console.log("Auth route, but user not logged in.");
+      // console.log("Auth route, but user not logged in.");
       return null;
     }
 
     if (isRestrictedRoute) {
       if (!userLoggedIn) {
-        console.log("Restricted route and user not logged in, redirecting to home.");
+        // console.log("Restricted route and user not logged in, redirecting to home.");
         return Response.redirect(new URL("/", nextUrl));
       }
     }
 
     if (!userLoggedIn && !isPublicRoute) {
-      console.log("User not logged in and route is not public, redirecting to login.");
+      // console.log("User not logged in and route is not public, redirecting to login.");
       let callbackUrl = nextUrl.pathname;
       if (nextUrl.search) {
         callbackUrl += nextUrl.search;
@@ -80,10 +80,10 @@ export default auth((req) => {
       );
     }
 
-    console.log("Route allowed, proceeding.");
+    // console.log("Route allowed, proceeding.");
     return null;
   } catch (error) {
-    console.error(`Error handling request for ${nextUrl.pathname}:`, error);
+    // console.error(`Error handling request for ${nextUrl.pathname}:`, error);
     throw error;
   }
 });

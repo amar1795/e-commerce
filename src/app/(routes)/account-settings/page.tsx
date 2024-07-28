@@ -436,9 +436,36 @@ const page = () => {
      
      const {success,error}= await addWalletBalance();
 
+
+     const walletData = await getUserWallet();
+     setWalletData(walletData);
+     setWalletBalance(walletData?.wallet?.balance || 0);
+
+     // console.log("this is the wallet data", walletData);
+     const transactionData = walletData?.wallet?.transactions;
+
+     if (transactionData) {
+       const creditTransactions = [];
+       const debitTransactions = [];
+
+       transactionData.forEach((transaction) => {
+         if (transaction.type === "CREDIT") {
+           creditTransactions.push(transaction);
+         } else {
+           debitTransactions.push(transaction);
+         }
+       });
+
+       setCreditTransaction(creditTransactions);
+       setDebitTransaction(debitTransactions);
+     }
+
+    
+
+
      if(success){
       toast({
-        title: "Balance Added",
+        title: "1,00,000 Rupees Added in Balance ",
         description: "Successfully Added the Balance",
       });
     }
@@ -711,7 +738,7 @@ const page = () => {
                             </div>
                           ) : (
                             <div className=" h-[4rem]">
-                              <button className="  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  bg-green-500">
+                              <button className=" hidden  p-2 border-2 border-black text-black mt-4  self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  bg-green-500">
                                 <h1 className=" font-bold uppercase  below-500:text-[0.8rem]">
                                   {" "}
                                   Please Verify Your Email{" "}

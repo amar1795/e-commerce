@@ -30,7 +30,7 @@ export async function addWalletBalance() {
     const lastTransaction = await prismadb.transaction.findFirst({
       where: {
         walletId: existingWallet.id,
-        type: 'DEBIT', 
+        type: 'CREDIT', 
       },
       orderBy: {
         createdAt: 'desc'
