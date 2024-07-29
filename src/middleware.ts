@@ -22,7 +22,7 @@ export const authRoutes = [
 const restrictedRoutes = [
   "/checkout",
   "/account-settings",
-  "/password-reset",
+  // "/password-reset",
 ];
 
 // API routes that require authentication
