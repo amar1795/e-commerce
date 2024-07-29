@@ -44,6 +44,12 @@ export default auth((req) => {
     const isPublicRoute = publicRoutes.some(route => nextUrl.pathname === route || nextUrl.pathname.startsWith(route));
     const isAuthRoute = authRoutes.includes(nextUrl.pathname);
     const isRestrictedRoute = restrictedRoutes.some(route => nextUrl.pathname === route || nextUrl.pathname.startsWith(route));
+    const token = nextUrl.searchParams.get('token');
+
+    if (nextUrl.pathname === "/password-reset" && !token) {
+      // Redirect to home if no token is present in password-reset route
+      return Response.redirect(new URL("/", nextUrl));
+    }
 
     if (isApiAuthRoute) {
       // console.log("API auth route, proceeding without checks.");
