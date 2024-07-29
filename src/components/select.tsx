@@ -29,12 +29,12 @@ export function SelectDemo( {setSortBy}: {setSortBy: (value: string) => void} ) 
       <SelectContent>
         <SelectGroup>
           {/* <SelectLabel> Fruits</SelectLabel> */}
-          <SelectItem value="priceDesc">PRICE : high to low </SelectItem>
-          <SelectItem value="priceAsc">PRICE :low to high</SelectItem>
-          <SelectItem value="ratingsDesc">RATINGS:high to low </SelectItem>
-          <SelectItem value="ratingsAsc">RATINGS:low to high </SelectItem>
-          <SelectItem value="discountDesc">DISCOUNT:high to low </SelectItem>
-          <SelectItem value="discountAsc">DISCOUNT:low to high </SelectItem>
+          <SelectItem value="priceDesc">PRICE : HIGH TO LOW </SelectItem>
+          <SelectItem value="priceAsc">PRICE :LOW TO HIGH</SelectItem>
+          <SelectItem value="ratingsDesc">RATINGS:HIGH TO LOW </SelectItem>
+          <SelectItem value="ratingsAsc">RATINGS:LOW TO HIGH </SelectItem>
+          <SelectItem value="discountDesc">DISCOUNT:HIGH TO LOW </SelectItem>
+          <SelectItem value="discountAsc">DISCOUNT:LOW TO HIGH </SelectItem>
           <SelectItem value="SORT asc">SORT BY:ASCENDING</SelectItem>
           <SelectItem value="SORT desc">SORT BY :DESCENDING</SelectItem>
         </SelectGroup>

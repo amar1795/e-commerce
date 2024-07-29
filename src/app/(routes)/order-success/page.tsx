@@ -145,6 +145,8 @@ const page = () => {
                   {orderItems.map((item) => (
                     <div className=" mb-4">
                       <CheckOutOrderSuccessCard
+                      color={item?.color}
+                      size={item?.size}
                         // handleClickDelete={handleClickDelete}
                         product={item?.product}
                         quantity={item?.quantity}

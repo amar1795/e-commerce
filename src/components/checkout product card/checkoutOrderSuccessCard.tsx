@@ -8,6 +8,8 @@ import Image from "next/image";
 import React, { useCallback, useState } from "react";
 
 const CheckOutOrderSuccessCard = ({
+  color,
+  size,
   quantity,
   product,
   handleQuantityChange,
@@ -61,11 +63,8 @@ const CheckOutOrderSuccessCard = ({
                 <span className=" text-[1.2rem] below-600:text-[0.8rem] font-bold">COLOUR :</span>{" "}
                 <span>
                   <span className=" self-center below-600:text-[0.8rem]  text-[1.2rem] ">
-                    {`
-                        BLACK `}
-                    {/* {product?.name.length > 36
-                  ? product?.name.slice(0, 40) + "..."
-                  : product?.name}{" "} */}
+                    { color}
+                    
                   </span>
                 </span>
               </div>
@@ -73,11 +72,8 @@ const CheckOutOrderSuccessCard = ({
                 <span className=" text-[1.2rem] below-600:text-[0.8rem] font-bold">SIZE</span>{" "}
                 <span>
                   <span className=" self-center below-600:text-[0.8rem]  text-[1.2rem] ">
-                    {`
-                       LARGE `}
-                    {/* {product?.name.length > 36
-                  ? product?.name.slice(0, 40) + "..."
-                  : product?.name}{" "} */}
+                    {size}
+                   
                   </span>
                 </span>
               </div>
