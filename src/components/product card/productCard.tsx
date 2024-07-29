@@ -57,6 +57,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
   const [itemInCart, setItemInCart] = useState(false);
   const [fetchedData, setFetchedData] = useState("");
   const [url, setUrl] = useState("");
+  const [UrlLoading, setUrlLoading] = useState(true);
   // console.log("this is the url", url);
   // console.log("this is the fetched product data", product);
 
@@ -76,9 +77,12 @@ const ProductCard: React.FC<updatedDataResponse> = ({
   }, [product]);
 
   useEffect(() => {
+
     const fetchData = async () => {
+      setUrlLoading(true);
       const data = await getProductDetailsByID(product.id);
       // console.log("this is the fetched data", data);
+
       setFetchedData(data);
       if (data) {
         let { parentCategory, topmostParentCategory } = data?.parentCategoryIds;
@@ -92,6 +96,7 @@ const ProductCard: React.FC<updatedDataResponse> = ({
         const testUrl = `/categories/${topmostParentCategory}/${cleanedCategory0}/${productId}`;
         // console.log("this is the test url", testUrl);
         setUrl(testUrl);
+        setUrlLoading(false);
       }
     };
 
@@ -302,38 +307,38 @@ const ProductCard: React.FC<updatedDataResponse> = ({
 
   // console.log("this is the productID from product card", product?.category?.name);
 
-  const completeUrl =
-    typeof window !== "undefined" ? window.location.href.split("?")[0] : "";
-  // console.log("this is the complete url", completeUrl);
+  // const completeUrl =
+  //   typeof window !== "undefined" ? window.location.href.split("?")[0] : "";
+  // // console.log("this is the complete url", completeUrl);
 
-  const segments = completeUrl.split("/");
+  // const segments = completeUrl.split("/");
 
-  const matchingSegmentIndex = segments.findIndex(
-    (segment) => removeSpaces(segment) === removeSpaces(product?.category?.name)
-  );
-  // console.log("this is the product category name", product?.category?.name);
-  // If a matching segment is found, construct the new URL
-  let newUrl = completeUrl;
+  // const matchingSegmentIndex = segments.findIndex(
+  //   (segment) => removeSpaces(segment) === removeSpaces(product?.category?.name)
+  // );
+  // // console.log("this is the product category name", product?.category?.name);
+  // // If a matching segment is found, construct the new URL
+  // let newUrl = completeUrl;
 
-  if (matchingSegmentIndex !== -1) {
-    // Remove the segments from the matching segment index onwards
+  // if (matchingSegmentIndex !== -1) {
+  //   // Remove the segments from the matching segment index onwards
 
-    const newSegments = segments.slice(0, matchingSegmentIndex);
+  //   const newSegments = segments.slice(0, matchingSegmentIndex);
 
-    // Add the product category name and ID to the new segments
+  //   // Add the product category name and ID to the new segments
 
-    newSegments.push(removeSpaces(product?.category?.name), product?.id);
+  //   newSegments.push(removeSpaces(product?.category?.name), product?.id);
 
-    // Join the new segments to form the new URL
+  //   // Join the new segments to form the new URL
 
-    newUrl = newSegments.join("/");
-  } else {
-    // If no matching segment is found, append the product category name and ID to the end of the URL
+  //   newUrl = newSegments.join("/");
+  // } else {
+  //   // If no matching segment is found, append the product category name and ID to the end of the URL
 
-    newUrl = `${completeUrl}/${removeSpaces(product?.category?.name)}/${
-      product?.id
-    }`;
-  }
+  //   newUrl = `${completeUrl}/${removeSpaces(product?.category?.name)}/${
+  //     product?.id
+  //   }`;
+  // }
 
   return (
     <div>
@@ -366,14 +371,31 @@ const ProductCard: React.FC<updatedDataResponse> = ({
               </button>
 
               <div className="ProductImage bg-red-400 h-full w-full absolute">
-                <Link href={url}>
-                  <Image
-                    alt="product image"
-                    fill="true"
-                    objectFit="cover"
-                    src={product?.images[0]?.url}
-                  />
-                </Link>
+                {
+                  url == "" ? (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-red-500">
+                      
+                      </div>
+                    </div>
+                  ) : (<Link href={url }>
+                    <Image
+                      alt="product image"
+                      fill="true"
+                      objectFit="cover"
+                      src={product?.images[0]?.url}
+                    />
+                  </Link>)
+                }
+                {/* <Link href={url }>
+                    <Image
+                      alt="product image"
+                      fill="true"
+                      objectFit="cover"
+                      src={product?.images[0]?.url}
+                    />
+                  </Link> */}
+                
               </div>
             </div>
           </button>
