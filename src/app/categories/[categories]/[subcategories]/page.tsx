@@ -28,6 +28,7 @@ const Page = ({ params }: { params: { subcategories: string } }) => {
     return storedPage ? parseInt(storedPage, 10) : 1;
   });
   const [filterVisible, setFilterVisible] = useState(false); // Add this state variable
+  const [productsFound, setProductsFound] = useState(true);
 
   const [paginatedData, setPaginatedData] = useState({
     products: [],
@@ -88,6 +89,8 @@ const Page = ({ params }: { params: { subcategories: string } }) => {
         9
       );
       // console.log("this is the data", data)
+      setProductsFound(data.products.length > 0 ? true : false);
+
       setPaginatedData({
         products: data.products,
         totalPages: data.totalPages,
@@ -262,8 +265,25 @@ const callToast = ({ variant, title, description }) => {
           <div className="productsRight flex-grow">
             <div className={`min-h-[90vh] `}>
         
-            {
-               loading ? (<>
+            {productsFound === false ? (
+                <div className=" text-center self-center">
+                  <h1 className=" text-[4rem]  below-1000:text-[2rem] below-695:text-[1rem] uppercase ">
+                    No Products found Lmao 😂
+                  </h1>
+                  <h1 className=" text-[4rem] below-1000:text-[2rem]  below-695:text-[1rem] uppercase  ">
+                    What you Filtering ?
+                  </h1>
+                  <h1 className=" text-[4rem] below-1000:text-[2rem]  below-695:text-[1rem] uppercase ">
+                    Search again Bruh...
+                  </h1>
+                </div>
+              ) : paginatedData.products?.length === 0 ? (
+                <div className=" h-screen  flex items-center justify-center">
+                  <LoadingAnimation />
+                </div>
+              ) :(
+                <div>
+               {loading ? (<>
                 <div className=" h-screen  flex items-center justify-center">
                 <LoadingAnimation />
                 </div>
@@ -275,7 +295,8 @@ const callToast = ({ variant, title, description }) => {
             }
               
             </div>
-
+ )}
+            </div>
             <div className=" h-[4rem] ">
               <PaginationComponent
                 currentOrderPage={currentPage}
@@ -312,20 +333,32 @@ const callToast = ({ variant, title, description }) => {
           </div>
 
           <div
-            className={`productsRight  below-426:hidden  below-378:hidden flex-grow   transition-all duration-500 ${
+            className={`productsRight  below-445:hidden  below-378:hidden flex-grow   transition-all duration-500 ${
               filterVisible ? "ml-[0vw]" : "ml-[-40vw] "
             }`}
           >
             <div className={`min-h-[90vh] `}>
-              { paginatedData.products?.length === 0 ? (
-                <div className=" h-screen  flex items-center justify-center">
+              {productsFound === false ? (
+                <div className=" text-center self-center">
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase ">
+                    No Products found Lmao 😂
+                  </h1>
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase  ">
+                    What you Filtering ?
+                  </h1>
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase ">
+                    Search again Bruh...
+                  </h1>
+                </div>
+              ) : paginatedData.products?.length === 0 ? (
+                <div className=" h-screen   flex items-center justify-center">
                   <LoadingAnimation />
                 </div>
               ) : (
                 <div>
                   {loading ? (
                     <>
-                      <div className=" h-screen  flex items-center justify-center">
+                      <div className=" h-screen   flex items-center justify-center">
                         <LoadingAnimation />
                       </div>
                     </>
@@ -349,23 +382,34 @@ const callToast = ({ variant, title, description }) => {
             </div>
           </div>
 
-          {/* below 426 */}
+          {/* below 445 */}
           <div
-            className={`productsRight hidden below-426:block  below-378:hidden flex-grow   transition-all duration-500 ${
+            className={`productsRight hidden below-445:block  below-378:hidden flex-grow   transition-all duration-500 ${
               filterVisible ? "ml-[0vw]" : "ml-[-55vw] "
             }`}
           >
             <div className={`min-h-[90vh] `}>
-              {
-               paginatedData.products?.length === 0 ? (
-                <div className=" h-screen  flex items-center justify-center">
+              {productsFound === false ? (
+                <div className=" text-center self-center">
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase ">
+                    No Products found Lmao 😂
+                  </h1>
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase  ">
+                    What you Filtering ?
+                  </h1>
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase ">
+                    Search again Bruh...
+                  </h1>
+                </div>
+              ) : paginatedData.products?.length === 0 ? (
+                <div className=" h-screen below-445:h-[10rem]  flex items-center justify-center">
                   <LoadingAnimation />
                 </div>
               ) : (
                 <div>
                   {loading ? (
                     <>
-                      <div className=" h-screen  flex items-center justify-center">
+                      <div className=" h-screen below-445:h-[10rem] flex items-center justify-center">
                         <LoadingAnimation />
                       </div>
                     </>
@@ -397,10 +441,19 @@ const callToast = ({ variant, title, description }) => {
             }`}
           >
             <div className={`min-h-[90vh] `}>
-              {
-               
-               
-               paginatedData.products?.length === 0 ? (
+              {productsFound === false ? (
+                <div className=" text-center self-center">
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase ">
+                    No Products found Lmao 😂
+                  </h1>
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase  ">
+                    What you Filtering ?
+                  </h1>
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase ">
+                    Search again Bruh...
+                  </h1>
+                </div>
+              ) : paginatedData.products?.length === 0 ? (
                 <div className=" h-screen  flex items-center justify-center">
                   <LoadingAnimation />
                 </div>

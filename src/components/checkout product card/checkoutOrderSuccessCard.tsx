@@ -69,7 +69,7 @@ const CheckOutOrderSuccessCard = ({
                 </span>
               </div>
               <div>
-                <span className=" text-[1.2rem] below-600:text-[0.8rem] font-bold">SIZE</span>{" "}
+                <span className=" text-[1.2rem] below-600:text-[0.8rem] font-bold">SIZE :</span>{" "}
                 <span>
                   <span className=" self-center below-600:text-[0.8rem]  text-[1.2rem] ">
                     {size}

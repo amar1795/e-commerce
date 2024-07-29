@@ -28,7 +28,7 @@ const CustomRadioButton: React.FC<CustomRadioButtonProps> = ({
 <div
 className={`w-4 h-4  border rounded-full flex items-center justify-center border-transparent ${
   checked
-  ? "bg-pink-600 border-black"
+  ? "bg-yellow-400 border-black"
   : ""
   }`}
   >

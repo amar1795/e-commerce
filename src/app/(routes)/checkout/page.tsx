@@ -936,7 +936,7 @@ const page = () => {
                             )}
                           </div>
 
-                          <div className="   flex items-center justify-center">
+                          <div className="   below-445:flex below-445:items-center below-445:justify-center">
                             <div className=" mt-8 flex items-center">
                               <div className=" w-[30rem] text-[2rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 below-600:w-[20rem] below-445:w-[15rem]">
                                 <div className=" p-4 px-4 ">

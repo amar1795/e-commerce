@@ -378,16 +378,16 @@ const Page = ({ params }: { params: { categories: string } }) => {
           </div>
 
           <div className="productsRight flex-grow ">
-            <div className={`min-h-[90vh] `}>
+            <div className={`min-h-[90vh]    `}>
               {productsFound === false ? (
                 <div className=" text-center self-center">
-                  <h1 className=" text-[4rem] leading-[7rem] ">
+                  <h1 className=" text-[4rem]  below-1000:text-[2rem] below-695:text-[1rem] uppercase ">
                     No Products found Lmao 😂
                   </h1>
-                  <h1 className=" text-[4rem] leading-[7rem]  ">
+                  <h1 className=" text-[4rem] below-1000:text-[2rem]  below-695:text-[1rem] uppercase  ">
                     What you Filtering ?
                   </h1>
-                  <h1 className=" text-[4rem] leading-[7rem] ">
+                  <h1 className=" text-[4rem] below-1000:text-[2rem]  below-695:text-[1rem] uppercase ">
                     Search again Bruh...
                   </h1>
                 </div>
@@ -457,13 +457,13 @@ const Page = ({ params }: { params: { categories: string } }) => {
             <div className={`min-h-[90vh] `}>
               {productsFound === false ? (
                 <div className=" text-center self-center">
-                  <h1 className=" text-[4rem] leading-[7rem] ">
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase ">
                     No Products found Lmao 😂
                   </h1>
-                  <h1 className=" text-[4rem] leading-[7rem]  ">
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase  ">
                     What you Filtering ?
                   </h1>
-                  <h1 className=" text-[4rem] leading-[7rem] ">
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase ">
                     Search again Bruh...
                   </h1>
                 </div>
@@ -512,13 +512,13 @@ const Page = ({ params }: { params: { categories: string } }) => {
             <div className={`min-h-[90vh] `}>
               {productsFound === false ? (
                 <div className=" text-center self-center">
-                  <h1 className=" text-[4rem] leading-[7rem] ">
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase ">
                     No Products found Lmao 😂
                   </h1>
-                  <h1 className=" text-[4rem] leading-[7rem]  ">
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase  ">
                     What you Filtering ?
                   </h1>
-                  <h1 className=" text-[4rem] leading-[7rem] ">
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase ">
                     Search again Bruh...
                   </h1>
                 </div>
@@ -564,13 +564,13 @@ const Page = ({ params }: { params: { categories: string } }) => {
             <div className={`min-h-[90vh] `}>
               {productsFound === false ? (
                 <div className=" text-center self-center">
-                  <h1 className=" text-[4rem] leading-[7rem] ">
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase ">
                     No Products found Lmao 😂
                   </h1>
-                  <h1 className=" text-[4rem] leading-[7rem]  ">
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase  ">
                     What you Filtering ?
                   </h1>
-                  <h1 className=" text-[4rem] leading-[7rem] ">
+                  <h1 className=" text-[4rem] below-1000:text-[2rem] below-695:text-[1rem] uppercase ">
                     Search again Bruh...
                   </h1>
                 </div>
