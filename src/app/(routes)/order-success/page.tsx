@@ -83,32 +83,32 @@ const page = () => {
 
   return (
     <div className=" overflow-hidden border-2 border-black">
-      <div className=" flex ">
-        <div>
+      <div className=" flex below-900:flex-col  ">
+        <div className=" below-1319:hidden ">
           <ConfettiComponent />
           <ConfettiComponent2 />
         </div>
-        <div className=" bg-teal-500 flex-1 border-2 border-black">
+        <div className=" bg-teal-500  below-900:w-full flex-1 border-2 border-black below-1265:w-[30rem]">
           <div className=" flex flex-col  justify-center ">
             <div className=" flex flex-col items-center ">
               {/* <CircleCheck size={140} strokeWidth={0.6} /> */}
               <div className=" ">
                 <TickAnimation />
               </div>
-              <h1 className=" text-2xl font-bold mt-4"> Thank you</h1>
-              <h1 className=" text-4xl font-bold mt-2">
+              <h1 className=" text-2xl font-bold mt-4 uppercase"> Thank you</h1>
+              <h1 className=" below-700:pl-4 text-4xl font-bold mt-2 below-700:text-[1.5rem] uppercase">
                 {" "}
                 Congractulations! Your Order has been Confirmed
               </h1>
-              <h1 className=" text-[1.2rem] mt-4">
+              <h1 className=" below-700:pl-4 text-[1.2rem] mt-4 below-700:text-[0.8rem] uppercase">
                 {" "}
                 Hey,{user?.name?.split(" ")[0]} We will send you an email
                 Shortly to {user?.email} please check your email
               </h1>
             </div>
-            <div className=" px-8 mt-8 ">
+            <div className=" px-8 mt-8 below-730:hidden ">
               <div className=" bg-white h-[15rem]">
-                <div className=" px-8 py-5 ">
+                <div className=" px-8 py-5  ">
                   <div className=" w-full h-[8rem]  mt-8 ">
                     <StepProgress
                       orderedDate={formatDate(orderData?.createdAt)}
@@ -135,7 +135,7 @@ const page = () => {
           <div className=" px-8 mt-8  pb-5">
             <div className=" border-b-2 border-black"></div>
             <div className="">
-              <h1 className="w-80  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 uppercase text-2xl bg-yellow-400 font-bold">
+              <h1 className="w-80 below-700:w-[15rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 uppercase text-2xl bg-yellow-400 font-bold below-700:text-[1.5rem]">
                 Order Items({orderItems?.length})
               </h1>
             </div>
@@ -158,12 +158,12 @@ const page = () => {
           </div>
         </div>
 
-        <div className=" bg-pink-500 w-[30rem] border-2 border-black">
+        <div className=" bg-pink-500 w-[30rem] below-900:w-full border-2 border-black">
           <div className=" px-8">
             <div className=" h-[7rem] flex justify-between pt-4 border-b-2 border-black">
               <div className="">
-                <h1 className=" text-2xl font-bold"> ORDER NUMBER</h1>
-                <h1 className=" text-2xl font-bold uppercase">
+                <h1 className=" text-2xl font-bold below-700:text-[1.5rem]"> ORDER NUMBER</h1>
+                <h1 className=" text-2xl font-bold uppercase below-700:text-[1.2rem]">
                   #{orderData?.id}
                 </h1>
               </div>
@@ -177,8 +177,8 @@ const page = () => {
               </Link>
             </div>
             <div>
-              <div className=" h-[10rem] border-b-2 border-black">
-                <h1 className="  h-[4rem] text-3xl font-bold mb-2 pt-3">
+              <div className=" h-[10rem] below-700:h-full border-b-2 border-black">
+                <h1 className="  uppercase below-700:text-[1.2rem] h-[4rem] text-3xl font-bold mb-2 pt-3">
                   {" "}
                   Delivery Address
                 </h1>
@@ -202,8 +202,8 @@ const page = () => {
                 <h1> Apt 5B, Springfield,</h1>
                 <h1> IL 62704, United States</h1> */}
               </div>
-              <div className=" h-[10rem] border-b-2 border-black">
-                <h1 className="  h-[4rem] text-3xl font-bold mb-2 pt-3">
+              <div className=" h-[10rem] below-700:h-full border-b-2 border-black">
+                <h1 className="  h-[4rem] uppercase below-700:text-[1.2rem] text-3xl font-bold mb-2 pt-3">
                   Billing Address
                 </h1>
                 {orderData.length !== 0 ? (
@@ -222,7 +222,7 @@ const page = () => {
                 )}
               </div>
               <div className=" border-b-2 border-black  pb-6">
-                <h1 className="  text-3xl font-bold mb-2 pt-3">
+                <h1 className=" uppercase  text-3xl font-bold mb-2 pt-3 below-700:text-[1.2rem]">
                   Payment Details
                 </h1>
                 <div className=" flex ">
@@ -233,6 +233,7 @@ const page = () => {
                     <h1>{orderData?.paymentMode}</h1>
                   </div>
                 </div>
+               { orderData?.paymentMode == "CARD" && (<>
                 <div className=" flex ">
                   <div className="   w-[15rem]">
                     <h1 className="uppercase text-[1.2rem]">Payee Name </h1>
@@ -248,7 +249,7 @@ const page = () => {
                   <div className=" ">
                     <h1>{orderData?.card?.cardExpiry}</h1>
                   </div>
-                </div>
+                </div></>)} 
                 <div className=" flex ">
                   <div className="   w-[15rem]">
                     <h1 className="uppercase text-[1.2rem]">Payment Status </h1>
@@ -260,16 +261,16 @@ const page = () => {
               </div>
             </div>
             <div>
-              <div>
+              <div className="below-1025:w-[20rem] below-400:w-[16rem] ">
                 <div className=" mb-5 mt-8">
-                  <h1 className="w-80  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 uppercase text-2xl  bg-yellow-400 font-bold">
+                  <h1 className="w-80  below-700:w-[15rem]   p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 uppercase text-2xl  bg-yellow-400 font-bold below-700:text-[1.5rem]">
                     {`${orderItems && `Order Summary(${orderItems?.length})`} `}
                   </h1>
                   <div className=" py-1 mt-2 mb-2 w-auto  ">
                     {orderItems.map((item) => (
                       <div className=" flex justify-between ">
-                        <div className=" w-[25rem]">
-                          <h1 className=" self-center  text-[1.2rem] font-bold">
+                        <div className=" w-[25rem] ">
+                          <h1 className=" self-center  text-[1.2rem] font-bold below-1265:text-[1rem] uppercase">
                             {" "}
                             {item?.product?.name.length > 36
                               ? item?.product?.name.slice(0, 35) + "..."
@@ -278,13 +279,13 @@ const page = () => {
                         </div>
                         <span className=" flex  self-center  mr-4  w-[4rem]  justify-between">
                           <div className=" self-center">
-                            <X />
+                            <X  className=" below-1265:w-4 below-1265:h-4 w-8 h-8" />
                           </div>{" "}
-                          <h1 className=" text-[1.5rem] ">{item?.quantity}</h1>
+                          <h1 className=" text-[1.5rem] below-1265:text-[1rem] ">{item?.quantity}</h1>
                         </span>
 
                         <div className=" flex self-center py-2  w-[10rem]">
-                          <h1 className=" text-[1.3rem] self-center">
+                          <h1 className=" text-[1.3rem] self-center below-1265:text-[1rem]">
                             {(item?.price * item?.quantity)?.toLocaleString(
                               "en-IN",
                               {
@@ -300,10 +301,10 @@ const page = () => {
 
                   <div className=" border-b-2 border-black">
                     <div className=" flex justify-between">
-                      <span className=" self-center  text-2xl font-bold">
+                      <span className=" self-center  text-2xl font-bold uppercase below-1265:text-[1.2rem]">
                         Sub Total
                       </span>
-                      <span className="text-[1.3rem]">
+                      <span className="text-[1.3rem] below-1265:text-[1rem]">
                         {orderData?.orderTotal?.toLocaleString("en-IN", {
                           style: "currency",
                           currency: "INR",
@@ -311,24 +312,24 @@ const page = () => {
                       </span>
                     </div>
                     <div className=" flex justify-between">
-                      <span className=" self-center  text-2xl font-bold">
+                      <span className=" self-center  text-2xl font-bold uppercase below-1265:text-[1.2rem]">
                         Delivery
                       </span>
                       <span>
                         <div className=" flex  ">
-                          <h1 className=" text-[1.3rem] self-center">0</h1>
+                          <h1 className=" text-[1.3rem] self-center below-1265:text-[1rem]">0</h1>
                         </div>
                       </span>
                     </div>
                   </div>
                   <div className=" flex justify-between">
-                    <span className=" self-center text-2xl font-bold">
+                    <span className=" self-center text-2xl font-bold uppercase below-1265:text-[1.2rem]">
                       {" "}
                       Total
                     </span>
                     <span>
                       <div className=" flex  ">
-                        <h1 className="text-[1.3rem]">
+                        <h1 className="text-[1.3rem] below-1265:text-[1rem]">
                           {orderData?.orderTotal?.toLocaleString("en-IN", {
                             style: "currency",
                             currency: "INR",

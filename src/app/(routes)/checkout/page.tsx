@@ -184,10 +184,7 @@ const page = () => {
   };
 
   const handleWalletSelect = async (wallet) => {
-
     setWalletCardId(wallet);
-
-
   };
 
   // userId: string,
@@ -201,7 +198,7 @@ const page = () => {
     const cartSummary = async () => {
       const data = await getProductsInCartSummary(user.id);
       setproductData(data);
-      setTotalAmount(data.totalAmount)
+      setTotalAmount(data.totalAmount);
       // console.log("this is the product data", data);
       const allUserCards = await fetchUserCards(user?.id);
       setAllUserCards(allUserCards);
@@ -337,7 +334,7 @@ const page = () => {
 
       return;
       // Await until the transition is complete
-      
+
       // console.log("this is the order data", order.url);
 
       // Creating the order after the transition
@@ -481,17 +478,18 @@ const page = () => {
 
   return (
     <div className=" border-black border-2">
-      <div className=" bg-teal-600 h-[8rem] border-b-4 border-black">
-        <h1 className=" text-[5rem] px-4">CHECKOUT </h1>
+      <div className=" bg-teal-600 h-[8rem] border-b-4 border-black text-center flex items-center justify-center">
+        <h1 className=" text-[5rem] px-4 below-445:text-[2rem] uppercase">CHECKOUT </h1>
       </div>
       <div className="  bg-pink-500  ">
         <div className="">
           <div className=" ">
             <div className="py-4 px-5">
-              <div className=" flex">
-                <div className=" flex-1">
+              <div className=" flex justify-between below-1000:flex-col"> 
+                <div className=" flex-1  w-full  mr-7 below-1265:w-[30rem] below-1000:w-full">
                   <div className=" mb-8 ">
-                    <h3 className="w-[20rem] text-[2rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
+                    <h3 className="w-[20rem] text-[2rem] uppercase leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500  below-600:text-[1.5rem]
+                    below-500:text-[1rem]  below-500:w-[12rem]">
                       Shipping Address
                     </h3>
                   </div>
@@ -500,7 +498,7 @@ const page = () => {
                       type="text"
                       {...registerField("country")}
                       placeholder="Country"
-                      className="w-full p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
+                      className="w-full  below-500:text-[0.8rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
                     />
                     {errors.country && (
                       <span className=" italic text-red-950  text-[1.1rem]">
@@ -513,7 +511,7 @@ const page = () => {
                           type="text"
                           {...registerField("firstName")}
                           placeholder="First Name"
-                          className="w-full p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
+                          className="w-full below-500:text-[0.8rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
                         />
                         {errors.firstName && (
                           <span className=" italic text-red-950  text-[1.1rem]">
@@ -526,7 +524,7 @@ const page = () => {
                           type="text"
                           {...registerField("lastName")}
                           placeholder="Last Name"
-                          className="w-full ml-5 p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
+                          className="w-full below-500:text-[0.8rem] ml-5 p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
                         />
                         {errors.lastName && (
                           <span className=" italic text-red-950  text-[1.1rem]">
@@ -539,7 +537,7 @@ const page = () => {
                       type="text"
                       {...registerField("apartment")}
                       placeholder="Apartment, suite etc."
-                      className="w-full p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
+                      className="w-full below-500:text-[0.8rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
                     />
                     {errors.apartment && (
                       <span className=" italic text-red-950  text-[1.1rem]">
@@ -550,7 +548,7 @@ const page = () => {
                       type="text"
                       {...registerField("street")}
                       placeholder="Street"
-                      className="w-full p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
+                      className="w-full below-500:text-[0.8rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
                     />
                     {errors.street && (
                       <span className=" italic text-red-950  text-[1.1rem]">
@@ -563,7 +561,7 @@ const page = () => {
                           type="text"
                           {...registerField("city")}
                           placeholder="City"
-                          className="w-full p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
+                          className="w-full below-500:text-[0.8rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
                         />
                         {errors.city && (
                           <span className=" italic text-red-950  text-[1.1rem]">
@@ -576,7 +574,7 @@ const page = () => {
                           type="text"
                           {...registerField("state")}
                           placeholder="State"
-                          className="w-full ml-5 p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
+                          className="w-full below-500:text-[0.8rem] ml-5 p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
                         />
                         {errors.state && (
                           <span className=" italic text-red-950  text-[1.1rem]">
@@ -589,7 +587,7 @@ const page = () => {
                       type="text"
                       {...registerField("landmark")}
                       placeholder="Landmark"
-                      className="w-full p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
+                      className="w-full p-2 below-500:text-[0.8rem] border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
                     />
                     {errors.landmark && (
                       <span className=" italic text-red-950  text-[1.1rem]">
@@ -602,7 +600,7 @@ const page = () => {
                           type="text"
                           {...registerField("postalCode")}
                           placeholder="Postal Code"
-                          className="w-full p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
+                          className="w-full below-500:text-[0.8rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
                         />
                         {errors.postalCode && (
                           <span className=" italic text-red-950  text-[1.1rem]">
@@ -615,7 +613,7 @@ const page = () => {
                           type="text"
                           {...registerField("phoneNumber")}
                           placeholder="Phone Number"
-                          className="w-full ml-5 p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
+                          className="w-full below-500:text-[0.8rem] ml-5 p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
                         />
                         {errors.phoneNumber && (
                           <span className=" italic text-red-950  text-[1.1rem]">
@@ -627,13 +625,13 @@ const page = () => {
                     <div className="h-[4rem] flex">
                       <button
                         type="submit"
-                        className="w-80 p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-green-500"
+                        className="w-80 p-2 below-500:text-[1rem] border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-green-500 uppercase"
                       >
                         <h1 className="font-bold">Submit</h1>
                       </button>
                       <button
                         type="button"
-                        className="w-80 p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500 ml-4"
+                        className="w-80 p-2 border-2 below-500:text-[1rem] border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500 ml-4 uppercase"
                         onClick={() => {
                           reset(); // Call the reset method from useForm
                         }}
@@ -644,13 +642,14 @@ const page = () => {
                   </form>
                 </div>
 
-                <div className=" flex-1 ml-14 pl-14">
+                <div className=" flex-1  w-full  ml-4 h-[70vh] below-1000:mt-5 ">
                   <div className="   mb-8 ">
-                    <h3 className="w-[20rem] text-[2rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
+                    <h3 className="w-[20rem] text-[2rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 uppercase below-600:text-[1.5rem]
+                    below-500:text-[1rem]  below-500:w-[12rem]">
                       Saved Address
                     </h3>
                   </div>
-                  <div>
+                  <div className="overflow-y-auto  h-full">
                     <div></div>
                     {isLoading ? (
                       <div className=" flex justify-center  items-center h-[20rem] ">
@@ -670,60 +669,60 @@ const page = () => {
               <div className=" border-2 border-black  mt-8"></div>
               <div>
                 <div className=" pt-5 mb-8 ">
-                  <h3 className="w-[30rem] text-[3rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
+                  <h3 className="w-[30rem] below-695:w-[20rem] text-[3rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 uppercase below-695:text-[2rem]">
                     Payment Method
                   </h3>
                 </div>
               </div>
 
               <div className=" flex-1 ">
-                <div className=" flex justify-around ">
+                <div className=" flex justify-around  below-460:flex-col below-460:items-center ">
                   <div className="   mb-8 ">
                     <button
                       type="button"
-                      className={`w-[15rem] p-2 border-2 border-black  mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  ml-4  ${
+                      className={`w-[15rem] below-695:w-[10rem] p-2 border-2 border-black  mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  ml-4  ${
                         activeTab === "card"
                           ? "bg-white text-black"
                           : "bg-yellow-400 text-black"
                       }`}
                       onClick={() => activateTab("card")}
                     >
-                      <h1 className="font-bold text-[1.5rem]">CARD</h1>
+                      <h1 className="font-bold text-[1.5rem] uppercase below-695:text-[1rem]">CARD</h1>
                     </button>
                   </div>
                   <div className="   mb-8 ">
                     <button
                       type="button"
-                      className={`w-[15rem] p-2 border-2 border-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 ml-4 ${
+                      className={`w-[15rem] below-695:w-[10rem] p-2 border-2 border-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 ml-4 ${
                         activeTab === "wallet"
                           ? "bg-white text-black"
                           : "bg-yellow-400 text-black"
                       }`}
                       onClick={() => activateTab("wallet")}
                     >
-                      <h1 className="font-bold text-[1.5rem]">WALLET</h1>
+                      <h1 className="font-bold text-[1.5rem] uppercase below-695:text-[1rem]  ">WALLET</h1>
                     </button>
                   </div>
                 </div>
 
                 <div className="  w-full border-black border-2">
                   {activeTab === "card" && (
-                    <div className=" mx-4 mb-4 h-[30rem]">
-                      <div className=" flex justify-between">
-                        <div>
+                    <div className=" mx-4 mb-4 h-[30rem] below-1025:h-full">
+                      <div className=" flex justify-between below-1025:flex-col">
+                        <div className=" flex-1 w-full mr-4">
                           <form
                             // ref={formRef}
                             onSubmit={handleSubmitPayment(onSubmitPayment)}
                           >
-                            <div className="w-[20rem] pt-5  ">
-                              <h3 className="w-[30rem] text-[2rem] leading-none p-2 border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 uppercase">
+                            <div className="  w-full pt-5   ">
+                              <h3 className="w-[30rem] text-[2rem] leading-none p-2 border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 uppercase below-600:w-[20rem] below-600:text-[1.5rem] below-500:w-[15rem] below-500:text-[1rem]">
                                 Enter Card Details
                               </h3>
                               <input
                                 type="text"
                                 {...registerPayment("cardNumber")}
                                 placeholder="Card Number"
-                                className="w-[34rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
+                                className=" w-full p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
                                 // onInput={formatCardNumber}
                               />
                               {errorsPayment.cardNumber && (
@@ -735,7 +734,7 @@ const page = () => {
                                 type="text"
                                 {...registerPayment("expirationDate")}
                                 placeholder="MM/YY"
-                                className="w-[34rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
+                                className="w-full p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
                                 // onInput={formatExpirationDate}
                               />
                               {errorsPayment.expirationDate && (
@@ -747,7 +746,7 @@ const page = () => {
                                 type="text"
                                 {...registerPayment("cvv")}
                                 placeholder="CVV"
-                                className="w-[34rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
+                                className="w-full p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
                                 // onInput={restrictCvv}
                               />
                               {errorsPayment.cvv && (
@@ -759,7 +758,7 @@ const page = () => {
                                 type="text"
                                 {...registerPayment("nameOnCard")}
                                 placeholder="Name on card"
-                                className="w-[34rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
+                                className="w-full p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 focus:outline-none"
                               />
                               {errorsPayment.nameOnCard && (
                                 <span className="italic text-red-950 text-[1.1rem]">
@@ -782,27 +781,24 @@ const page = () => {
                           </form>
                         </div>
                         <div>
-                          <div className=" mr-[5rem]">
-                            <div className="w-[20rem] pt-5 mr-[20rem] ">
-                              <h3 className="w-[20rem] text-[2rem] leading-none p-2 border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
+                          <div className=" mr-[5rem]  w-full flex-1 ">
+                            <div className=" w-full   pt-5   ">
+                              <h3 className="w-[20rem] text-[2rem] leading-none p-2 border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 uppercase below-600:w-[20rem] below-600:text-[1.5rem] below-500:w-[15rem] below-500:text-[1rem]">
                                 Saved Cards
                               </h3>
-                              {/* cardHolderName: true,
-                cardExpiry: true,
-                lastFourDigits: true */}
 
-                              <div className="overflow-auto h-[20rem] w-[42rem] mt-4 border-2 border-black px-2  ">
+                              <div className="overflow-auto h-[20rem]  w-full   mt-4 border-2 border-black px-2  ">
                                 {isLoading ? (
                                   <div className=" flex justify-center  items-center  h-full ">
                                     <LoadingAnimation />
                                   </div>
                                 ) : (
                                   // <div className="text-center mt-4">Loading...</div>
-                                  <div className=" mt-4 ">
+                                  <div className=" mt-4  below-500:overflow-x-auto">
                                     {AllUserCards.map((card) => (
                                       <div
                                         key={card.id}
-                                        className="w-[40rem] h-[4rem] mt-2 text-[1rem] leading-none p-2 border-2 border-black text-black  border-b-8 border-r-4 bg-yellow-500"
+                                        className=" w-full h-[4rem] mt-2 text-[1rem] leading-none p-2 border-2 border-black text-black  border-b-8 border-r-4 bg-yellow-500  "
                                       >
                                         <div className=" flex justify-between h-full">
                                           <div className=" flex ">
@@ -817,16 +813,28 @@ const page = () => {
                                             </div>
                                             <div className=" flex flex-col justify-between h-full ">
                                               <div className=" flex">
-                                                <p>{card.cardHolderName}</p>
+                                                <p className=" below-500:text-[0.8rem] uppercase">
+                                                  {card.cardHolderName.length >
+                                                  10
+                                                    ? card.cardHolderName.slice(
+                                                        0,
+                                                        10
+                                                      ) + "..."
+                                                    : card.cardHolderName}{" "}
+                                                </p>
                                                 <div className=" flex ml-4">
-                                                  <p>VISA </p>
-                                                  <p>
+                                                  <p className=" below-500:text-[0.8rem] uppercase">
+                                                    VISA{" "}
+                                                  </p>
+                                                  <p className=" below-500:text-[0.8rem] uppercase">
                                                     {" "}
                                                     **** {card.lastFourDigits}
                                                   </p>
                                                 </div>
                                               </div>
-                                              <p>Expires :{card.cardExpiry} </p>
+                                              <p className=" below-500:text-[0.8rem] uppercase">
+                                                Expires :{card.cardExpiry}{" "}
+                                              </p>
                                             </div>
                                           </div>
                                           <div className=" flex self-center">
@@ -842,7 +850,7 @@ const page = () => {
                                                     selectedCardId === card?.id
                                                       ? "bg-black"
                                                       : "bg-white"
-                                                  }`}
+                                                  }  below-500:h-3 below-500:w-3`}
                                                 >
                                                   {/* Add an empty space to keep the div rendered */}
                                                   &nbsp;
@@ -856,6 +864,12 @@ const page = () => {
                                   </div>
                                 )}
                               </div>
+                            </div>
+                            <div className=" w-full ">
+                              <h3 className="w-full mt-4 text-[1rem] leading-none p-2 border-2 border-black text-black flex self-center justify-center border-b-8 border-r-4 bg-red-600 uppercase">
+                                Please enter the card Number :4242424242424242
+                                at the stripe payment gateway
+                              </h3>
                             </div>
                           </div>
                         </div>
@@ -872,87 +886,69 @@ const page = () => {
                         </div>
                       ) : (
                         <>
-                        <div className=" flex mt-4 ">
-                          <div className=" w-[25rem] text-[2rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
-                            <div className=" p-4 px-4">
-                              <h1 className=" text-[2rem]">
-                               
-                                Available balance
-                              </h1>
-                              <h1 className=" mt-4 text-[1.8rem]">
-                                {formatToINR(walletData.wallet.balance)}
-                              </h1>
+                          <div className=" flex mt-4 below-445:flex-col ">
+                            <div className=" w-[25rem] below-600:w-[20rem] below-445:w-[15rem] text-[2rem] leading-none p-2 border-2 border-black text-black  flex  self-center justify-center border-b-8 border-r-4 bg-yellow-500">
+                              <div className=" p-4 px-4">
+                                <h1 className=" text-[2rem] below-600:text-[1rem] uppercase below-445:text-[0.8rem]">
+                                  Available balance
+                                </h1>
+                                <h1 className=" mt-4 text-[1.8rem] below-600:text-[1rem] below-445:text-[0.8rem]">
+                                  {formatToINR(walletData.wallet.balance)}
+                                </h1>
+                              </div>
                             </div>
-                          </div>
-                          {
-                            totalAmount < walletData.wallet.balance && (
+                            {totalAmount < walletData.wallet.balance && (
                               <div className=" flex self-center">
-                            <div className=" pb-4">
-                              <button
-                                className="p-1 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 ml-2 bg-green-500"
-                                onClick={() =>
-                                  handleWalletSelect(walletData.wallet.id)
-                                }
-                              >
-                                
-                                <div
-                                className={`h-6 w-6 ${
-                                  WalletCardId == walletData.wallet.id
-                                    ? "bg-black"
-                                    : "bg-white"
-                                }`}
-                                >
-                                  {/* Add an empty space to keep the div rendered */}
-                                  &nbsp;
+                                <div className=" pb-4">
+                                  <button
+                                    className="p-1 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 ml-2 bg-green-500"
+                                    onClick={() =>
+                                      handleWalletSelect(walletData.wallet.id)
+                                    }
+                                  >
+                                    <div
+                                      className={`h-6 w-6 ${
+                                        WalletCardId == walletData.wallet.id
+                                          ? "bg-black"
+                                          : "bg-white"
+                                      }`}
+                                    >
+                                      {/* Add an empty space to keep the div rendered */}
+                                      &nbsp;
+                                    </div>
+                                  </button>
                                 </div>
-                              </button>
-                            </div>
+                              </div>
+                            )}
                           </div>
-                            )
-                          }
-                          
-                        </div>
 
-                        <div>
-                                {
-                                  totalAmount > walletData.wallet.balance && (
-                                    <div className=" mt-8">
-                                      <div className=" w-[30rem] text-[2rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
-                            <div className=" p-4 px-4">
-                              <h1 className=" text-[1.5rem]">
-                               
-                              Insufficient balance in the wallet
-                              </h1>
-                             
-                            </div>
+                          <div>
+                            {totalAmount > walletData.wallet.balance && (
+                              <div className=" mt-8">
+                                <div className=" w-[30rem] below-600:w-[20rem] text-[2rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
+                                  <div className=" p-4 px-4">
+                                    <h1 className=" text-[1.5rem] uppercase  below-600:text-[1rem]">
+                                      Insufficient balance in the wallet
+                                    </h1>
+                                  </div>
+                                </div>
+                              </div>
+                            )}
                           </div>
-                          
-                                      
-                                    </div>
-                                  ) 
-                                  
-                                }
-                        </div>
 
-                        <div>
-                        
-                                    
-                                    <div className=" mt-8">
-                                      <div className=" w-[30rem] text-[2rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500">
-                            <div className=" p-4 px-4">
-                              <h1 className=" text-[1.5rem]">
-                               
-                              Amount to Pay {formatToINR(totalAmount)}
-                              </h1>
-                             
+                          <div className="   flex items-center justify-center">
+                            <div className=" mt-8 flex items-center">
+                              <div className=" w-[30rem] text-[2rem] leading-none p-2 border-2 border-black text-black  flex self-center justify-center border-b-8 border-r-4 bg-yellow-500 below-600:w-[20rem] below-445:w-[15rem]">
+                                <div className=" p-4 px-4 ">
+                                  <h1 className=" text-[1.5rem] uppercase below-600:text-[1rem] below-445:text-[0.8rem] ">
+                                    Amount to Pay {formatToINR(totalAmount)}
+                                  </h1>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                                    </div>
-                                  
-                        </div>
                         </>
                       )}
-                  
                     </div>
                   )}
                 </div>

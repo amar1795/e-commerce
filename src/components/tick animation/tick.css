@@ -8,6 +8,13 @@
     width: 400px; /* Adjust size of the SVG container */
     height: 400px; /* Adjust size of the SVG container */
   }
+
+  @media (max-width: 770px) {
+    .tick-svg {
+      width: 200px; /* Adjust size of the SVG container */
+      height: 200px; /* Adjust size of the SVG container */
+    }
+  }
   
   .tick-circle {
     fill: none;

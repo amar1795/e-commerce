@@ -114,9 +114,11 @@ const page = () => {
 
   return (
     <div className=" overflow-hidden border-2 border-black">
-      <div className=" flex h-screen ">
-        <div className=" bg-pink-500 flex-1  border-2 border-black">
-          <div className=" flex flex-col items-center pt-[8rem] h-[30rem] ">
+      <div className=" flex h-screen w-full ">
+        <div className=" bg-pink-500 flex-1  flex items-center justify-center w-full border-2 border-black">
+      <div className="  w-[50vw]  below-600:w-[70vw]">
+
+          <div className=" w-full flex flex-col  pt-[8rem] h-[30rem] ">
             <h1 className="text-4xl font-bold text-center  mt-4 mb-4 uppercase">
               Create your new password
             </h1>
@@ -129,7 +131,7 @@ const page = () => {
                 type="password"
                 placeholder="Password"
                 {...registerField("password")}
-                className="w-[34rem] mt-4 mb-4 p-2 border-2 border-black bg-white text-black  flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
+                className=" w-full mt-4 mb-4 p-2 border-2 border-black bg-white text-black  flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
               />
               {errors.password && (
                 <span className=" italic text-red-950  text-[1.1rem]">
@@ -140,7 +142,7 @@ const page = () => {
                 type="password"
                 placeholder="Confirm Password"
                 {...registerField("confirmpassword")}
-                className="w-[34rem] p-2 border-2 mb-4 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
+                className="w-full p-2 border-2 mb-4 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
               />
               {errors.confirmpassword && (
                 <span className=" italic text-red-950  text-[1.1rem]">
@@ -159,6 +161,8 @@ const page = () => {
               </div>
             </form>
           </div>
+      </div>
+
         </div>
       </div>
     </div>
