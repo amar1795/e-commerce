@@ -99,32 +99,32 @@ const OrderDetailsComponent = ({ orderItem, isPaid }) => {
             />
           </Link>
           <div className=" price py-4 w-full">
-            <h1 className=" py-2 px-2 below-868:text-[1rem] uppercase">
+            <h1 className=" py-2 px-2 below-868:text-[1rem] below-445:text-[0.8rem] uppercase">
               Product Name: {orderItem?.product.name}
             </h1>
             <div className=" flex justify-between ">
               <div className="w-[40rem]">
-                <h1 className=" py-2 px-2 below-868:text-[1rem] uppercase">
+                <h1 className=" py-2 px-2 below-868:text-[1rem] below-445:text-[0.8rem] uppercase">
                   Brand Name :{orderItem?.product.brand.name}
                 </h1>
 
                 {orderItem?.color && (
-                  <h1 className="py-2 px-2 below-868:text-[1rem] uppercase">
+                  <h1 className="py-2 px-2 below-868:text-[1rem] uppercase below-445:text-[0.8rem]">
                     Colour: <ColorSpan color={orderItem.color} />{" "}
                     {orderItem.color}
                   </h1>
                 )}
 
                 {orderItem?.size && (
-                  <h1 className=" py-2 px-2 below-868:text-[1rem] uppercase">Size :{orderItem?.size}</h1>
+                  <h1 className=" py-2 px-2 below-868:text-[1rem] uppercase below-445:text-[0.8rem] ">Size :{orderItem?.size}</h1>
                 )}
 
-                <h1 className=" py-2 px-2 below-868:text-[1rem] uppercase">
+                <h1 className=" py-2 px-2 below-868:text-[1rem] below-445:text-[0.8rem] uppercase">
                   Qty : <span>{orderItem?.quantity}</span>
                 </h1>
-                <h1 className="py-2 px-2 below-868:text-[1rem] uppercase">
+                <h1 className="py-2 px-2 below-868:text-[1rem] below-445:text-[0.8rem] uppercase">
                   Price:{" "}
-                  <span className=" font-bold below-868:text-[1rem] uppercase">
+                  <span className=" font-bold below-868:text-[1rem] below-445:text-[0.8rem] uppercase">
                     {orderItem?.price?.toLocaleString("en-IN", {
                       style: "currency",
                       currency: "INR",
@@ -137,7 +137,7 @@ const OrderDetailsComponent = ({ orderItem, isPaid }) => {
               {reviewData?.review?.rating ? (
                 <div className="mr-11">
                   <div className=" flex ">
-                    <p className="below-868:text-[1rem] uppercase">You Rated {reviewData?.review?.rating} Stars </p>
+                    <p className="below-868:text-[1rem] uppercase below-445:text-[0.8rem]">You Rated {reviewData?.review?.rating} Stars </p>
                     <div className=" self-center ml-2">
                       <MiniStarRatingComponent
                         reviewStars={reviewData?.review?.rating}
@@ -160,8 +160,8 @@ const OrderDetailsComponent = ({ orderItem, isPaid }) => {
                     />
                   ) : (
                     <div>
-                      <p className="below-868:text-[1rem] uppercase">Your Review is :</p>
-                      <p className="below-868:text-[1rem] uppercase">{reviewData?.review?.review}</p>
+                      <p className="below-868:text-[1rem] uppercase below-445:text-[0.8rem]">Your Review is :</p>
+                      <p className="below-868:text-[1rem] uppercase below-445:text-[0.8rem]">{reviewData?.review?.review}</p>
                       <ReviewModal
                         setNewData={setNewData}
                         reviewId={reviewData?.review?.id}
@@ -178,7 +178,7 @@ const OrderDetailsComponent = ({ orderItem, isPaid }) => {
                   )}
                 </div>
               ) : (
-                <div className="mr-11">
+                <div className="mr-11  below-445:mr-1">
                   <ReviewModal
                     setNewData={setNewData}
                     buttonName="Rate the product"

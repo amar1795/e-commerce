@@ -70,10 +70,10 @@ const Signup: React.FC<SignupProps> = ({ toggleView, setIsSignup }) => {
   return (
     <div>
       <div className=" mt-8 ">
-        <h1 className="text-4xl font-bold text-center uppercase ">
+        <h1 className="text-4xl font-bold text-center uppercase below-445:text-[1.8rem] ">
           Get Started with Us !
         </h1>
-        <h1 className="text-4xl font-bold text-center uppercase">
+        <h1 className="text-4xl font-bold text-center uppercase below-445:text-[1.8rem]">
           Create Your Free Account
         </h1>
 

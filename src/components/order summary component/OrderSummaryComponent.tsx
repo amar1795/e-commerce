@@ -142,11 +142,11 @@ const OrderSummaryComponent: React.FC<OrderProps> = ({
                 <p>Phone Number: {order.address.phoneNumber}</p> */}
               </div>
               <div className=" flex flex-col justify-between">
-              <div className=" ml-7 min-w-[10rem]">
+              <div className=" ml-7 below-1025:ml-0 min-w-[10rem]">
                 <h1 className=" font-bold underline below-868:text-[1rem] uppercase">Paid Status</h1>
                 <p className=" uppercase below-868:text-[1rem] ">{order.isPaid ? "Paid" : "Unpaid"}</p>
               </div>
-              <div className=" ml-2 min-w-[15rem]">
+              <div className=" ml-2 below-1025:ml-0 min-w-[15rem]">
                 <h1 className=" font-bold underline below-868:text-[1rem] uppercase">Delivery Status</h1>
                 <p className=" below-868:text-[1rem] uppercase">
                   {!order.isPaid ? "Order Not Confirmed" : order.deliveryStatus =="ORDER_PLACED" ? "Order Confirmed":""}

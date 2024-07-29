@@ -63,7 +63,7 @@ const page =  () => {
         <div className=" flex justify-between below-730:flex-col below-730:items-center">
       
         <div className="">
-        <h1 className=" text-[4rem] pl-10 uppercase below-925:text-[2rem]">Your Total Orders : {orders[0]?.totalOrdersCount}</h1>
+        <h1 className=" text-[4rem] pl-10 uppercase below-925:text-[2rem] below-445:text-[1.5rem] below-445:pl-2 below-445:mt-4">Your Total Orders : {orders[0]?.totalOrdersCount}</h1>
         </div>
         <div className=" pr-11">
        

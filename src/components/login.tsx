@@ -100,7 +100,7 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
   return (
     <div>
       <div className=" mt-8   ">
-        <h1 className="text-4xl font-bold text-center uppercase below-426:text-[1.5rem] below-400:text-wrap below-426:text-wrap  ">
+        <h1 className="text-4xl font-bold text-center uppercase below-426:text-[1.5rem] below-400:text-wrap below-426:text-wrap below-445:text-[1.8rem]  ">
           Welcome To Purchases Pal!
         </h1>
         {error && (

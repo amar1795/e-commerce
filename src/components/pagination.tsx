@@ -94,7 +94,7 @@
     return (
       <div className="mt-5 mb-3">
         <Pagination>
-          <PaginationContent className="w-[30rem] flex justify-between below-426:w-[21rem] ">
+          <PaginationContent className="w-[30rem] flex justify-between below-445:w-[21rem] ">
             {/* Previous Button */}
             <div className="first previous">
               <button
