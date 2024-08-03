@@ -124,19 +124,19 @@ previousSegment = previousSegment?.split(/[?#]/)[0];
   return (
     <div className="h-[4rem] relative" ref={dropdownRef}>
       <button
-        className="w-[15rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500"
+        className="w-[15rem] below-566:w-[10rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500"
         onClick={handleButtonClick}
       >
-<h1 className="font-bold">{buttonName}</h1>
+<h1 className="font-bold below-566:text-[0.8rem]">{buttonName}</h1>
 </button>
       {isOpen && (
-        <div className="absolute mt-2 w-[15rem] bg-white border border-black text-black z-10">
+        <div className="absolute mt-2 w-[15rem] below-566:w-[10rem] bg-white border border-black text-black z-10">
           <ul>
             {options.map(option => (      
             <li
             key={option}
             onClick={() => handleOptionClick(option)}
-            className="p-2 hover:bg-gray-200 cursor-pointer flex justify-center"
+            className="p-2 hover:bg-gray-200 cursor-pointer below-566:text-[0.8rem] flex justify-center"
           >
            {option}
           </li>

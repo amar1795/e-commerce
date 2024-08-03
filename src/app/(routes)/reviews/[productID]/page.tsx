@@ -234,17 +234,17 @@ const removeSpaces = (name: string): string => {
   return (
     <div>
       <div className=" min-h-[95vh] bg-teal-600 ">
-        <div className=" flex justify-between ">
-          <div >
-            <div className=" flex ml-20">
-            <div className=" h-[4rem]">
+        <div className=" flex justify-between  below-600:flex-col below-600:items-center   ">
+          <div className=" " >
+            <div className=" flex ml-20 below-600:items-center below-600:ml-0  below-600:mr-7  ">
+            <div className=" h-[4rem]  ">
             <Link href={url}>
             <button
                       type="submit"
                       className=" px-5 p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-yellow-500"
                       onClick={clearSort}
                     >
-                      <h1 className=" font-bold">{"Back to Order  "} </h1>
+                      <h1 className=" uppercase font-bold below-566:text-[0.8rem]">{"Back to Order  "} </h1>
                     </button>
                   </Link>
                   </div>
@@ -253,7 +253,7 @@ const removeSpaces = (name: string): string => {
                  <div className=" h-[4rem] ml-8">
                  <button
                    type="submit"
-                   className=" px-5 p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-pink-500" 
+                   className=" px-5 p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2 bg-pink-500 " 
                    onClick={clearFilter}
                  >
                    <h1 className=" font-bold">{"Clear Filter"} </h1>
@@ -280,7 +280,7 @@ const removeSpaces = (name: string): string => {
            
             </div>
           </div>
-          <div className=" flex">
+          <div className=" flex below-868:flex-col">
 
           {/* filter by rating */}
           <div className=" pr-11">
@@ -319,44 +319,44 @@ const removeSpaces = (name: string): string => {
           <div className=" border-black border-b-4 "></div>
         </div>
 
-        <div className=" flex justify-between px-8 mt-4 ">
-          <div className=" flex  ">
-            <div className="flex  w-[48vw]">
-              <div className="border-2 border-black overflow-hidden">
+        <div className=" flex justify-between px-8 mt-4  below-1319:flex-col">
+          <div className=" flex w-full ">
+            <div className="flex  w-full   below-700:flex-col below-700:border-2 below-700:border-black">
+              <div className="border-2  border-black below-700:border-none overflow-hidden below-700:flex below-700:items-center below-700:justify-center  ">
                 <img
                   src={data?.images && data?.images[0]?.url}
                   alt=""
-                  className=" h-[30rem] w-[22rem] object-cover  "
+                  className=" h-[30rem] w-[22rem] object-cover below-700:h-[15rem] below-700:w-[15rem] "
                 />
               </div>
-              <div>
+              <div  className=" w-full ">
                 <div>
                   <div className=" px-4">
-                    <h1 className=" text-[4rem] font-bold">
+                    <h1 className=" text-[4rem] font-bold below-500:text-[2rem] uppercase">
                       {data?.brand?.name}
                     </h1>
-                    <h2 className=" text-[1.2rem]">{data?.name}</h2>
+                    <h2 className=" text-[1.2rem] below-500:text-[0.8rem] uppercase">{data?.name}</h2>
                   </div>
                 </div>
 
                 <div>
                   <div className=" flex  mb-2 ml-4">
-                    <h1 className=" self-center text-[2rem]">MRP</h1>
+                    <h1 className=" self-center text-[2rem] below-500:text-[1.2rem] uppercase">MRP</h1>
 
                     <div className=" flex  self-center">
                       <div className=" self-center ">
                         <IndianRupee size={20} />
                       </div>
                       <h1
-                        className=" text-[1.5rem] font-bold"
+                        className=" text-[1.5rem] font-bold below-500:text-[1rem] uppercase"
                         style={{ textDecoration: "line-through" }}
                       >
                         {data?.price}
                       </h1>
-                      <h1 className=" text-[1.5rem] font-bold ml-5">
+                      <h1 className=" text-[1.5rem] font-bold ml-5 below-400:ml-1 below-500:text-[1rem] uppercase">
                         {data?.discountedPrice?.toFixed(2)}
                       </h1>
-                      <h1 className=" text-[1.5rem] font-bold ml-5 text-yellow-400">
+                      <h1 className=" text-[1.5rem] below-500:text-[1rem] below-400:ml-1 uppercase font-bold ml-5 text-yellow-400">
                         ({data?.discount}%OFF)
                       </h1>
                     </div>
@@ -365,12 +365,12 @@ const removeSpaces = (name: string): string => {
               </div>
             </div>
           </div>
-          <div className=" border-l-2 border-black">
+          <div className=" border-l-2 border-black below-700:border-2  below-835:items-center ">
             {/* ratings component */}
-            <div className=" text-white  mb-14 flex flex-col ">
+            <div className=" text-white  mb-14 flex flex-col below-835:items-center below-835:mt-[2rem] ">
               <div className=" flex  pl-8">
                 <div>
-                  <h1 className=" text-[3rem]"> RATINGS </h1>
+                  <h1 className=" text-[3rem] below-500:text-[2rem] uppercase"> RATINGS </h1>
                 </div>
                 <div className=" px-5">
                   <Star
@@ -382,11 +382,11 @@ const removeSpaces = (name: string): string => {
                 </div>
               </div>
 
-              <div className=" flex mt-6">
-                <div className="left flex-1 border-r-2 border-gray-600 pl-8 pr-4 ">
+              <div className=" flex mt-6 ">
+                <div className="left flex-1 border-r-2 border-gray-600 pl-8 pr-4 below-835:border-none ">
                   <div className="">
                     <div className="top flex mt-5 mb-2">
-                      <p className=" text-[5rem] leading-none m-0 p-0 font-thin ">
+                      <p className=" text-[5rem] leading-none m-0 p-0 font-thin below-500:text-[3rem] uppercase ">
                         {data?.ratings?.averageRating.toFixed(1)}
                       </p>
                       <div className=" self-center ml-5">
@@ -398,12 +398,12 @@ const removeSpaces = (name: string): string => {
                         />
                       </div>
                     </div>
-                    <div className="Bottom">
+                    <div className="Bottom below-500:text-[0.8rem] uppercase">
                       {verifiedPurchaseCount} Verified Buyers
                     </div>
                   </div>
                 </div>
-                <div className=" text-black w-[5rem] pl-5  flex flex-col justify-between">
+                <div className=" text-black w-[5rem] pl-5  flex flex-col justify-between below-835:hidden">
                   <div className=" flex w-5">
                     5{" "}
                     <div className=" self-center pl-2 ">
@@ -436,7 +436,7 @@ const removeSpaces = (name: string): string => {
                   </div>
                 </div>
 
-                <div className="right flex-1 pl-[14rem]  z-0">
+                <div className="right flex-1 pl-[14rem]  z-0 below-835:hidden">
                   <div className="  rotate-90 w-[5.5rem] h-[2rem] ">
                     <StarChart
                       barChartData={initialData}
@@ -444,7 +444,7 @@ const removeSpaces = (name: string): string => {
                     />
                   </div>
                 </div>
-                <div className=" text-black w-[5rem]   flex flex-col justify-between">
+                <div className=" text-black w-[5rem]   flex flex-col justify-between below-835:hidden">
                   <p className=" flex w-5 pl-0">{data?.ratings?.count[5]} </p>
                   <p className=" flex w-5">{data?.ratings?.count[4]} </p>
                   <p className=" flex w-5">{data?.ratings?.count[3]} </p>
@@ -460,7 +460,7 @@ const removeSpaces = (name: string): string => {
                 {reviewData?.review?.rating ? (
                   <div className="mr-11">
                     <div className=" flex ">
-                      <p>You Rated {reviewData?.review?.rating} Stars </p>
+                      <p className="below-400:text-[0.8rem]">You Rated {reviewData?.review?.rating} Stars </p>
                       <div className=" self-center ml-2">
                         <MiniStarRatingComponent
                           reviewStars={reviewData?.review?.rating}
@@ -484,8 +484,11 @@ const removeSpaces = (name: string): string => {
                       />
                     ) : (
                       <div>
-                        <p>Your Review is :</p>
-                        <p>{reviewData?.review?.review}</p>
+                        <p className="below-400:text-[0.8rem]">Your Review is :</p>
+                        <p className="below-400:text-[0.8rem]">{reviewData?.review?.review}</p>
+                        <div className="  below-445:flex below-445:items-center below-445:justify-center below-835:mb-2">
+
+                       
                         <ReviewModal
                           buttonColour={"bg-yellow-500"}
                           setNewData={setNewData}
@@ -501,6 +504,7 @@ const removeSpaces = (name: string): string => {
                           }
                           isPaid={false}
                         />
+                         </div>
                       </div>
                     )}
                   </div>
@@ -545,13 +549,13 @@ const removeSpaces = (name: string): string => {
           <div className=" border-black border-b-4 "></div>
         </div>
 
-        <div className=" flex">
-          <div className=" w-[30vw]"></div>
+        <div className=" flex below-835:items-center">
+          <div className=" w-[30vw]  below-835:hidden"></div>
 
-          <div className=" flex-1">
+          <div className=" flex-1  ">
             <div className=" cxreviews   mb-4  px-4 pt-4">
               <div className="">
-                <h1 className=" text-[1.2rem] font-semibold mb-4">
+                <h1 className=" text-[1.2rem] font-semibold mb-4 below-400:text-[1rem]">
                   CUSTOMER REVIEWS({data?.ratings?.totalReviews})
                 </h1>
                 {/* review component */}
@@ -570,12 +574,12 @@ const removeSpaces = (name: string): string => {
                         </div>
                         <div className="  w-full flex flex-col ">
                           {review?.reviewTitle && (
-                            <p className="  h-auto px-2 py-2 border-b-2 border-black font-bold uppercase">
+                            <p className=" below-400:text-[0.8rem]  h-auto px-2 py-2 border-b-2 border-black font-bold uppercase">
                               TITLE: {review?.reviewTitle}
                             </p>
                           )}
 
-                          <p className="  h-auto px-2 py-2 border-b-2 border-black">
+                          <p className=" below-400:text-[0.8rem] h-auto px-2 py-2 border-b-2 border-black">
                             {review?.review}
                           </p>
 
@@ -591,19 +595,19 @@ const removeSpaces = (name: string): string => {
                             </div>
                           )}
 
-                          <div className="  h-[3rem] flex justify-between px-2 py-2  mt-5">
-                            <div className=" bg-white border-2 border-black flex self-center py-1 px-4    ">
-                              <p className="border-gray-500 border-r-2 pr-2 ">
+                          <div className="  h-[3rem] flex justify-between px-2 py-2  mt-5 below-566:flex-col below-566:h-full below-566:items-center">
+                            <div className=" bg-white border-2 border-black flex self-center py-1 px-4 below-566:mb-2   ">
+                              <p className="border-gray-500 border-r-2 pr-2 below-400:text-[0.8rem] ">
                                 {review?.user?.name}
                               </p>
 
-                              <p className=" pl-2 ">
+                              <p className=" pl-2 below-400:text-[0.8rem] ">
                                 {formatDate(review?.createdAt)}{" "}
                               </p>
                             </div>
                             {review?.verifiedPurchase && (
                               <div className=" bg-white border-2 border-black flex self-center py-1 px-4    ">
-                                <p className="border-gray-500  pr-2 ">
+                                <p className="border-gray-500  pr-2 below-400:text-[0.8rem] ">
                                   {"Verified "}
                                 </p>
                               </div>
@@ -635,12 +639,14 @@ const removeSpaces = (name: string): string => {
             </div>
           </div>
         </div>
-        <div className="px-8  mt-[5rem] ml-[50rem]">
+        <div className="flex justify-end mt-[5rem] px-8 below-426:px-1  ">
+          <div>
           <PaginationComponent
             currentOrderPage={currentPage}
             totalPages={totalPages}
             onPageChange={(page) => setCurrentPage(page)}
           />
+          </div>
         </div>
       </div>
     </div>

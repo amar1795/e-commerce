@@ -196,7 +196,7 @@ export function ReviewModal({
         <DialogTrigger asChild>
           {/* <Button variant="outline">Edit Profile</Button> */}
           <button className={`w-auto below-445:w-[6rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2   ${buttonColour ? buttonColour : "bg-teal-600"}`}>
-            <h1 className=" font-bold below-868:text-[0.8rem] uppercase">{buttonName} </h1>
+            <h1 className=" font-bold below-868:text-[0.8rem] uppercase below-445:text-[0.6rem] ">{buttonName} </h1>
           </button>
         </DialogTrigger>
         <DialogContent className=" h-[41rem] below-1265:h-[35rem] ">
@@ -218,7 +218,7 @@ export function ReviewModal({
                 </div>
               </DialogTitle>
             </DialogHeader>
-            <div className=" main flex below-600:flex-col below-600:overflow-y-auto bg-pink-500 below-1265:h-[23rem]  h-[30rem]  border-2 border-black border-b-8 border-r-4">
+            <div className=" main flex below-600:flex-col below-600:overflow-y-auto bg-pink-500 below-1265:h-[23rem] below-400:w-[20rem]   h-[30rem]  border-2 border-black border-b-8 border-r-4">
               <div className=" left flex-1 pl-5">
                 {/* star rating component */}
                 <div className="">
@@ -330,7 +330,7 @@ export function ReviewModal({
                 <div>
                   {/* review Title */}
                   <div>
-                    <h1 className="w-[30rem] below-1000:w-[15rem] p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4   bg-yellow-400">
+                    <h1 className="w-[30rem] below-1000:w-[15rem]  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4   bg-yellow-400">
                       <h1 className=" font-bold text-[1.5rem] below-1265:text-[1.2rem] below-1000:text-[0.8rem] uppercase">
                         Title your Review
                       </h1>
@@ -341,7 +341,7 @@ export function ReviewModal({
                       type="text"
                       {...reviewField("title")}
                       placeholder="Whats most important to know?"
-                      className=" w-[30rem] below-1000:w-full h-[3rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none "
+                      className=" w-[30rem] below-1000:w-full  h-[3rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 below-426:text-[0.8rem]  focus:outline-none "
                     />
                   </div>
                   {errors.title && (
@@ -364,7 +364,7 @@ export function ReviewModal({
                     <textarea
                       {...reviewField("review")}
                       placeholder="What did you like or dislike? What did you use this product for?"
-                      className=" w-[30rem] below-1000:w-full h-[13.5rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4  focus:outline-none below-1265:h-[7rem]"
+                      className=" w-[30rem] below-1000:w-full h-[13.5rem] p-2 border-2 border-black bg-white text-black mt-4 flex self-center justify-center border-b-8 border-r-4 below-426:text-[0.8rem] focus:outline-none below-1265:h-[7rem]"
                     />
                   </div>
                   {errors.review && (
@@ -410,7 +410,7 @@ export function ReviewModal({
                 type="submit"
                 className="w-[12rem] h-[3rem]  p-2 border-2 border-black text-black mt-4 flex self-center justify-center border-b-8 border-r-4 active:border-b-2 active:border-r-2  bg-yellow-400"
               >
-                <h1 className=" font-bold">Submit </h1>
+                <h1 className=" font-bold below-500:text-[0.8rem] uppercase">Submit </h1>
               </button>
             </DialogFooter>
           </form>
