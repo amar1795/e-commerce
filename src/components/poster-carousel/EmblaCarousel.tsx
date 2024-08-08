@@ -69,7 +69,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       <div className="embla__viewport  border-4 border-black" ref={emblaRef}>
         <div className="embla__container ">
           {posterData
-            .filter((_, index) => [0, 1, 2, 4].includes(index))
+            .filter((_, index) => [0, 1, 2].includes(index))
             .map((poster, index) => (
               <div className="embla__slide  " key={index}>
                 <Link
